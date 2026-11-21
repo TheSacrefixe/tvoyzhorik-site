@@ -98,7 +98,7 @@ table{border-collapse:collapse;font-size:14px}td,th{border:1px solid #2a2d33;pad
 <tbody>
 <tr>
 <td>Conversation log and connector logs (what the assistant did and with which platform)</td>
-<td>30 days, then deleted automatically; entries about a buyer — earlier, at the buyer's request (https://tvoyzhorik.com/data-deletion, section B) <mark>[ПРОВЕРИТЬ: что должен делать код — автоматически удалять журнал разговоров и журналы подключений через 30 дней (обещание 3)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — по запросу покупателя (Direct/Messenger или privacy@) в течение 30 дней (цель — сутки, тревоги на 1-й и 25-й день) удалить: переписку с ботом, технические идентификаторы, его записи в журнале разговоров и журналах подключений, файлы, связанные с ним; оставить только обезличенную отметку «не писать» (если был «стоп») и запись о факте удаления без содержания; без запроса журналы удаляются через 30 дней (MSG 9747, 9753, 9763, N-179; ответ CW 9781, Н10)]</mark></td>
+<td>30 days, then deleted automatically; entries about a buyer — earlier, at the buyer's request (https://tvoyzhorik.com/data-deletion, section B) <mark>[ПРОВЕРИТЬ: что должен делать код — автоматически удалять журнал разговоров и журналы подключений через 30 дней (обещание 3)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — по запросу покупателя (Direct/Messenger или privacy@) в течение 30 дней (цель — сутки, тревоги на 1-й и 25-й день) удалить: переписку с ботом, технические идентификаторы, его записи в журнале разговоров и журналах подключений, файлы, связанные с ним; удалить всё, включая ID покупателя; оставить только запись о факте удаления (дата, платформа, категории) без ID и хэша; новое сообщение после этого — для бота новый человек (MSG 9918–9920); без запроса журналы удаляются через 30 дней (MSG 9747, 9753, 9763, N-179; ответ CW 9781, Н10)]</mark></td>
 </tr>
 <tr>
 <td>Messages from the business's buyers in Instagram Direct and Messenger</td>
@@ -106,15 +106,15 @@ table{border-collapse:collapse;font-size:14px}td,th{border:1px solid #2a2d33;pad
 </tr>
 <tr>
 <td>Buyer profiles and customer cards from platform data (Instagram Direct, Messenger)</td>
-<td>not made: conversation data is kept 30 days and then deleted; outside it we keep nothing about these buyers, except the anonymised “do not message” mark and the record of deletion (below) <mark>[ПРОВЕРИТЬ: что должен делать код — не делать профилей и карточек покупателей по данным платформ; данные разговора хранить 30 дней и удалять (X-30, MSG 9747; Н7)]</mark></td>
+<td>not made: conversation data is kept 30 days and then deleted; outside it we keep nothing about these buyers, except the “stop” mark while a stop is in effect and the record of deletion (below) <mark>[ПРОВЕРИТЬ: что должен делать код — не делать профилей и карточек покупателей по данным платформ; данные разговора хранить 30 дней и удалять (X-30, MSG 9747; Н7)]</mark></td>
 </tr>
 <tr>
-<td>“Do not message” mark for a buyer who wrote “stop” (Instagram Direct, Messenger)</td>
-<td>an anonymised mark without the buyer's name, messages or history, so that the assistant does not reply to the buyer until they write “start” (which removes the mark), also after their data is deleted; deleted when the business disconnects the platform <mark>[ПРОВЕРИТЬ: что должен делать код — список подавления: солёный хэш IGSID/PSID + флаг «стоп», без имени, текста и истории; переживает удаление данных покупателя; удаляется при отключении платформы клиентом (N-179/N-06, N-161); согласовать с владелец (ответ CW 9781, Н10 п. 6)]</mark></td>
+<td>“Do not message” mark for a buyer who wrote “stop” and did not ask to delete their data (Instagram Direct, Messenger)</td>
+<td>we keep the buyer's ID only while the stop is in effect, so that the assistant does not reply to the buyer, without their name, messages or history; “start” or a request to delete their data removes it; also deleted when the business disconnects the platform <mark>[ПРОВЕРИТЬ: что должен делать код — «стоп» без запроса на удаление: хранить ID покупателя (IGSID/PSID) + флаг «стоп» только пока стоп действует, чтобы бот молчал; без имени, текста и истории; «старт» или запрос на удаление снимают флаг и стирают ID; при отключении платформы клиентом — удалять (Н10 п. 6; решение владелец MSG 9918–9920, 21.11)]</mark></td>
 </tr>
 <tr>
 <td>Record that a buyer's data was deleted</td>
-<td>date, platform, categories of deleted data and a hash of the buyer's ID (a code from which the ID cannot be read), without content; kept 12 months as proof that the request was handled <mark>[ПРОВЕРИТЬ: что должен делать код — запись об удалении (дата + хэш ID покупателя) хранить 12 месяцев как доказательство выполнения запроса, потом удалять (Н14; решение владелец 21.11)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — журнал удалений (N-05): дата запроса и удаления, платформа, хэш IGSID, категории, подтверждение да/нет; без текста и без самого IGSID; срок — 12 месяцев (Н14; решение владелец 21.11)]</mark></td>
+<td>date, platform and categories of deleted data only — no ID, no name, no content; kept 12 months as proof that the request was handled <mark>[ПРОВЕРИТЬ: что должен делать код — запись об удалении: только дата, платформа, категории удалённых данных; без ID, без хэша, без имени и текста; хранить 12 месяцев как доказательство выполнения запроса, потом удалять (Н14; решение владелец MSG 9918–9920, 21.11)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — запрос на удаление: удалить всё о покупателе, включая ID и любой его хэш; новое сообщение после удаления — для бота новый человек, бот представляется заново (решение владелец MSG 9918–9920, 21.11)]</mark></td>
 </tr>
 <tr>
 <td>Backups of our server</td>
