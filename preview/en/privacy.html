@@ -1,0 +1,171 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>[PREVIEW] Privacy</title><style>body{margin:0;background:#0f1115;color:#eceae4;font:16px/1.6 Georgia,serif}
+main{max-width:760px;margin:0 auto;padding:24px 20px 60px}nav{position:sticky;top:0;background:#16191f;padding:10px 16px;font:14px system-ui,sans-serif;display:flex;flex-wrap:wrap;gap:12px;border-bottom:1px solid #2a2d33}
+nav a{color:#e8b04b;text-decoration:none}nav b{color:#eceae4}a{color:#e8b04b}h1{font-size:1.9rem;line-height:1.2}h2{font:600 1.05rem system-ui,sans-serif;margin-top:32px}
+mark{background:#3a2f12;color:#ffd27a;padding:0 3px;border-radius:3px;font:13px/1.5 system-ui,sans-serif}.banner{background:#40210f;color:#ffb38a;padding:8px 16px;font:13px system-ui,sans-serif}
+table{border-collapse:collapse;font-size:14px}td,th{border:1px solid #2a2d33;padding:4px 8px}</style></head>
+<body><div class="banner">DRAFT PREVIEW — not published, not legal advice. Highlighted = open questions.</div><nav><a href="index.html">Home</a> <b>Privacy</b> <a href="terms.html">Terms</a> <a href="data-deletion.html">Data deletion</a> <a href="contact.html">Contact</a> · <a href="../uk/privacy.html">UK</a> · <a href="../index.html">↩</a></nav><main><h1>Privacy Policy — Tvii Zhoryk</h1>
+<p><strong>Version 1.0 · Effective date: [ДАТА ПУБЛИКАЦИИ] · Last updated: [ДАТА ПУБЛИКАЦИИ]</strong></p>
+<p>This policy explains what data Tvii Zhoryk processes, why, who helps us process it, how long we keep it and how to delete it. If anything is unclear, write to privacy@tvoyzhorik.com.</p>
+<h2>1. Who we are</h2>
+<p>Tvii Zhoryk is an AI assistant for small business owners and their teams. It works in Telegram and, when the business owner connects them, with the owner's advertising, analytics and social media accounts.</p>
+<p>The service is operated by <strong>[ОПЕРАТОР: ФИО ФОП, ІПН, адрес]</strong> ("we", "us"), a sole proprietor registered in Ukraine. The same name appears on every page of this site, in our Terms of Service and on our invoices.</p>
+<p>Contact for privacy questions and deletion requests: <strong>privacy@tvoyzhorik.com</strong>.</p>
+<h2>2. Our role</h2>
+<ul>
+<li>For the account data of our customers (the business owner and the team members they invite) we decide how the data is used — we are the <strong>controller</strong>.</li>
+<li>For data that belongs to our customer's business — its advertising accounts, social media pages, analytics, CRM, and messages or comments from the business's own buyers — we act <strong>on the customer's instructions and on their behalf</strong>, as a <strong>processor / service provider</strong>. The business is responsible for having the right to share that data with us.</li>
+</ul>
+<h2>3. What data we collect</h2>
+<h3>3.1 From the business owner and team members (Telegram)</h3>
+<ul>
+<li>Telegram user ID, name and username, language.</li>
+<li>Messages, voice messages, photos, files and documents you send to the assistant, and the assistant's replies.</li>
+<li>Settings: roles and permissions of team members, preferences, confirmations you give with buttons, the version of the Terms and this Policy you accepted.</li>
+<li>Billing: plan, payment dates, payment status and the transaction reference. We do not receive or store card numbers.</li>
+</ul>
+<p>Card numbers, one-time codes, passwords, keys and tokens that appear in a message are automatically masked before the message is stored or sent to the AI model. <mark>[ПРОВЕРИТЬ: что должен делать код — маскировать номера карт, коды, пароли, ключи и токены до записи и до отправки в модель (обещание 4 отчёта Недоверчивого 21.11)]</mark></p>
+<h3>3.2 From connected platforms</h3>
+<p>We access a platform only after the business owner connects it with the platform's own sign-in and consent screen. Each platform is described separately in section 4.</p>
+<h3>3.3 About the business's buyers</h3>
+<p>The business may share with the assistant information about its own buyers — for example, a screenshot of a buyer's message or comment, an order from its CRM, or comments under its posts received from a connected platform. Such data may include a name, username, message text and order details. We process it only to do the task the business asked for. If the owner connects Instagram Direct or Messenger, the assistant also receives the messages buyers send to the business there and replies to them on the business's behalf (see section 4, Meta). Section 9 explains how a buyer can ask us to delete it without registering.</p>
+<h2>4. Data from each platform: what, why, how to disconnect</h2>
+<p><strong>Google</strong> (Google Ads, Google Analytics 4, Google Search Console, Google Merchant Center, Google Business Profile)
+- <em>What we access:</em> reports and settings of the accounts the owner selects — campaign and spending statistics (Google Ads), website traffic and conversion reports (GA4), search performance (Search Console), product feed status (Merchant Center), business listing and reviews (Business Profile). We request only the narrowest access needed. <mark>[ПРОВЕРИТЬ: точный список scopes по каждому API, когда будет экран согласия]</mark>
+- <em>Why:</em> to prepare reports, answer the owner's questions about results and suggest improvements. In Google Ads, during the pilot (see the <a href="terms.html">Terms of Service</a>, section 4), the assistant <strong>only reads data</strong>; it does not change campaigns or budgets. <mark>[ПРОВЕРИТЬ: что должен делать код — Google Ads только читает; scope Google Ads API один для чтения и записи, запрет записи держит только код (круг 2, п. 4 №5)]</mark> <mark>[ПРОВЕРИТЬ: если в пилоте включим ответы на отзывы Business Profile — дописать сюда, что пишем и после чьего подтверждения]</mark>
+- <em>How to disconnect:</em> tell the assistant "Disconnect Google", or remove access at https://myaccount.google.com/permissions. We then revoke our access token the same day and, within 3 business days, delete the Google data we hold, including notes the assistant made from it. The only exceptions are the conversation log and the connector logs (what the assistant did and with which platform): they may contain the assistant's replies with figures from Google and records of its actions there, and are deleted automatically within 30 days (see section 8). <mark>[ПРОВЕРИТЬ: замечание 12 — отзыв доступа на https://myaccount.google.com/permissions нам не приходит, пока не подключён Google RISC (Cross-Account Protection); без него по этому пути обещание не выполняется]</mark> <mark>[ПРОВЕРИТЬ: до публикации — Google RISC и Meta Deauthorize Callback подключены и проверены]</mark></p>
+<p><strong>Meta</strong> (Instagram professional accounts, Facebook Pages, Meta advertising)
+- <em>What we access:</em> the owner's Instagram professional account and Facebook Page — posts, insights and comments; advertising accounts — campaigns, results and spending.
+- <em>Why:</em> to prepare reports, draft content, publish posts <strong>only from a content plan the owner approved</strong>, and change advertising budgets <strong>only within the monthly budget ("envelope") the owner approved with a button</strong>. Only the owner can approve or change the envelope. <mark>[ПРОВЕРИТЬ: что должен делать код — публиковать только из контент-плана, одобренного владельцем (круг 2, п. 4 №2)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — реклама Meta только в пределах конверта, одобренного кнопкой; держать лимит кабинета и дневной темп; менять конверт может только владелец (круг 2, п. 4 №4)]</mark>
+- <em>Messages from buyers (Instagram Direct, Messenger):</em> if the owner connects them, we receive the messages buyers send to the business — the buyer's name and username on the platform, the ID the platform assigns to the buyer for this business, the message text and attachments (for example, photos) — <strong>to answer buyers on the business's behalf</strong>. The assistant introduces itself as “AI assistant of <em>the business's brand name</em>” in its first message of a new conversation, after a 24-hour pause and in its first message after a person from the business's team hands the conversation back to it, and when asked whether it is a bot, always answers honestly: “I am an AI assistant”; it hands the conversation to a person from the business's team when the buyer asks (the team replies when available); and when the buyer writes “stop” (or “стоп”), it stops answering in this conversation right away and, until the buyer writes “start” (or “старт”), replies only to service requests — to delete their data, to start again or to talk to a person — briefly and without selling anything, while the buyer's messages still reach the business's team. We keep these conversations for 30 days and then delete them automatically (see section 8); we do not build buyer profiles or customer cards from platform data. <mark>[ПРОВЕРИТЬ: что должен делать код — не делать профилей и карточек покупателей по данным платформ; данные разговора хранить 30 дней и удалять (X-30, MSG 9747; Н7)]</mark> A buyer can ask us to delete their data at any time, without registering: https://tvoyzhorik.com/data-deletion, section B. <mark>[ПРОВЕРИТЬ: что должен делать код — в Instagram Direct и Messenger отвечать покупателям только от имени бизнеса клиента и представляться «AI-помічник &lt;бренд&gt;» (en: «AI assistant of &lt;brand&gt;») (MSG 9737, п. 21)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — представляться в первом сообщении нового разговора, после паузы 24 ч и в первом сообщении после того, как человек вернул разговор боту; на вопрос «ты бот?» всегда честно: «я AI-помощник» (en: «I am an AI assistant»; uk: «я AI-помічник») (MSG 9747, N-177); правила возврата бота после передачи человеку (Meta: раскрытие — «when required by applicable law», сверено 21.11.2026, ссылки — в служебном комментарии главной) (Н3)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — по запросу покупателя передать разговор человеку из команды клиента и не отвечать в этом разговоре, пока его ведёт человек (MSG 9737, п. 21)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — на «стоп» / «stop» (любой регистр) сразу перестать отвечать в этом разговоре, пока покупатель сам не напишет «старт» / «start», а до этого отвечать только на служебные просьбы (удалить данные, «старт», человек) шаблоном из кода — коротко, без продаж, модель ответа не вызывается; «человек» не снимает «стоп» (вариант г, план v8 N-178/N-179; ответ CW 9781, Н8); сообщения покупателя по-прежнему видит команда бизнеса клиента; «человек», «людина», «менеджер» — не стоп, а передача разговора человеку (MSG 9737, п. 21; MSG 9747, N-178; Н4)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — удалять переписку покупателей из Instagram Direct и Messenger через 30 дней и раньше по их запросу (data-deletion, раздел B) (MSG 9737, п. 21)]</mark>
+- <em>How to disconnect:</em> tell the assistant "Disconnect Meta", or remove the app in Facebook Settings → Business integrations, or in Instagram Settings → Website permissions → Apps and websites <mark>[СВЕРИТЬ пути меню на живом интерфейсе]</mark>. We then delete the Meta data we hold (see section 8). <mark>[ПРОВЕРИТЬ: замечание 12 — удаление приложения в настройках Facebook/Instagram нам не приходит без Meta Deauthorize Callback URL; без него по этому пути обещание не выполняется]</mark></p>
+<p><strong>TikTok</strong> (TikTok advertising)
+- <em>What we access:</em> the owner's TikTok ads account — campaigns, results and spending — through TikTok's own sign-in for business accounts.
+- <em>Why:</em> to prepare reports, suggest changes and change advertising budgets <strong>only within the monthly budget ("envelope") the owner approved with a button</strong>. Only the owner can approve or change the envelope. <mark>[ПРОВЕРИТЬ: что должен делать код — реклама TikTok только в пределах конверта, одобренного кнопкой; менять конверт может только владелец (MSG 9737, п. 22)]</mark>
+- <em>How to disconnect:</em> tell the assistant "Disconnect TikTok", or revoke access in TikTok for Business account settings. We then delete the TikTok data we hold (see section 8). <mark>[ПРОВЕРИТЬ: замечание 12 — шлёт ли TikTok уведомление при отзыве доступа в его настройках; если нет — по этому пути обещание не выполняется]</mark></p>
+<p><strong>Other services the owner connects</strong> (for example, a CRM): the assistant reads and, after confirmation, updates only what the owner allowed. They are disconnected the same way.</p>
+<p>We do not sell any data. We do not use platform data for advertising, profiling or for any purpose other than the service for this particular business. Data of one business is never shown to or used for another business.</p>
+<h2>5. Google user data — Limited Use</h2>
+<p>Tvii Zhoryk's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+<p>In particular: we use Google user data only to provide the features the owner sees and requested; we do not transfer it except to the service providers in section 6 that are needed to provide those features; we do not use it for advertising; and people on our team do not read it, except with the owner's permission for a specific case, for security reasons, or when required by law. <mark>[КЭТ: предложение Недоверчивого — дописать, что передача поставщикам из раздела 6 идёт с согласия владельца, которое он даёт при подключении Google (UDP: «only with the user&#x27;s consent»)]</mark></p>
+<h2>6. Service providers (processors)</h2>
+<p>We share data only with these service providers, and only as needed to run the service:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>What it does</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anthropic PBC</strong></td>
+<td>AI model Claude that writes the assistant's answers</td>
+<td>USA</td>
+</tr>
+<tr>
+<td><strong>Hetzner Online GmbH</strong></td>
+<td>Our server: storage and processing of all data</td>
+<td>Germany (EU)</td>
+</tr>
+<tr>
+<td><strong>Telegram</strong></td>
+<td>Channel through which you talk to the assistant</td>
+<td><mark>[ПРОВЕРИТЬ: юрлицо и страна по telegram.org/privacy]</mark></td>
+</tr>
+<tr>
+<td><strong>Zoho Corporation</strong></td>
+<td>E-mail for support@, privacy@ and security@</td>
+<td><mark>[ПРОВЕРИТЬ: регион аккаунта Zoho]</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Connected platforms (Google, Meta, TikTok) receive only the requests we make to them on the owner's behalf.</p>
+<p>We do not share data received from Google, Meta or TikTok with any other third party, except when required by law.</p>
+<h2>7. AI and model training</h2>
+<p>The assistant's answers are generated by the AI model Claude by Anthropic, used through Anthropic's commercial API. Under Anthropic's Commercial Terms, "Anthropic may not train models on Customer Content from Services" (https://www.anthropic.com/legal/commercial-terms).</p>
+<p><strong>Your data and data from connected platforms are not used to train AI models — neither by us nor by Anthropic.</strong> Source: Anthropic Commercial Terms, section B "Customer Content": https://www.anthropic.com/legal/commercial-terms</p>
+<p><strong>Voice messages are recognised and voice replies are generated on our own server.</strong> Audio is not sent to any outside speech service and is deleted after it is converted to text. <mark>[ПРОВЕРИТЬ: что должен делать код — распознавать и синтезировать голос на нашем сервере, удалять аудио после перевода в текст; сейчас это план (v7), не код (обещание 1)]</mark></p>
+<h2>8. How long we keep data</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>How long</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversation log and connector logs (what the assistant did and with which platform)</td>
+<td>30 days, then deleted automatically; entries about a buyer — earlier, at the buyer's request (https://tvoyzhorik.com/data-deletion, section B) <mark>[ПРОВЕРИТЬ: что должен делать код — автоматически удалять журнал разговоров и журналы подключений через 30 дней (обещание 3)]</mark> <mark>[ПРОВЕРИТЬ: что должен делать код — по запросу покупателя (Direct/Messenger или privacy@) в течение 30 дней (цель — сутки, тревоги на 1-й и 25-й день) удалить: переписку с ботом, технические идентификаторы, его записи в журнале разговоров и журналах подключений, файлы, связанные с ним; оставить только обезличенную отметку «не писать» (если был «стоп») и запись о факте удаления без содержания; без запроса журналы удаляются через 30 дней (MSG 9747, 9753, 9763, N-179; ответ CW 9781, Н10)]</mark></td>
+</tr>
+<tr>
+<td>Messages from the business's buyers in Instagram Direct and Messenger</td>
+<td>30 days, then deleted automatically; earlier at the buyer's request (https://tvoyzhorik.com/data-deletion, section B) <mark>[ПРОВЕРИТЬ: что должен делать код — удалять переписку покупателей из Instagram Direct и Messenger через 30 дней и раньше по их запросу (data-deletion, раздел B) (MSG 9737, п. 21)]</mark></td>
+</tr>
+<tr>
+<td>Buyer profiles and customer cards from platform data (Instagram Direct, Messenger)</td>
+<td>not made: conversation data is kept 30 days and then deleted; outside it we keep nothing about these buyers, except the anonymised “do not message” mark and the record of deletion (below) <mark>[ПРОВЕРИТЬ: что должен делать код — не делать профилей и карточек покупателей по данным платформ; данные разговора хранить 30 дней и удалять (X-30, MSG 9747; Н7)]</mark></td>
+</tr>
+<tr>
+<td>“Do not message” mark for a buyer who wrote “stop” (Instagram Direct, Messenger)</td>
+<td>an anonymised mark without the buyer's name, messages or history, so that the assistant does not write to the buyer again, also after their data is deleted; deleted when the business disconnects the platform <mark>[ПРОВЕРИТЬ: что должен делать код — список подавления: солёный хэш IGSID/PSID + флаг «стоп», без имени, текста и истории; переживает удаление данных покупателя; удаляется при отключении платформы клиентом (N-179/N-06, N-161); согласовать с владелец (ответ CW 9781, Н10 п. 6)]</mark></td>
+</tr>
+<tr>
+<td>Record that a buyer's data was deleted</td>
+<td>date, platform and categories of deleted data, without content <mark>[ПРОВЕРИТЬ: что должен делать код — журнал удалений (N-05): дата запроса и удаления, платформа, хэш IGSID, категории, подтверждение да/нет; без текста и без самого IGSID; срок — по сроку учёта, вопрос владелец (ответ CW 9781, Н10 п. 7)]</mark></td>
+</tr>
+<tr>
+<td>Backups of our server</td>
+<td>data is deleted from backups when those backups expire <mark>[ПРОВЕРИТЬ: срок резервных копий на сервере]</mark></td>
+</tr>
+<tr>
+<td>Technical delivery logs</td>
+<td>up to 48 hours <mark>[ПРОВЕРИТЬ: что должен делать код — автоматически удалять журналы доставки через 48 ч (обещание 3)]</mark></td>
+</tr>
+<tr>
+<td>Notes the assistant keeps about your business (facts, decisions, preferences), settings, roles, accepted Terms version</td>
+<td>while you use the service; deleted on request or when the account is closed</td>
+</tr>
+<tr>
+<td>Data from a disconnected platform</td>
+<td>access token revoked the same day; data from that platform, including notes made from it, deleted within 3 business days; the conversation and connector logs are deleted on their usual 30-day schedule <mark>[ПРОВЕРИТЬ: событие «коннектор отключён» в lifecycle — замечание 12 сверки; удаление заметок из данных платформы; отзыв в настройках самой платформы до нас доходит только через Google RISC / Meta Deauthorize Callback / уведомление TikTok]</mark> <mark>[ПРОВЕРИТЬ: до публикации — Google RISC и Meta Deauthorize Callback подключены и проверены]</mark></td>
+</tr>
+<tr>
+<td>Account after the subscription ends unpaid</td>
+<td>deleted on day 30 after the due date <mark>[ПРОВЕРИТЬ: что должен делать код — удалять неоплаченный аккаунт и его данные на 30-й день после срока оплаты (обещание 6)]</mark></td>
+</tr>
+<tr>
+<td>Billing records</td>
+<td>as long as Ukrainian tax law requires <mark>[ПРОВЕРИТЬ: срок — владелец]</mark></td>
+</tr>
+</tbody>
+</table>
+<h2>9. How to delete your data</h2>
+<ul>
+<li><strong>In the chat:</strong> tell the assistant "Forget …" (a specific fact, or everything). Deleting everything is confirmed by the owner with a button and is completed within 72 hours: we delete notes, settings, the conversation and connector logs, data from connected platforms and data about the business's buyers, and revoke platform access. Only billing records are kept, for as long as Ukrainian tax law requires (see section 8). <mark>[ПРОВЕРИТЬ: что должен делать код — «Забудь всё» за ≤72 ч удаляет заметки, настройки, журналы, данные платформ и покупателей, отзывает токены, оставляет только платёжные записи; сейчас это план (N-04/05), не код (обещание 2)]</mark></li>
+<li><strong>Disconnect a platform:</strong> see section 4.</li>
+<li><strong>By e-mail:</strong> privacy@tvoyzhorik.com.</li>
+<li><strong>If you are a buyer of a business that uses Tvii Zhoryk:</strong> see https://tvoyzhorik.com/data-deletion — no registration needed.</li>
+</ul>
+<p>Full instructions: https://tvoyzhorik.com/data-deletion</p>
+<h2>10. Security</h2>
+<ul>
+<li>Each business's data is kept separately from other businesses' data on our server. <mark>[ПРОВЕРИТЬ: что должен делать код — хранить данные каждого бизнеса отдельно (изоляция арендаторов) (обещание 7)]</mark></li>
+<li>Data is transmitted over encrypted connections. Access tokens of connected platforms are stored encrypted. <mark>[ПРОВЕРИТЬ: шифрование токенов и данных на диске — замечание 11 сверки; пока его нет, это предложение не публикуем]</mark></li>
+<li>Our team does not see the content of your conversations by default. If a team member needs to look at a specific case (for example, to fix an error), the data is shown in de-identified form, only for a stated reason, and every such access is recorded in a log. <mark>[ПРОВЕРИТЬ: что должен делать код — по умолчанию не показывать команде переписку; доступ — обезличенный, с причиной и записью в журнал доступа (обещание 5; для данных Google — условие Limited Use)]</mark></li>
+<li>To report a security vulnerability: <strong>security@tvoyzhorik.com</strong>.</li>
+</ul>
+<h2>11. Your rights</h2>
+<p>You can ask us to show, correct, export or delete your data, and you can withdraw a platform's access at any time. Write to privacy@tvoyzhorik.com; we answer within 3 business days and complete the request within 30 days. <mark>[ПРОВЕРИТЬ: что должен делать процесс — запрос по правам на privacy@ (ящика пока нет): ответ за 3 рабочих дня, исполнение за 30 дней — показать, исправить, выгрузить, удалить (круг 2, п. 4 №10)]</mark> [ЮРИСТ: права по закону Украины «Про захист персональних даних» и GDPR — формулировку утверждает владелец]</p>
+<h2>12. Children</h2>
+<p>The service is for businesses. It is not intended for people under 18, and we do not knowingly collect their data.</p>
+<h2>13. Changes to this Policy</h2>
+<p>The version and date are at the top of this page. If we change how we use your data — in particular Google user data — we will tell you in the chat and <strong>ask you to accept the new version before we use data in a new way</strong>. Previous versions are available on request.</p>
+<h2>14. Contact</h2>
+<p>[ОПЕРАТОР: ФИО ФОП, ІПН, адрес]
+Privacy: privacy@tvoyzhorik.com · Support: support@tvoyzhorik.com · Security: security@tvoyzhorik.com</p>
+<hr />
+<p><a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> · <a href="data-deletion.html">Delete your data</a> · <a href="contact.html">Contact</a> · <a href="/uk/privacy">Українською</a>
+© [ГОД] [ОПЕРАТОР: ФИО ФОП] · support@tvoyzhorik.com</p></main></body></html>
