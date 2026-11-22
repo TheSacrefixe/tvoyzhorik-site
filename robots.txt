@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /preview/
+Allow: /
+
+Sitemap: https://tvoyzhorik.com/sitemap.xml
