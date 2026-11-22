@@ -55,7 +55,7 @@
       <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
       <figure class="chat" data-live aria-label="Example conversation with the assistant">
         <div class="chat-bar">
-          <div class="chat-tabs" role="group" aria-label="Example conversations"><button type="button" data-go="0" aria-pressed="true">Stock<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">DMs<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Reminders<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false">Report<i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Ads<i aria-hidden="true"></i></button></div>
+          <div class="chat-tabs" role="group" aria-label="Example conversations"><button type="button" data-go="0" aria-pressed="true">Stock<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">DMs<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Reminders<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false"><span class="tl">Morning report</span><span class="ts" aria-hidden="true">Report</span><i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Ads<i aria-hidden="true"></i></button></div>
           <div class="chat-ctls">
             <button type="button" class="chat-ctl" data-act="pause" aria-label="Pause animation" data-pause="Pause animation" data-resume="Resume animation"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
             <button type="button" class="chat-ctl" data-act="replay" aria-label="Restart this example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -77,14 +77,12 @@
               <li class="msg me read"><span class="from">Marina</span><p>Yes, remind me 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
               <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Deal: as soon as L appears in the CRM, I’ll post here.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
             </ol>
-            <ol class="scn" aria-label="DMs" hidden>
-              <li class="msg me read"><span class="from">Olya</span><p>A customer asks in Direct: “Do you have the beige sweater in S? How long is delivery to Dnipro?”</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Here’s a draft. The reply goes out in the shop’s name — please check it:<span class="draft"><small>Draft for the customer</small>Hi! The beige “Wave” sweater in S is in stock. Delivery to Dnipro usually takes 1–2 days. Shall we place the order for you?</span></p><span class="need">Needs your “Yes”</span><span class="sr">Buttons: Yes / Change.</span><span class="chips ok" aria-hidden="true"><span>Yes</span><span>Change</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
-              <li class="msg me read"><span class="from">Olya</span><p>Yes</p><span class="meta" aria-hidden="true"><time>13:03</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Clean text in the next message: copy it and send it to the customer in Direct. I don’t message customers myself.</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
-              <li class="msg zh"><span class="sr">Assistant: </span><p class="t"><span class="draft copy">Hi! The beige “Wave” sweater in S is in stock. Delivery to Dnipro usually takes 1–2 days. Shall we place the order for you?</span></p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
-              <li class="msg me read"><span class="from">Olya</span><p>Sent 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Good. If she replies, drop it here and I’ll prepare the next draft.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+            <ol class="scn" aria-label="DMs" data-dm hidden>
+              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">New question in Direct — I answered it myself, here’s a copy:<span class="draft copy"><small>Copy from Instagram Direct</small><b>Buyer:</b> Hi! Do you have the beige “Wave” sweater in S? And how long is delivery to Dnipro?<br><b>AI assistant:</b> Hi! I’m the AI assistant of Mushlia. The “Wave” sweater in S is in stock. Delivery to Dnipro usually takes 1–2 days.</span></p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Another copy:<span class="draft copy"><small>Copy from Instagram Direct</small><b>Buyer:</b> Are you a bot?<br><b>AI assistant:</b> I am an AI assistant. I can’t try the sweater on, but I know the size chart by heart.</span></p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">The buyer asks for a 10% discount on the “Wave” sweater in S: €50 → €45. I told her: “I’ll check with the team.” Shall we give the discount?</p><span class="need">Needs your “Yes”</span><span class="sr">Buttons: Yes / Change.</span><span class="chips ok" aria-hidden="true"><span>Yes</span><span>Change</span></span><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+              <li class="msg me read"><span class="from">Marina</span><p>Yes</p><span class="meta" aria-hidden="true"><time>13:06</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Done, I replied to the buyer:<span class="draft copy"><small>Copy from Instagram Direct</small><b>AI assistant:</b> The team has approved a 10% discount: the “Wave” sweater in S is €45 instead of €50.</span></p><span class="meta" aria-hidden="true"><time>13:06</time></span></li>
             </ol>
             <ol class="scn" aria-label="Reminders" hidden>
               <li class="msg me read"><span class="from">Marina</span><p>Remind me on Thursday at 9:00 to call the tailor about buttons for “Breeze”</p><span class="meta" aria-hidden="true"><time>18:40</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
@@ -96,7 +94,7 @@
               <li class="msg me read"><span class="from">Marina</span><p>Done ✅</p><span class="meta" aria-hidden="true"><time>09:20</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
               <li class="msg zh"><span class="sr">Assistant: </span><p class="t">Ticked off. No more reminders for today.</p><span class="meta" aria-hidden="true"><time>09:20</time></span></li>
             </ol>
-            <ol class="scn" aria-label="Report" hidden>
+            <ol class="scn" aria-label="Morning report" hidden>
               <li class="msg zh"><span class="sr">Assistant: </span><div class="t">Good morning, Marina! Yesterday in short:<ul><li>orders — <b>7</b>, 2 more than last Tuesday;</li><li>Meta ads — €58, within the approved budget;</li><li>running low: “Wave” sweater S — 2 left.</li></ul></div><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
               <li class="msg zh"><span class="sr">Assistant: </span><p class="t">One thing needs you: approve the story for Friday.</p><span class="chips" aria-hidden="true"><span>Approve</span><span>Change</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
               <li class="msg me read"><span class="from">Marina</span><p>Approved 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
@@ -121,6 +119,46 @@
       </figure>
       <!--CHAT-END-->
     </section>
+
+    <!--DM-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
+    <section class="dm-sec" aria-labelledby="dm-h">
+      <div class="dm-txt">
+        <h2 id="dm-h">Direct through your buyer’s eyes</h2>
+        <p>If you connect Instagram Direct, the assistant answers your buyers itself, on behalf of your brand. You see a copy of the conversation in Telegram, and anything involving money (a discount, a refund) happens only after your “Yes”.</p>
+      </div>
+      <figure class="chat dm" data-dm aria-label="Example conversation in Instagram Direct: a buyer and the AI assistant of a made-up brand">
+        <div class="chat-bar dm-bar">
+          <span class="dm-label">Instagram Direct · example</span>
+          <div class="chat-ctls">
+            <button type="button" class="chat-ctl" data-act="pause" aria-label="Pause animation" data-pause="Pause animation" data-resume="Resume animation"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
+            <button type="button" class="chat-ctl" data-act="replay" aria-label="Restart this example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="chat-win dm-win">
+          <div class="chat-head">
+            <span class="dm-ava" aria-hidden="true">M</span>
+            <div><b translate="no">Mushlia</b><span class="st" data-on="typing…" aria-hidden="true">AI assistant replies</span></div>
+            <span class="ex">example</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-log" role="log" aria-live="off" aria-label="Example conversation in Instagram Direct: a buyer and the AI assistant of a made-up brand">
+              <ol class="scn dmlog">
+                <li class="msg me dmb" data-at="0"><span class="sr">Buyer: </span><p>Hi! Do you have the beige “Wave” sweater in S? And how long is delivery to Dnipro?</p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+                <li class="msg zh dmr" data-at="0"><span class="sr">AI assistant of Mushlia: </span><p class="t">Hi! I’m the AI assistant of Mushlia. The “Wave” sweater in S is in stock. Delivery to Dnipro usually takes 1–2 days.</p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+                <li class="msg me dmb" data-at="1"><span class="sr">Buyer: </span><p>Are you a bot?</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+                <li class="msg zh dmr" data-at="1"><span class="sr">AI assistant of Mushlia: </span><p class="t">I am an AI assistant. I can’t try the sweater on, but I know the size chart by heart.</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+                <li class="msg me dmb" data-at="2"><span class="sr">Buyer: </span><p>I’ll take it if there’s a 10% discount 🙏</p><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+                <li class="msg zh dmr" data-at="2"><span class="sr">AI assistant of Mushlia: </span><p class="t">I’ll check with the team about the discount and reply here.</p><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+                <li class="msg zh dmr" data-at="4"><span class="sr">AI assistant of Mushlia: </span><p class="t">The team has approved a 10% discount: the “Wave” sweater in S is €45 instead of €50.</p><span class="meta" aria-hidden="true"><time>13:06</time></span></li>
+              </ol>
+            </div>
+            <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <figcaption class="caption">Example: the brand, products, prices and messages are made up. This is not the Instagram interface, just an outline of the conversation. How the assistant treats your buyers is set out in the <a href="terms.html">Terms of Service</a>, section 5.7.</figcaption>
+      </figure>
+    </section>
+    <!--DM-END-->
   </div>
 
   <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28c60-18 120-18 180 0s120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0v28H0z" fill="currentColor"/></svg>

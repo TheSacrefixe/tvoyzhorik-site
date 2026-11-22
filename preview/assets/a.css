@@ -194,6 +194,25 @@ p{margin:0 0 1em}
 .hero .chat::before{content:"";position:absolute;inset:-5% -3% 8%;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(closest-side,rgba(240,162,59,.42),rgba(240,162,59,0));opacity:.7}
 @media (prefers-reduced-motion:no-preference){.hero .chat::before{animation:glow 7s ease-in-out infinite alternate}}
 @keyframes glow{from{opacity:.45}to{opacity:.9}}
+/* короткие подписи вкладок на телефоне: «Ранковий звіт» → «Звіт» (Олег MSG 10080, п. B); полное имя остаётся доступным */
+.chat-tabs .ts{display:none}
+/* второе окно — директ глазами покупательницы (Олег MSG 10080, п. A): нейтральное окно мессенджера, без логотипа,
+   градиента, иконок и шрифта Instagram; подпись «Instagram Direct · приклад» — обычным текстом, тем же шрифтом */
+.dm-sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:56px;align-items:center;padding:64px 0 32px}
+.dm-txt h2{margin:0 0 12px}
+.dm-txt p{margin:0;max-width:46ch}
+.chat.dm{justify-self:end}
+.dm-bar{display:flex;justify-content:space-between}
+html:not(.js) .dm-bar .chat-ctls{display:none}
+.dm-label{font:600 .92rem/1.2 var(--text);color:var(--sea-2)}
+.dm-win{background:#fff;box-shadow:10px 10px 0 var(--apricot)}
+.dm-ava{width:44px;height:44px;flex:none;border-radius:50%;background:var(--sea);color:var(--shell);display:grid;place-items:center;font:400 1.35rem/1 var(--display)}
+.msg.dmb{background:var(--sea);color:var(--shell)}
+.msg.dmb .meta{color:#cfe0dc}
+.msg.dmr{background:var(--shell)}
+.dm .typing{background:var(--shell)}
+@media (prefers-reduced-motion:no-preference){.js .dm .chat-body{--h:360px}}
+@media (max-width:900px){.dm-sec{grid-template-columns:1fr;gap:22px;padding:48px 0 24px}.chat.dm{justify-self:stretch;max-width:none}.chat-win.dm-win{box-shadow:6px 6px 0 var(--apricot)}}
 .chips .tap{transform:translateY(2px);box-shadow:inset 0 0 0 2px var(--sea)}
 .typing{display:flex;gap:5px;align-items:center;width:fit-content;padding:13px 15px;margin:0 0 8px;background:#fff;border:1.5px solid #c9d6d2;border-radius:18px;border-bottom-left-radius:6px}
 .typing[hidden]{display:none}
@@ -208,7 +227,7 @@ p{margin:0 0 1em}
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes dot{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
 @media (max-width:900px){.chat{justify-self:stretch;max-width:none}.chat-win{box-shadow:6px 6px 0 var(--sea)}}
-@media (max-width:420px){.chat-bar{gap:6px}.chat-tabs{gap:5px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
+@media (max-width:420px){.chat-tabs .tl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.chat-tabs .ts{display:inline}.js .dm .chat-body{--h:380px}.chat-bar{gap:6px}.chat-tabs{gap:5px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
 /*CHAT-END*/
 
 /* волна */

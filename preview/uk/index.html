@@ -55,7 +55,7 @@
       <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
       <figure class="chat" data-live aria-label="Приклад розмови з помічником">
         <div class="chat-bar">
-          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Нагадування<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false">Звіт<i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Реклама<i aria-hidden="true"></i></button></div>
+          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Нагадування<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false"><span class="tl">Ранковий звіт</span><span class="ts" aria-hidden="true">Звіт</span><i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Реклама<i aria-hidden="true"></i></button></div>
           <div class="chat-ctls">
             <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
             <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -77,14 +77,12 @@
               <li class="msg me read"><span class="from">Марина</span><p>Так, нагадай 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
               <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Домовились: щойно L з’явиться в CRM — напишу сюди.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
             </ol>
-            <ol class="scn" aria-label="Директ" hidden>
-              <li class="msg me read"><span class="from">Оля</span><p>Клієнтка в директі питає: «Є бежевий светр у S? Скільки йде доставка до Дніпра?»</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Підготував чернетку. Відповідь піде від імені магазину — перевірте:<span class="draft"><small>Чернетка для клієнтки</small>Добрий день! Бежевий светр «Хвиля» S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
-              <li class="msg me read"><span class="from">Оля</span><p>Так</p><span class="meta" aria-hidden="true"><time>13:03</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Чистий текст — наступним повідомленням: скопіюйте й надішліть клієнтці в директ. Сам клієнтці не пишу.</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p class="t"><span class="draft copy">Добрий день! Бежевий светр «Хвиля» S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
-              <li class="msg me read"><span class="from">Оля</span><p>Надіслала 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Добре. Якщо клієнтка відповість — киньте сюди, підготую наступну чернетку.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+            <ol class="scn" aria-label="Директ" data-dm hidden>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">У директі нове питання — відповів сам, ось копія:<span class="draft copy"><small>Копія з Instagram Direct</small><b>Покупниця:</b> Добрий день! Є бежевий светр «Хвиля» в S? І скільки йде доставка до Дніпра?<br><b>AI-помічник:</b> Добрий день! Я AI-помічник «Мушля». Светр «Хвиля» S є в наявності. Доставка до Дніпра — зазвичай 1–2 дні.</span></p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Ще копія:<span class="draft copy"><small>Копія з Instagram Direct</small><b>Покупниця:</b> А ти бот?<br><b>AI-помічник:</b> Я AI-помічник. Приміряти светр не можу, зате розмірну сітку знаю напам’ять.</span></p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Покупниця просить знижку 10% на светр «Хвиля» S: 1&nbsp;900&nbsp;₴ → 1&nbsp;710&nbsp;₴. Їй я написав: «уточню в команди». Даємо знижку?</p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Так</p><span class="meta" aria-hidden="true"><time>13:06</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Готово, відповів покупниці:<span class="draft copy"><small>Копія з Instagram Direct</small><b>AI-помічник:</b> Команда погодила знижку 10%: светр «Хвиля» S — 1&nbsp;710&nbsp;₴ замість 1&nbsp;900&nbsp;₴.</span></p><span class="meta" aria-hidden="true"><time>13:06</time></span></li>
             </ol>
             <ol class="scn" aria-label="Нагадування" hidden>
               <li class="msg me read"><span class="from">Марина</span><p>Нагадай у четвер о 9:00 подзвонити в ательє щодо ґудзиків для «Бриз»</p><span class="meta" aria-hidden="true"><time>18:40</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
@@ -96,7 +94,7 @@
               <li class="msg me read"><span class="from">Марина</span><p>Зроблено ✅</p><span class="meta" aria-hidden="true"><time>09:20</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
               <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Відмітив. На сьогодні більше нагадувань немає.</p><span class="meta" aria-hidden="true"><time>09:20</time></span></li>
             </ol>
-            <ol class="scn" aria-label="Звіт" hidden>
+            <ol class="scn" aria-label="Ранковий звіт" hidden>
               <li class="msg zh"><span class="sr">Помічник: </span><div class="t">Доброго ранку, Марино! Коротко за вчора:<ul><li>замовлень — <b>7</b>, на 2 більше, ніж минулого вівторка;</li><li>реклама Meta — 640 ₴, у межах затвердженого бюджету;</li><li>закінчується светр «Хвиля» S — 2 шт.</li></ul></div><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
               <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Від вас потрібно одне: затвердити сторіс на п’ятницю.</p><span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
               <li class="msg me read"><span class="from">Марина</span><p>Затверджую 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
@@ -121,6 +119,46 @@
       </figure>
       <!--CHAT-END-->
     </section>
+
+    <!--DM-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
+    <section class="dm-sec" aria-labelledby="dm-h">
+      <div class="dm-txt">
+        <h2 id="dm-h">Директ очима покупниці</h2>
+        <p>Якщо ви підключили Instagram Direct, помічник сам відповідає вашим покупцям — від імені вашого бренду. Копію розмови ви бачите в Telegram, а все, що стосується грошей (знижка, повернення), — лише після вашого «Так».</p>
+      </div>
+      <figure class="chat dm" data-dm aria-label="Приклад розмови в Instagram Direct: покупниця і AI-помічник вигаданого бренду">
+        <div class="chat-bar dm-bar">
+          <span class="dm-label">Instagram Direct · приклад</span>
+          <div class="chat-ctls">
+            <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
+            <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="chat-win dm-win">
+          <div class="chat-head">
+            <span class="dm-ava" aria-hidden="true">М</span>
+            <div><b>Мушля</b><span class="st" data-on="друкує…" aria-hidden="true">відповідає AI-помічник</span></div>
+            <span class="ex">приклад</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-log" role="log" aria-live="off" aria-label="Приклад розмови в Instagram Direct: покупниця і AI-помічник вигаданого бренду">
+              <ol class="scn dmlog">
+                <li class="msg me dmb" data-at="0"><span class="sr">Покупниця: </span><p>Добрий день! Є бежевий светр «Хвиля» в S? І скільки йде доставка до Дніпра?</p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+                <li class="msg zh dmr" data-at="0"><span class="sr">AI-помічник «Мушля»: </span><p class="t">Добрий день! Я AI-помічник «Мушля». Светр «Хвиля» S є в наявності. Доставка до Дніпра — зазвичай 1–2 дні.</p><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+                <li class="msg me dmb" data-at="1"><span class="sr">Покупниця: </span><p>А ти бот?</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+                <li class="msg zh dmr" data-at="1"><span class="sr">AI-помічник «Мушля»: </span><p class="t">Я AI-помічник. Приміряти светр не можу, зате розмірну сітку знаю напам’ять.</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+                <li class="msg me dmb" data-at="2"><span class="sr">Покупниця: </span><p>Візьму, якщо буде знижка 10% 🙏</p><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+                <li class="msg zh dmr" data-at="2"><span class="sr">AI-помічник «Мушля»: </span><p class="t">Про знижку уточню в команди й відповім тут.</p><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
+                <li class="msg zh dmr" data-at="4"><span class="sr">AI-помічник «Мушля»: </span><p class="t">Команда погодила знижку 10%: светр «Хвиля» S — 1&nbsp;710&nbsp;₴ замість 1&nbsp;900&nbsp;₴.</p><span class="meta" aria-hidden="true"><time>13:06</time></span></li>
+              </ol>
+            </div>
+            <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <figcaption class="caption">Приклад: бренд, товари, ціни й переписка вигадані. Це не інтерфейс Instagram, а схема розмови. Як помічник поводиться з вашими покупцями — у <a href="terms.html">Умовах використання</a>, розділ 5.7.</figcaption>
+      </figure>
+    </section>
+    <!--DM-END-->
   </div>
 
   <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28c60-18 120-18 180 0s120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0v28H0z" fill="currentColor"/></svg>
