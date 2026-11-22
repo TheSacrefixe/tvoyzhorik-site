@@ -889,6 +889,7 @@ html:not(.js) .find{display:none}
 .card-f,.card-b{position:absolute;inset:0;display:flex;flex-direction:column;padding:16px 12px 10px;border-radius:6px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   background:linear-gradient(180deg,transparent 0 9px,#d9665b 9px 11px,transparent 11px),repeating-linear-gradient(180deg,#fffdf6 0 21px,#cfe0ea 21px 22px);box-shadow:0 2px 0 rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08)}
 .card-f b{font:400 1.08rem/1.18 var(--display);margin-top:2px}
+.card-n{display:block;margin-top:3px;font:500 .72rem/1.2 var(--mono);color:#2b5a68;overflow-wrap:anywhere}
 .card-f small,.card-b small{margin-top:auto;align-self:flex-start;font:700 .64rem/1 var(--text);letter-spacing:.1em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:4px 8px}
 .card-b{transform:rotateY(180deg);font-size:.9rem;line-height:1.35}
 .card-b p{margin:2px 0 0}
@@ -929,7 +930,7 @@ html:not(.js) .drw{cursor:default}
   font:700 .74rem/1.3 var(--text);letter-spacing:.1em;text-transform:uppercase;color:#3b2a06;white-space:nowrap}
 .shelf h3 small{font-weight:600;letter-spacing:0;margin-left:4px;opacity:.8}
 .board{height:20px;margin:0 -4px;border-radius:2px;background:linear-gradient(180deg,#d7a46c 0 4px,var(--wood) 4px 14px,var(--wood-d) 14px);box-shadow:0 6px 8px -4px rgba(0,0,0,.4)}
-.row{display:flex;align-items:flex-end;gap:3px;margin:0;padding:18px 6px 0;list-style:none;min-height:244px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--wood) transparent}
+.row{display:flex;align-items:flex-end;gap:2px;margin:0;padding:18px 6px 0;list-style:none;min-height:244px;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;scrollbar-color:var(--wood) transparent}
 .row>li{flex:none;display:flex;align-items:flex-end;position:relative}
 .row>li.gap{width:14px}
 /* книга (только с JS; без JS — текстом, ниже) */
@@ -939,7 +940,11 @@ html:not(.js) .drw{cursor:default}
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),2px 0 0 rgba(0,0,0,.12);transition:transform .32s cubic-bezier(.2,.7,.2,1),opacity .32s}
 .js .book.lt{color:#123c4a;--band:#7a4a1c}
 .js .book .sp{position:absolute;left:0;right:0;top:24px;bottom:26px;display:flex;align-items:center;justify-content:center;overflow:hidden;writing-mode:vertical-rl;text-orientation:mixed;
-  font:400 1rem/1.08 var(--display);letter-spacing:.01em;text-align:center;padding:0 3px}
+  flex-direction:column;gap:3px;font:400 1rem/1.08 var(--display);letter-spacing:.01em;text-align:center;padding:0 3px}
+/* ярлык скила под названием (Олег MSG 10232–10233): мелко, моноширинным; в вертикальном письме колонка «ниже» названия */
+.lib-page{--mono:ui-monospace,"Cascadia Mono","Segoe UI Mono",Consolas,"Liberation Mono",Menlo,monospace}
+.js .book .sp-t{display:block}
+.js .book .sp-n{display:block;font:500 .64rem/1.12 var(--mono);letter-spacing:0;opacity:.86;overflow-wrap:anywhere}
 html.js[lang="uk"] .book .sp{transform:rotate(180deg)}
 .js .book .bk-txt{display:none}
 .book .mk{position:absolute;pointer-events:none}
@@ -960,6 +965,7 @@ html.js[lang="uk"] .book .sp{transform:rotate(180deg)}
 .slip{position:absolute;left:50%;bottom:12px;z-index:4;width:214px;padding:10px 12px 9px;border-radius:6px;background:var(--paper);color:#123c4a;text-align:left;writing-mode:horizontal-tb;
   box-shadow:0 0 0 2px #123c4a,4px 5px 0 #123c4a;opacity:0;transform:translate(-50%,10px);transition:opacity .2s,transform .25s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 .slip b{display:block;font:400 1.02rem/1.15 var(--display)}
+.slip code{display:block;margin-top:2px;font:500 .72rem/1.2 var(--mono);color:#2b5a68}
 .slip q{display:block;margin-top:5px;font-size:.9rem;line-height:1.3;font-style:italic}
 .slip small{display:inline-block;margin-top:7px;font:700 .64rem/1 var(--text);letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:4px 8px;background:#d3e8cf;color:#1f3d19}
 .st-tested .slip small{background:#ffe6a8;color:#4a3300}
@@ -985,6 +991,7 @@ html:not(.js) .row>li{display:block;margin:0 0 10px}
 html:not(.js) .book{display:block;width:100%;padding:10px 12px;border:0;border-radius:8px;background:rgba(251,247,236,.9);color:#123c4a;font:inherit;text-align:left;cursor:default}
 html:not(.js) .book .sp,html:not(.js) .book .mk{display:none}
 .bk-txt b{font:400 1.08rem/1.2 var(--display)}
+.bk-n{font:500 .78rem/1.2 var(--mono);color:#2b5a68}
 .bk-txt q{font-style:italic}
 .bk-txt span{display:block;font-size:.94rem;margin-top:2px}
 .bk-txt em{display:inline-block;margin-top:4px;font:700 .66rem/1 var(--text);font-style:normal;letter-spacing:.1em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:4px 8px}

@@ -15,7 +15,7 @@
   var narrow = W.matchMedia ? W.matchMedia('(max-width: 900px)') : { matches: false };
   var $$ = function (r, s) { return [].slice.call(r.querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var norm = function (s) { return String(s).toLowerCase().replace(/[’'ʼ`«»"“”]/g, '').replace(/ё/g, 'е').replace(/\s+/g, ' '); };
+  var norm = function (s) { return String(s).toLowerCase().replace(/[’'ʼ`«»"“”]/g, '').replace(/ё/g, 'е').replace(/[-_]+/g, ' ').replace(/\s+/g, ' '); };
 
   /* ---------- телефон ---------- */
   var ph = d.querySelector('.ph'), log = d.querySelector('.ph-log'), phX = d.querySelector('.ph-x'), st = ph.querySelector('.st');
@@ -127,7 +127,7 @@
 
   /* ---------- картотека ---------- */
   var drws = $$(d, '.drw'), panel = d.getElementById('drw-panel'), openG = -1, autoOpen = false, query = '';
-  var cardIdx = D.cards.map(function (c) { var g = D.groups[c[0]]; return norm(c[2] + ' ' + c[3] + ' ' + g.n + ' ' + (c[1] && g.subs ? g.subs[c[1]] : '')); });
+  var cardIdx = D.cards.map(function (c) { var g = D.groups[c[0]]; return norm(c[2] + ' ' + c[4] + ' ' + c[3] + ' ' + g.n + ' ' + (c[1] && g.subs ? g.subs[c[1]] : '')); });
   function matchCards(g) {
     var out = [];
     D.cards.forEach(function (c, i) { if (c[0] === g && (!query || cardIdx[i].indexOf(query) >= 0)) out.push(i); });
@@ -136,7 +136,7 @@
   function cardHtml(i, n) {
     var c = D.cards[i];
     return '<li class="in" style="--i:' + Math.min(n, 24) + '"><button type="button" class="card" aria-pressed="false"><span class="card-in">' +
-      '<span class="card-f"><b>' + esc(c[2]) + '</b><small>' + esc(U.soon) + '</small></span>' +
+      '<span class="card-f"><b>' + esc(c[2]) + '</b><code class="card-n" translate="no">' + esc(c[4]) + '</code><small>' + esc(U.soon) + '</small></span>' +
       '<span class="card-b" aria-hidden="true"><p>' + esc(c[3]) + '</p><small>' + esc(U.soon) + '</small></span></span></button></li>';
   }
   function renderPanel(g) {
