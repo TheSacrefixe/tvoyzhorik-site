@@ -1542,3 +1542,34 @@ html:not(.js) .tr-cmp,.tr:not(.js-chat) .tr-cmp{display:none}
 @keyframes wl-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 main{overflow-x:clip}
 /*WL-END*/
+/*QA-BEGIN: собирается C:/Zhorik/tools/qa_fix.py, руками не править*/
+/* шапка плотнее: текст страницы не просвечивает сквозь меню */
+.hdr::before{opacity:.97!important}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){.hdr::before{opacity:.94!important}}
+/* липкие блоки (оглавление, часы дня, телефон) стартуют ниже липкой шапки, а не под ней */
+@media (min-width:1001px){
+  .toc{top:92px;max-height:calc(100vh - 112px)}
+  .dl-clock{top:96px}
+  .ph-wrap{top:92px}
+}
+@media (min-width:901px) and (max-width:1000px){
+  .toc{top:128px;max-height:calc(100vh - 148px)}
+  .dl-clock{top:132px}
+  .ph-wrap{top:128px}
+}
+/* меню на телефоне: пять пунктов влезают в строку на 390 px */
+@media (max-width:560px){
+  .hdr .top>.topnav{gap:0 10px}
+  .hdr .top>.topnav a{font-size:.88rem}
+}
+/* телефон-«шторка» на мобильном: ссылка «Хочу такий скіл у себе →» после полёта книги внутри шторки, а не за краем экрана */
+@media (max-width:900px){
+  .ph{display:flex;flex-direction:column}
+  .ph-screen{flex:1 1 0;height:auto;min-height:0}
+  .ph .chat-head,.ph-want{flex:none}
+  .ph-want{margin:6px 0 0;border:1.5px solid rgba(18,60,74,.18);border-radius:14px}
+}
+/* подпись «Приклади вигадані…» и шутка в подвале */
+.caption a,.team-cap a,.note a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.site-foot .built{font-size:.78rem;line-height:1.4;margin:10px 0 4px;color:var(--sea-2);opacity:.9}
+/*QA-END*/

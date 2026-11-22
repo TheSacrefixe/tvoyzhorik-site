@@ -15,7 +15,7 @@
   var narrow = W.matchMedia ? W.matchMedia('(max-width: 900px)') : { matches: false };
   var $$ = function (r, s) { return [].slice.call(r.querySelectorAll(s)); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-  var norm = function (s) { return String(s).toLowerCase().replace(/[’'ʼ`«»"“”]/g, '').replace(/ё/g, 'е').replace(/[-_]+/g, ' ').replace(/\s+/g, ' '); };
+  var norm = function (s) { return String(s).toLowerCase().replace(/[’'’`«»"“”]/g, '').replace(/ё/g, 'е').replace(/[-_]+/g, ' ').replace(/\s+/g, ' '); };
 
   /* ---------- телефон ---------- */
   var ph = d.querySelector('.ph'), log = d.querySelector('.ph-log'), phX = d.querySelector('.ph-x'), st = ph.querySelector('.st');

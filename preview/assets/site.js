@@ -65,7 +65,8 @@
       'Знижку дати? Дам. Після вашого «так». Я щедрий тільки з дозволу.',
       'В Одесі кажуть: не кажи «гоп». А я кажу: не кажи «надіслав», поки не натиснули «так».',
       'Знову тиснете? Таки цікаво, що буде? Ще один жарт. Я ж не жадібний.',
-      'Відпустку не прошу, на лікарняний не йду. Мама каже — золото, а не помічник.'
+      'Відпустку не прошу, на лікарняний не йду. Мама каже — золото, а не помічник.',
+      'Цей сайт зібрав сам Твой Жорик — менше ніж за добу. Каву не пив: не вміє.'
     ] : [
       'You clicked me? And here I thought you only ever clicked ads.',
       'I never read spam, on principle. Its authors don’t read it either.',
@@ -76,11 +77,12 @@
       'A discount? Sure. After your “yes”. I’m generous only with permission.',
       'In Odesa they say: don’t say “hop” before you jump. I say: don’t say “sent” before they press “yes”.',
       'Pressing again? Curious what happens? Here’s another joke. I’m not greedy.',
-      'No vacation, no sick days. My mom says I’m gold, not an assistant.'
+      'No vacation, no sick days. My mom says I’m gold, not an assistant.',
+      'This site was built by Tvii Zhoryk itself — in under a day. No coffee: it can’t drink any.'
     ];
     var btn = d.createElement('button'), bub = d.createElement('div'), last = -1, tm = 0;
     btn.type = 'button'; btn.className = 'joke-btn'; btn.innerHTML = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H10l-4 4v-4H4z"/><path d="M8 9.5h8M8 12.5h5" stroke-linecap="round"/></svg>';
-    btn.setAttribute('aria-label', uk ? 'Жарт від Жорика' : 'A joke from Zhorik');
+    btn.setAttribute('aria-label', uk ? 'Жарт від Жорика' : 'A joke from Zhoryk');
     btn.setAttribute('aria-expanded', 'false');
     bub.className = 'joke'; bub.hidden = true; bub.id = 'joke-bubble';
     bub.setAttribute('role', 'status'); bub.setAttribute('aria-live', 'polite');
@@ -92,7 +94,7 @@
     var show = function () {
       var i; do { i = Math.floor(Math.random() * J.length); } while (i === last && J.length > 1);
       last = i; bub.hidden = true; bub.textContent = '';
-      var t = d.createElement('b'); t.textContent = uk ? 'Жорик' : 'Zhorik'; t.setAttribute('translate', 'no');
+      var t = d.createElement('b'); t.textContent = uk ? 'Жорик' : 'Zhoryk'; t.setAttribute('translate', 'no');
       bub.appendChild(t); bub.appendChild(d.createTextNode(J[i]));
       bub.hidden = false; bub.classList.remove('show'); void bub.offsetWidth; bub.classList.add('show');
       btn.setAttribute('aria-expanded', 'true');
