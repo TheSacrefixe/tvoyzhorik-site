@@ -1,6 +1,6 @@
 {
   "name": "Твій Жорик",
-  "short_name": "Жорик",
+  "short_name": "Твій Жорик",
   "start_url": "/",
   "display": "browser",
   "background_color": "#e3eef0",
