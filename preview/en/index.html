@@ -16,11 +16,11 @@
 <link rel="preload" href="../assets/fonts/Commissioner-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/a.css">
 <script>document.documentElement.classList.add("js")</script>
-<script>document.documentElement.classList.add("js")</script>
 <script src="../assets/motion.js" defer></script>
 <script src="../assets/chat.js" defer></script>
 <script src="../assets/site.js" defer></script>
 <script src="../assets/fx.js" defer></script>
+<script src="../assets/pages.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -38,9 +38,8 @@
 <div class="hdr"><div class="wrap">
   <header class="top">
     <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
-    <nav class="topnav" aria-label="Menu"><a href="how-it-works.html">How it works</a><a href="skills.html">Zhoryk’s library</a></nav>
+    <nav class="topnav" aria-label="Menu"><a href="how-it-works.html">How it works</a><a href="skills.html">Library</a><a href="website.html">Website</a><a href="data.html">Your data</a><a href="faq.html">FAQ</a></nav>
     <a class="lang" href="../uk/index.html" hreflang="uk" lang="uk"><span class="lg-f">Українською</span><span class="lg-s" aria-hidden="true">УКР</span></a>
-    <!--WL:header--><a class="wl-head" href="https://t.me/TvoyJorik_bot?start=site_header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="wl-f">Join the waitlist</span><span class="wl-m" aria-hidden="true">Join the waitlist</span><span class="wl-s" aria-hidden="true">Waitlist</span></a><!--/WL:header-->
   </header>
 </div></div>
 
@@ -48,15 +47,13 @@
   <div class="wrap">
     <section class="hero" aria-labelledby="h1"><!--MO-ORBS-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править--><div class="mo-orbs" aria-hidden="true"><svg class="o1" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" stroke-dasharray="2 6"/><circle cx="50" cy="50" r="30"/><path d="M50 4v14M50 82v14M4 50h14M82 50h14"/></svg><svg class="o2" viewBox="0 0 100 100"><path d="M50 6c10 18 26 28 44 30-14 12-20 30-16 50-16-10-40-10-56 0 4-20-2-38-16-50 18-2 34-12 44-30z"/></svg><svg class="o3" viewBox="0 0 100 100"><path d="M10 60c12-14 22-14 34 0s22 14 34 0 12-8 12-8M10 76c12-14 22-14 34 0s22 14 34 0"/><circle cx="50" cy="30" r="14"/></svg></div><!--MO-ORBS-END-->
       <div>
-        <!--WL:badge--><p class="wl-badge"><i aria-hidden="true"></i>Closed pilot · 500 spots on the waitlist</p><!--/WL:badge-->
+        <!--WL:pilot--><p class="pilot"><i aria-hidden="true"></i>Closed pilot in progress</p><!--/WL:pilot-->
         <h1 id="h1" translate="no">Tvii Zhoryk</h1>
         <p class="lead">An AI assistant in Telegram that takes routine work off a small business owner.</p>
         <p class="pers-line">Your assistant is set up personally for your business: it knows your products, prices, team and tone.</p>
         <div class="actions">
-          <!--WL:hero--><a class="btn wl-btn wl-hero" href="https://t.me/TvoyJorik_bot?start=site_hero"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Join the waitlist</a><!--/WL:hero-->
-          <a class="quiet" href="#how">How it works</a>
+          <a class="quiet" href="how-it-works.html">How it works</a>
         </div>
-        <!--WL:heronote--><p class="wl-note wl-hnote">A closed pilot is running now, with 500 spots on the waitlist. Join, and we’ll message you as soon as a spot opens up.</p><!--/WL:heronote-->
       </div>
 
       <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
@@ -138,7 +135,8 @@
         </div>
         <figcaption class="caption">Example: names, products and numbers are made up to show the format. Real answers come from the services you connect.</figcaption>
       </figure>
-      <!--CHAT-END-->
+      <!--CHAT-END--><!--PG-CMD-->
+      <div class="cmds" role="group" aria-label="Quick commands · example"><span class="cmds-lab">Quick commands · example</span><button type="button" class="cmd" data-cmd="4" aria-label="/morning — Morning report">/morning</button><button type="button" class="cmd" data-cmd="0" aria-label="/stock — Stock">/stock</button><button type="button" class="cmd" data-cmd="2" aria-label="/mail — Email">/mail</button><button type="button" class="cmd" data-cmd="1" aria-label="/direct — Direct">/direct</button><p class="cmds-hint">Tap one — the chat above plays that example.</p></div><!--/PG-CMD-->
     </section>
 
     <!--DM-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
@@ -180,8 +178,19 @@
       </figure>
     </section>
     <!--DM-END-->
-    <!--WL:chat--><div class="wl wl-mid wl-chat"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Join the waitlist</a><p class="wl-note">A closed pilot is running now — join, and we’ll message you as soon as a spot opens up.</p></div><!--/WL:chat-->
-  <!--MO-CTA2-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править--><a class="dcta rv" href="how-it-works.html"><span class="dcta-prev" aria-hidden="true"><span class="dcta-col"><small>The usual way</small><i>Three dashboards every morning</i><i>Count the shelves</i><i>Remember who to reply to</i></span><span class="dcta-col z"><small>With the assistant</small><i>Brief at 08:00</i><i>One “Yes” from you</i><i>Done ✅</i></span></span><span class="dcta-t">See a business owner’s day: before and after</span><span class="dcta-go" aria-hidden="true"><span>→</span></span></a><!--MO-CTA2-END-->
+  <!--MO-TR-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править-->
+  <section class="tr-sec" aria-labelledby="tr-h">
+    <div class="wrap">
+      <span class="eyebrow rv">Translation</span>
+      <h2 id="tr-h" class="rv">Write in your language — your team reads in theirs</h2>
+      <p class="sub rv">The owner writes in English — the warehouse reads Ukrainian. A seller in Warsaw writes in Polish — the owner reads Ukrainian. The assistant translates both ways, voice messages too.</p>
+      <div class="ctl-row"><button type="button" class="chat-ctl" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Show again</button></div>
+      <div class="tr" data-play data-tr data-r="1"><div class="tr-col tr-l"><span class="phone-lab tr-lab" aria-hidden="true"><span class="r1">Owner · Emma · writes in English</span><span class="r2">Owner · Iryna · reads Ukrainian</span></span><div class="phone" role="group" aria-label="Owner’s phone"><div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b>Твой Жорик</b></div><span class="ex">example</span></div><div class="tr-rounds"><ol class="r1" aria-label="Example 1 · English ↔ Ukrainian"><li class="tr-rd" aria-hidden="true">Example 1 · English ↔ Ukrainian</li><li class="pl me-side" data-cmp="1500" data-s="1" data-w="600"><div class="msg me read"><span class="from">Emma</span><p lang="en">Pack 3 black dresses M for Warsaw today</p><span class="meta" aria-hidden="true"><time>10:02</time></span></div></li><li class="pl" data-s="6" data-w="1000" data-ty="600" data-scr="Запакую до 16:00. Тільки скотч закінчується — треба докупити."><div class="msg zh"><span class="sr">Assistant: </span><p class="t" lang="en">I’ll pack them by 4 pm. We’re running out of tape, though — need to buy more.</p><span class="trf">Olia, voice message · translated from Ukrainian</span><span class="meta" aria-hidden="true"><time>10:05</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol><ol class="r2" aria-label="Example 2 · Polish ↔ Ukrainian"><li class="tr-rd" aria-hidden="true">Example 2 · Polish ↔ Ukrainian</li><li class="pl" data-s="10" data-w="1000" data-ty="600" data-scr="Klientka pyta, czy będzie czarna sukienka w rozmiarze S."><div class="msg zh"><span class="sr">Assistant: </span><p class="t" lang="uk">Клієнтка питає, чи буде чорна сукня в розмірі S.</p><span class="trf">Magda · translated from Polish</span><span class="meta" aria-hidden="true"><time>15:40</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li><li class="pl me-side" data-cmp="1300" data-s="11" data-w="1500"><div class="msg me read"><span class="from">Iryna</span><p lang="uk">Так, у пʼятницю привеземо 5 штук.</p><span class="meta" aria-hidden="true"><time>15:41</time></span></div></li></ol></div><div class="tr-cmp" aria-hidden="true"><span class="cmp-in"><i class="cmp-dot"></i><span class="cmp-t"></span></span><span class="cmp-b"><svg viewBox="0 0 24 24"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="currentColor"/></svg></span></div></div></div><div class="tr-mid" aria-hidden="true"><span class="tr-chip">Zhorik is translating…<b class="tr-pair"></b></span></div><div class="tr-col tr-r"><span class="phone-lab tr-lab" aria-hidden="true"><span class="r1">Warehouse, Odesa · Olia · reads Ukrainian</span><span class="r2">Shop in Warsaw · Magda · writes in Polish</span></span><div class="phone" role="group" aria-label="Team member’s phone"><div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b>Твой Жорик</b></div><span class="ex">example</span></div><div class="tr-rounds"><ol class="r1" aria-label="Example 1 · English ↔ Ukrainian"><li class="tr-rd" aria-hidden="true">Example 1 · English ↔ Ukrainian</li><li class="pl" data-s="3" data-w="1000" data-ty="600" data-scr="Pack 3 black dresses M for Warsaw today"><div class="msg zh"><span class="sr">Assistant: </span><p class="t" lang="uk">Запакуй 3 чорні сукні M на Варшаву сьогодні</p><span class="trf">translated from English</span><span class="meta" aria-hidden="true"><time>10:02</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li><li class="pl me-side" data-cmp="1700" data-s="4" data-w="1500"><div class="msg me read"><span class="from">Olia</span><span class="sr">Voice message, 0:05:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:18px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:20px;--n:5"></span><span style="height:9px;--n:6"></span><span style="height:16px;--n:7"></span><span style="height:22px;--n:8"></span><span style="height:11px;--n:9"></span><span style="height:17px;--n:10"></span><span style="height:8px;--n:11"></span><span style="height:14px;--n:12"></span><span style="height:19px;--n:13"></span><span style="height:10px;--n:14"></span><span style="height:13px;--n:15"></span></i><small>0:05</small></span><span class="tx" lang="uk">«Запакую до 16:00. Тільки скотч закінчується — треба докупити.»</span><span class="meta" aria-hidden="true"><time>10:05</time></span></div></li></ol><ol class="r2" aria-label="Example 2 · Polish ↔ Ukrainian"><li class="tr-rd" aria-hidden="true">Example 2 · Polish ↔ Ukrainian</li><li class="pl me-side" data-cmp="1400" data-s="8" data-w="800"><div class="msg me read"><span class="from">Magda</span><p lang="pl">Klientka pyta, czy będzie czarna sukienka w rozmiarze S.</p><span class="meta" aria-hidden="true"><time>15:40</time></span></div></li><li class="pl" data-s="13" data-w="1000" data-ty="600" data-scr="Так, у пʼятницю привеземо 5 штук."><div class="msg zh"><span class="sr">Assistant: </span><p class="t" lang="pl">Tak, w piątek przywieziemy 5 sztuk.</p><span class="trf">Iryna · translated from Ukrainian</span><span class="meta" aria-hidden="true"><time>15:41</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol></div><div class="tr-cmp" aria-hidden="true"><span class="cmp-in"><i class="cmp-dot"></i><span class="cmp-t"></span></span><span class="cmp-b"><svg viewBox="0 0 24 24"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="currentColor"/></svg></span></div></div></div><i class="trx" data-dir="lr" data-lab="EN → UK" data-s="2" data-w="500"></i><i class="trx" data-dir="rl" data-lab="UK → EN" data-s="5" data-w="2600"></i><i class="rd" data-round="2" data-s="7" data-w="2800"></i><i class="trx" data-dir="rl" data-lab="PL → UK" data-s="9" data-w="500"></i><i class="trx" data-dir="lr" data-lab="UK → PL" data-s="12" data-w="500"></i><p class="pl tr-joke" data-s="14" data-w="1400"><span><svg aria-hidden="true"><use href="#mark"/></svg><span><b>Zhorik</b>I translate from English, Polish and even from “yeah, I’ll get to it” into “already done”.</span></span></p></div>
+      <p class="team-cap">Example: names, goods and conversations are made up to show the format. The assistant translates messages and voice notes between you and your team.</p>
+      <!--WL:tr--><p class="soft-in"><a href="https://t.me/TvoyJorik_bot?start=site_translate">Does someone on your team write in another language too? →</a></p><!--/WL:tr-->
+    </div>
+  </section>
+  <!--MO-TR-END-->
     <!--P2-TRY-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
     <section class="try-sec" data-try aria-labelledby="try-h">
       <div class="try-txt rv">
@@ -215,194 +224,95 @@
         </div>
         <figcaption class="caption">Example: the businesses, names and numbers are made up. The answers are built into the page — no server, your taps are not sent anywhere.</figcaption>
       </figure>
+      <!--WL:try--><p class="soft-in try-want wait"><a href="https://t.me/TvoyJorik_bot?start=site_try">I want one of these →</a></p><!--/WL:try-->
     </section>
     <!--P2-TRY-END-->
-    <!--WL:try--><div class="wl wl-mid"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_try"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Join the waitlist</a><p class="wl-note">A closed pilot is running now — join, and we’ll message you as soon as a spot opens up.</p></div><!--/WL:try-->
-  </div>
-
+  </div><!--PG-WHAT-->
   <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28c60-18 120-18 180 0s120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0v28H0z" fill="currentColor"/></svg>
-
-  <section class="shell sec" aria-labelledby="what">
+  <section class="shell sec pg-what" aria-labelledby="what">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2 id="what">What it does</h2>
+        <h2 id="what">Routine for him, decisions for you</h2>
         <p>Tvii Zhoryk works in a Telegram chat with the business owner and their team. You write or send a voice message in your own words — the assistant does the task or prepares it for your approval.</p>
       </div>
       <ul class="jobs">
         <li class="job rv" style="--d:0">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M16 38V26M24 38V18M32 38V30M40 38V22" stroke="#123c4a" stroke-width="4" stroke-linecap="round"/></svg>
-          <div><h3>Reports in plain words</h3><p>Advertising results, website traffic and search performance — from the accounts you connect.</p></div>
+          <div><h3>Reports in plain words</h3><p>Advertising results, website traffic and search performance — from the accounts you connect.</p><p class="job-more"><a href="how-it-works.html#dl-h">See a day <span class="arr" aria-hidden="true">→</span></a></p></div>
         </li>
         <li class="job rv" style="--d:1">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M18 38l3-9 13-13 6 6-13 13-9 3z" fill="#f0a23b" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/></svg>
-          <div><h3>Content</h3><p>Drafts of posts and stories; publishes to your Instagram or Facebook Page only from a content plan you approved.</p></div>
+          <div><h3>Content</h3><p>Drafts of posts and stories; publishes to your Instagram or Facebook Page only from a content plan you approved.</p><p class="job-more"><a href="skills.html">Content skills <span class="arr" aria-hidden="true">→</span></a></p></div>
         </li>
-        <li class="job rv" style="--d:0">
+        <li class="job rv" style="--d:2">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M15 20h26v14H26l-7 6v-6h-4z" fill="#fff" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/><path d="M21 27h14" stroke="#123c4a" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <div><h3>Replies to your buyers</h3><p>In Instagram Direct and Messenger, if you connect them. The rules for these conversations are below.</p></div>
-        </li>
-        <li class="job rv" style="--d:1">
-          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><rect x="15" y="22" width="26" height="16" rx="3" fill="#fff" stroke="#123c4a" stroke-width="2.4"/><path d="M15 28h26" stroke="#123c4a" stroke-width="2.4"/><path d="M22 17h12" stroke="#36602f" stroke-width="3" stroke-linecap="round"/></svg>
-          <div><h3>Advertising under your control</h3><p>In Meta advertising, the assistant changes budgets on its own only within the monthly budget you approved with a button. In Google Ads, during the pilot (see the <a href="terms.html">Terms of Service</a>, section 4), it only reads results. In TikTok ads the same rule applies: the assistant changes budgets on its own only within the monthly budget you approved with a button.</p></div>
+          <div><h3>Replies to your buyers</h3><p>In Instagram Direct and Messenger, if you connect them.</p><p class="job-more"><a href="data.html#direct">Rules for Direct <span class="arr" aria-hidden="true">→</span></a></p></div>
         </li>
         <li class="job rv" style="--d:0">
-          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M16 24l12-6 12 6v12l-12 6-12-6z" fill="#fff" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 24l12 6 12-6M28 30v12" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/></svg>
-          <div><h3>Stock, orders and routine</h3><p>Checks stock and orders in your CRM, reminders, answers to your team's questions.</p></div>
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><rect x="15" y="22" width="26" height="16" rx="3" fill="#fff" stroke="#123c4a" stroke-width="2.4"/><path d="M15 28h26" stroke="#123c4a" stroke-width="2.4"/><path d="M22 17h12" stroke="#36602f" stroke-width="3" stroke-linecap="round"/></svg>
+          <div><h3>Advertising under your control</h3><p>In Meta advertising, the assistant changes budgets on its own only within the monthly budget you approved with a button. In Google Ads, during the pilot (see the <a href="terms.html">Terms of Service</a>, section 4), it only reads results. In TikTok ads the same rule applies: the assistant changes budgets on its own only within the monthly budget you approved with a button.</p><p class="job-more"><a href="data.html#access">What it may do with money <span class="arr" aria-hidden="true">→</span></a></p></div>
         </li>
         <li class="job rv" style="--d:1">
+          <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M16 24l12-6 12 6v12l-12 6-12-6z" fill="#fff" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 24l12 6 12-6M28 30v12" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/></svg>
+          <div><h3>Stock, orders and routine</h3><p>Checks stock and orders in your CRM, reminders, answers to your team's questions.</p><p class="job-more"><a href="how-it-works.html#inv-h">Delivery note → stock <span class="arr" aria-hidden="true">→</span></a></p></div>
+        </li>
+        <li class="job rv" style="--d:2">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><rect x="23" y="14" width="10" height="18" rx="5" fill="#f0a23b" stroke="#123c4a" stroke-width="2.4"/><path d="M18 28a10 10 0 0 0 20 0M28 38v5" fill="none" stroke="#123c4a" stroke-width="2.4" stroke-linecap="round"/></svg>
-          <div><h3>Voice</h3><p>Understands voice messages and can answer by voice; voice is processed on our own server.</p></div>
+          <div><h3>Voice</h3><p>Understands voice messages and can answer by voice; voice is processed on our own server.</p><p class="job-more"><a href="how-it-works.html#team-h">One voice note → three tasks <span class="arr" aria-hidden="true">→</span></a></p></div>
         </li>
       </ul>
-
-      <div class="rules rv" id="direct">
-        <div>
-          <h3>Conversations with your buyers in Instagram Direct and Messenger</h3>
-          <p>If you connect them, the assistant answers your buyers' messages on behalf of your business.</p>
-        </div>
-        <ul>
-          <li>Introduces itself as <q>AI assistant of <em>your brand name</em></q> in its first message of a new conversation, after a 24-hour pause and in its first message after a person from your team hands the conversation back to it.</li>
-          <li>When asked whether it is a bot, always answers honestly: <q>I am an AI assistant</q>.</li>
-          <li>A buyer can ask for a person at any time — the assistant hands the conversation to your team, who will reply when they are available.</li>
-          <li>If a buyer writes <q>stop</q> (or <q lang="uk">стоп</q>), the assistant stops answering in this conversation right away and, until the buyer writes <q>start</q> (or <q lang="uk">старт</q>), replies only to service requests — to delete their data, to start again or to talk to a person — briefly and without selling anything, and after <q>start</q> it introduces itself again (<q>I am an AI assistant</q>); the buyer's messages still reach your team.</li>
-          <li>A buyer can ask us to delete their data: <a href="data-deletion.html">How to delete your data</a>, section B.</li>
-        </ul>
-      </div>
-      <!--P2-INV-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
-      <div class="inv" data-play>
-        <div class="inv-txt rv">
-          <span class="eyebrow">Stock</span>
-          <h3>Delivery note photo → stock</h3>
-          <p>Send a photo of a delivery note — the assistant reads the items and adds them to stock. But only after your “Yes”: stock changes always need a confirmation.</p>
-        </div>
-        <div class="rv">
-          <div class="ctl-row"><button type="button" class="chat-ctl" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Show again</button></div>
-          <div class="phone" role="group" aria-label="Delivery note photo → stock — Example · Telegram">
-            <div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b translate="no">Tvii Zhoryk</b></div><span class="ex">example</span></div>
-            <ol>
-              <li class="pl me-side" data-s="1" data-w="500"><div class="msg me read"><span class="from">Daryna</span><span class="sr">Photo:</span><svg class="thumb" viewBox="0 0 120 84" aria-hidden="true"><rect x="1" y="1" width="118" height="82" rx="8" fill="#fff" stroke="#123c4a" stroke-width="2"/><rect x="10" y="10" width="44" height="7" rx="2" fill="#123c4a"/><rect x="74" y="10" width="36" height="7" rx="2" fill="#f0a23b"/><path d="M10 28h100M10 38h100M10 48h100M10 58h100M10 68h100" stroke="#c9d6d2" stroke-width="2"/><path d="M10 28h60M10 38h52M10 48h64M10 58h48" stroke="#2b5a68" stroke-width="2.4"/><path d="M92 74h18" stroke="#123c4a" stroke-width="3"/></svg><p>Delivery note from the flower supplier</p><span class="meta" aria-hidden="true"><time>11:20</time></span></div></li>
-              <li class="pl" data-s="2" data-w="600" data-ty="1500"><div class="msg zh"><span class="sr">Assistant: </span><p class="t"><b>+9 items</b> from the delivery note: roses — 3 varieties, tulips — 4 colours, eucalyptus and ruscus. 340 stems in total. Confirm?</p><span class="need">Needs your “Yes”</span><span class="sr">Buttons: Yes / Change.</span><span class="chips ok" aria-hidden="true"><span class="tp pk" data-s="3" data-w="1400">Yes</span><span>Change</span></span><span class="sr">The owner tapped “Yes”.</span><span class="meta" aria-hidden="true"><time>11:20</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li>
-              <li class="pl" data-s="4" data-w="500" data-ty="1200"><div class="msg zh"><span class="sr">Assistant: </span><p class="t">Added to stock: +9 items, 340 stems. Stock levels are updated — the roses are back on sale.</p><span class="meta" aria-hidden="true"><time>11:21</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol>
-          </div>
-        </div>
-      </div>
-      <!--P2-INV-END-->
-    </div>
-  </section>
-
-  <!--LIB-SITE-BEGIN: собирается C:/Zhorik/tools/library_page.py, руками не править-->
-  <section class="ws-sec" aria-labelledby="ws-h">
-    <div class="wrap ws">
-      <div class="rv">
-        <span class="eyebrow">Website</span>
-        <h2 id="ws-h">A website for your business</h2>
-        <p>The assistant builds a website with our skills — no site builders. You say what you need; it builds it and shows you. Domain and hosting — it tells you how to connect them.</p>
-        <p><span class="ws-acc">This very site was built the same way — in under 24 hours.</span></p>
-        <div class="actions">
-          <a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_website"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>I want a website</a>
-          <a class="quiet" href="skills.html">Zhoryk’s library →</a>
-        </div>
-        <!--WL:wsnote--><p class="wl-note">A closed pilot is running now — join, and we’ll message you as soon as a spot opens up.</p><!--/WL:wsnote-->
-      </div>
-      <figure class="wf rv from-r" role="img" aria-label="Diagram: a web page being assembled from blocks">
-        <div class="wf-bar"><i></i><i></i><i></i><span></span></div>
-        <div class="wf-page"><span class="blk bn" style="--i:0"></span><span class="blk bh" style="--i:1"></span><span class="blk bp" style="--i:2"></span><span class="blk bc" style="--i:3"></span><span class="blk bc" style="--i:4"></span><span class="blk bc" style="--i:5"></span><span class="blk btn-b" style="--i:6"></span><span class="blk bf" style="--i:7"></span></div>
-        <span class="wf-done" style="--i:8">✓ done</span>
-      </figure>
-    </div>
-  </section>
-  <!--LIB-SITE-END-->
-
-  <section class="who" aria-labelledby="who">
-    <div class="wrap">
-      <small id="who" class="rv">Who it is for</small>
-      <p>Owners of small businesses — shops, brands, service companies — and the people on their team.</p>
-    </div>
-  </section>
-
-  <section class="sec" id="how" aria-labelledby="how-h">
-    <div class="wrap">
-      <div class="sec-head rv"><h2 id="how-h">How it works</h2><p>Three stops — and the assistant is on the line.</p></div>
-      <ol class="line">
-        <li class="rv" style="--d:0"><p>You start a chat with the assistant in Telegram and accept the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p></li>
-        <li class="rv" style="--d:1"><p>You connect the services you want — Google (Ads, Analytics, Search Console, Merchant Center, Business Profile), Meta (Instagram, Facebook Pages, Instagram Direct and Messenger messages, advertising), TikTok ads — each through its own official sign-in. You can disconnect any of them at any time.</p></li>
-        <li class="rv" style="--d:2"><p>You decide what the assistant may do on its own; anything involving money needs your confirmation, except Meta and TikTok ad budgets within the monthly envelope you approved (see the <a href="terms.html">Terms of Service</a>, section 4).</p></li>
-      </ol>
-      <h3 class="sr">Who decides what</h3>
-      <ol class="decide" aria-label="Who decides what">
-        <li class="rv" style="--d:0"><small>Step 1</small><b>The assistant prepares</b><p>A draft, a plan, a report or a reminder.</p></li>
-        <li class="rv" style="--d:1"><small>Step 2</small><b>You tap</b><p><span class="yes">Yes</span><span class="chg">Change</span></p></li>
-        <li class="rv" style="--d:2"><small>Step 3</small><b>Action</b><p>Publishing, spending or launching — only after your “Yes”.</p></li>
-      </ol>
-      <p class="decide-note rv">Money and publishing happen only after your “Yes” — given each time, or once for a budget or content plan you have approved.</p>
-      <!--MO-CTA-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править--><a class="dcta rv" href="how-it-works.html"><span class="dcta-prev" aria-hidden="true"><span class="dcta-col"><small>The usual way</small><i>Three dashboards every morning</i><i>Count the shelves</i><i>Remember who to reply to</i></span><span class="dcta-col z"><small>With the assistant</small><i>Brief at 08:00</i><i>One “Yes” from you</i><i>Done ✅</i></span></span><span class="dcta-t">See a business owner’s day: before and after</span><span class="dcta-go" aria-hidden="true"><span>→</span></span></a><!--MO-CTA-END-->
-    </div>
-  </section>
-
-  <section class="shell sec" aria-labelledby="data-h">
-    <div class="wrap data rv">
-      <h2 id="data-h">Your data</h2>
-      <div>
-        <ul>
-          <li>Data from your accounts is used only to work for your business and is never used to train AI models.</li>
-          <li>Each business's data is kept separately.</li>
-          <li>You can delete your data at any time: <a href="data-deletion.html">How to delete your data</a>.</li>
-        </ul>
-        <p class="claude">The assistant's answers are generated by the AI model Claude by Anthropic.</p>
+      <h3 class="sr">Where next</h3>
+      <div class="doors">
+        <!--PG-CTA-SLOT--><!--MO-CTA2-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править--><a class="dcta rv" href="how-it-works.html"><span class="dcta-prev" aria-hidden="true"><span class="dcta-col"><small>The usual way</small><i>Three dashboards every morning</i><i>Count the shelves</i><i>Remember who to reply to</i></span><span class="dcta-col z"><small>With the assistant</small><i>Brief at 08:00</i><i>One “Yes” from you</i><i>Done ✅</i></span></span><span class="dcta-t">See a business owner’s day: before and after</span><span class="dcta-go" aria-hidden="true"><span>→</span></span></a><!--MO-CTA2-END-->
+        <a class="door door-site rv" href="website.html"><svg class="door-art" viewBox="0 0 120 80" aria-hidden="true"><rect x="2" y="2" width="116" height="76" rx="8" fill="#fbf7ec" stroke="#123c4a" stroke-width="2.5"/><path d="M2 16h116" stroke="#123c4a" stroke-width="2.5"/><circle cx="11" cy="9" r="2.2" fill="#9c4325"/><circle cx="18" cy="9" r="2.2" fill="#f0a23b"/><circle cx="25" cy="9" r="2.2" fill="#36602f"/><rect class="da1" x="12" y="24" width="60" height="8" rx="3" fill="#123c4a"/><rect class="da2" x="12" y="38" width="96" height="14" rx="3" fill="#a9c9d3"/><rect class="da3" x="12" y="58" width="28" height="12" rx="3" fill="#e3eef0"/><rect class="da4" x="46" y="58" width="28" height="12" rx="3" fill="#e3eef0"/><rect class="da5" x="80" y="58" width="28" height="12" rx="6" fill="#f0a23b"/></svg><span class="door-t"><b>A website for your business</b><small>The assistant builds websites with our skills. This one too.</small></span><span class="door-go" aria-hidden="true">→</span></a>
+        <a class="door door-lib rv" href="skills.html"><svg class="door-art" viewBox="0 0 120 80" aria-hidden="true"><path d="M4 74h112" stroke="#7a4a1c" stroke-width="5" stroke-linecap="round"/><rect class="bk b1" x="12" y="18" width="14" height="54" rx="2" fill="#123c4a"/><rect class="bk b2" x="28" y="26" width="12" height="46" rx="2" fill="#36602f"/><rect class="bk b3" x="42" y="12" width="18" height="60" rx="2" fill="#6d1f2b"/><rect class="bk b4" x="62" y="22" width="12" height="50" rx="2" fill="#f0a23b"/><rect class="bk b5" x="76" y="30" width="13" height="42" rx="2" fill="#2b5a68"/><rect class="bk b6" x="93" y="20" width="12" height="52" rx="2" fill="#9c4325" transform="rotate(8 99 72)"/></svg><span class="door-t"><b>Zhoryk’s library</b><small>A skill is something it can do. Take a book off the shelf.</small></span><span class="door-go" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
-
-<!--P2-FAQ-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
-  <section class="sec faq-sec" id="faq" aria-labelledby="faq-h">
+<!--/PG-WHAT-->
+<!--PG-FAQS-->
+  <section class="sec faq-sec" id="faq-s" aria-labelledby="faqs-h">
     <div class="wrap">
       <div class="rv">
-        <h2 id="faq-h">Frequently asked questions</h2>
+        <h2 id="faqs-h">Frequently asked questions</h2>
         <p class="faq-intro">Tap a question and the assistant answers in its own words. Everything here comes from our Terms and Policy; if anything differs, they prevail.</p>
       </div>
       <div>
         <ul class="faq" aria-label="Frequently asked questions">
           <li class="rv" style="--d:0"><details class="faq-i"><summary>What can you do?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>I answer questions about your business, prepare reports and draft content. When you connect them, I work with your advertising, analytics, social media and CRM accounts within the permissions you give, and I answer your buyers in Instagram Direct and Messenger.</p><p>I don’t provide legal, tax or financial advice. And I’m AI — I can make mistakes, so check important figures.</p></div></details></li>
           <li class="rv" style="--d:1"><details class="faq-i"><summary>Who presses “Yes”?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>You do. I read data from connected accounts on my own. A new type of action — for example, the first publication or the first change to stock levels — only after your button. I publish only from a content plan you approved.</p><p>Anything that moves money — only with a button, every time; the exception is Meta and TikTok advertising within the monthly budget you approved. Deleting — always with a double confirmation. I prepare — you decide.</p></div></details></li>
-          <li class="rv" style="--d:2"><details class="faq-i"><summary>What happens to my data?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>It works only for your business. Each business’s data is kept separately; we don’t sell it and don’t use it to train AI models — neither we nor Anthropic.</p><p>Card numbers, one-time codes and passwords in messages are masked automatically. Our server is in Germany (EU). Details — in the <a href="privacy.html">Privacy Policy</a>.</p></div></details></li>
-          <li class="rv" style="--d:0"><details class="faq-i"><summary>How do I delete my data?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>Write “Forget everything” to me — I’ll delete your notes, settings, conversation and connector logs, data from connected platforms and data about your buyers, and revoke platform access. You confirm with a button; deletion is completed within 72 hours. Only billing records are kept, for as long as Ukrainian tax law requires.</p><p>Or write to <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a>. All the options are on the <a href="data-deletion.html">How to delete your data</a> page.</p></div></details></li>
-          <li class="rv" style="--d:1"><details class="faq-i"><summary>Which languages do you speak?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>This site and all our documents are in Ukrainian and English. The Terms don’t list languages, so ask us about yours in Telegram — we’ll answer honestly.</p></div></details></li>
-          <li class="rv" style="--d:2"><details class="faq-i"><summary>How much does it cost?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>Prices are in Telegram — write to us. Prices and plans are shown in the chat before payment; billing is monthly.</p></div></details></li>
-          <li class="rv" style="--d:0"><details class="faq-i"><summary>What if you make a mistake?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>I can — I’m powered by an AI model. So check important facts, figures and texts before relying on them. And I don’t do anything that moves money without your button.</p></div></details></li>
+          <li class="rv" style="--d:0"><details class="faq-i"><summary>What happens to my data?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>It works only for your business. Each business’s data is kept separately; we don’t sell it and don’t use it to train AI models — neither we nor Anthropic.</p><p>Card numbers, one-time codes and passwords in messages are masked automatically. Our server is in Germany (EU). Details — in the <a href="privacy.html">Privacy Policy</a>.</p></div></details></li>
+          <li class="rv" style="--d:1"><details class="faq-i"><summary>How much does it cost?</summary><div class="msg zh faq-a"><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span><span class="from">Zhorik</span><p>Prices are in Telegram — write to us. Prices and plans are shown in the chat before payment; billing is monthly.</p></div></details></li>
         </ul>
-        <p class="faq-cap rv">The answers briefly retell the <a href="terms.html">Terms of Service</a>, the <a href="privacy.html">Privacy Policy</a> and <a href="data-deletion.html">How to delete your data</a>.</p>
+        <p class="faq-cap rv"><a class="more-a" href="faq.html">All questions <span class="arr" aria-hidden="true">→</span></a></p>
       </div>
     </div>
   </section>
-  <!--P2-FAQ-END-->
-
-  <section class="sec" aria-labelledby="us-h">
-    <div class="wrap">
-      <div class="contact rv">
-        <div>
-          <h2 id="us-h">Who we are</h2>
-          <p>Tvii Zhoryk is operated by <mark>[ОПЕРАТОР: ФИО ФОП, ІПН, адрес]</mark>.</p>
-          <p>E-mail (support, privacy, security): <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a></p>
-        </div>
-      </div>
+<!--/PG-FAQS-->
+<!--PG-FIN-->
+  <section class="sec pg-fin" aria-labelledby="fin-h">
+    <div class="wrap fin rv">
+      <svg class="fin-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <h2 id="fin-h">A pilot, no rush</h2>
+      <p>Tvii Zhoryk is an AI assistant in Telegram for small business owners — shops, brands, service companies — and their teams. The assistant prepares, you decide.</p>
+      <p class="fin-links"><a href="how-it-works.html">See a day with the assistant <span class="arr" aria-hidden="true">→</span></a><a href="about.html">About us <span class="arr" aria-hidden="true">→</span></a></p>
     </div>
   </section>
+<!--/PG-FIN-->
 </main>
 
-<footer>
+<footer class="site-foot">
   <div class="wrap">
-    <!--WL:footer--><div class="wl wl-foot"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_footer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Join the waitlist</a><p class="wl-note">A closed pilot is running now, with 500 spots on the waitlist. Join, and we’ll message you as soon as a spot opens up.</p></div><!--/WL:footer-->
-    <nav aria-label="Site pages">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="how-it-works.html">How it works</a>
-      <a href="skills.html">Zhoryk’s library</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="data-deletion.html">Delete your data</a>
-      <a href="contact.html">Contact</a>
-      <a href="../uk/index.html" hreflang="uk" lang="uk">Українською</a>
-    </nav>
-    <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <div class="ft-cols">
+      <nav aria-label="Site"><h2 class="ft-h">Site</h2><a href="index.html" aria-current="page">Home</a><a href="how-it-works.html">How it works</a><a href="skills.html">Zhoryk’s library</a><a href="website.html">A website for your business</a><a href="data.html">Your data</a><a href="faq.html">FAQ</a><a href="about.html">About us</a></nav>
+      <nav aria-label="Documents"><h2 class="ft-h">Documents</h2><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html">Delete your data</a><a href="contact.html">Contact</a></nav>
+      <div class="ft-side">
+        <p class="odclock" data-odclock="0|The owner is asleep — Zhoryk is on duty.~6|The coffee is still hot, and the morning brief is ready.~10|They’re haggling at Pryvoz market, Zhoryk is counting stock.~14|Lunch is sacred. Zhoryk answers the DMs while you eat.~18|Evening on Derybasivska, and tomorrow’s reminders are already on the list.~22|Time for bed. Zhoryk will finish the morning reminders." data-city="Odesa"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path class="oc-h" d="M12 12V7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="oc-m" d="M12 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="oc-tx">Odesa. We’re from here — and so is Zhoryk.</span></p>
+        <p>E-mail for questions and data: <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a></p>
+        <p><a class="ft-lang" href="../uk/index.html" hreflang="uk" lang="uk">Українською</a></p>
+      </div>
+    </div>
+    <p class="ft-copy">© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
     <p class="sdk">Built on the Claude Agent SDK via the Anthropic commercial API</p>
   </div>
 </footer>

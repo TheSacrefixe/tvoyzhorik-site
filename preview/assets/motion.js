@@ -133,8 +133,33 @@
     }
     li.__scr = frame; W.requestAnimationFrame(frame);
   }
-  function chipFly(sc, dir) {
+  /* строка ввода в телефоне перевода (site-pages-2211): исходящее сначала набирается, голосовое — «запись» с таймером */
+  function compose(li, ms) {
+    var ph = li.closest('.phone'), c = ph && ph.querySelector('.tr-cmp'); if (!c) return;
+    var tx = c.querySelector('.cmp-t'), v = li.querySelector('.voice'), t0 = Date.now();
+    W.clearInterval(c.__iv); W.clearTimeout(c.__to); c.classList.remove('sent', 'typing', 'rec');
+    if (v) {
+      var dur = v.querySelector('small'), sec = dur ? +(dur.textContent.split(':')[1] || 5) : 5;
+      c.classList.add('rec'); tx.textContent = '0:00';
+      c.__iv = W.setInterval(function () { var k = Math.min(sec, Math.floor((Date.now() - t0) / ms * (sec + 1))); tx.textContent = '0:0' + k; }, 100);
+    } else {
+      var p = li.querySelector('.msg p'), full = p ? p.textContent : '', n = full.length;
+      c.classList.add('typing');
+      c.__iv = W.setInterval(function () {
+        var k = Math.min(n, Math.round((Date.now() - t0) / (ms * 0.8) * n));
+        tx.textContent = full.slice(Math.max(0, k - 34), k);
+      }, 40);
+    }
+    c.__to = W.setTimeout(function () { sendCmp(c); }, ms);
+  }
+  function sendCmp(c) {
+    W.clearInterval(c.__iv); c.classList.remove('typing', 'rec');
+    c.querySelector('.cmp-t').textContent = ''; c.classList.add('sent');
+    c.__to = W.setTimeout(function () { c.classList.remove('sent'); }, 450);
+  }
+  function chipFly(sc, dir, lab) {
     var chip = sc.querySelector('.tr-chip'); if (!chip || !anim) return;
+    var pair = chip.querySelector('.tr-pair'); if (pair) pair.textContent = lab || '';
     var L = sc.querySelector('.tr-l .phone'), Rr = sc.querySelector('.tr-r .phone');
     var A = dir === 'lr' ? L : Rr, B = dir === 'lr' ? Rr : L;
     var r = sc.getAttribute('data-r') || '1';
@@ -228,8 +253,9 @@
     var num = function (g, at) { return g.reduce(function (mx, e) { return Math.max(mx, +(e.getAttribute(at) || 0)); }, 0); };
     var t = 0;
     keys.forEach(function (k) {
-      var g = steps[k], w = num(g, 'data-w') || 500, ty = num(g, 'data-ty');
+      var g = steps[k], w = num(g, 'data-w') || 500, ty = num(g, 'data-ty'), cm = num(g, 'data-cmp');
       t += w;
+      if (cm) { plan.push([t, function () { g.forEach(function (e) { if (e.hasAttribute('data-cmp')) compose(e, +e.getAttribute('data-cmp')); }); }]); t += cm; }
       if (ty) { plan.push([t, function () { g.forEach(function (e) { if (e.hasAttribute('data-ty')) e.classList.add('ty'); }); }]); t += ty; }
       var tp = g.filter(function (e) { return e.classList.contains('tp'); })[0];
       if (tp) plan.push([Math.max(0, t - 900), function () { finger(sc, tp); }]);
@@ -244,6 +270,7 @@
       $$(sc, '.stt').forEach(function (s) { [].forEach.call(s.children, function (x, k) { x.classList.toggle('cur', k === 0); x.classList.remove('flash'); }); });
       $$(sc, '.scr-on').forEach(function (p) { p.classList.remove('scr-on'); });
       if (sc.hasAttribute('data-tr')) sc.setAttribute('data-r', '1');
+      $$(sc, '.tr-cmp').forEach(function (c) { W.clearInterval(c.__iv); W.clearTimeout(c.__to); c.classList.remove('typing', 'rec', 'sent'); c.querySelector('.cmp-t').textContent = ''; });
       if (sc.__wh) sc.__wh.classList.remove('on', 'hit');
       $$(sc, '.mo-pc').forEach(function (p) { p.remove(); });
     }
@@ -253,7 +280,7 @@
           [].forEach.call(e.parentNode.children, function (x) { x.classList.remove('cur'); });
           e.classList.add('cur', 'flash');
         } else if (e.classList.contains('tp')) e.classList.add('tap');
-        else if (e.classList.contains('trx')) chipFly(sc, e.getAttribute('data-dir'));
+        else if (e.classList.contains('trx')) chipFly(sc, e.getAttribute('data-dir'), e.getAttribute('data-lab'));
         else if (e.classList.contains('rd')) sc.setAttribute('data-r', e.getAttribute('data-round'));
         else {
           if (e.classList.contains('fly')) arcFly(sc, e);

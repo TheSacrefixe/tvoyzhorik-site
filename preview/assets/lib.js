@@ -31,15 +31,26 @@
     return li('<span class="sr">' + esc(U.bot) + ' </span><p class="t">' + esc(m[1]) + '</p>', 'msg zh');
   }
   function put(e, anim) { if (anim) e.classList.add('new'); log.appendChild(e); }
+  /* тихая ссылка внизу телефона, когда книжка «прилетела» (site-pages-2211, Олег MSG 10310): готовая — «Хочу такий скіл у себе →»,
+     «скоро» — «Хочу першим спробувати →». Ссылку и тексты ставит waitlist_site.py в разметку (.ph-want с data-*). */
+  var want = ph.querySelector('.ph-want');
+  function wantShow(b) {
+    if (!want) return;
+    var soon = b.s === 'soon';
+    want.href = want.getAttribute(soon ? 'data-soon-href' : 'data-href');
+    want.textContent = want.getAttribute(soon ? 'data-soon-t' : 'data-t');
+    want.hidden = false; want.classList.remove('in'); void want.offsetWidth; want.classList.add('in');
+  }
   function show(k, instant) {
     var b = D.books[k]; if (!b) return;
     clearT(); log.innerHTML = ''; status(false);
+    if (want) want.hidden = true;
     var head;
     if (b.s === 'soon') head = li('<span>' + esc(U.soon_h.replace('%s', b.t)) + '</span>', 'msg sys soon');
     else head = li('<span>' + esc(U.ok_h.replace('%s', b.t)) + '</span>' + (b.s === 'tested' ? '<span class="note">' + esc(U.tested) + '</span>' : ''), 'msg sys ok');
     var msgs = b.s === 'soon' ? [['zh', b.l]] : b.c;
     put(head, !instant);
-    if (instant) { msgs.forEach(function (m) { put(msgEl(m), false); }); return; }
+    if (instant) { msgs.forEach(function (m) { put(msgEl(m), false); }); wantShow(b); return; }
     var t = 350;
     msgs.forEach(function (m) {
       if (m[0] === 'zh') {
@@ -54,9 +65,10 @@
         t += 550;
       }
     });
+    timers.push(setTimeout(function () { wantShow(b); }, t + 250));   /* ссылка — когда переписка закончилась */
   }
   function resetPhone() {
-    clearT(); status(false); log.innerHTML = hello;
+    clearT(); status(false); log.innerHTML = hello; if (want) want.hidden = true;
     if (curBook) { curBook.setAttribute('aria-pressed', 'false'); }
     curBook = null; ph.classList.remove('open'); if (phX) phX.setAttribute('aria-expanded', 'false');
   }

@@ -17,6 +17,7 @@
 <script>document.documentElement.classList.add("js")</script>
 <script src="../assets/motion.js" defer></script>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/pages.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -32,21 +33,13 @@
   </defs>
 </svg>
 
-<div class="wrap">
-  <header class="top top-doc">
+<div class="hdr"><div class="wrap">
+  <header class="top">
     <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
-    <nav aria-label="Site pages"><ul class="pages">
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="skills.html">Zhoryk’s library</a></li>
-      <li><a href="privacy.html">Privacy Policy</a></li>
-      <li><a href="terms.html">Terms of Service</a></li>
-      <li><a href="data-deletion.html" aria-current="page">Delete your data</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul></nav>
+    <nav class="topnav" aria-label="Menu"><a href="how-it-works.html">How it works</a><a href="skills.html">Library</a><a href="website.html">Website</a><a href="data.html">Your data</a><a href="faq.html">FAQ</a></nav>
     <a class="lang" href="../uk/data-deletion.html" hreflang="uk" lang="uk"><span class="lg-f">Українською</span><span class="lg-s" aria-hidden="true">УКР</span></a>
-    <!--WL:header--><a class="wl-head" href="https://t.me/TvoyJorik_bot?start=site_header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="wl-f">Join the waitlist</span><span class="wl-m" aria-hidden="true">Join the waitlist</span><span class="wl-s" aria-hidden="true">Waitlist</span></a><!--/WL:header-->
   </header>
-</div>
+</div></div>
 
 <main id="main">
   <div class="wrap doc-head"><h1>How to delete your data — Tvii Zhoryk</h1></div>
@@ -129,20 +122,18 @@
   </div>
 </main>
 
-<footer class="doc-foot">
+<footer class="site-foot">
   <div class="wrap">
-    <!--WL:footer--><div class="wl wl-foot"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_footer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Join the waitlist</a><p class="wl-note">A closed pilot is running now, with 500 spots on the waitlist. Join, and we’ll message you as soon as a spot opens up.</p></div><!--/WL:footer-->
-    <nav aria-label="Site pages">
-      <a href="index.html">Home</a>
-      <a href="how-it-works.html">How it works</a>
-      <a href="skills.html">Zhoryk’s library</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="data-deletion.html" aria-current="page">Delete your data</a>
-      <a href="contact.html">Contact</a>
-      <a href="../uk/data-deletion.html" hreflang="uk" lang="uk">Українською</a>
-    </nav>
-    <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <div class="ft-cols">
+      <nav aria-label="Site"><h2 class="ft-h">Site</h2><a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="skills.html">Zhoryk’s library</a><a href="website.html">A website for your business</a><a href="data.html">Your data</a><a href="faq.html">FAQ</a><a href="about.html">About us</a></nav>
+      <nav aria-label="Documents"><h2 class="ft-h">Documents</h2><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="data-deletion.html" aria-current="page">Delete your data</a><a href="contact.html">Contact</a></nav>
+      <div class="ft-side">
+        <p class="odclock" data-odclock="0|The owner is asleep — Zhoryk is on duty.~6|The coffee is still hot, and the morning brief is ready.~10|They’re haggling at Pryvoz market, Zhoryk is counting stock.~14|Lunch is sacred. Zhoryk answers the DMs while you eat.~18|Evening on Derybasivska, and tomorrow’s reminders are already on the list.~22|Time for bed. Zhoryk will finish the morning reminders." data-city="Odesa"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path class="oc-h" d="M12 12V7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="oc-m" d="M12 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="oc-tx">Odesa. We’re from here — and so is Zhoryk.</span></p>
+        <p>E-mail for questions and data: <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a></p>
+        <p><a class="ft-lang" href="../uk/data-deletion.html" hreflang="uk" lang="uk">Українською</a></p>
+      </div>
+    </div>
+    <p class="ft-copy">© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
     <p class="sdk">Built on the Claude Agent SDK via the Anthropic commercial API</p>
   </div>
 </footer>

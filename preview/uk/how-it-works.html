@@ -18,6 +18,7 @@
 <script src="../assets/motion.js" defer></script>
 <script src="../assets/site.js" defer></script>
 <script src="../assets/fx.js" defer></script>
+<script src="../assets/pages.js" defer></script>
 </head>
 <body class="how-page">
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -32,23 +33,16 @@
   </defs>
 </svg>
 
-<div class="wrap">
-  <header class="top top-doc">
+<div class="hdr"><div class="wrap">
+  <header class="top">
     <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
-    <nav aria-label="Сторінки сайту"><ul class="pages">
-      <li><a href="how-it-works.html" aria-current="page">Як це працює</a></li>
-      <li><a href="skills.html">Бібліотека Жорика</a></li>
-      <li><a href="privacy.html">Політика конфіденційності</a></li>
-      <li><a href="terms.html">Умови використання</a></li>
-      <li><a href="data-deletion.html">Видалити свої дані</a></li>
-      <li><a href="contact.html">Контакти</a></li>
-    </ul></nav>
+    <nav class="topnav" aria-label="Меню"><a href="how-it-works.html" aria-current="page">Як це працює</a><a href="skills.html">Бібліотека</a><a href="website.html">Сайт</a><a href="data.html">Ваші дані</a><a href="faq.html">Питання</a></nav>
     <a class="lang" href="../en/how-it-works.html" hreflang="en" lang="en"><span class="lg-f">English</span><span class="lg-s" aria-hidden="true">EN</span></a>
-    <!--WL:header--><a class="wl-head" href="https://t.me/TvoyJorik_bot?start=site_header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="wl-f">Записатися в лист очікування</span><span class="wl-m" aria-hidden="true">В лист очікування</span><span class="wl-s" aria-hidden="true">В лист</span></a><!--/WL:header-->
   </header>
-</div>
+</div></div>
 
 <main id="main">
+<!--PG-CRUMB--><nav class="wrap crumbs" aria-label="Ви тут"><a href="index.html"><span aria-hidden="true">←</span> Головна</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Як це працює</span></nav><!--/PG-CRUMB-->
   <div class="wrap how-hero">
     <span class="eyebrow">Один день власниці</span>
     <h1>Як це працює</h1>
@@ -69,7 +63,31 @@
       <p class="pers-note rv">Усе це — з того, що ви розповісте й підключите. Змінилось — скажіть йому, і він врахує.</p>
     </div>
   </section>
-  <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28c60-18 120-18 180 0s120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0v28H0z" fill="currentColor"/></svg>
+<!--PG-TONE-->
+  <section class="tone-sec" aria-labelledby="tone-h">
+    <div class="wrap tone">
+      <div class="tone-txt">
+        <span class="eyebrow rv">Ваш тон</span>
+        <h2 id="tone-h" class="rv">Тон, на ваш смак</h2>
+        <p class="sub rv">Одна й та сама відповідь клієнтці — трьома голосами. Посуньте повзунок: тон обираєте ви, помічник його тримає.</p>
+        <div class="tone-ctl rv">
+          <label for="tone-r">Тон відповіді</label>
+          <input id="tone-r" class="tone-r" type="range" min="0" max="2" step="1" value="1" list="tone-ticks" aria-valuetext="теплий">
+          <datalist id="tone-ticks"><option value="0"></option><option value="1"></option><option value="2"></option></datalist>
+          <span class="tone-ends" aria-hidden="true"><span>діловий</span><span>по-одеськи</span></span>
+        </div>
+      </div>
+      <figure class="phone tone-ph rv" aria-label="Тон відповіді">
+        <div class="chat-head"><span class="dm-ava" aria-hidden="true">L</span><div><b>Клієнтка в директі</b></div><span class="ex">приклад</span></div>
+        <ol>
+          <li><div class="msg dmb"><p>А можна дешевше?</p></div></li>
+          <li><div class="msg dmr tone-out" aria-live="polite"><p class="tone-a" data-tone="0" hidden><span class="tone-n">діловий</span>Добрий день! Ціна на цю сукню — 2&nbsp;400&nbsp;₴. Можу підказати схожі моделі дешевше або написати вам, коли буде знижка.</p><p class="tone-a" data-tone="1"><span class="tone-n">теплий</span>Ой, розумію! Ця сукня коштує 2&nbsp;400&nbsp;₴ — і вона того варта. Показати схожі трохи дешевше? 🙂</p><p class="tone-a" data-tone="2" hidden><span class="tone-n">по-одеськи</span>Мадам, дешевше — тільки на Привозі, але там нема вашого розміру. 2&nbsp;400&nbsp;₴ — і ви королева Дерибасівської. Показати щось скромніше за ціною?</p></div></li>
+        </ol>
+        <figcaption class="mini-cap">Приклад: магазин, ціна й відповіді вигадані. Знижку помічник дає лише після вашого «Так».</figcaption>
+      </figure>
+    </div>
+  </section>
+<!--/PG-TONE-->  <svg class="wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 28c60-18 120-18 180 0s120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0 120-18 180 0 120 18 180 0v28H0z" fill="currentColor"/></svg>
   <div class="day">
     <div class="wrap">
       
@@ -135,7 +153,32 @@
   </section>
   <!--MAIL-BA-END-->
 
-<!--P2-TEAM-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
+<!--PG-INV-->
+  <section class="shell sec inv-sec" aria-labelledby="inv-h">
+    <div class="wrap">
+      <!--P2-INV-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
+      <div class="inv" data-play>
+        <div class="inv-txt rv">
+          <span class="eyebrow">Склад</span>
+          <h3 id="inv-h">Фото накладної → склад</h3>
+          <p>Надішліть фото накладної — помічник прочитає позиції і додасть їх на склад. Але тільки після вашого «Так»: зміни залишків — лише з підтвердженням.</p>
+        </div>
+        <div class="rv">
+          <div class="ctl-row"><button type="button" class="chat-ctl" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Показати ще раз</button></div>
+          <div class="phone" role="group" aria-label="Фото накладної → склад — Приклад · Telegram">
+            <div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b>Твой Жорик</b></div><span class="ex">приклад</span></div>
+            <ol>
+              <li class="pl me-side" data-s="1" data-w="500"><div class="msg me read"><span class="from">Дарина</span><span class="sr">Фото:</span><svg class="thumb" viewBox="0 0 120 84" aria-hidden="true"><rect x="1" y="1" width="118" height="82" rx="8" fill="#fff" stroke="#123c4a" stroke-width="2"/><rect x="10" y="10" width="44" height="7" rx="2" fill="#123c4a"/><rect x="74" y="10" width="36" height="7" rx="2" fill="#f0a23b"/><path d="M10 28h100M10 38h100M10 48h100M10 58h100M10 68h100" stroke="#c9d6d2" stroke-width="2"/><path d="M10 28h60M10 38h52M10 48h64M10 58h48" stroke="#2b5a68" stroke-width="2.4"/><path d="M92 74h18" stroke="#123c4a" stroke-width="3"/></svg><p>Накладна від постачальника квітів</p><span class="meta" aria-hidden="true"><time>11:20</time></span></div></li>
+              <li class="pl" data-s="2" data-w="600" data-ty="1500"><div class="msg zh"><span class="sr">Помічник: </span><p class="t"><b>+9 позицій</b> із накладної: троянди — 3 сорти, тюльпани — 4 кольори, евкаліпт і рускус. Разом 340 стебел. Підтвердити?</p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span class="tp pk" data-s="3" data-w="1400">Так</span><span>Змінити</span></span><span class="sr">Власниця натиснула «Так».</span><span class="meta" aria-hidden="true"><time>11:20</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li>
+              <li class="pl" data-s="4" data-w="500" data-ty="1200"><div class="msg zh"><span class="sr">Помічник: </span><p class="t">Додав на склад: +9 позицій, 340 стебел. Залишки оновлено — троянди знову можна продавати.</p><span class="meta" aria-hidden="true"><time>11:21</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol>
+          </div>
+        </div>
+      </div>
+      <!--P2-INV-END-->
+    </div>
+  </section>
+<!--/PG-INV-->
+  <!--P2-TEAM-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
   <section class="team-sec" aria-labelledby="team-h">
     <div class="wrap">
       <span class="eyebrow rv">Команда</span>
@@ -175,22 +218,9 @@
           </div></div>
       </div>
       <p class="team-cap">Приклад: салон краси, імена, задачі й час вигадані. Підказки щодо митниці — довідка, не юридична консультація: точні вимоги — у перевізника чи митного брокера.</p>
-      <!--WL:team--><div class="wl wl-mid"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_team"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Записатися в лист очікування</a><p class="wl-note">Зараз іде закритий пілот — запишіться, і ми напишемо, щойно з’явиться місце.</p></div><!--/WL:team-->
     </div>
   </section>
   <!--P2-TEAM-END-->
-  <!--MO-TR-BEGIN: собирается C:/Zhorik/tools/motion_site.py, руками не править-->
-  <section class="tr-sec" aria-labelledby="tr-h">
-    <div class="wrap">
-      <span class="eyebrow rv">Переклад</span>
-      <h2 id="tr-h" class="rv">Пишете своєю мовою — команда читає своєю</h2>
-      <p class="sub rv">Власниця пише англійською — склад читає українською. Продавчиня з Варшави пише польською — власниця читає українською. Помічник перекладає в обидва боки, голосові теж.</p>
-      <div class="ctl-row"><button type="button" class="chat-ctl" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Показати ще раз</button></div>
-      <div class="tr" data-play data-tr data-r="1"><div class="tr-col tr-l"><span class="phone-lab tr-lab" aria-hidden="true"><span class="r1">Власниця · Емма · пише англійською</span><span class="r2">Власниця · Ірина · читає українською</span></span><div class="phone" role="group" aria-label="Телефон власниці"><div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b>Твой Жорик</b></div><span class="ex">приклад</span></div><div class="tr-rounds"><ol class="r1" aria-label="Приклад 1 · англійська ↔ українська"><li class="tr-rd" aria-hidden="true">Приклад 1 · англійська ↔ українська</li><li class="pl me-side" data-s="1" data-w="600"><div class="msg me read"><span class="from">Emma</span><p lang="en">Pack 3 black dresses M for Warsaw today</p><span class="meta" aria-hidden="true"><time>10:02</time></span></div></li><li class="pl" data-s="6" data-w="1000" data-scr="Запакую до 16:00. Тільки скотч закінчується — треба докупити."><div class="msg zh"><span class="sr">Помічник: </span><p class="t" lang="en">I’ll pack them by 4 pm. We’re running out of tape, though — need to buy more.</p><span class="trf">Оля, голосове · переклад з української</span><span class="meta" aria-hidden="true"><time>10:05</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol><ol class="r2" aria-label="Приклад 2 · польська ↔ українська"><li class="tr-rd" aria-hidden="true">Приклад 2 · польська ↔ українська</li><li class="pl" data-s="10" data-w="1000" data-scr="Klientka pyta, czy będzie czarna sukienka w rozmiarze S."><div class="msg zh"><span class="sr">Помічник: </span><p class="t" lang="uk">Клієнтка питає, чи буде чорна сукня в розмірі S.</p><span class="trf">Магда · переклад з польської</span><span class="meta" aria-hidden="true"><time>15:40</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li><li class="pl me-side" data-s="11" data-w="1500"><div class="msg me read"><span class="from">Ірина</span><p lang="uk">Так, у пʼятницю привеземо 5 штук.</p><span class="meta" aria-hidden="true"><time>15:41</time></span></div></li></ol></div></div></div><div class="tr-mid" aria-hidden="true"><span class="tr-chip">Жорик перекладає…</span></div><div class="tr-col tr-r"><span class="phone-lab tr-lab" aria-hidden="true"><span class="r1">Склад, Одеса · Оля · читає українською</span><span class="r2">Магазин у Варшаві · Магда · пише польською</span></span><div class="phone" role="group" aria-label="Телефон сотрудниці"><div class="chat-head"><svg aria-hidden="true"><use href="#mark"/></svg><div><b>Твой Жорик</b></div><span class="ex">приклад</span></div><div class="tr-rounds"><ol class="r1" aria-label="Приклад 1 · англійська ↔ українська"><li class="tr-rd" aria-hidden="true">Приклад 1 · англійська ↔ українська</li><li class="pl" data-s="3" data-w="1000" data-scr="Pack 3 black dresses M for Warsaw today"><div class="msg zh"><span class="sr">Помічник: </span><p class="t" lang="uk">Запакуй 3 чорні сукні M на Варшаву сьогодні</p><span class="trf">переклад з англійської</span><span class="meta" aria-hidden="true"><time>10:02</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li><li class="pl me-side" data-s="4" data-w="1500"><div class="msg me read"><span class="from">Оля</span><span class="sr">Голосове повідомлення, 0:05:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:18px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:20px;--n:5"></span><span style="height:9px;--n:6"></span><span style="height:16px;--n:7"></span><span style="height:22px;--n:8"></span><span style="height:11px;--n:9"></span><span style="height:17px;--n:10"></span><span style="height:8px;--n:11"></span><span style="height:14px;--n:12"></span><span style="height:19px;--n:13"></span><span style="height:10px;--n:14"></span><span style="height:13px;--n:15"></span></i><small>0:05</small></span><span class="tx" lang="uk">«Запакую до 16:00. Тільки скотч закінчується — треба докупити.»</span><span class="meta" aria-hidden="true"><time>10:05</time></span></div></li></ol><ol class="r2" aria-label="Приклад 2 · польська ↔ українська"><li class="tr-rd" aria-hidden="true">Приклад 2 · польська ↔ українська</li><li class="pl me-side" data-s="8" data-w="800"><div class="msg me read"><span class="from">Magda</span><p lang="pl">Klientka pyta, czy będzie czarna sukienka w rozmiarze S.</p><span class="meta" aria-hidden="true"><time>15:40</time></span></div></li><li class="pl" data-s="13" data-w="1000" data-scr="Так, у пʼятницю привеземо 5 штук."><div class="msg zh"><span class="sr">Помічник: </span><p class="t" lang="pl">Tak, w piątek przywieziemy 5 sztuk.</p><span class="trf">Ірина · переклад з української</span><span class="meta" aria-hidden="true"><time>15:41</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li></ol></div></div></div><i class="trx" data-dir="lr" data-s="2" data-w="500"></i><i class="trx" data-dir="rl" data-s="5" data-w="2600"></i><i class="rd" data-round="2" data-s="7" data-w="2800"></i><i class="trx" data-dir="rl" data-s="9" data-w="500"></i><i class="trx" data-dir="lr" data-s="12" data-w="500"></i><p class="pl tr-joke" data-s="14" data-w="1400"><span><svg aria-hidden="true"><use href="#mark"/></svg><span><b>Жорик</b>Перекладаю з англійської, польської і навіть з «та зроблю я» на «вже зроблено».</span></span></p></div>
-      <p class="team-cap">Приклад: імена, товари й розмови вигадані, щоб показати формат. Помічник перекладає повідомлення й голосові між вами і командою.</p>
-    </div>
-  </section>
-  <!--MO-TR-END-->
 
 <!--P2-DAY-BEGIN: собирается C:/Zhorik/tools/pack2.py, руками не править-->
   <section class="dl" data-day aria-labelledby="dl-h">
@@ -214,11 +244,39 @@
         </ol>
       </div>
       <p class="dl-cap">Приклад: студія йоги, імена, листи й цифри вигадані, щоб показати формат.</p>
-      <!--WL:day--><div class="wl wl-mid wl-day"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_day"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Записатися в лист очікування</a><p class="wl-note">Зараз іде закритий пілот — запишіться, і ми напишемо, щойно з’явиться місце.</p></div><!--/WL:day-->
     </div>
   </section>
-  <!--P2-DAY-END-->
+  <!--P2-DAY-END--><!--PG-CHECK-->
+  <section class="chk-sec" aria-label="Чек дня · приклад">
+    <div class="wrap">
+      <figure class="chk rv" data-chk>
+        <div class="chk-paper">
+          <p class="chk-h"><svg aria-hidden="true"><use href="#mark"/></svg><b>ЧЕК ДНЯ</b><small>Студія йоги · день з помічником</small></p>
+          <ul><li style="--i:0"><span>Ранкова зведка</span><i aria-hidden="true"></i><b>1</b></li><li style="--i:1"><span>Відповідей у директі</span><i aria-hidden="true"></i><b>4</b></li><li style="--i:2"><span>Листів розібрано</span><i aria-hidden="true"></i><b>1</b></li><li style="--i:3"><span>Перекладів</span><i aria-hidden="true"></i><b>1</b></li><li style="--i:4"><span>Нагадувань на завтра</span><i aria-hidden="true"></i><b>2</b></li></ul>
+          <p class="chk-tot" style="--i:5"><b>РАЗОМ</b><span>рутина — його, рішення — ваші</span></p>
+          <p class="chk-bar" aria-hidden="true"></p>
+          <figcaption class="chk-foot">Чек не фіскальний — це приклад. Цифри вигадані, як і студія.</figcaption>
+          <span class="chk-stamp" aria-hidden="true">ПРИКЛАД</span>
+        </div>
+      </figure>
+    </div>
+  </section>
+<!--/PG-CHECK-->
 
+<!--PG-STEPS-->
+  <section class="sec pg-steps" aria-labelledby="steps-h">
+    <div class="wrap">
+      <span class="eyebrow rv">Як почати</span>
+      <h2 id="steps-h" class="rv">Три кроки, і на зв’язку</h2>
+      <p class="sub rv">Три зупинки — і помічник на зв'язку.</p>
+      <ol class="line">
+        <li class="rv" style="--d:0"><p>Ви відкриваєте чат із помічником у Telegram і приймаєте <a href="terms.html">Умови використання</a> та <a href="privacy.html">Політику конфіденційності</a>.</p></li>
+        <li class="rv" style="--d:1"><p>Підключаєте потрібні сервіси — Google (Ads, Analytics, Search Console, Merchant Center, Business Profile), Meta (Instagram, сторінки Facebook, повідомлення в Instagram Direct і Messenger, реклама), рекламу TikTok — кожен через його офіційний вхід. Будь-який можна відключити будь-коли.</p></li>
+        <li class="rv" style="--d:2"><p>Ви вирішуєте, що помічник може робити сам; усе, що стосується грошей, — лише з вашим підтвердженням, крім бюджетів реклами Meta і TikTok у межах затвердженого конверта (див. <a href="terms.html">Умови використання</a>, розділ 4).</p></li>
+      </ol>
+    </div>
+  </section>
+<!--/PG-STEPS-->
   <section class="sec" aria-labelledby="dec-h">
     <div class="wrap">
       <span class="eyebrow rv">Хто що вирішує</span>
@@ -229,27 +287,22 @@
         <li class="rv" style="--d:2"><small>Крок 3</small><b>Дія</b><p>Публікація, витрата чи запуск — лише після вашого «Так».</p></li>
       </ol>
       <p class="decide-note rv">Гроші й публікації — тільки після вашого «Так»: окремо або в межах бюджету й контент-плану, які ви вже затвердили. Деталі — в <a href="terms.html">Умовах використання</a>.</p>
-      <div class="actions rv" style="margin-top:36px">
-        <a class="quiet" href="index.html">На головну</a>
-      </div>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="site-foot">
   <div class="wrap">
-    <!--WL:footer--><div class="wl wl-foot"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_footer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Записатися в лист очікування</a><p class="wl-note">Зараз іде закритий пілот, у листі очікування — 500 місць. Запишіться, і ми напишемо, щойно з’явиться місце.</p></div><!--/WL:footer-->
-    <nav aria-label="Сторінки сайту">
-      <a href="index.html">Головна</a>
-      <a href="how-it-works.html" aria-current="page">Як це працює</a>
-      <a href="skills.html">Бібліотека Жорика</a>
-      <a href="privacy.html">Політика конфіденційності</a>
-      <a href="terms.html">Умови використання</a>
-      <a href="data-deletion.html">Видалити свої дані</a>
-      <a href="contact.html">Контакти</a>
-      <a href="../en/how-it-works.html" hreflang="en" lang="en">English</a>
-    </nav>
-    <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <div class="ft-cols">
+      <nav aria-label="Сайт"><h2 class="ft-h">Сайт</h2><a href="index.html">Головна</a><a href="how-it-works.html" aria-current="page">Як це працює</a><a href="skills.html">Бібліотека Жорика</a><a href="website.html">Сайт для бізнесу</a><a href="data.html">Ваші дані</a><a href="faq.html">Часті питання</a><a href="about.html">Хто ми</a></nav>
+      <nav aria-label="Документи"><h2 class="ft-h">Документи</h2><a href="privacy.html">Політика конфіденційності</a><a href="terms.html">Умови використання</a><a href="data-deletion.html">Видалити свої дані</a><a href="contact.html">Контакти</a></nav>
+      <div class="ft-side">
+        <p class="odclock" data-odclock="0|Власник спить — Жорик чергує.~6|Кава ще гаряча, а ранкова зведка вже готова.~10|На Привозі торгуються, а Жорик рахує залишки.~14|Обід — святе. Жорик відповідає в директі, поки ви їсте.~18|Вечір на Дерибасівській, а нагадування на завтра вже в списку.~22|Пора спати. Жорик допише нагадування на ранок." data-city="Одеса"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path class="oc-h" d="M12 12V7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="oc-m" d="M12 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="oc-tx">Одеса. Ми звідси — і Жорик теж.</span></p>
+        <p>Пошта для питань і даних: <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a></p>
+        <p><a class="ft-lang" href="../en/how-it-works.html" hreflang="en" lang="en">English</a></p>
+      </div>
+    </div>
+    <p class="ft-copy">© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
     <p class="sdk">Працює на Claude Agent SDK через комерційний API Anthropic</p>
   </div>
 </footer>

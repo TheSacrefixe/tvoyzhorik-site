@@ -17,6 +17,7 @@
 <script>document.documentElement.classList.add("js")</script>
 <script src="../assets/motion.js" defer></script>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/pages.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -32,21 +33,13 @@
   </defs>
 </svg>
 
-<div class="wrap">
-  <header class="top top-doc">
+<div class="hdr"><div class="wrap">
+  <header class="top">
     <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
-    <nav aria-label="Сторінки сайту"><ul class="pages">
-      <li><a href="how-it-works.html">Як це працює</a></li>
-      <li><a href="skills.html">Бібліотека Жорика</a></li>
-      <li><a href="privacy.html" aria-current="page">Політика конфіденційності</a></li>
-      <li><a href="terms.html">Умови використання</a></li>
-      <li><a href="data-deletion.html">Видалити свої дані</a></li>
-      <li><a href="contact.html">Контакти</a></li>
-    </ul></nav>
+    <nav class="topnav" aria-label="Меню"><a href="how-it-works.html">Як це працює</a><a href="skills.html">Бібліотека</a><a href="website.html">Сайт</a><a href="data.html">Ваші дані</a><a href="faq.html">Питання</a></nav>
     <a class="lang" href="../en/privacy.html" hreflang="en" lang="en"><span class="lg-f">English</span><span class="lg-s" aria-hidden="true">EN</span></a>
-    <!--WL:header--><a class="wl-head" href="https://t.me/TvoyJorik_bot?start=site_header"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span class="wl-f">Записатися в лист очікування</span><span class="wl-m" aria-hidden="true">В лист очікування</span><span class="wl-s" aria-hidden="true">В лист</span></a><!--/WL:header-->
   </header>
-</div>
+</div></div>
 
 <main id="main">
   <div class="wrap doc-head"><h1>Політика конфіденційності — Твой Жорик</h1></div>
@@ -255,20 +248,18 @@ E-mail (дані, підтримка, безпека): hello@tvoyzhorik.com</p>
   </div>
 </main>
 
-<footer class="doc-foot">
+<footer class="site-foot">
   <div class="wrap">
-    <!--WL:footer--><div class="wl wl-foot"><a class="btn wl-btn" href="https://t.me/TvoyJorik_bot?start=site_footer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 20.5 4l-3 16-5.2-4.1L9.5 19l-.6-5.3L17 7.6 7.6 12.9 3 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Записатися в лист очікування</a><p class="wl-note">Зараз іде закритий пілот, у листі очікування — 500 місць. Запишіться, і ми напишемо, щойно з’явиться місце.</p></div><!--/WL:footer-->
-    <nav aria-label="Сторінки сайту">
-      <a href="index.html">Головна</a>
-      <a href="how-it-works.html">Як це працює</a>
-      <a href="skills.html">Бібліотека Жорика</a>
-      <a href="privacy.html" aria-current="page">Політика конфіденційності</a>
-      <a href="terms.html">Умови використання</a>
-      <a href="data-deletion.html">Видалити свої дані</a>
-      <a href="contact.html">Контакти</a>
-      <a href="../en/privacy.html" hreflang="en" lang="en">English</a>
-    </nav>
-    <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <div class="ft-cols">
+      <nav aria-label="Сайт"><h2 class="ft-h">Сайт</h2><a href="index.html">Головна</a><a href="how-it-works.html">Як це працює</a><a href="skills.html">Бібліотека Жорика</a><a href="website.html">Сайт для бізнесу</a><a href="data.html">Ваші дані</a><a href="faq.html">Часті питання</a><a href="about.html">Хто ми</a></nav>
+      <nav aria-label="Документи"><h2 class="ft-h">Документи</h2><a href="privacy.html" aria-current="page">Політика конфіденційності</a><a href="terms.html">Умови використання</a><a href="data-deletion.html">Видалити свої дані</a><a href="contact.html">Контакти</a></nav>
+      <div class="ft-side">
+        <p class="odclock" data-odclock="0|Власник спить — Жорик чергує.~6|Кава ще гаряча, а ранкова зведка вже готова.~10|На Привозі торгуються, а Жорик рахує залишки.~14|Обід — святе. Жорик відповідає в директі, поки ви їсте.~18|Вечір на Дерибасівській, а нагадування на завтра вже в списку.~22|Пора спати. Жорик допише нагадування на ранок." data-city="Одеса"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path class="oc-h" d="M12 12V7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="oc-m" d="M12 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="oc-tx">Одеса. Ми звідси — і Жорик теж.</span></p>
+        <p>Пошта для питань і даних: <a href="mailto:hello@tvoyzhorik.com">hello@tvoyzhorik.com</a></p>
+        <p><a class="ft-lang" href="../en/privacy.html" hreflang="en" lang="en">English</a></p>
+      </div>
+    </div>
+    <p class="ft-copy">© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
     <p class="sdk">Працює на Claude Agent SDK через комерційний API Anthropic</p>
   </div>
 </footer>
