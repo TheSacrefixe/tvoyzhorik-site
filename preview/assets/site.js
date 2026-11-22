@@ -103,29 +103,3 @@
     d.addEventListener('click', function (e) { if (!bub.hidden && !box.contains(e.target)) hide(); });
   }
 })();
-
-/*THEME-BEGIN*/
-/* 4) тёмная тема «Одеська ніч» (Олег MSG 10104, п. 7): кнопка в шапке (её вписывает C:/Zhorik/tools/pack2.py); выбор хранится
-   только в этом браузере (localStorage «tz-theme»), без cookies; без выбора — как в системе (prefers-color-scheme).
-   Тема ставится строкой в <head> до отрисовки — без мигания. */
-(function () {
-  'use strict';
-  var h = document.documentElement, b = document.querySelector('.theme-btn');
-  if (!b || !window.matchMedia) return;
-  var mq = window.matchMedia('(prefers-color-scheme: dark)'), meta = document.querySelector('meta[name="theme-color"]');
-  var cur = function () { return h.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light'); };
-  var paint = function () {
-    var dk = cur() === 'dark';
-    b.setAttribute('aria-pressed', dk ? 'true' : 'false');
-    if (meta) meta.setAttribute('content', dk ? '#0f1e28' : '#e3eef0');
-  };
-  b.addEventListener('click', function () {
-    var n = cur() === 'dark' ? 'light' : 'dark';
-    h.setAttribute('data-theme', n);
-    try { localStorage.setItem('tz-theme', n); } catch (e) {}
-    paint();
-  });
-  if (mq.addEventListener) mq.addEventListener('change', paint); else if (mq.addListener) mq.addListener(paint);
-  paint();
-})();
-/*THEME-END*/

@@ -1,6 +1,5 @@
 /* Твой Жорик — дизайн А «Одеський двір» (Олег MSG 10024–10025). Общий файл: главная + юр. страницы. Шрифты Kurale + Commissioner (OFL), файлы в fonts/, без запросов к Google. */
 
-
 /* cyrillic */
 @font-face {
   font-family: 'Commissioner';
@@ -268,9 +267,6 @@ html:not(.js) .dm-bar .chat-ctls{display:none}
 .js-chat .chips span.pk:not(.tap){background:transparent;color:inherit;border-color:var(--sea)}
 .js-chat .chips span.pk:not(.tap):first-child{background:var(--apricot);color:#123c4a}
 .js-chat .chips span.pk:not(.tap)::before{content:none}
-html[data-theme="dark"] .chips span.pk{color:#0f1e28}
-html[data-theme="dark"] .js-chat .chips span.pk:not(.tap){color:#123c4a}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .chips span.pk{color:#0f1e28}html:not([data-theme="light"]) .js-chat .chips span.pk:not(.tap){color:#123c4a}}
 /*CHAT-END*/
 
 /* волна */
@@ -518,21 +514,13 @@ footer .sdk{margin-top:6px;font-size:.88rem}
    без JS и при reduced-motion всё видно сразу. Общая кривая движения сайта — cubic-bezier(.2,.7,.2,1). */
 
 /* ---------- переключатель темы ---------- */
-.theme-btn{flex:none;width:44px;height:44px;border:2px solid var(--sea);border-radius:50%;background:transparent;color:var(--sea);cursor:pointer;display:none;place-items:center;padding:0}
-.js .theme-btn{display:grid}
-.theme-btn svg{width:20px;height:20px;grid-area:1/1;transition:opacity .3s,transform .5s cubic-bezier(.2,.7,.2,1)}
-.theme-btn .i-sun{opacity:0;transform:rotate(-90deg) scale(.6)}
-.theme-btn[aria-pressed="true"] .i-moon{opacity:0;transform:rotate(90deg) scale(.6)}
-.theme-btn[aria-pressed="true"] .i-sun{opacity:1;transform:none}
-.theme-btn:hover{background:var(--shell)}
-.top>.lang+.theme-btn{margin-left:4px}
 /* шапка юр. страниц и «Як це працює»: меню — всегда второй строкой (как на телефоне). Раньше на uk@1440 меню не влезало
    в строку, и после вставки кнопки шутки (site.js) «English» перескакивал вниз — сдвиг вёрстки до 0,08 */
 .top-doc>nav{order:3;flex-basis:100%}
 .top-doc>.lang{margin-left:auto}
 /* главная на телефоне: кнопка и «Як це працює» — столбиком всегда (en@390 при подмене шрифта ссылка прыгала между строками, CLS до 0,3) */
 /* телефон: кнопка темы — во второй строке шапки рядом с меню; в первой строке «English/Українською» прижат вправо и не попадает под кнопку шутки */
-@media (max-width:560px){.top .theme-btn{order:4}.top .topnav,.top-doc>nav{flex:1 1 calc(100% - 64px);min-width:0}.top>.lang+.theme-btn{margin-left:0}}
+@media (max-width:560px){.top .topnav,.top-doc>nav{flex:1 1 calc(100% - 64px);min-width:0}}
 /* «Як це працює»: блоки «з помічником» выезжают справа — до появления не дают прокрутки вбок (было +8 px на 390) */
 .day .wrap{overflow-x:clip}
 @media (max-width:420px){.hero .actions{flex-direction:column;align-items:flex-start}}
@@ -685,7 +673,7 @@ html:not(.js) .try-qs{display:none}
   .dl-clock{margin:0 -10px}
 }
 @media (prefers-reduced-motion:reduce){
-  .dl-sun,.dl-night,.dl-bar i,.theme-btn svg{transition:none}
+  .dl-sun,.dl-night,.dl-bar i{transition:none}
 }
 /* «налаштовується персонально» (Олег MSG 10156, site-examples-2211): строка под подзаголовком главной и блок «Крок 0» на «Як це працює» */
 .pers-line{max-width:36ch;margin:-18px 0 30px;font-weight:600;color:var(--sea-2)}
@@ -700,113 +688,8 @@ html:not(.js) .try-qs{display:none}
 @media (max-width:520px){.pers{grid-template-columns:1fr;gap:10px}}
 /*PACK2-END*/
 
-/*THEME-BEGIN*/
-/* тёмная тема «Одеська ніч» (Олег MSG 10104, п. 7): кнопка в шапке, выбор — localStorage «tz-theme», по умолчанию — prefers-color-scheme. Собирается C:/Zhorik/tools/pack2.py, руками не править */
-html[data-theme="dark"]{--sky:#0f1e28;--sea:#e7eff1;--sea-2:#a9c1c7;--shell:#16293a;--leaf:#24452f;--acacia:#a5d394;--line:#2f4b61;color-scheme:dark;-webkit-tap-highlight-color:rgba(231,239,241,.15)}
-html[data-theme="dark"] .skip{color:#0f1e28}
-html[data-theme="dark"] .btn{color:#123c4a;box-shadow:0 3px 0 #000}
-html[data-theme="dark"] .btn:active{box-shadow:0 1px 0 #000}
-html[data-theme="dark"] .line li::before{color:#123c4a}
-html[data-theme="dark"] .who{background:#08141b;color:#e7eff1}
-html[data-theme="dark"] .who small{color:#a9c1c7}
-html[data-theme="dark"] .contact{color:#123c4a;border-color:#000;box-shadow:10px 10px 0 #2a4659}
-html[data-theme="dark"] .contact a{color:#123c4a}
-html[data-theme="dark"] .contact .btn{background:#123c4a;color:#fbf7ec;box-shadow:0 3px 0 #000}
-html[data-theme="dark"] .contact .btn:hover{background:#1c5263}
-html[data-theme="dark"] .rules li{border-bottom-color:#36536a}
-html[data-theme="dark"] .chat-win,html[data-theme="dark"] .phone{box-shadow:10px 10px 0 #2a4659}
-html[data-theme="dark"] .phone{box-shadow:6px 6px 0 #2a4659}
-html[data-theme="dark"] .team .t-o .phone,html[data-theme="dark"] .dm-win{box-shadow:10px 10px 0 #b3721f}
-html[data-theme="dark"] .chat-head{border-bottom-color:#2f4b61}
-html[data-theme="dark"] .msg.zh,html[data-theme="dark"] .typing,html[data-theme="dark"] .after,html[data-theme="dark"] .sec.shell .decide li,html[data-theme="dark"] .how-page .decide li,html[data-theme="dark"] .sec.shell .inv .msg.zh,html[data-theme="dark"] .dl-stop .msg.zh,html[data-theme="dark"] .dm-win{background:#1d3448}
-html[data-theme="dark"] .msg.zh,html[data-theme="dark"] .typing{border-color:#2f4b61}
-html[data-theme="dark"] .after{box-shadow:6px 6px 0 #2a4659}
-html[data-theme="dark"] .draft{background:#132433}
-html[data-theme="dark"] .draft.copy{background:#16302a}
-html[data-theme="dark"] .msg.dmb{background:#e7eff1;color:#0f1e28}
-html[data-theme="dark"] .msg.dmb .meta{color:#3b5966}
-html[data-theme="dark"] .msg.dmr{background:#16293a}
-html[data-theme="dark"] .dm .typing{background:#16293a}
-html[data-theme="dark"] .voice .pl{background:#f0a23b}
-html[data-theme="dark"] .voice .pl path{fill:#123c4a}
-html[data-theme="dark"] .chips span:first-child,html[data-theme="dark"] .decide .yes,html[data-theme="dark"] .try-q.used:hover{color:#123c4a}
-html[data-theme="dark"] .chips.ok .tap{color:#0f1e28}
-html[data-theme="dark"] .chat-tabs button[aria-pressed="true"]{background:#e7eff1;color:#0f1e28}
-html[data-theme="dark"] .mode{background:#e7eff1;color:#0f1e28}
-html[data-theme="dark"] .dm-ava{background:#e7eff1;color:#0f1e28}
-html[data-theme="dark"] .slot,html[data-theme="dark"] .slot:last-of-type,html[data-theme="dark"] .prose h2,html[data-theme="dark"] .toc a{border-color:#2f4b61}
-html[data-theme="dark"] .tw{background:#16293a}
-html[data-theme="dark"] .tw th{background:#0f1e28}
-html[data-theme="dark"] .tw td,html[data-theme="dark"] .tw th{border-color:#2f4b61}
-html[data-theme="dark"] .pick a{box-shadow:8px 8px 0 #2a4659}
-html[data-theme="dark"] .pick a:hover{background:#1d3448}
-html[data-theme="dark"] .joke-btn:hover,html[data-theme="dark"] .joke-btn[aria-expanded="true"]{background:rgba(231,239,241,.1)}
-html[data-theme="dark"] .joke{border-color:#2f4b61;box-shadow:0 8px 24px rgba(0,0,0,.45)}
-html[data-theme="dark"] .dl-clock{box-shadow:8px 8px 0 #2a4659}
-html[data-theme="dark"] .dl-sky{background:#22465a}
-html[data-theme="dark"] .stt i.ok{color:#0f1e28}
-html[data-theme="dark"] .theme-btn:hover{background:#1d3448}
-@media (max-width:900px){
-html[data-theme="dark"] .chat-win,html[data-theme="dark"] .contact{box-shadow:6px 6px 0 #2a4659}
-html[data-theme="dark"] .chat-win.dm-win,html[data-theme="dark"] .team .t-o .phone{box-shadow:6px 6px 0 #b3721f}
-html[data-theme="dark"] .after{box-shadow:4px 4px 0 #2a4659}
-html[data-theme="dark"] .dl-clock{box-shadow:0 4px 0 #2a4659}
-}
-@media (prefers-color-scheme:dark){
-html:not([data-theme="light"]){--sky:#0f1e28;--sea:#e7eff1;--sea-2:#a9c1c7;--shell:#16293a;--leaf:#24452f;--acacia:#a5d394;--line:#2f4b61;color-scheme:dark;-webkit-tap-highlight-color:rgba(231,239,241,.15)}
-html:not([data-theme="light"]) .skip{color:#0f1e28}
-html:not([data-theme="light"]) .btn{color:#123c4a;box-shadow:0 3px 0 #000}
-html:not([data-theme="light"]) .btn:active{box-shadow:0 1px 0 #000}
-html:not([data-theme="light"]) .line li::before{color:#123c4a}
-html:not([data-theme="light"]) .who{background:#08141b;color:#e7eff1}
-html:not([data-theme="light"]) .who small{color:#a9c1c7}
-html:not([data-theme="light"]) .contact{color:#123c4a;border-color:#000;box-shadow:10px 10px 0 #2a4659}
-html:not([data-theme="light"]) .contact a{color:#123c4a}
-html:not([data-theme="light"]) .contact .btn{background:#123c4a;color:#fbf7ec;box-shadow:0 3px 0 #000}
-html:not([data-theme="light"]) .contact .btn:hover{background:#1c5263}
-html:not([data-theme="light"]) .rules li{border-bottom-color:#36536a}
-html:not([data-theme="light"]) .chat-win,html:not([data-theme="light"]) .phone{box-shadow:10px 10px 0 #2a4659}
-html:not([data-theme="light"]) .phone{box-shadow:6px 6px 0 #2a4659}
-html:not([data-theme="light"]) .team .t-o .phone,html:not([data-theme="light"]) .dm-win{box-shadow:10px 10px 0 #b3721f}
-html:not([data-theme="light"]) .chat-head{border-bottom-color:#2f4b61}
-html:not([data-theme="light"]) .msg.zh,html:not([data-theme="light"]) .typing,html:not([data-theme="light"]) .after,html:not([data-theme="light"]) .sec.shell .decide li,html:not([data-theme="light"]) .how-page .decide li,html:not([data-theme="light"]) .sec.shell .inv .msg.zh,html:not([data-theme="light"]) .dl-stop .msg.zh,html:not([data-theme="light"]) .dm-win{background:#1d3448}
-html:not([data-theme="light"]) .msg.zh,html:not([data-theme="light"]) .typing{border-color:#2f4b61}
-html:not([data-theme="light"]) .after{box-shadow:6px 6px 0 #2a4659}
-html:not([data-theme="light"]) .draft{background:#132433}
-html:not([data-theme="light"]) .draft.copy{background:#16302a}
-html:not([data-theme="light"]) .msg.dmb{background:#e7eff1;color:#0f1e28}
-html:not([data-theme="light"]) .msg.dmb .meta{color:#3b5966}
-html:not([data-theme="light"]) .msg.dmr{background:#16293a}
-html:not([data-theme="light"]) .dm .typing{background:#16293a}
-html:not([data-theme="light"]) .voice .pl{background:#f0a23b}
-html:not([data-theme="light"]) .voice .pl path{fill:#123c4a}
-html:not([data-theme="light"]) .chips span:first-child,html:not([data-theme="light"]) .decide .yes,html:not([data-theme="light"]) .try-q.used:hover{color:#123c4a}
-html:not([data-theme="light"]) .chips.ok .tap{color:#0f1e28}
-html:not([data-theme="light"]) .chat-tabs button[aria-pressed="true"]{background:#e7eff1;color:#0f1e28}
-html:not([data-theme="light"]) .mode{background:#e7eff1;color:#0f1e28}
-html:not([data-theme="light"]) .dm-ava{background:#e7eff1;color:#0f1e28}
-html:not([data-theme="light"]) .slot,html:not([data-theme="light"]) .slot:last-of-type,html:not([data-theme="light"]) .prose h2,html:not([data-theme="light"]) .toc a{border-color:#2f4b61}
-html:not([data-theme="light"]) .tw{background:#16293a}
-html:not([data-theme="light"]) .tw th{background:#0f1e28}
-html:not([data-theme="light"]) .tw td,html:not([data-theme="light"]) .tw th{border-color:#2f4b61}
-html:not([data-theme="light"]) .pick a{box-shadow:8px 8px 0 #2a4659}
-html:not([data-theme="light"]) .pick a:hover{background:#1d3448}
-html:not([data-theme="light"]) .joke-btn:hover,html:not([data-theme="light"]) .joke-btn[aria-expanded="true"]{background:rgba(231,239,241,.1)}
-html:not([data-theme="light"]) .joke{border-color:#2f4b61;box-shadow:0 8px 24px rgba(0,0,0,.45)}
-html:not([data-theme="light"]) .dl-clock{box-shadow:8px 8px 0 #2a4659}
-html:not([data-theme="light"]) .dl-sky{background:#22465a}
-html:not([data-theme="light"]) .stt i.ok{color:#0f1e28}
-html:not([data-theme="light"]) .theme-btn:hover{background:#1d3448}
-}
-@media (prefers-color-scheme:dark) and (max-width:900px){
-html:not([data-theme="light"]) .chat-win,html:not([data-theme="light"]) .contact{box-shadow:6px 6px 0 #2a4659}
-html:not([data-theme="light"]) .chat-win.dm-win,html:not([data-theme="light"]) .team .t-o .phone{box-shadow:6px 6px 0 #b3721f}
-html:not([data-theme="light"]) .after{box-shadow:4px 4px 0 #2a4659}
-html:not([data-theme="light"]) .dl-clock{box-shadow:0 4px 0 #2a4659}
-}
-/*THEME-END*/
 /*MAIL-BEGIN*/
-/* почта: блок «до/після» на «Як це працює» и тёмная тема карточек почты (mail_site.py) */
+/* почта: блок «до/після» на «Як це працює» (mail_site.py); только светлый — Олег MSG 10263 */
 .mba{padding:60px 0 12px}
 .mba-line{margin:6px 0 0;font-weight:600;font-size:1.08rem}
 .mba-ex{display:inline-block;vertical-align:2px;margin-left:6px;font:700 .7rem/1 var(--text);letter-spacing:.08em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:5px 9px}
@@ -822,12 +705,6 @@ html:not([data-theme="light"]) .dl-clock{box-shadow:0 4px 0 #2a4659}
 .mba-arr svg{display:block;width:48px;height:24px}
 .mba-cap{margin:18px 0 0;max-width:760px;font-size:.88rem;color:var(--sea-2)}
 @media (max-width:640px){.mba{padding-top:44px}.mba-row{grid-template-columns:1fr;gap:10px}.mba-arr{justify-self:center;transform:rotate(90deg)}}
-html[data-theme="dark"] .chat{--mb:#2f4b61;--mrow:#24405a;--mbg:#132433;--mhot:#33301f;--matt:#16293a}
-html[data-theme="dark"] .mba-card{box-shadow:4px 4px 0 #2a4659}
-@media (prefers-color-scheme:dark){
-html:not([data-theme="light"]) .chat{--mb:#2f4b61;--mrow:#24405a;--mbg:#132433;--mhot:#33301f;--matt:#16293a}
-html:not([data-theme="light"]) .mba-card{box-shadow:4px 4px 0 #2a4659}
-}
 /*MAIL-END*/
 /*LIB-BEGIN*/
 /* «Бібліотека Жорика» (skills.html) и блок «Сайт для вашого бізнесу» на главной (Олег MSG 10133–10148, 10195; site-library-2211).
@@ -1098,33 +975,6 @@ html:not(.js) .ph-wrap{display:none}
 .js .book.big .mk{right:12px;top:-12px;width:14px;height:34px}
 .js .book.big::after{content:"";position:absolute;left:50%;bottom:10px;width:46px;height:2px;margin-left:-23px;background:rgba(240,199,94,.9);box-shadow:0 5px 0 rgba(240,199,94,.55)}
 .js .book.big:hover,.js .book.big:focus-visible{transform:translateY(-12px)}
-/* тёмная тема «Одеська ніч» для библиотеки и блока «Сайт» (по кнопке и по системе) */
-html[data-theme="dark"] .lib-page{--wood:#6e4220;--wood-d:#45280f;--wood-l:#8a5a2b;--back:#2a2018;--back-d:#211912}
-html[data-theme="dark"] .case{box-shadow:inset 0 0 0 4px var(--wood-d),inset 0 22px 26px -12px rgba(0,0,0,.45),8px 8px 0 #2a4659}
-html[data-theme="dark"] .cab{box-shadow:inset 0 0 0 3px rgba(0,0,0,.25),6px 6px 0 #2a4659}
-html[data-theme="dark"] .drw-panel{box-shadow:inset 0 8px 14px rgba(0,0,0,.35),6px 6px 0 #2a4659}
-html[data-theme="dark"] .find input{box-shadow:4px 4px 0 #2a4659}
-html[data-theme="dark"] .ph{box-shadow:10px 10px 0 #2a4659}
-html[data-theme="dark"] .ph-log .ty{background:#1d3448;border-color:#2f4b61}
-html[data-theme="dark"] .ws-acc{background:linear-gradient(180deg,transparent 58%,rgba(240,162,59,.5) 58%)}
-html[data-theme="dark"] .wf{box-shadow:10px 10px 0 #2a4659}
-html[data-theme="dark"] .wf .wf-page{background:#f4efe2}
-html[data-theme="dark"] .legend .lg-ready,.legend .lg-tested{background:#a9c1c7}
-@media (max-width:900px){html[data-theme="dark"] .ph{box-shadow:0 -4px 0 #2a4659}}
-@media (prefers-color-scheme:dark){
-html:not([data-theme="light"]) .lib-page{--wood:#6e4220;--wood-d:#45280f;--wood-l:#8a5a2b;--back:#2a2018;--back-d:#211912}
-html:not([data-theme="light"]) .case{box-shadow:inset 0 0 0 4px var(--wood-d),inset 0 22px 26px -12px rgba(0,0,0,.45),8px 8px 0 #2a4659}
-html:not([data-theme="light"]) .cab{box-shadow:inset 0 0 0 3px rgba(0,0,0,.25),6px 6px 0 #2a4659}
-html:not([data-theme="light"]) .drw-panel{box-shadow:inset 0 8px 14px rgba(0,0,0,.35),6px 6px 0 #2a4659}
-html:not([data-theme="light"]) .find input{box-shadow:4px 4px 0 #2a4659}
-html:not([data-theme="light"]) .ph{box-shadow:10px 10px 0 #2a4659}
-html:not([data-theme="light"]) .ph-log .ty{background:#1d3448;border-color:#2f4b61}
-html:not([data-theme="light"]) .ws-acc{background:linear-gradient(180deg,transparent 58%,rgba(240,162,59,.5) 58%)}
-html:not([data-theme="light"]) .wf{box-shadow:10px 10px 0 #2a4659}
-html:not([data-theme="light"]) .wf .wf-page{background:#f4efe2}
-html:not([data-theme="light"]) .legend .lg-ready,.legend .lg-tested{background:#a9c1c7}
-}
-@media (prefers-color-scheme:dark) and (max-width:900px){html:not([data-theme="light"]) .ph{box-shadow:0 -4px 0 #2a4659}}
 /*LIB-END*/
 /*MOTION-BEGIN*/
 /* Единая система движения (Олег MSG 10083, 10112, 10179, 10200). Собирается C:/Zhorik/tools/motion_site.py, руками не править.
@@ -1134,7 +984,7 @@ body{overflow-x:clip}
 @media (prefers-reduced-motion:no-preference){
   html{scroll-behavior:smooth}
   .rv-go .rv{transition:opacity var(--t-3) ease,transform var(--t-3) var(--e-out);transition-delay:calc(var(--d,0)*90ms)}
-  .btn,.quiet,.chat-ctl,.chat-tabs button,.try-q,.theme-btn,.dcta,.wl-btn{transition:transform var(--t-1) var(--e-out),background-color var(--t-1),color var(--t-1)}
+  .btn,.quiet,.chat-ctl,.chat-tabs button,.try-q,.dcta,.wl-btn{transition:transform var(--t-1) var(--e-out),background-color var(--t-1),color var(--t-1)}
   .btn:hover,.wl-btn:hover{transform:translateY(-2px)}
   .btn:active,.wl-btn:active{transform:translateY(2px)}
   .chat-ctl:active,.chat-tabs button:active,.try-q:active{transform:scale(.96)}
@@ -1292,8 +1142,6 @@ html:not(.mo) .mo-wh{display:none}
 .mo-sky .s-night{background:linear-gradient(180deg,rgba(27,53,80,.24),rgba(27,53,80,.16))}
 .mo-day .dl-sun{transition:transform .25s linear}
 .mo-day .dl-night{transition:opacity .25s linear}
-html[data-theme="dark"] .mo-sky{opacity:.45}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .mo-sky{opacity:.45}}
 
 /* ---------- меню-прокрутка в шапке на телефоне: затухание справа, следующий пункт чуть виден ---------- */
 @media (max-width:560px){
@@ -1325,10 +1173,6 @@ html[data-theme="dark"] .mo-sky{opacity:.45}
   .dcta:hover{transform:translateY(-2px)}
 }
 @keyframes mo-call{0%,14%,100%{transform:none}4%{transform:translateX(6px)}8%{transform:none}11%{transform:translateX(4px)}}
-html[data-theme="dark"] .dcta:hover{background:#1c3347}
-html[data-theme="dark"] .dcta-col.z{background:#1d3a2a}
-html[data-theme="dark"] .dcta-go{color:#123c4a}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .dcta:hover{background:#1c3347}html:not([data-theme="light"]) .dcta-col.z{background:#1d3a2a}html:not([data-theme="light"]) .dcta-go{color:#123c4a}}
 @media (max-width:420px){.dcta{padding:14px;gap:12px}.dcta-col{font-size:.84rem;padding:8px 9px}}
 
 /* ---------- перевод «два телефона» ---------- */
@@ -1358,8 +1202,6 @@ html[data-theme="dark"] .dcta-go{color:#123c4a}
 .tr-joke>span{display:inline-flex;gap:10px;align-items:flex-start;max-width:560px;background:#fff;border:2px solid var(--sea);border-radius:18px 18px 18px 6px;padding:10px 14px;font-size:.98rem;box-shadow:4px 4px 0 var(--apricot)}
 .tr-joke svg{width:30px;height:30px;flex:none}
 .tr-joke b{display:block;font:700 .74rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--acacia)}
-html[data-theme="dark"] .tr-joke>span{background:#16293a}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .tr-joke>span{background:#16293a}}
 /* с движением: два круга переписки в одном месте окна (место под оба зарезервировано — без сдвига вёрстки) */
 @media (prefers-reduced-motion:no-preference){
   .js .tr-rounds>ol,.js .tr-lab>span{grid-area:1/1}
@@ -1400,14 +1242,10 @@ html:not(.js) .mini-top .chat-ctl{display:none}
 @media (min-width:1180px){.doc-grid.solo:has(.mini.side){grid-template-columns:minmax(0,840px)}.doc-grid.solo .mini.side{float:right;margin:0 0 20px 36px;width:380px}}
 /* заголовок юр. страниц: место под 2 строки — при подмене шрифта «Контакти — Твой Жорик» прыгал между 1 и 2 строками (CLS 0,13 на uk@1440) */
 @media (min-width:561px){.doc-head h1{min-height:2.16em;display:flex;align-items:flex-end}}
-html[data-theme="dark"] .mini .msg.zh,html[data-theme="dark"] .mini .msg.dmr{background:#16293a}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .mini .msg.zh,html:not([data-theme="light"]) .mini .msg.dmr{background:#16293a}}
 /*MOTION-END*/
 /*WL-BEGIN: собирается C:/Zhorik/tools/waitlist_site.py, руками не править*/
 /* Лист ожидания (Олег MSG 10240–10256): кнопка в приёмную @TvoyJorik_bot. Дышит только кнопка на hero; reduced-motion — без анимации. */
 :root{--wl-sh:var(--sea)}
-html[data-theme="dark"]{--wl-sh:#000}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]){--wl-sh:#000}}
 .wl-head{flex:none;position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;margin-left:4px;border-radius:999px;background:var(--apricot);color:#123c4a;font-weight:700;font-size:.92rem;line-height:1.1;text-decoration:none;white-space:nowrap;box-shadow:0 2px 0 var(--wl-sh)}
 .wl-head:hover{background:#f5b45a}
 .wl-head:active{transform:translateY(1px);box-shadow:0 1px 0 var(--wl-sh)}
@@ -1435,14 +1273,11 @@ footer .wl-foot{padding-top:44px}
 .plaque a.wl-pl{display:inline;min-height:0;margin:0;padding:0;border-radius:0;background:none;box-shadow:none;color:#123c4a;font-weight:700;line-height:1.35;text-decoration:underline;text-decoration-color:var(--apricot);text-decoration-thickness:3px;text-underline-offset:4px}
 .plaque a.wl-pl:hover{background:none;text-decoration-color:#123c4a}
 .plaque .wl-pl-w{display:inline-block;margin-top:6px;padding:6px 0}
-html[data-theme="dark"] .wl-badge{background:transparent}
-@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .wl-badge{background:transparent}}
 /* 561–1000: на страницах с коротким меню — две строки: логотип и кнопка, ниже меню, язык, тема */
 @media (min-width:561px) and (max-width:1000px){
   .wrap .top>.topnav~.wl-head{order:1;margin-left:auto}
   .wrap .top>.topnav{order:3;flex:1 1 calc(100% - 200px);margin-left:0}
   .wrap .top>.topnav~.lang{order:4;margin-left:auto}
-  .wrap .top>.topnav~.theme-btn{order:5}
   .wrap .top:has(>.topnav){flex-wrap:wrap;row-gap:0}
 }
 /* после живого чата: на широком экране окно чата стоит рядом с главной кнопкой — вторая кнопка там лишняя */
@@ -1457,7 +1292,6 @@ html[data-theme="dark"] .wl-badge{background:transparent}
   .wrap .top>nav.topnav{gap:0 12px}
   .wrap .top>nav.topnav a{font-size:.9rem}
   .wrap .top>.lang{order:3;margin-left:0;min-width:44px;justify-content:center}
-  .wrap .top>.theme-btn{order:4;margin-left:0}
   .lang .lg-f{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
   .lang .lg-s{display:inline}
   .wl{gap:12px}
