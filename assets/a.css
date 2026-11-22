@@ -1454,3 +1454,10 @@ html{background:#9c9fa2 url(steel/steel-tile.webp) center top/100% auto repeat-y
 @media (min-width:900px){.st-rain{width:420px}}
 @media (prefers-reduced-motion:reduce){.st-rain{display:none}.brand::after{animation:none;opacity:0}}
 body.st-home main{position:relative;z-index:1}
+.js .row .slip{display:none}
+.slip-layer{position:fixed;left:0;top:0;width:0;height:0;z-index:70;pointer-events:none}
+.slip-layer .slip{display:block;position:fixed;left:var(--sx,8px);top:var(--sy,8px);right:auto;bottom:auto;margin:0;
+  max-width:calc(100vw - 16px);box-sizing:border-box;opacity:0;transform:translateY(6px);transition:opacity .18s ease,transform .18s ease}
+.slip-layer.on .slip{opacity:1;transform:none}
+.slip-layer.measure .slip{transition:none;visibility:hidden}
+@media (prefers-reduced-motion:reduce){.slip-layer .slip{transition:none;transform:none}}

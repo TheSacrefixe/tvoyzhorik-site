@@ -215,3 +215,57 @@
     if (openG >= 0) closeDrawer(true);
   });
 })();
+(function () {
+  'use strict';
+  var d = document, W = window, M = 8;
+  var main = d.querySelector('.lib-page'), cs = main && W.getComputedStyle(main);
+  if (!cs || !d.querySelector('.case .row')) return;
+  var layer = d.createElement('div'); layer.className = 'slip-layer'; layer.setAttribute('aria-hidden', 'true');
+  ['--paper', '--ink', '--display', '--mono', '--text'].forEach(function (v) { var x = cs.getPropertyValue(v); if (x) layer.style.setProperty(v, x.trim()); });
+  d.body.appendChild(layer);
+  var cur = null, card = null, raf = 0;
+  function topSafe() {
+    var h = d.querySelector('.hdr') || d.querySelector('header'), r = h && h.getBoundingClientRect();
+    return r && r.bottom > 0 && r.top <= 1 ? r.bottom + M : M;
+  }
+  var ht = 0;
+  function hide() { clearTimeout(ht); ht = 0; cur = null; layer.classList.remove('on', 'measure'); }
+  function hideSoon() { clearTimeout(ht); ht = setTimeout(hide, 90); }
+  function place() {
+    raf = 0; if (!cur || !card) return;
+    var r = cur.getBoundingClientRect(), vw = d.documentElement.clientWidth, vh = W.innerHeight;
+    if (cur.classList.contains('fly') || cur.getAttribute('aria-pressed') === 'true') { hide(); return; }
+    var vis = r.right > M && r.left < vw - M && r.bottom > 0 && r.top < vh;
+    layer.classList.toggle('on', vis && !layer.classList.contains('measure'));
+    if (!vis) return;
+    var w = card.offsetWidth, h = card.offsetHeight, t0 = topSafe();
+    var x = vw <= 480 ? (vw - w) / 2 : r.left + r.width / 2 - w / 2;
+    x = Math.max(M, Math.min(x, vw - w - M));
+    var y = r.bottom - 12 - h;
+    if (y < t0) y = r.bottom + M;
+    y = Math.max(t0, Math.min(y, vh - h - M));
+    layer.style.setProperty('--sx', Math.round(x) + 'px'); layer.style.setProperty('--sy', Math.round(y) + 'px');
+  }
+  function show(b) {
+    if (!b || b.classList.contains('fly') || b.getAttribute('aria-pressed') === 'true') return;
+    var src = b.querySelector('.slip'); if (!src) return;
+    clearTimeout(ht); ht = 0;
+    if (cur === b) { place(); return; }
+    cur = b; card = src.cloneNode(true); card.removeAttribute('style');
+    var wrap = d.createElement('div'); wrap.className = (b.className.match(/\bst-[a-z]+/) || [''])[0]; wrap.appendChild(card);
+    layer.innerHTML = ''; layer.appendChild(wrap);
+    layer.classList.remove('on'); layer.classList.add('measure');
+    place();
+    void card.offsetWidth; layer.classList.remove('measure'); if (cur) place();
+  }
+  var book = function (e) { return e.target && e.target.closest ? e.target.closest('.row .book') : null; };
+  d.addEventListener('pointerover', function (e) { var b = book(e); if (b) show(b); });
+  d.addEventListener('pointerout', function (e) { var b = book(e); if (b && b === cur && !(e.relatedTarget && b.contains(e.relatedTarget))) hideSoon(); });
+  d.addEventListener('pointercancel', hideSoon);
+  d.addEventListener('focusin', function (e) { var b = book(e); if (b && (!b.matches || b.matches(':focus-visible'))) show(b); });
+  d.addEventListener('focusout', function (e) { var b = book(e); if (b && b === cur) hide(); });
+  d.addEventListener('click', function (e) { var b = book(e); if (b) hide(); }, true);
+  d.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  var re = function () { if (cur && !raf) raf = W.requestAnimationFrame(place); };
+  W.addEventListener('scroll', re, true); W.addEventListener('resize', re);
+})();
