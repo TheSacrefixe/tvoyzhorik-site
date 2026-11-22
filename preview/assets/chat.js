@@ -1,4 +1,4 @@
-/* Твой Жорик — «живое» окно чата на главной (Олег MSG 10041; 5 сценариев, «Так / Змінити», режим — MSG 10047, 10049).
+/* Твой Жорик — «живое» окно чата на главной (Олег MSG 10041; сценарии, «Пошта» — MSG 10087–10094, «Так / Змінити», режим — MSG 10047, 10049).
    Второе окно — директ глазами покупательницы (MSG 10080): его сообщения (data-at) идут в общей очереди сценария «Директ» —
    сначала сообщение в директе, потом копия у владелицы в Telegram. Окно директа видно, а Telegram нет — играет «Директ» по кругу.
    Сценарная анимация: тексты сценариев — в разметке страницы (uk/en), здесь только показ по одному.
@@ -109,6 +109,13 @@
           typing.hidden = true; typing.classList.remove('in'); status(false); add(ol, li);
           if (li.hasAttribute('data-mode')) setMode(li.getAttribute('data-mode'));
         }]);
+        /* большая карточка (почта): дать дочитать, прежде чем идти дальше */
+        /* высокая карточка показана с начала — на середине паузы докручиваем к концу (кнопки «Так / Змінити») */
+        if (li.hasAttribute('data-hold')) {
+          var h = +li.getAttribute('data-hold'), h1 = Math.round(h * 0.55);
+          q.push([h1, function () { down(true); }]);
+          q.push([h - h1, function () {}]);
+        }
       } else {
         var chip = prev && prev.querySelector('.chips span');
         if (chip) q.push([1300, function () { chip.classList.add('tap'); }]);
@@ -128,7 +135,9 @@
     [].forEach.call(li.querySelectorAll('.tap'), function (c) { c.classList.remove('tap'); });
     ol.appendChild(li);
     void li.offsetWidth; li.classList.add('in');
-    down(true);
+    /* сообщение выше окна (письмо-черновик на телефоне) — показываем его начало, а не хвост */
+    if (li.offsetHeight > body.clientHeight - 36) body.scrollTo({ top: li.offsetTop - 30, behavior: 'smooth' });
+    else down(true);
   }
 
   /* ---------- проигрыватель с паузой ---------- */

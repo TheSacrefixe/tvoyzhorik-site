@@ -241,6 +241,39 @@ html:not(.js) .dm-bar .chat-ctls{display:none}
 @keyframes dot{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
 @media (max-width:900px){.chat{justify-self:stretch;max-width:none}.chat-win{box-shadow:6px 6px 0 var(--sea)}}
 @media (max-width:420px){.chat-tabs .tl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.chat-tabs .ts{display:inline}.js .dm .chat-body{--h:380px}.chat-bar{gap:6px}.chat-tabs{gap:5px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
+/* вкладка «Пошта» (Олег MSG 10087–10094): привычный почтовый ящик — отправитель, тема, первая строка, время, метка «важливе»,
+   открытое письмо с вложением; НЕЙТРАЛЬНО — шрифты и цвета сайта, без названий, логотипов, иконок и вида почтовых сервисов */
+.chat{--mb:#c9d6d2;--mrow:#dde6e3;--mbg:#f6f9f8;--mhot:#fff1d9;--matt:#fff}
+.msg:has(.mbox),.msg:has(.mdraft){width:100%;max-width:94%}
+.mbox{display:block;margin:7px 0 2px;border:1.5px solid var(--mb);border-radius:12px;overflow:hidden;background:var(--mbg)}
+.mbox-h{display:flex;align-items:center;gap:7px;padding:7px 10px;font:700 .72rem/1.2 var(--text);letter-spacing:.05em;text-transform:uppercase;color:var(--sea-2);border-bottom:1.5px solid var(--mb)}
+.mbox-h em{margin-left:auto;font-style:normal;text-transform:none;letter-spacing:0;font-weight:600;font-size:.78rem}
+.menv{width:16px;height:16px;flex:none}
+.msg .mlist{list-style:none;margin:0;padding:0}
+.msg .mrow{display:grid;grid-template-columns:16px minmax(0,1fr) auto;column-gap:7px;row-gap:1px;align-items:baseline;margin:0;padding:7px 10px;border-top:1px solid var(--mrow);font-size:.87rem;line-height:1.3}
+.msg .mrow:first-child{border-top:0}
+.mrow.hot{background:var(--mhot)}
+.mk{grid-column:1;grid-row:1/4;font-size:.66rem;line-height:1.7}
+.mfrom{grid-column:2;grid-row:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mtime{grid-column:3;grid-row:1;justify-self:end;font-size:.74rem;color:var(--sea-2);font-variant-numeric:tabular-nums}
+.mtag{grid-column:3;grid-row:2;justify-self:end;font:700 .62rem/1 var(--text);letter-spacing:.05em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:3px 7px}
+.msub{grid-column:2;grid-row:2;min-width:0;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mpre{grid-column:2/4;grid-row:3;min-width:0;font-size:.83rem;color:var(--sea-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mrow.low,.mrow.low .msub{color:var(--sea-2);font-weight:400}
+.mdraft{display:block;margin:7px 0 9px;padding:8px 11px 10px;border:2px dashed var(--apricot);border-radius:12px;background:var(--mbg);font-size:.88rem;line-height:1.38}
+.mdraft>small{display:inline-block;margin-bottom:6px;font:700 .68rem/1 var(--text);letter-spacing:.06em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:4px 8px}
+.mf{display:block;padding:2px 0;border-bottom:1px solid var(--mrow);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mf i{font-style:normal;color:var(--sea-2);margin-right:3px}
+.mbody{display:block;margin:7px 0 9px}
+.matt{display:flex;align-items:center;gap:9px;width:fit-content;max-width:100%;padding:6px 10px 6px 7px;border:1.5px solid var(--mb);border-radius:10px;background:var(--matt)}
+.mpdf{position:relative;flex:none;display:flex;flex-direction:column;gap:3px;width:32px;height:40px;padding:6px 5px;background:#fff;border:1.5px solid #8aa3aa;border-radius:3px}
+.mpdf i{display:block;height:2px;border-radius:1px;background:#c9d6d2}
+.mpdf i:nth-child(2){width:70%}.mpdf i:nth-child(4){width:55%}
+.mpdf b{position:absolute;left:-5px;bottom:5px;font:800 .5rem/1 var(--text);letter-spacing:.03em;background:#123c4a;color:#fbf7ec;border-radius:2px;padding:2px 3px}
+.mfile{min-width:0}
+.mfile b{display:block;font-size:.84rem;overflow-wrap:anywhere}
+.mfile small{display:block;font-size:.72rem;color:var(--sea-2)}
+@media (max-width:420px){.msg:has(.mbox),.msg:has(.mdraft){max-width:100%}.msg .mrow{padding:6px 8px;font-size:.84rem}.mdraft{padding:7px 9px 9px;font-size:.85rem}}
 /*CHAT-END*/
 
 /* волна */
@@ -362,7 +395,7 @@ footer p{color:var(--sea-2);margin:0}
       <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
       <figure class="chat" data-live aria-label="Приклад розмови з помічником">
         <div class="chat-bar">
-          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Нагадування<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false"><span class="tl">Ранковий звіт</span><span class="ts" aria-hidden="true">Звіт</span><i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Реклама<i aria-hidden="true"></i></button><button type="button" data-go="5" aria-pressed="false">Команда<i aria-hidden="true"></i></button></div>
+          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Пошта<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false">Нагадування<i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false"><span class="tl">Ранковий звіт</span><span class="ts" aria-hidden="true">Звіт</span><i aria-hidden="true"></i></button><button type="button" data-go="5" aria-pressed="false">Реклама<i aria-hidden="true"></i></button><button type="button" data-go="6" aria-pressed="false">Команда<i aria-hidden="true"></i></button></div>
           <div class="chat-ctls">
             <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
             <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -390,6 +423,15 @@ footer p{color:var(--sea-2);margin:0}
               <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Покупниця просить знижку 10% на светр «Хвиля» S: 1&nbsp;900&nbsp;₴ → 1&nbsp;710&nbsp;₴. Їй я написав: «уточню в команди». Даємо знижку?</p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:05</time></span></li>
               <li class="msg me read"><span class="from">Марина</span><p>Так</p><span class="meta" aria-hidden="true"><time>13:06</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
               <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Готово, відповів покупниці:<span class="draft copy"><small>Копія з Instagram Direct</small><b>AI-помічник:</b> Команда погодила знижку 10%: светр «Хвиля» S — 1&nbsp;710&nbsp;₴ замість 1&nbsp;900&nbsp;₴.</span></p><span class="meta" aria-hidden="true"><time>13:06</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Пошта" hidden>
+              <li class="msg me read"><span class="from">Ірина</span><p>Жорику, перевір робочу пошту — що важливого?</p><span class="meta" aria-hidden="true"><time>10:31</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh" data-hold="7000"><span class="sr">Помічник: </span><div class="t">Перевірив: 16 нових листів. Коротко:<span class="mbox"><span class="mbox-h"><svg class="menv" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m4 7.5 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Робоча пошта · приклад</span><em>16 нових</em></span><ul class="mlist"><li class="mrow hot"><span class="mk" aria-hidden="true">🔴</span><span class="mfrom"><b>Новий клієнт</b> · Олена Савчук</span><span class="mtag">важливе</span><span class="mtime">09:58</span><span class="msub">Запит: 200 тортів до свята</span><span class="mpre">Добрий день! Плануємо свято для команди, потрібно 200 тортів…</span></li><li class="mrow mid"><span class="mk" aria-hidden="true">🟡</span><span class="mfrom"><b>Постачальник</b> · «Мука і мед»</span><span class="mtime">09:31</span><span class="msub">Новий прайс з 1 грудня</span><span class="mpre">Надсилаємо оновлений прайс на борошно й масло…</span></li><li class="mrow low"><span class="mk" aria-hidden="true">⚪</span><span class="mfrom"><b>Розсилки й спам — 14</b></span><span class="mtime"></span><span class="msub">прибрав</span></li></ul></span></div><span class="meta" aria-hidden="true"><time>10:31</time></span></li>
+              <li class="msg zh" data-hold="1500"><span class="sr">Помічник: </span><p class="t">Спам прибрав не читаючи — там знову принц ділиться спадщиною.</p><span class="meta" aria-hidden="true"><time>10:31</time></span></li>
+              <li class="msg me read"><span class="from">Ірина</span><p>Склади відповідь новому клієнту і додай комерційну пропозицію</p><span class="meta" aria-hidden="true"><time>10:38</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh" data-hold="7600"><span class="sr">Помічник: </span><p class="t">Ось лист Олені:<span class="mdraft"><small>Чернетка</small><span class="mf"><i>Кому:</i> olena@hmarka.example</span><span class="mf"><i>Тема:</i> Re: Запит: 200 тортів до свята</span><span class="mbody">Добрий день, Олено!<br>Дякуємо за запит — 200 тортів до свята встигаємо. Ціни, строки й доставка — у комерційній пропозиції у вкладенні. Підтвердьте, будь ласка, дату й адресу.<br>З повагою, Ірина, кондитерська «Пампушка»</span><span class="matt"><span class="mpdf" aria-hidden="true"><i></i><i></i><i></i><i></i><b>PDF</b></span><span class="mfile"><b>КП_Кондитерська.pdf</b><small>2 сторінки · PDF</small></span></span></span>Перечитайте. Надсилати?</p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>10:39</time></span></li>
+              <li class="msg me read"><span class="from">Ірина</span><p>Так</p><span class="meta" aria-hidden="true"><time>10:42</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh" data-hold="2600"><span class="sr">Помічник: </span><p class="t">Надіслав з вашої пошти о 10:42. Якщо не відповість за 2 дні — нагадаю.</p><span class="meta" aria-hidden="true"><time>10:42</time></span></li>
             </ol>
             <ol class="scn" aria-label="Нагадування" hidden>
               <li class="msg me read"><span class="from">Марина</span><p>Нагадай у четвер о 9:00 подзвонити в ательє щодо ґудзиків для «Бриз»</p><span class="meta" aria-hidden="true"><time>18:40</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
