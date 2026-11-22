@@ -1260,6 +1260,9 @@ html:not(.mo) .mo-wh{display:none}
 .mo-arm .mo-h{opacity:0;transform:translateY(10px)}
 .mo-arm li{transition:opacity .45s ease,transform .5s var(--e-out)}
 .slot .after{position:relative}
+/* шапка «Як це працює»: .how-hero{padding:28px 0 40px} затирал боковые поля .wrap — заголовок стоял вплотную к краю экрана */
+.wrap.how-hero{padding-left:24px;padding-right:24px}
+@media (max-width:420px){.wrap.how-hero{padding-left:18px;padding-right:18px}}
 /* ровная сетка на телефоне: без лишней пустоты над первым часом, одинаковые отступы (Олег MSG 10200) */
 @media (max-width:900px){
   .how-page .day{padding-top:8px}
