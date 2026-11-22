@@ -972,6 +972,10 @@ html:not(.mo) .mo-wh{display:none}
 }
 .mo-nudge{animation:mo-nudge .9s var(--e-out)}
 @keyframes mo-nudge{30%{transform:translateY(7px)}60%{transform:translateY(-2px)}}
+.mo-press{animation:mo-press .55s var(--e-out)}
+@keyframes mo-press{35%{transform:scale(.93)}70%{transform:scale(1.02)}}
+.js .book.mo-lift{animation:mo-lift 1.3s var(--e-out);z-index:3}
+@keyframes mo-lift{25%,65%{transform:translateY(-14px)}}
 .dl{position:relative;isolation:isolate}
 .mo-sky{position:absolute;inset:0;z-index:-1;pointer-events:none}
 .mo-sky i{position:absolute;inset:0;opacity:0}
