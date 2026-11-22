@@ -467,3 +467,287 @@ footer .sdk{margin-top:6px;font-size:.88rem}
 @media (max-width:560px){.joke-btn{position:absolute;top:-3px;left:196px;margin:0}}
 @media (prefers-reduced-motion:no-preference){.joke.show{animation:jokein .28s cubic-bezier(.2,.7,.2,1) both}}
 @keyframes jokein{from{opacity:0;transform:translateY(-4px) scale(.97)}to{opacity:1;transform:none}}
+
+/*PACK2-BEGIN*/
+/* пакет фишек 2 (Олег MSG 10103, 10104): «Спробуй сам», частые вопросы перепиской, «Один голосовий — три задачі»,
+   «День власника» 08:00→22:00, фото накладной → склад, тёмная тема «Одеська ніч». Логика — assets/fx.js и site.js (тема).
+   Исходник: drafts/site-pack2-2211/tools/pack2.css, вписывает C:/Zhorik/tools/pack2.py. Анимация — только transform/opacity;
+   без JS и при reduced-motion всё видно сразу. Общая кривая движения сайта — cubic-bezier(.2,.7,.2,1). */
+
+/* ---------- переключатель темы ---------- */
+.theme-btn{flex:none;width:44px;height:44px;border:2px solid var(--sea);border-radius:50%;background:transparent;color:var(--sea);cursor:pointer;display:none;place-items:center;padding:0}
+.js .theme-btn{display:grid}
+.theme-btn svg{width:20px;height:20px;grid-area:1/1;transition:opacity .3s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.theme-btn .i-sun{opacity:0;transform:rotate(-90deg) scale(.6)}
+.theme-btn[aria-pressed="true"] .i-moon{opacity:0;transform:rotate(90deg) scale(.6)}
+.theme-btn[aria-pressed="true"] .i-sun{opacity:1;transform:none}
+.theme-btn:hover{background:var(--shell)}
+.top>.lang+.theme-btn{margin-left:4px}
+/* шапка юр. страниц и «Як це працює»: меню — всегда второй строкой (как на телефоне). Раньше на uk@1440 меню не влезало
+   в строку, и после вставки кнопки шутки (site.js) «English» перескакивал вниз — сдвиг вёрстки до 0,08 */
+.top-doc>nav{order:3;flex-basis:100%}
+.top-doc>.lang{margin-left:auto}
+/* главная на телефоне: кнопка и «Як це працює» — столбиком всегда (en@390 при подмене шрифта ссылка прыгала между строками, CLS до 0,3) */
+/* телефон: кнопка темы — во второй строке шапки рядом с меню; в первой строке «English/Українською» прижат вправо и не попадает под кнопку шутки */
+@media (max-width:560px){.top .theme-btn{order:4}.top .topnav,.top-doc>nav{flex:1 1 calc(100% - 64px);min-width:0}.top>.lang+.theme-btn{margin-left:0}}
+/* «Як це працює»: блоки «з помічником» выезжают справа — до появления не дают прокрутки вбок (было +8 px на 390) */
+.day .wrap{overflow-x:clip}
+@media (max-width:420px){.hero .actions{flex-direction:column;align-items:flex-start}}
+
+/* ---------- общие пузыри и телефоны пакета ---------- */
+.pl{position:relative;list-style:none}
+.pl>.dots{position:absolute;left:0;top:0;display:flex;gap:5px;padding:12px 14px;background:var(--shell);border:1.5px solid var(--line,#c9d6d2);border-radius:18px 18px 18px 6px;opacity:0;pointer-events:none}
+.pl>.dots span{width:7px;height:7px;border-radius:50%;background:var(--sea-2)}
+.fxp .pl.w>:not(.dots){opacity:0;transform:translateY(10px) scale(.97)}
+.fxp .pl.ty>.dots{opacity:1}
+.fxp .pl.ty>.dots span{animation:dot 1.1s infinite ease-in-out}
+.fxp .pl.ty>.dots span:nth-child(2){animation-delay:.15s}.fxp .pl.ty>.dots span:nth-child(3){animation-delay:.3s}
+.fxp .pl>:not(.dots){transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.fxp .pl.me-side>.dots{left:auto;right:0}
+.phone{background:var(--shell);border:2px solid var(--sea);border-radius:30px;padding:12px 12px 10px;box-shadow:6px 6px 0 var(--sea);min-width:0}
+.phone-lab{display:block;font:700 .78rem/1.2 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--sea-2);margin:0 0 8px 6px}
+.phone .chat-head{padding:0 2px 10px;margin-bottom:8px}
+.phone .chat-head svg{width:34px;height:34px}
+.phone .chat-head b{font-size:1.05rem}
+.phone ol{margin:0;padding:0}
+.phone .msg{font-size:.9rem;margin-bottom:7px;max-width:92%}
+.thumb{display:block;width:120px;height:auto;border-radius:10px;margin:2px 0 4px}
+.tag{display:inline-block;margin-top:7px;font:700 .72rem/1.3 var(--text);letter-spacing:.03em;background:#ffe6a8;color:#4a3300;border-radius:8px;padding:4px 8px}
+.ctl-row{display:flex;justify-content:flex-end;margin:0 0 12px}
+html:not(.js) .ctl-row{display:none}
+.ctl-row .chat-ctl{display:inline-flex;align-items:center;gap:8px;width:auto;padding:0 16px}
+.ctl-row .chat-ctl svg{width:16px;height:16px}
+
+/* ---------- «Спробуй сам» ---------- */
+.try-sec{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,470px);gap:56px;align-items:center;padding:56px 0 64px}
+.try-txt h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:0 0 12px}
+.try-txt p{margin:0;max-width:44ch;color:var(--sea-2)}
+.try-qs{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:24px}
+html:not(.js) .try-qs{display:none}
+.try-q{font:600 1rem/1.3 var(--text);color:var(--sea);background:var(--leaf);border:2px solid var(--sea);border-radius:18px 18px 6px 18px;padding:11px 16px;min-height:44px;cursor:pointer;text-align:left;transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.try-q:hover{transform:translateY(-2px)}
+.try-q:active{transform:translateY(1px)}
+.try-q.used{background:var(--shell)}
+.chat.try{justify-self:end}
+.try-body{position:relative}
+.js .try-body{height:400px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.try-log{list-style:none;margin:0;padding:6px 2px 4px}
+.try-log .msg.in{animation:pop .42s cubic-bezier(.2,.8,.3,1.2) both}
+.try-log .msg.me.in{transform-origin:100% 100%}
+.try .typing{margin-left:2px}
+
+/* ---------- частые вопросы перепиской ---------- */
+.faq-sec .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.faq-sec h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:14px}
+.faq-sec .faq-intro{color:var(--sea-2);max-width:36ch;margin:0}
+.faq{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.faq-i>summary{list-style:none;margin-left:auto;width:fit-content;max-width:88%;display:flex;align-items:center;gap:12px;background:var(--leaf);border:2px solid var(--sea);border-radius:18px 18px 6px 18px;padding:10px 14px 10px 16px;min-height:44px;cursor:pointer;font-weight:600;line-height:1.35}
+.faq-i>summary::-webkit-details-marker{display:none}
+.faq-i>summary::after{content:"";flex:none;width:9px;height:9px;border-right:2.5px solid var(--sea);border-bottom:2.5px solid var(--sea);transform:rotate(45deg) translateY(-2px);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.faq-i[open]>summary::after{transform:rotate(-135deg) translateY(-2px)}
+.faq-i>summary:hover{background:var(--shell)}
+.faq-a{position:relative;margin:10px 0 4px;max-width:88%}
+.faq-a .from{display:block;font-size:.78rem;font-weight:700;color:var(--acacia);margin-bottom:2px}
+.faq-a p{margin:0 0 .5em}.faq-a p:last-child{margin:0}
+.faq-a>.dots{position:absolute;left:14px;top:14px;display:flex;gap:5px;opacity:0}
+.faq-a>.dots span{width:7px;height:7px;border-radius:50%;background:var(--sea-2)}
+.faq-a.wait>:not(.dots){opacity:0}
+.faq-a.wait>.dots{opacity:1}
+.faq-a.wait>.dots span{animation:dot 1.1s infinite ease-in-out}
+.faq-a.wait>.dots span:nth-child(2){animation-delay:.15s}.faq-a.wait>.dots span:nth-child(3){animation-delay:.3s}
+.faq-a>:not(.dots){transition:opacity .4s ease}
+.faq-src{display:block;margin-top:6px;font-size:.78rem;color:var(--sea-2)}
+.faq-cap{margin:18px 0 0;font-size:.85rem;color:var(--sea-2)}
+
+/* ---------- фото накладной → склад ---------- */
+.inv{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:48px;align-items:center}
+.inv h3{font-size:clamp(1.8rem,3vw,2.4rem);margin:0 0 12px}
+.inv-txt p{max-width:42ch;margin:0}
+.inv .phone{background:var(--sky)}
+.sec.shell .inv .msg.zh{background:#fff}
+
+/* ---------- «Один голосовий — три задачі» ---------- */
+.team-sec{padding:72px 0 88px}
+.team-sec h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:14px}
+.team-sec .sub{color:var(--sea-2);max-width:60ch;margin:0 0 28px}
+.team{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr);grid-template-areas:"a o p" "v o p";gap:22px 26px;align-items:start}
+.team .t-o{grid-area:o}.team .t-a{grid-area:a}.team .t-v{grid-area:v}.team .t-p{grid-area:p}
+.team .t-o .phone{box-shadow:10px 10px 0 var(--apricot)}
+.tcard{display:block;background:var(--sky);border:2px solid var(--sea);border-radius:14px;padding:8px 11px;font-size:.88rem;line-height:1.35;margin:0 0 8px}
+.tcard small{display:block;font:700 .68rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--sea-2);margin-bottom:2px}
+.ocards{list-style:none;margin:8px 0 2px;padding:0;display:grid;gap:6px}
+.ocards li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;background:var(--shell);border:1.5px solid var(--line,#c9d6d2);border-radius:12px;padding:6px 9px;font-size:.84rem;line-height:1.3}
+.ocards li.rem{border-style:dashed}
+.ocards b{font-weight:700}
+.stt{display:grid;justify-items:end;font:700 .74rem/1.2 var(--text);white-space:nowrap}
+.stt i{grid-area:1/1;font-style:normal;padding:3px 7px;border-radius:999px;background:var(--sky);color:var(--sea)}
+.stt i.ok{background:var(--acacia);color:#fff}
+.stt i.wt{background:#ffe6a8;color:#4a3300}
+.stt i:not(:last-child){opacity:0}
+.fxp .stt i{opacity:0;transition:opacity .4s}
+.fxp .stt i.cur{opacity:1}
+.eve{border:2px solid var(--sea);border-radius:16px;background:var(--sky);padding:10px 12px;font-size:.9rem}
+.eve small{display:block;font:700 .7rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--sea-2);margin-bottom:4px}
+.eve ul{margin:0;padding:0 0 0 1.05em}
+.fly{will-change:transform}
+.team-cap{margin:22px 0 0;font-size:.88rem;color:var(--sea-2);max-width:80ch}
+
+/* ---------- «День власника» 08:00 → 22:00 ---------- */
+.dl{background:var(--shell);padding:72px 0 88px}
+.dl h2{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:14px}
+.dl .sub{color:var(--sea-2);max-width:56ch;margin:0 0 36px}
+.dl-grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:56px;align-items:start}
+.dl-clock{position:sticky;top:24px;background:var(--sky);border:2px solid var(--sea);border-radius:28px;padding:18px 20px 20px;box-shadow:8px 8px 0 var(--sea)}
+.dl-sky{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:2/1;background:#cfe6ee}
+.dl-sky svg{position:absolute;inset:0;width:100%;height:100%}
+.dl-night{position:absolute;inset:0;opacity:0;transition:opacity 1s ease}
+.dl-sun{transform-origin:160px 150px;transform:rotate(-80deg);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.dl-time{display:block;font:400 3.4rem/1 var(--display);margin:16px 0 4px;font-variant-numeric:tabular-nums}
+.dl-lab{display:block;font-weight:600;color:var(--sea-2);min-height:1.6em}
+.dl-bar{display:block;height:6px;border-radius:99px;background:var(--line,#c9d6d2);margin-top:12px;overflow:hidden}
+.dl-bar i{display:block;height:100%;background:var(--apricot);transform:scaleX(.2);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.dl-list{list-style:none;margin:0;padding:0 0 0 34px;position:relative}
+.dl-list::before{content:"";position:absolute;left:9px;top:10px;bottom:10px;border-left:4px dotted var(--sea)}
+.dl-stop{position:relative;padding:8px 0 56px}
+.dl-stop:last-child{padding-bottom:8px}
+.dl-stop::before{content:"";position:absolute;left:-34px;top:12px;width:22px;height:22px;border-radius:50%;background:var(--shell);border:3px solid var(--sea);box-sizing:border-box;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.dl-stop.cur::before{background:var(--apricot);transform:scale(1.25)}
+.dl-stop>time{font:400 1.7rem/1 var(--display);display:block}
+.dl-stop h3{font:700 .78rem/1.2 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--acacia);margin:6px 0 12px}
+.dl-stop .msg{max-width:min(100%,520px);font-size:.95rem}
+.dl-stop .msg.zh{background:#fff}
+.dl-cap{margin:8px 0 0;font-size:.88rem;color:var(--sea-2)}
+
+@media (max-width:900px){
+  .try-sec,.inv,.faq-sec .wrap{grid-template-columns:1fr;gap:24px}
+  .try-sec{padding:44px 0 48px}
+  .chat.try{justify-self:stretch;max-width:none}
+  .js .try-body{height:380px}
+  .team{grid-template-columns:minmax(0,1fr);grid-template-areas:"o" "a" "v" "p";gap:22px}
+  .team .t-o .phone{box-shadow:6px 6px 0 var(--apricot)}
+  .dl-grid{display:block}
+  .dl-list{margin-top:22px}
+  /* телефон: лёгкая версия — липкая полоса с часами и прогрессом, без «неба» */
+  .dl-clock{top:0;z-index:3;border-radius:0 0 18px 18px;border-top:0;box-shadow:0 4px 0 var(--sea);padding:10px 16px 12px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 14px;align-items:center;margin:0 -4px}
+  .dl-sky{display:none}
+  .dl-time{font-size:1.9rem;margin:0;grid-row:1/3}
+  .dl-lab{min-height:0;font-size:.92rem}
+  .dl-bar{margin-top:6px}
+  .dl-list{padding-left:30px}
+  .dl-stop{padding-bottom:40px}
+  .inv{margin-top:48px}
+}
+@media (max-width:420px){
+  .faq-i>summary,.faq-a{max-width:100%}
+  .dl-clock{margin:0 -10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .dl-sun,.dl-night,.dl-bar i,.theme-btn svg{transition:none}
+}
+/*PACK2-END*/
+
+/*THEME-BEGIN*/
+/* тёмная тема «Одеська ніч» (Олег MSG 10104, п. 7): кнопка в шапке, выбор — localStorage «tz-theme», по умолчанию — prefers-color-scheme. Собирается C:/Zhorik/tools/pack2.py, руками не править */
+html[data-theme="dark"]{--sky:#0f1e28;--sea:#e7eff1;--sea-2:#a9c1c7;--shell:#16293a;--leaf:#24452f;--acacia:#a5d394;--line:#2f4b61;color-scheme:dark;-webkit-tap-highlight-color:rgba(231,239,241,.15)}
+html[data-theme="dark"] .skip{color:#0f1e28}
+html[data-theme="dark"] .btn{color:#123c4a;box-shadow:0 3px 0 #000}
+html[data-theme="dark"] .btn:active{box-shadow:0 1px 0 #000}
+html[data-theme="dark"] .line li::before{color:#123c4a}
+html[data-theme="dark"] .who{background:#08141b;color:#e7eff1}
+html[data-theme="dark"] .who small{color:#a9c1c7}
+html[data-theme="dark"] .contact{color:#123c4a;border-color:#000;box-shadow:10px 10px 0 #2a4659}
+html[data-theme="dark"] .contact a{color:#123c4a}
+html[data-theme="dark"] .contact .btn{background:#123c4a;color:#fbf7ec;box-shadow:0 3px 0 #000}
+html[data-theme="dark"] .contact .btn:hover{background:#1c5263}
+html[data-theme="dark"] .rules li{border-bottom-color:#36536a}
+html[data-theme="dark"] .chat-win,html[data-theme="dark"] .phone{box-shadow:10px 10px 0 #2a4659}
+html[data-theme="dark"] .phone{box-shadow:6px 6px 0 #2a4659}
+html[data-theme="dark"] .team .t-o .phone,html[data-theme="dark"] .dm-win{box-shadow:10px 10px 0 #b3721f}
+html[data-theme="dark"] .chat-head{border-bottom-color:#2f4b61}
+html[data-theme="dark"] .msg.zh,html[data-theme="dark"] .typing,html[data-theme="dark"] .after,html[data-theme="dark"] .sec.shell .decide li,html[data-theme="dark"] .how-page .decide li,html[data-theme="dark"] .sec.shell .inv .msg.zh,html[data-theme="dark"] .dl-stop .msg.zh,html[data-theme="dark"] .dm-win{background:#1d3448}
+html[data-theme="dark"] .msg.zh,html[data-theme="dark"] .typing{border-color:#2f4b61}
+html[data-theme="dark"] .after{box-shadow:6px 6px 0 #2a4659}
+html[data-theme="dark"] .draft{background:#132433}
+html[data-theme="dark"] .draft.copy{background:#16302a}
+html[data-theme="dark"] .msg.dmb{background:#e7eff1;color:#0f1e28}
+html[data-theme="dark"] .msg.dmb .meta{color:#3b5966}
+html[data-theme="dark"] .msg.dmr{background:#16293a}
+html[data-theme="dark"] .dm .typing{background:#16293a}
+html[data-theme="dark"] .voice .pl{background:#f0a23b}
+html[data-theme="dark"] .voice .pl path{fill:#123c4a}
+html[data-theme="dark"] .chips span:first-child,html[data-theme="dark"] .decide .yes,html[data-theme="dark"] .try-q.used:hover{color:#123c4a}
+html[data-theme="dark"] .chips.ok .tap{color:#0f1e28}
+html[data-theme="dark"] .chat-tabs button[aria-pressed="true"]{background:#e7eff1;color:#0f1e28}
+html[data-theme="dark"] .mode{background:#e7eff1;color:#0f1e28}
+html[data-theme="dark"] .dm-ava{background:#e7eff1;color:#0f1e28}
+html[data-theme="dark"] .slot,html[data-theme="dark"] .slot:last-of-type,html[data-theme="dark"] .prose h2,html[data-theme="dark"] .toc a{border-color:#2f4b61}
+html[data-theme="dark"] .tw{background:#16293a}
+html[data-theme="dark"] .tw th{background:#0f1e28}
+html[data-theme="dark"] .tw td,html[data-theme="dark"] .tw th{border-color:#2f4b61}
+html[data-theme="dark"] .pick a{box-shadow:8px 8px 0 #2a4659}
+html[data-theme="dark"] .pick a:hover{background:#1d3448}
+html[data-theme="dark"] .joke-btn:hover,html[data-theme="dark"] .joke-btn[aria-expanded="true"]{background:rgba(231,239,241,.1)}
+html[data-theme="dark"] .joke{border-color:#2f4b61;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+html[data-theme="dark"] .dl-clock{box-shadow:8px 8px 0 #2a4659}
+html[data-theme="dark"] .dl-sky{background:#22465a}
+html[data-theme="dark"] .stt i.ok{color:#0f1e28}
+html[data-theme="dark"] .theme-btn:hover{background:#1d3448}
+@media (max-width:900px){
+html[data-theme="dark"] .chat-win,html[data-theme="dark"] .contact{box-shadow:6px 6px 0 #2a4659}
+html[data-theme="dark"] .chat-win.dm-win,html[data-theme="dark"] .team .t-o .phone{box-shadow:6px 6px 0 #b3721f}
+html[data-theme="dark"] .after{box-shadow:4px 4px 0 #2a4659}
+html[data-theme="dark"] .dl-clock{box-shadow:0 4px 0 #2a4659}
+}
+@media (prefers-color-scheme:dark){
+html:not([data-theme="light"]){--sky:#0f1e28;--sea:#e7eff1;--sea-2:#a9c1c7;--shell:#16293a;--leaf:#24452f;--acacia:#a5d394;--line:#2f4b61;color-scheme:dark;-webkit-tap-highlight-color:rgba(231,239,241,.15)}
+html:not([data-theme="light"]) .skip{color:#0f1e28}
+html:not([data-theme="light"]) .btn{color:#123c4a;box-shadow:0 3px 0 #000}
+html:not([data-theme="light"]) .btn:active{box-shadow:0 1px 0 #000}
+html:not([data-theme="light"]) .line li::before{color:#123c4a}
+html:not([data-theme="light"]) .who{background:#08141b;color:#e7eff1}
+html:not([data-theme="light"]) .who small{color:#a9c1c7}
+html:not([data-theme="light"]) .contact{color:#123c4a;border-color:#000;box-shadow:10px 10px 0 #2a4659}
+html:not([data-theme="light"]) .contact a{color:#123c4a}
+html:not([data-theme="light"]) .contact .btn{background:#123c4a;color:#fbf7ec;box-shadow:0 3px 0 #000}
+html:not([data-theme="light"]) .contact .btn:hover{background:#1c5263}
+html:not([data-theme="light"]) .rules li{border-bottom-color:#36536a}
+html:not([data-theme="light"]) .chat-win,html:not([data-theme="light"]) .phone{box-shadow:10px 10px 0 #2a4659}
+html:not([data-theme="light"]) .phone{box-shadow:6px 6px 0 #2a4659}
+html:not([data-theme="light"]) .team .t-o .phone,html:not([data-theme="light"]) .dm-win{box-shadow:10px 10px 0 #b3721f}
+html:not([data-theme="light"]) .chat-head{border-bottom-color:#2f4b61}
+html:not([data-theme="light"]) .msg.zh,html:not([data-theme="light"]) .typing,html:not([data-theme="light"]) .after,html:not([data-theme="light"]) .sec.shell .decide li,html:not([data-theme="light"]) .how-page .decide li,html:not([data-theme="light"]) .sec.shell .inv .msg.zh,html:not([data-theme="light"]) .dl-stop .msg.zh,html:not([data-theme="light"]) .dm-win{background:#1d3448}
+html:not([data-theme="light"]) .msg.zh,html:not([data-theme="light"]) .typing{border-color:#2f4b61}
+html:not([data-theme="light"]) .after{box-shadow:6px 6px 0 #2a4659}
+html:not([data-theme="light"]) .draft{background:#132433}
+html:not([data-theme="light"]) .draft.copy{background:#16302a}
+html:not([data-theme="light"]) .msg.dmb{background:#e7eff1;color:#0f1e28}
+html:not([data-theme="light"]) .msg.dmb .meta{color:#3b5966}
+html:not([data-theme="light"]) .msg.dmr{background:#16293a}
+html:not([data-theme="light"]) .dm .typing{background:#16293a}
+html:not([data-theme="light"]) .voice .pl{background:#f0a23b}
+html:not([data-theme="light"]) .voice .pl path{fill:#123c4a}
+html:not([data-theme="light"]) .chips span:first-child,html:not([data-theme="light"]) .decide .yes,html:not([data-theme="light"]) .try-q.used:hover{color:#123c4a}
+html:not([data-theme="light"]) .chips.ok .tap{color:#0f1e28}
+html:not([data-theme="light"]) .chat-tabs button[aria-pressed="true"]{background:#e7eff1;color:#0f1e28}
+html:not([data-theme="light"]) .mode{background:#e7eff1;color:#0f1e28}
+html:not([data-theme="light"]) .dm-ava{background:#e7eff1;color:#0f1e28}
+html:not([data-theme="light"]) .slot,html:not([data-theme="light"]) .slot:last-of-type,html:not([data-theme="light"]) .prose h2,html:not([data-theme="light"]) .toc a{border-color:#2f4b61}
+html:not([data-theme="light"]) .tw{background:#16293a}
+html:not([data-theme="light"]) .tw th{background:#0f1e28}
+html:not([data-theme="light"]) .tw td,html:not([data-theme="light"]) .tw th{border-color:#2f4b61}
+html:not([data-theme="light"]) .pick a{box-shadow:8px 8px 0 #2a4659}
+html:not([data-theme="light"]) .pick a:hover{background:#1d3448}
+html:not([data-theme="light"]) .joke-btn:hover,html:not([data-theme="light"]) .joke-btn[aria-expanded="true"]{background:rgba(231,239,241,.1)}
+html:not([data-theme="light"]) .joke{border-color:#2f4b61;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+html:not([data-theme="light"]) .dl-clock{box-shadow:8px 8px 0 #2a4659}
+html:not([data-theme="light"]) .dl-sky{background:#22465a}
+html:not([data-theme="light"]) .stt i.ok{color:#0f1e28}
+html:not([data-theme="light"]) .theme-btn:hover{background:#1d3448}
+}
+@media (prefers-color-scheme:dark) and (max-width:900px){
+html:not([data-theme="light"]) .chat-win,html:not([data-theme="light"]) .contact{box-shadow:6px 6px 0 #2a4659}
+html:not([data-theme="light"]) .chat-win.dm-win,html:not([data-theme="light"]) .team .t-o .phone{box-shadow:6px 6px 0 #b3721f}
+html:not([data-theme="light"]) .after{box-shadow:4px 4px 0 #2a4659}
+html:not([data-theme="light"]) .dl-clock{box-shadow:0 4px 0 #2a4659}
+}
+/*THEME-END*/
