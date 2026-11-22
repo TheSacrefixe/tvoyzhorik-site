@@ -48,6 +48,15 @@
       var p = t.querySelector('i'); p.style.transition = 'none'; p.style.transform = 'scaleX(0)';
     });
     prog = tabs[n].querySelector('i');
+    /* вкладки — одна строка с прокруткой вбок (Олег MSG 10112): активную докручиваем в видимую часть */
+    var bar = tabs[n].parentNode, tb = tabs[n];
+    if (bar.scrollWidth > bar.clientWidth + 2) bar.scrollTo({ left: tb.offsetLeft - (bar.clientWidth - tb.offsetWidth) / 2, behavior: mq.matches ? 'auto' : 'smooth' });
+  }
+  /* сколько сообщений показать сразу (Олег MSG 10112: окно не стартует пустым): 2 первых, или 1 — если второе ждёт нажатия кнопки */
+  function preN(n) {
+    var l = items[n];
+    if (l.length < 3) return 1;
+    return (l[1].classList.contains('sys') || l[1].querySelector('.chips .pk')) ? 1 : 2;
   }
   function show(n) { lists.forEach(function (ol, i) { ol.hidden = i !== n; ol.classList.remove('out'); }); }
   function fill(n, all) {
@@ -83,7 +92,7 @@
   function status(on) { st.textContent = on ? stOn : stOff; st.classList.toggle('on', on); }
 
   /* ---------- очередь шагов одного сценария ---------- */
-  function build(n) {
+  function build(n, from) {
     var q = [], ol = lists[n], list = items[n];
     function readMine() {
       [].forEach.call(ol.querySelectorAll('.me:not(.read)'), function (li) { li.classList.add('read'); });
@@ -101,6 +110,7 @@
       });
     }
     list.forEach(function (li, i) {
+      if (i < from) return;
       dmSteps(i);
       var prev = list[i - 1], len = li.textContent.replace(/\s+/g, ' ').length;
       if (li.classList.contains('sys')) {
@@ -120,7 +130,10 @@
         }
         /* владелец нажимает кнопку (п. 9, Олег MSG 10138–10140): кнопка подсвечивается, отдельного сообщения «Так» нет */
         var pk = li.querySelector('.chips .pk');
-        if (pk) q.push([1300, function () { readMine(); pk.classList.add('tap'); }]);
+        if (pk) {                          /* призрачный палец подъезжает и нажимает (motion.js), потом кнопка подсвечивается */
+          q.push([600, function () { if (window.TZ) window.TZ.finger(fig, pk); }]);
+          q.push([880, function () { readMine(); pk.classList.add('tap'); }]);
+        }
       } else {
         var chip = prev && prev.querySelector('.chips span');
         if (chip) q.push([1300, function () { chip.classList.add('tap'); }]);
@@ -136,7 +149,7 @@
     return q;
   }
   function add(ol, li) {
-    li.classList.remove('in', 'played');
+    li.classList.remove('in', 'played'); li.style.animationDelay = '';
     [].forEach.call(li.querySelectorAll('.tap'), function (c) { c.classList.remove('tap'); });
     ol.appendChild(li);
     void li.offsetWidth; li.classList.add('in');
@@ -194,8 +207,15 @@
     if (dm) dm.log.setAttribute('aria-live', auto ? 'off' : 'polite');
     cur = n; setTab(n); show(n); fill(n, false); setMode('');
     dmFill(n !== dmIdx);                   /* не «Директ» — в окне директа вся прошлая переписка */
+    var pre = preN(n);
+    items[n].slice(0, pre).forEach(function (li, k) {
+      li.classList.remove('in'); li.classList.add('read', 'played'); lists[n].appendChild(li);
+      li.style.animationDelay = (k * 120) + 'ms'; void li.offsetWidth; li.classList.add('in');
+      if (li.hasAttribute('data-mode')) setMode(li.getAttribute('data-mode'));
+    });
+    if (dm && n === dmIdx) dm.items.forEach(function (x) { if (+x.getAttribute('data-at') < pre) { x.classList.remove('in'); dm.ol.appendChild(x); } });
     typing.hidden = true; status(false); down(false);
-    queue = build(n); qi = 0; done = 0;
+    queue = build(n, pre); qi = 0; done = 0;
     total = queue.reduce(function (a, s) { return a + s[0]; }, 0) - queue[queue.length - 1][0];
     sync();
   }

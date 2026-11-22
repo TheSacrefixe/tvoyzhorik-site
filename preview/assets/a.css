@@ -978,7 +978,7 @@ html:not(.js) .slip{display:none}
 .js .row>li:nth-last-child(-n+2) .book:hover .slip,.js .row>li:nth-last-child(-n+2) .book:focus-visible .slip{transform:none}
 .js .book[aria-pressed="true"] .slip{opacity:0}
 /* порожнє місце з табличкою */
-.slot{flex:none;width:210px;height:200px;margin-left:10px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 4px}
+li.slot{flex:none;width:210px;height:200px;margin-left:10px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 0 4px}
 .plaque{position:relative;display:block;padding:12px 12px 12px;border:2px dashed #7a4a1c;border-radius:8px;background:rgba(251,247,236,.85);color:#123c4a;font-size:.9rem;line-height:1.3}
 .plaque b{display:block;font:400 1.05rem/1.15 var(--display);margin-bottom:6px}
 .plaque .soon{position:absolute;right:-8px;top:-12px;transform:rotate(8deg);font:700 .64rem/1 var(--text);letter-spacing:.1em;text-transform:uppercase;background:#b5532f;color:#fff4ec;border-radius:4px;padding:5px 8px}
@@ -995,7 +995,7 @@ html:not(.js) .book .sp,html:not(.js) .book .mk{display:none}
 .bk-txt q{font-style:italic}
 .bk-txt span{display:block;font-size:.94rem;margin-top:2px}
 .bk-txt em{display:inline-block;margin-top:4px;font:700 .66rem/1 var(--text);font-style:normal;letter-spacing:.1em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:4px 8px}
-html:not(.js) .slot{width:auto;height:auto;margin:0}
+html:not(.js) li.slot{width:auto;height:auto;margin:0}
 html:not(.js) .ph-wrap{display:none}
 /* телефон */
 .ph-wrap{position:sticky;top:20px}
@@ -1087,7 +1087,7 @@ html:not(.js) .ph-wrap{display:none}
   .drw{min-height:118px}
   .lib-hero{padding-top:18px}
   .sign{top:-34px;max-width:calc(100% - 96px)}
-  .slot{width:180px}
+  li.slot{width:180px}
   .wf-page{gap:8px;padding:10px}
 }
 @media (prefers-reduced-motion:reduce){.js .book:hover,.js .book:focus-visible{transform:none}.js .book[aria-pressed="true"]{transform:none}.card-in{transition:none}}
@@ -1119,6 +1119,280 @@ html:not([data-theme="light"]) .legend .lg-ready,.legend .lg-tested{background:#
 }
 @media (prefers-color-scheme:dark) and (max-width:900px){html:not([data-theme="light"]) .ph{box-shadow:0 -4px 0 #2a4659}}
 /*LIB-END*/
+/*MOTION-BEGIN*/
+/* Единая система движения (Олег MSG 10083, 10112, 10179, 10200). Собирается C:/Zhorik/tools/motion_site.py, руками не править.
+   Только transform и opacity; prefers-reduced-motion — всё статично и видно; без JS — всё читается. */
+:root{--e-out:cubic-bezier(.2,.7,.2,1);--e-spring:cubic-bezier(.2,.8,.3,1.2);--e-io:cubic-bezier(.45,0,.3,1);--t-1:.18s;--t-2:.42s;--t-3:.8s}
+body{overflow-x:clip}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .rv-go .rv{transition:opacity var(--t-3) ease,transform var(--t-3) var(--e-out);transition-delay:calc(var(--d,0)*90ms)}
+  .btn,.quiet,.chat-ctl,.chat-tabs button,.try-q,.theme-btn,.dcta,.wl-btn{transition:transform var(--t-1) var(--e-out),background-color var(--t-1),color var(--t-1)}
+  .btn:hover,.wl-btn:hover{transform:translateY(-2px)}
+  .btn:active,.wl-btn:active{transform:translateY(2px)}
+  .chat-ctl:active,.chat-tabs button:active,.try-q:active{transform:scale(.96)}
+  /* герой: подъём текста по очереди (h1 — только сдвиг, без прозрачности: не задерживает LCP) */
+  .js .hero>div:not(.mo-orbs)>*{animation:mo-rise var(--t-3) var(--e-out) both}
+  .js .hero>div:not(.mo-orbs)>h1{animation-name:mo-rise-t}
+  .js .hero>div:not(.mo-orbs)>:nth-child(2){animation-delay:.1s}
+  .js .hero>div:not(.mo-orbs)>:nth-child(3){animation-delay:.2s}
+  .js .hero>div:not(.mo-orbs)>:nth-child(4){animation-delay:.3s}
+  /* значок «Ж» — «из глубины», один раз, только на главной (без blur) */
+  .js .hdr .brand svg{animation:mo-deep .9s var(--e-out) both}
+  /* вкладки сценариев: новый сценарий проявляется */
+  .js-chat:not(.static) .scn:not([hidden]){animation:mo-fade var(--t-2) var(--e-out)}
+}
+@keyframes mo-rise{from{opacity:0;transform:translateY(22px)}}
+@keyframes mo-rise-t{from{transform:translateY(16px)}}
+@keyframes mo-deep{from{opacity:0;transform:scale(2.2)}}
+@keyframes mo-fade{from{opacity:0;transform:translateY(6px)}}
+:focus-visible{transition:none}
+
+/* ---------- контурные фигуры на фоне героя (вращение 90–140 с; reduced-motion — стоят) ---------- */
+.hero{position:relative}
+.mo-orbs{position:absolute;inset:-40px -24px 0;overflow:hidden;pointer-events:none;z-index:-1}
+.mo-orbs svg{position:absolute;fill:none;stroke:var(--sea);stroke-width:1.5;opacity:.09}
+.mo-orbs .o1{width:230px;left:36%;top:2%}
+.mo-orbs .o2{width:150px;left:-2%;bottom:6%}
+.mo-orbs .o3{width:180px;right:-3%;bottom:-4%}
+@media (prefers-reduced-motion:no-preference){
+  .mo-orbs .o1{animation:mo-spin 120s linear infinite}
+  .mo-orbs .o2{animation:mo-spin 90s linear infinite reverse}
+  .mo-orbs .o3{animation:mo-spin 140s linear infinite}
+}
+@keyframes mo-spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){.mo-orbs .o1{left:auto;right:-60px;top:-10px;width:170px}.mo-orbs .o3{display:none}}
+
+/* ---------- липкая шапка с размытием (главная, ≥ 901 px; на телефоне — обычная) ---------- */
+@media (min-width:901px){
+  .hdr{position:sticky;top:0;z-index:30}
+  .hdr::before{content:"";position:absolute;inset:0;background:var(--sky);opacity:.86;border-bottom:1px solid rgba(18,60,74,.08)}
+  @supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+    .hdr::before{opacity:.72;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  }
+  .hdr>.wrap{position:relative}
+  html:has(.hdr){scroll-padding-top:110px}
+}
+
+/* ---------- окно чата: вкладки — одна строка (Олег MSG 10112), пауза/повтор — под окном ---------- */
+.js .chat[data-live]{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-items:start}
+.js .chat[data-live] .chat-bar{display:contents}
+.chat[data-live] .chat-tabs{grid-row:1;grid-column:1/-1;position:relative;flex-wrap:nowrap;gap:2px;margin:0 0 14px;padding:3px;border:2px solid var(--sea);border-radius:999px;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
+.chat[data-live] .chat-tabs::-webkit-scrollbar{display:none}
+.chat[data-live] .chat-tabs button{flex:none;border:0;min-height:40px;padding:0 10px;font-size:.84rem;scroll-snap-align:center}
+.chat[data-live] .chat-tabs button[aria-pressed="false"]:hover{background:var(--sky)}
+.chat[data-live] .chat-tabs .tl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.chat[data-live] .chat-tabs .ts{display:inline}
+.chat[data-live] .chat-win{grid-row:2;grid-column:1/-1}
+.chat[data-live] .caption{grid-row:3;grid-column:1;margin-top:12px}
+.chat[data-live] .chat-ctls{grid-row:3;grid-column:2;margin:8px 0 0}
+/* на десктопе окно чуть шире — все 7 вкладок в одну строку; уже — строка листается, у края затухание (motion.js ставит .more-r) */
+@media (min-width:1100px){.hero{grid-template-columns:minmax(0,1fr) minmax(0,530px)}.hero .chat[data-live]{max-width:530px}}
+.chat[data-live] .chat-tabs.more-r{-webkit-mask-image:linear-gradient(90deg,#000 84%,transparent);mask-image:linear-gradient(90deg,#000 84%,transparent)}
+.chat[data-live] .chat-tabs.more-r.more-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 84%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 84%,transparent)}
+/* окно стартует с 1–2 сообщениями сверху (chat.js), высота — под переписку */
+@media (prefers-reduced-motion:no-preference){
+  .js .chat[data-live] .chat-body{--h:388px}
+  .js .chat[data-live] .chat-log{padding-top:0}
+}
+@media (max-width:420px){
+  .chat[data-live] .chat-tabs{margin-left:-2px;margin-right:-2px}
+  .chat[data-live] .chat-tabs button{min-height:44px;padding:0 12px;font-size:.88rem}
+  .js .chat[data-live] .chat-body{--h:400px}
+}
+
+/* ---------- призрачный палец и ripple ---------- */
+.mo-fg,.mo-rp{position:absolute;left:0;top:0;z-index:12;pointer-events:none;opacity:0}
+.mo-fg svg{display:block;width:34px;height:42px;margin:-3px 0 0 -12px;filter:drop-shadow(0 3px 2px rgba(18,60,74,.25))}
+.mo-rp{width:44px;height:44px;border-radius:50%;background:var(--apricot)}
+
+/* ---------- барабан цифр и мини-столбики ---------- */
+.odn{white-space:nowrap}
+.odv{display:inline-flex;vertical-align:bottom}
+.od{display:inline-block;height:1.3em;line-height:1.3em;overflow:hidden;font-variant-numeric:tabular-nums}
+.od>span{display:block;transform:translateY(calc(var(--v)*-10%))}
+.mo .odn:not(.go) .od>span{transform:none}
+.mo .odn.go .od>span{animation:mo-odo 1.3s var(--e-out) calc(.15s + var(--k)*.12s) both}
+.mo .pl.w .odn .od>span,.mo .mo-wh:not(.hit) .od>span{animation:none;transform:none}
+@keyframes mo-odo{from{transform:none}}
+.mbars{display:block;margin:8px 0 2px}
+.mbars small{display:block;font:700 .68rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--sea-2);margin-bottom:4px}
+.mb{display:flex;align-items:flex-end;gap:4px;height:34px}
+.mb i{flex:1;height:100%;border-radius:4px 4px 1px 1px;background:var(--apricot);transform-origin:bottom;transform:scaleY(var(--h))}
+.mb i:last-child{background:var(--acacia)}
+.mo .mbars:not(.go) i{transform:scaleY(.02)}
+.mo .mbars.go i{animation:mo-bar .8s var(--e-out) calc(.25s + var(--k)*.07s) both}
+.mo .pl.w .mbars i{animation:none;transform:scaleY(.02)}
+@keyframes mo-bar{from{transform:scaleY(.02)}}
+
+/* ---------- голосовые: волна «играет», слова расшифровки по очереди ---------- */
+.js-chat:not(.static) .tx .wd{opacity:0}
+.js-chat:not(.static) .played .tx .wd{opacity:1;transition:opacity .2s ease calc(.45s + var(--w)*.075s)}
+@media (prefers-reduced-motion:no-preference){
+  .js-chat:not(.static) .played .voice i span{transform-origin:center;animation:mo-wave .42s ease-in-out calc(var(--n)*-.07s) 5 alternate}
+}
+@keyframes mo-wave{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+
+/* ---------- команда: статус «в роботі» → ✅ со вспышкой; вечерний итог — строками ---------- */
+.stt i{position:relative}
+.fxp .stt i.flash::after{content:"";position:absolute;inset:-4px;border-radius:999px;border:2px solid var(--apricot);animation:mo-flash .7s var(--e-out) both;pointer-events:none}
+@keyframes mo-flash{from{opacity:1;transform:scale(.7)}to{opacity:0;transform:scale(1.35)}}
+.fxp .stt i.cur{animation:mo-pop .45s var(--e-spring)}
+@keyframes mo-pop{from{transform:scale(.6)}}
+.fxp .pl:not(.w) .eve li{animation:mo-rise .5s var(--e-out) both}
+.fxp .pl:not(.w) .eve li:nth-child(1){animation-delay:.35s}
+.fxp .pl:not(.w) .eve li:nth-child(2){animation-delay:.75s}
+.fxp .pl:not(.w) .eve li:nth-child(3){animation-delay:1.15s}
+.fxp .pl.w .eve li{opacity:0}
+.fxp.halt *{animation-play-state:paused!important}
+
+/* ---------- накладная: сканер, позиции летят на склад, счётчик ---------- */
+.mo-scan{position:absolute;pointer-events:none;opacity:0;overflow:hidden;border-radius:10px}
+.mo-scan i{position:absolute;left:0;right:0;top:0;height:4px;background:var(--apricot);box-shadow:0 0 10px 3px rgba(240,162,59,.55)}
+.mo-pc{position:absolute;left:0;top:0;width:14px;height:14px;border-radius:4px;background:var(--apricot);border:2px solid var(--sea);pointer-events:none;z-index:5;opacity:0}
+.mo-wh{position:absolute;right:-12px;bottom:-16px;z-index:4;display:flex;align-items:center;gap:6px;padding:6px 12px 6px 8px;border:2px solid var(--sea);border-radius:999px;background:#ffe6a8;color:#4a3300;font:700 1rem/1 var(--text);box-shadow:3px 3px 0 var(--sea);opacity:0;transform:scale(.6);transition:opacity .35s,transform .45s var(--e-spring)}
+.mo-wh svg{width:22px;height:22px}
+.mo-wh.on{opacity:1;transform:none}
+.mo-wh.hit{animation:mo-pop .4s var(--e-spring)}
+html:not(.mo) .mo-wh{display:none}
+
+/* ---------- «Як це працює»: часы с кнопкой — палец нажимает, потом ответ ---------- */
+.mo-arm .mo-h{opacity:0;transform:translateY(10px)}
+.mo-arm li{transition:opacity .45s ease,transform .5s var(--e-out)}
+.slot .after{position:relative}
+/* ровная сетка на телефоне: без лишней пустоты над первым часом, одинаковые отступы (Олег MSG 10200) */
+@media (max-width:900px){
+  .how-page .day{padding-top:8px}
+  .day .slot:first-of-type{border-top:0;padding-top:8px}
+  .day .slot{gap:12px}
+  .day .slot>time{padding-top:0}
+  .day .slot .before,.day .slot .after{margin:0}
+}
+
+/* ---------- ящик картотеки — «выдвигается» и возвращается (подсказка) ---------- */
+.mo-nudge{animation:mo-nudge .9s var(--e-out)}
+@keyframes mo-nudge{30%{transform:translateY(7px)}60%{transform:translateY(-2px)}}
+
+/* ---------- «День власника»: небо секции — утро → день → вечер → ночь (только opacity) ---------- */
+.dl{position:relative;isolation:isolate}
+.mo-sky{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.mo-sky i{position:absolute;inset:0;opacity:0}
+.mo-sky .s-dawn{background:linear-gradient(180deg,rgba(255,206,160,.32),rgba(255,206,160,0) 75%)}
+.mo-sky .s-dusk{background:linear-gradient(180deg,rgba(240,162,59,.28),rgba(214,120,120,.12))}
+.mo-sky .s-night{background:linear-gradient(180deg,rgba(27,53,80,.24),rgba(27,53,80,.16))}
+.mo-day .dl-sun{transition:transform .25s linear}
+.mo-day .dl-night{transition:opacity .25s linear}
+html[data-theme="dark"] .mo-sky{opacity:.45}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .mo-sky{opacity:.45}}
+
+/* ---------- меню-прокрутка в шапке на телефоне: затухание справа, следующий пункт чуть виден ---------- */
+@media (max-width:560px){
+  .top-doc .pages,.top .topnav{-webkit-mask-image:none;mask-image:none}
+  .top-doc .pages.more-r,.top .topnav.more-r{-webkit-mask-image:linear-gradient(90deg,#000 72%,transparent 98%);mask-image:linear-gradient(90deg,#000 72%,transparent 98%)}
+  .top-doc .pages.more-r.more-l,.top .topnav.more-r.more-l{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 72%,transparent 98%);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 72%,transparent 98%)}
+  .top-doc .pages{gap:0 14px;scroll-snap-type:x proximity}
+  .top-doc .pages li{scroll-snap-align:start}
+  .top .topnav{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .top .topnav::-webkit-scrollbar{display:none}
+  .top .topnav a{flex:none}
+}
+
+/* ---------- CTA «День власника: до і після» (Олег MSG 10200) ---------- */
+.dcta{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 22px;align-items:center;margin:34px 0 0;padding:18px 22px;border:2px solid var(--sea);border-radius:22px;background:var(--shell);box-shadow:6px 6px 0 var(--apricot);color:var(--sea);text-decoration:none;max-width:760px}
+.dcta:hover{text-decoration:none;background:#fff}
+.dcta-prev{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dcta-col{display:block;border-radius:14px;padding:10px 12px;border:1.5px dashed #9fb3b4;background:var(--sky);font-size:.9rem;line-height:1.35}
+.dcta-col.z{border:1.5px solid var(--acacia);background:#eef6ea}
+.dcta-col small{display:block;font:700 .68rem/1.2 var(--text);letter-spacing:.07em;text-transform:uppercase;color:var(--sea-2);margin-bottom:5px}
+.dcta-col.z small{color:var(--acacia)}
+.dcta-col i{display:block;font-style:normal}
+.dcta-col:not(.z) i{color:var(--sea-2)}
+.dcta-t{font:400 clamp(1.2rem,2.2vw,1.5rem)/1.2 var(--display)}
+.dcta-go{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--apricot);border:2px solid var(--sea);box-shadow:0 3px 0 var(--sea);font:700 1.3rem/1 var(--text)}
+.dcta-go span{display:block}
+@media (prefers-reduced-motion:no-preference){
+  .dcta-go span{animation:mo-call 5s var(--e-out) 2s infinite}
+  .dcta:hover{transform:translateY(-2px)}
+}
+@keyframes mo-call{0%,14%,100%{transform:none}4%{transform:translateX(6px)}8%{transform:none}11%{transform:translateX(4px)}}
+html[data-theme="dark"] .dcta:hover{background:#1c3347}
+html[data-theme="dark"] .dcta-col.z{background:#1d3a2a}
+html[data-theme="dark"] .dcta-go{color:#123c4a}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .dcta:hover{background:#1c3347}html:not([data-theme="light"]) .dcta-col.z{background:#1d3a2a}html:not([data-theme="light"]) .dcta-go{color:#123c4a}}
+@media (max-width:420px){.dcta{padding:14px;gap:12px}.dcta-col{font-size:.84rem;padding:8px 9px}}
+
+/* ---------- перевод «два телефона» ---------- */
+.tr-sec{padding:72px 0 80px}
+.tr-sec h2{font-size:clamp(2.2rem,4.6vw,3.6rem);margin-bottom:14px}
+.tr-sec .sub{color:var(--sea-2);max-width:60ch;margin:0 0 24px}
+.tr{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 170px minmax(0,1fr);gap:16px;align-items:start;max-width:1040px;margin:0 auto}
+.tr .phone{background:var(--shell)}
+.tr-r .phone{box-shadow:6px 6px 0 var(--apricot)}
+.tr-mid{display:grid;place-items:center;align-self:center;position:relative;min-height:60px}
+.tr-mid::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:3px dotted var(--sea);opacity:.35}
+.tr-chip{position:relative;z-index:6;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:700 .82rem/1 var(--text);background:var(--sea);color:var(--shell);border-radius:999px;padding:9px 13px;box-shadow:3px 3px 0 var(--apricot)}
+.tr-chip::before{content:"⇄";font-size:1rem}
+.mo .tr.fxp .tr-chip{opacity:0}
+.tr-rounds,.phone-lab.tr-lab{display:grid}
+.tr-rounds>ol,.tr-lab>span{grid-area:auto}
+.tr-rounds>ol{list-style:none;margin:0;padding:0}
+.tr-rd{display:block;font:700 .7rem/1.2 var(--text);letter-spacing:.07em;text-transform:uppercase;color:var(--sea-2);margin:2px 0 8px;text-align:center}
+.trf{display:block;font-size:.72rem;color:var(--sea-2);margin-top:3px;font-style:italic}
+.tr .t{position:relative}
+.mo-scr{position:absolute;inset:0;overflow:hidden;color:var(--sea);pointer-events:none}
+.scr-on{color:transparent!important}
+.scr-on>:not(.mo-scr){visibility:hidden}
+.trx,.rd{display:none}
+[data-replay][hidden]{display:none!important}
+.tr-joke{grid-column:1/-1;justify-self:center;margin:6px 0 0}
+.tr-joke>span{display:inline-flex;gap:10px;align-items:flex-start;max-width:560px;background:#fff;border:2px solid var(--sea);border-radius:18px 18px 18px 6px;padding:10px 14px;font-size:.98rem;box-shadow:4px 4px 0 var(--apricot)}
+.tr-joke svg{width:30px;height:30px;flex:none}
+.tr-joke b{display:block;font:700 .74rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--acacia)}
+html[data-theme="dark"] .tr-joke>span{background:#16293a}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .tr-joke>span{background:#16293a}}
+/* с движением: два круга переписки в одном месте окна (место под оба зарезервировано — без сдвига вёрстки) */
+@media (prefers-reduced-motion:no-preference){
+  .js .tr-rounds>ol,.js .tr-lab>span{grid-area:1/1}
+  .js .tr .r2{visibility:hidden;opacity:0}
+  .js .tr[data-r="2"] .r2{visibility:visible;opacity:1;transition:opacity .5s ease}
+  .js .tr[data-r="2"] .r1{visibility:hidden;opacity:0;transition:opacity .4s ease,visibility 0s .4s}
+  .js .tr .tr-rd{display:none}
+}
+@media (max-width:900px){
+  .tr{grid-template-columns:minmax(0,1fr);gap:10px}
+  .tr-mid{min-height:54px}
+  .tr-mid::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:3px dotted var(--sea)}
+}
+
+/* ---------- мини-переписки на страницах (Олег MSG 10084) ---------- */
+.mini{margin:6px 0 28px;max-width:440px;font-size:1rem;line-height:1.45}
+.mini-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px}
+.mini-lab{font:700 .74rem/1.2 var(--text);letter-spacing:.07em;text-transform:uppercase;color:var(--sea-2)}
+.mini .chat-ctl{min-height:40px;width:auto;flex:none;white-space:nowrap;padding:0 12px;display:inline-flex;gap:6px;font-size:.82rem}
+.mini .chat-ctl svg{width:16px;height:16px}
+html:not(.js) .mini-top .chat-ctl{display:none}
+.mini .phone{background:var(--sky);border-radius:22px;padding:10px 10px 8px;box-shadow:5px 5px 0 var(--sea)}
+.mini .phone .chat-head{border-bottom:2px dashed #c9d6d2}
+.mini .phone ol{list-style:none}
+.mini .msg{font-size:.88rem;max-width:90%;line-height:1.4}
+.mini .msg p{margin:0}
+.mini .msg.zh{background:#fff}
+.mini .msg.dmb{margin-left:auto;background:var(--sea);color:var(--shell);border-bottom-right-radius:6px}
+.mini .msg.dmr{background:#fff;border:1.5px solid #c9d6d2;border-bottom-left-radius:6px}
+.mini .msg.dmb .meta{color:#cfe0dc}
+.mini .msg.sys{font-size:.74rem}
+.mini .chat-ctl,.mini .chips span{font-weight:700}
+.mini .dm-ava{width:34px;height:34px;font-size:1.1rem}
+.mini-cap{margin:10px 2px 0;font-size:.8rem;line-height:1.4;color:var(--sea-2)}
+.prose .mini ol{padding-left:0;margin:0}
+.prose .mini li{margin:0}
+.prose .mini li::marker{content:none}
+@media (min-width:1180px){.doc-grid.solo:has(.mini.side){grid-template-columns:minmax(0,840px)}.doc-grid.solo .mini.side{float:right;margin:0 0 20px 36px;width:380px}}
+/* заголовок юр. страниц: место под 2 строки — при подмене шрифта «Контакти — Твой Жорик» прыгал между 1 и 2 строками (CLS 0,13 на uk@1440) */
+@media (min-width:561px){.doc-head h1{min-height:2.16em;display:flex;align-items:flex-end}}
+html[data-theme="dark"] .mini .msg.zh,html[data-theme="dark"] .mini .msg.dmr{background:#16293a}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .mini .msg.zh,html:not([data-theme="light"]) .mini .msg.dmr{background:#16293a}}
+/*MOTION-END*/
 /*WL-BEGIN: собирается C:/Zhorik/tools/waitlist_site.py, руками не править*/
 /* Лист ожидания (Олег MSG 10240–10256): кнопка в приёмную @TvoyJorik_bot. Дышит только кнопка на hero; reduced-motion — без анимации. */
 :root{--wl-sh:var(--sea)}

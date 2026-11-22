@@ -50,70 +50,7 @@
     });
   });
 
-  /* ---------- 3. сцены по шагам [data-play]: элементы с data-s появляются по порядку ---------- */
-  $$(d, '[data-play]').forEach(function (sc) {
-    var rp = sc.querySelector('[data-replay]');
-    if (!rp && sc.previousElementSibling) rp = sc.previousElementSibling.querySelector('[data-replay]');
-    if (calm || !IO) { if (rp) rp.parentNode.hidden = true; return; }
-    sc.classList.add('fxp', 'js-chat');
-    var els = $$(sc, '[data-s]'), steps = {}, timers = [], src = sc.querySelector('.t-o .phone');
-    els.forEach(function (e) { var k = +e.getAttribute('data-s'); (steps[k] = steps[k] || []).push(e); });
-    var keys = Object.keys(steps).map(Number).sort(function (a, b) { return a - b; });
-    var num = function (g, at) { return g.reduce(function (m, e) { return Math.max(m, +(e.getAttribute(at) || 0)); }, 0); };
-
-    function reset() {
-      timers.forEach(clearTimeout); timers = [];
-      els.forEach(function (e) {
-        if (e.classList.contains('pl')) { e.classList.add('w'); e.classList.remove('ty', 'played'); }
-        else if (e.classList.contains('stv')) e.classList.remove('cur');
-        else if (e.classList.contains('tp')) e.classList.remove('tap');
-      });
-      $$(sc, '.stt').forEach(function (s) { [].forEach.call(s.children, function (i, k) { i.classList.toggle('cur', k === 0); }); });
-    }
-    function fly(li) {                    /* карточка задачи «прилетает» из телефона владелицы (только transform/opacity) */
-      var c = li.firstElementChild; if (!src || !c) return;
-      var a = src.getBoundingClientRect(), b = c.getBoundingClientRect();
-      var dx = a.left + a.width / 2 - (b.left + b.width / 2), dy = a.top + a.height / 3 - (b.top + b.height / 2);
-      c.style.transition = 'none'; c.style.opacity = '0';
-      c.style.transform = 'translate(' + dx.toFixed(0) + 'px,' + dy.toFixed(0) + 'px) scale(.45)';
-      void c.offsetWidth;
-      c.style.transition = 'transform .95s cubic-bezier(.2,.7,.2,1), opacity .35s ease';
-      c.style.transform = ''; c.style.opacity = '';
-      setTimeout(function () { c.style.transition = ''; }, 1000);
-    }
-    function reveal(g) {
-      g.forEach(function (e) {
-        if (e.classList.contains('stv')) {
-          [].forEach.call(e.parentNode.children, function (i) { i.classList.remove('cur'); });
-          e.classList.add('cur');
-        } else if (e.classList.contains('tp')) e.classList.add('tap');
-        else {
-          if (e.classList.contains('fly')) fly(e);
-          e.classList.remove('w', 'ty');
-          if (e.querySelector('.voice')) timers.push(setTimeout(function () { e.classList.add('played'); }, 200));
-        }
-      });
-    }
-    function run() {
-      reset();
-      var t = 0;
-      keys.forEach(function (k) {
-        var g = steps[k], w = num(g, 'data-w') || 500, tyMs = num(g, 'data-ty');
-        t += w;
-        if (tyMs) {
-          timers.push(setTimeout(function () { g.forEach(function (e) { if (e.hasAttribute('data-ty')) e.classList.add('ty'); }); }, t));
-          t += tyMs;
-        }
-        timers.push(setTimeout(function () { reveal(g); }, t));
-      });
-    }
-    reset();
-    var io = new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting) { io.disconnect(); run(); }
-    }, { rootMargin: '0px 0px -35% 0px' });   /* сцена высокая (на телефоне — 4 экрана): старт, когда её верх прошёл 2/3 экрана */
-    io.observe(sc);
-    if (rp) rp.addEventListener('click', run);
-  });
+  /* ---------- 3. сцены [data-play] — теперь в assets/motion.js (общий «режиссёр»: пауза вне экрана, палец, дуги) ---------- */
 
   /* ---------- 4. «День власника»: прокрутка ведёт часы 08:00 → 22:00 ---------- */
   var day = d.querySelector('[data-day]');
@@ -124,8 +61,9 @@
       if (k === cur) return; cur = k;
       var st = stops[k], h = parseInt(st.getAttribute('data-t'), 10);
       tm.textContent = st.getAttribute('data-t'); lb.textContent = st.getAttribute('data-l');
-      if (sun) sun.style.transform = 'rotate(' + (-80 + (h - 8) / 14 * 160).toFixed(1) + 'deg)';
-      if (night) night.style.opacity = h >= 22 ? '1' : h >= 17 ? '.25' : '0';
+      var cont = day.classList.contains('mo-day');   /* motion.js ведёт солнце и ночь плавно от прокрутки */
+      if (sun && !cont) sun.style.transform = 'rotate(' + (-80 + (h - 8) / 14 * 160).toFixed(1) + 'deg)';
+      if (night && !cont) night.style.opacity = h >= 22 ? '1' : h >= 17 ? '.25' : '0';
       bar.style.transform = 'scaleX(' + ((k + 1) / stops.length).toFixed(3) + ')';
       stops.forEach(function (s, i) { s.classList.toggle('cur', i === k); });
     };
