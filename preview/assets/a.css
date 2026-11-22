@@ -455,3 +455,15 @@ footer .sdk{margin-top:6px;font-size:.88rem}
   .after{box-shadow:4px 4px 0 var(--sea)}
 }
 /*SITE-END*/
+
+/* пасхалка: кнопка «💬» у логотипа и пузырь с шуткой Жорика (Олег MSG 10101). Исходник логики — site.js */
+.brandbox{position:relative}
+.joke-btn{flex:none;width:44px;height:44px;margin:-6px 0 -6px -6px;border:0;border-radius:50%;background:transparent;color:var(--sea);font:inherit;font-size:1.05rem;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;opacity:.85}
+.joke-btn:hover,.joke-btn[aria-expanded="true"]{opacity:1;background:rgba(18,60,74,.08)}
+.joke-btn:focus-visible{outline:3px solid var(--apricot);outline-offset:1px;opacity:1}
+.joke{position:absolute;z-index:20;top:calc(100% + 6px);left:0;width:max-content;max-width:min(320px,calc(100vw - 40px));background:var(--shell);color:var(--sea);border:1px solid rgba(18,60,74,.18);border-radius:14px 14px 14px 4px;box-shadow:0 8px 24px rgba(18,60,74,.16);padding:10px 14px;font:500 .93rem/1.4 var(--text);white-space:normal}
+.joke[hidden]{display:none}
+.joke b{display:block;font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--sea-2);margin-bottom:2px}
+@media (max-width:560px){.joke-btn{position:absolute;top:-3px;left:196px;margin:0}}
+@media (prefers-reduced-motion:no-preference){.joke.show{animation:jokein .28s cubic-bezier(.2,.7,.2,1) both}}
+@keyframes jokein{from{opacity:0;transform:translateY(-4px) scale(.97)}to{opacity:1;transform:none}}
