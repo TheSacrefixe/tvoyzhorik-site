@@ -1091,6 +1091,13 @@ html:not(.js) .ph-wrap{display:none}
   .wf-page{gap:8px;padding:10px}
 }
 @media (prefers-reduced-motion:reduce){.js .book:hover,.js .book:focus-visible{transform:none}.js .book[aria-pressed="true"]{transform:none}.card-in{transition:none}}
+/* большая «настольная» книга «Одеський гумор» (Олег MSG 10261): выше и толще остальных, торец страниц, золотой герб */
+.js .book.big{--band:#f0c75e;border-radius:4px 7px 7px 4px;margin-right:9px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3),inset 0 0 0 5px rgba(240,199,94,.28),6px 0 0 #efe3c2,7px 0 0 rgba(0,0,0,.35),10px 6px 0 rgba(0,0,0,.14)}
+.js .book.big .sp{top:30px;bottom:34px;gap:6px;font-size:1.55rem;line-height:1.05;padding:0 6px}
+.js .book.big .sp-n{font-size:.72rem}
+.js .book.big .mk{right:12px;top:-12px;width:14px;height:34px}
+.js .book.big::after{content:"";position:absolute;left:50%;bottom:10px;width:46px;height:2px;margin-left:-23px;background:rgba(240,199,94,.9);box-shadow:0 5px 0 rgba(240,199,94,.55)}
+.js .book.big:hover,.js .book.big:focus-visible{transform:translateY(-12px)}
 /* тёмная тема «Одеська ніч» для библиотеки и блока «Сайт» (по кнопке и по системе) */
 html[data-theme="dark"] .lib-page{--wood:#6e4220;--wood-d:#45280f;--wood-l:#8a5a2b;--back:#2a2018;--back-d:#211912}
 html[data-theme="dark"] .case{box-shadow:inset 0 0 0 4px var(--wood-d),inset 0 22px 26px -12px rgba(0,0,0,.45),8px 8px 0 #2a4659}
