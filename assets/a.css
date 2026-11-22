@@ -742,6 +742,10 @@ li.slot{flex:none;width:210px;height:200px;margin-left:10px;display:flex;flex-di
 .plaque a{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;padding:0 14px;border-radius:999px;background:var(--apricot);color:#123c4a;font-weight:700;text-decoration:none;box-shadow:0 2px 0 #123c4a}
 .plaque a:hover{background:#f5b45a}
 html:not(.js) .case{padding-top:58px}
+.js .st-egg .mk{right:8px;top:16px;width:9px;height:9px;border-radius:2px;background:#b3261e;box-shadow:inset 0 0 0 2px rgba(255,235,220,.38)}
+.st-egg .slip small{background:#e9e1d0;color:#2b2f36}
+html:not(.js) .row>li.egg{display:none}
+.lib-hero .lib-hint{margin:8px 0 0;color:var(--sea-2);font-size:.86rem;font-style:italic;opacity:.8;max-width:60ch}
 html:not(.js) .row{display:block;min-height:0;padding:16px 4px 20px;overflow:visible}
 html:not(.js) .row>li{display:block;margin:0 0 10px}
 html:not(.js) .book{display:block;width:100%;padding:10px 12px;border:0;border-radius:8px;background:rgba(251,247,236,.9);color:#123c4a;font:inherit;text-align:left;cursor:default}

@@ -26,6 +26,7 @@
   function wantShow(b) {
     if (!want) return;
     var soon = b.s === 'soon';
+    if (b.s === 'egg') { want.href = b.a[0]; want.textContent = b.a[1]; want.hidden = false; want.classList.remove('in'); void want.offsetWidth; want.classList.add('in'); return; }
     want.href = want.getAttribute(soon ? 'data-soon-href' : 'data-href');
     want.textContent = want.getAttribute(soon ? 'data-soon-t' : 'data-t');
     want.hidden = false; want.classList.remove('in'); void want.offsetWidth; want.classList.add('in');
@@ -35,7 +36,8 @@
     clearT(); log.innerHTML = ''; status(false);
     if (want) want.hidden = true;
     var head;
-    if (b.s === 'soon') head = li('<span>' + esc(U.soon_h.replace('%s', b.t)) + '</span>', 'msg sys soon');
+    if (b.s === 'egg') head = li('<span>' + esc(b.h) + '</span>', 'msg sys ok');
+    else if (b.s === 'soon') head = li('<span>' + esc(U.soon_h.replace('%s', b.t)) + '</span>', 'msg sys soon');
     else head = li('<span>' + esc(U.ok_h.replace('%s', b.t)) + '</span>' + (b.s === 'tested' ? '<span class="note">' + esc(U.tested) + '</span>' : ''), 'msg sys ok');
     var msgs = b.s === 'soon' ? [['zh', b.l]] : b.c;
     put(head, !instant);
@@ -173,7 +175,7 @@
   });
   var inp = d.getElementById('lib-q'), clr = d.querySelector('.find-x'), res = d.querySelector('.find-res');
   var allBooks = $$(d, '.row .book');
-  var bookIdx = allBooks.map(function (b) { var tx = b.querySelector('.bk-txt'); var row = b.closest('.row'); return norm((tx ? tx.textContent : '') + ' ' + (b.getAttribute('aria-label') || '') + ' ' + (row ? row.getAttribute('aria-label') : '')); });
+  var bookIdx = allBooks.map(function (b) { if (b.classList.contains('st-egg')) return '';   var tx = b.querySelector('.bk-txt'); var row = b.closest('.row'); return norm((tx ? tx.textContent : '') + ' ' + (b.getAttribute('aria-label') || '') + ' ' + (row ? row.getAttribute('aria-label') : '')); });
   var qt = 0;
   function plural(n, f) { var a = n % 10, h = n % 100; return a === 1 && h !== 11 ? f[0] : (a >= 2 && a <= 4 && (h < 12 || h > 14) ? f[1] : f[2]); }
   function apply() {
