@@ -3,6 +3,7 @@
    сначала сообщение в директе, потом копия у владелицы в Telegram. Окно директа видно, а Telegram нет — играет «Директ» по кругу.
    Сценарная анимация: тексты сценариев — в разметке страницы (uk/en), здесь только показ по одному.
    Без внешних скриптов, без сети, без cookies и сбора данных.
+   Подтверждение владельца — либо нажатая кнопка (.chips .pk → .tap), либо текстом; не оба сразу (п. 9, MSG 10138–10140).
    Без JS — виден первый сценарий целиком; prefers-reduced-motion — все сообщения сразу, вкладки работают без анимации. */
 (function () {
   'use strict';
@@ -55,6 +56,7 @@
     if (all) items[n].forEach(function (li) {
       li.classList.remove('in'); li.classList.add('read', 'played'); ol.appendChild(li);
       [].forEach.call(li.querySelectorAll('.tap'), function (c) { c.classList.remove('tap'); });
+      [].forEach.call(li.querySelectorAll('.chips .pk'), function (c) { c.classList.add('tap'); });   /* нажатая кнопка — в итоговом виде */
     });
   }
   function down(smooth) {                  /* прокрутка окна к последнему сообщению (скролл не считается сдвигом вёрстки) */
@@ -116,6 +118,9 @@
           q.push([h1, function () { down(true); }]);
           q.push([h - h1, function () {}]);
         }
+        /* владелец нажимает кнопку (п. 9, Олег MSG 10138–10140): кнопка подсвечивается, отдельного сообщения «Так» нет */
+        var pk = li.querySelector('.chips .pk');
+        if (pk) q.push([1300, function () { readMine(); pk.classList.add('tap'); }]);
       } else {
         var chip = prev && prev.querySelector('.chips span');
         if (chip) q.push([1300, function () { chip.classList.add('tap'); }]);
