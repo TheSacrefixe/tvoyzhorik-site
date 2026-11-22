@@ -1119,3 +1119,69 @@ html:not([data-theme="light"]) .legend .lg-ready,.legend .lg-tested{background:#
 }
 @media (prefers-color-scheme:dark) and (max-width:900px){html:not([data-theme="light"]) .ph{box-shadow:0 -4px 0 #2a4659}}
 /*LIB-END*/
+/*WL-BEGIN: собирается C:/Zhorik/tools/waitlist_site.py, руками не править*/
+/* Лист ожидания (Олег MSG 10240–10256): кнопка в приёмную @TvoyJorik_bot. Дышит только кнопка на hero; reduced-motion — без анимации. */
+:root{--wl-sh:var(--sea)}
+html[data-theme="dark"]{--wl-sh:#000}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]){--wl-sh:#000}}
+.wl-head{flex:none;position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;margin-left:4px;border-radius:999px;background:var(--apricot);color:#123c4a;font-weight:700;font-size:.92rem;line-height:1.1;text-decoration:none;white-space:nowrap;box-shadow:0 2px 0 var(--wl-sh)}
+.wl-head:hover{background:#f5b45a}
+.wl-head:active{transform:translateY(1px);box-shadow:0 1px 0 var(--wl-sh)}
+.wl-head svg{width:18px;height:18px;flex:none}
+.wl-s,.lg-s{display:none}
+.wl-head .wl-f{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.wl{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.wl .wl-btn{color:#123c4a;box-shadow:0 3px 0 var(--wl-sh)}
+.wl .wl-btn:active{box-shadow:0 1px 0 var(--wl-sh)}
+.wl-note{margin:0;max-width:44ch;color:var(--sea-2);font-size:.97rem;line-height:1.45}
+.wl-mid{padding:10px 0 56px}
+.wl-day{padding:34px 0 72px}
+footer .wl-foot{padding-top:44px}
+.team-sec .wl-mid{padding:30px 0 0}
+.wl-foot{padding:0 0 30px;margin:0 0 22px;border-bottom:2px dashed #c9d6d2}
+.wl-contact{margin:30px 0 0;padding:24px 0 0;border-top:2px dashed #c9d6d2}
+.wl-contact .wl-btn{text-decoration:none}
+.wl-badge{display:inline-flex;align-items:center;gap:9px;margin:0 0 16px;padding:7px 14px;border:2px solid var(--sea);border-radius:999px;background:var(--shell);color:var(--sea);font:700 .84rem/1.2 var(--text);letter-spacing:.01em}
+.wl-badge i{flex:none;width:9px;height:9px;border-radius:50%;background:#2f8f5b;box-shadow:0 0 0 3px rgba(47,143,91,.18)}
+.hero .wl-hnote{margin:14px 0 0}
+@keyframes wl-breathe{0%,100%{box-shadow:0 3px 0 var(--wl-sh),0 0 0 0 rgba(240,162,59,0)}50%{box-shadow:0 3px 0 var(--wl-sh),0 0 0 10px rgba(240,162,59,.24)}}
+.hero .actions .wl-hero{box-shadow:0 3px 0 var(--wl-sh)}
+@media (prefers-reduced-motion:no-preference){.hero .actions .wl-hero{animation:wl-breathe 3.8s ease-in-out infinite}.hero .actions .wl-hero:hover{animation-play-state:paused}}
+/* в табличке на полке — ссылка, не кнопка: кнопка подвала в том же экране */
+.plaque a.wl-pl{display:inline;min-height:0;margin:0;padding:0;border-radius:0;background:none;box-shadow:none;color:#123c4a;font-weight:700;line-height:1.35;text-decoration:underline;text-decoration-color:var(--apricot);text-decoration-thickness:3px;text-underline-offset:4px}
+.plaque a.wl-pl:hover{background:none;text-decoration-color:#123c4a}
+.plaque .wl-pl-w{display:inline-block;margin-top:6px;padding:6px 0}
+html[data-theme="dark"] .wl-badge{background:transparent}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .wl-badge{background:transparent}}
+/* 561–1000: на страницах с коротким меню — две строки: логотип и кнопка, ниже меню, язык, тема */
+@media (min-width:561px) and (max-width:1000px){
+  .wrap .top>.topnav~.wl-head{order:1;margin-left:auto}
+  .wrap .top>.topnav{order:3;flex:1 1 calc(100% - 200px);margin-left:0}
+  .wrap .top>.topnav~.lang{order:4;margin-left:auto}
+  .wrap .top>.topnav~.theme-btn{order:5}
+  .wrap .top:has(>.topnav){flex-wrap:wrap;row-gap:0}
+}
+/* после живого чата: на широком экране окно чата стоит рядом с главной кнопкой — вторая кнопка там лишняя */
+@media (min-width:901px){.wl-chat{display:none}}
+@media (max-width:560px){
+  .wrap .top{column-gap:8px}
+  .wrap .top>.brandbox{order:0}
+  .wrap .top>.wl-head{order:1;margin-left:auto;padding:0 12px;gap:6px;font-size:.88rem}
+  .wl-head .wl-m{display:none}
+  .wl-head .wl-s{display:inline}
+  .wrap .top>nav{order:3;flex:1 1 calc(100% - 112px);min-width:0;margin-left:0}
+  .wrap .top>nav.topnav{gap:0 12px}
+  .wrap .top>nav.topnav a{font-size:.9rem}
+  .wrap .top>.lang{order:3;margin-left:0;min-width:44px;justify-content:center}
+  .wrap .top>.theme-btn{order:4;margin-left:0}
+  .lang .lg-f{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .lang .lg-s{display:inline}
+  .wl{gap:12px}
+  .wl-mid{padding:6px 0 44px}
+}
+@media (max-width:420px){.wl .wl-btn{padding:14px 22px}}
+@media (max-width:380px){.wl-head .wl-s{display:none}.wrap .top>.wl-head{width:44px;padding:0;justify-content:center}.wrap .top>nav{flex-basis:calc(100% - 104px)}.wrap .top>nav.topnav{gap:0 10px}.wrap .top>nav.topnav a{font-size:.85rem}}
+/* не по листу ожидания, но мешало проверке: на 390 за край вылезали .mo-orbs (hero) и схема .wf.from-r до появления — прокрутка вбок была и в 4cec905.
+   clip (не hidden) — не создаёт прокрутку и не ломает sticky. */
+main{overflow-x:clip}
+/*WL-END*/
