@@ -12,9 +12,11 @@
 <link rel="alternate" hreflang="en" href="contact.html">
 <link rel="alternate" hreflang="x-default" href="contact.html">
 <link rel="stylesheet" href="../assets/a.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="readbar" aria-hidden="true"><i></i></div>
 <div class="banner" role="note"><b>Preview.</b> Draft, not published, not legal advice. Highlighted = open questions.</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -28,8 +30,9 @@
 
 <div class="wrap">
   <header class="top top-doc">
-    <a class="brand" translate="no" href="index.html" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a>
+    <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
     <nav aria-label="Site pages"><ul class="pages">
+      <li><a href="how-it-works.html">How it works</a></li>
       <li><a href="privacy.html">Privacy Policy</a></li>
       <li><a href="terms.html">Terms of Service</a></li>
       <li><a href="data-deletion.html">Delete your data</a></li>
@@ -60,6 +63,7 @@ Sole proprietor (FOP), Ukraine · Tax ID: [ІПН — по решению вла
   <div class="wrap">
     <nav aria-label="Site pages">
       <a href="index.html">Home</a>
+      <a href="how-it-works.html">How it works</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
       <a href="data-deletion.html">Delete your data</a>
@@ -67,6 +71,7 @@ Sole proprietor (FOP), Ukraine · Tax ID: [ІПН — по решению вла
       <a href="../uk/contact.html" hreflang="uk" lang="uk">Українською</a>
     </nav>
     <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <p class="sdk">Built on the Claude Agent SDK via the Anthropic commercial API</p>
   </div>
 </footer>
 </body>

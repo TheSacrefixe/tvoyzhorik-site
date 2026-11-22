@@ -118,16 +118,16 @@ p{margin:0 0 1em}
 .quiet{color:var(--sea);font-weight:600;min-height:44px;display:inline-flex;align-items:center}
 
 /*CHAT-BEGIN*/
-/* чат-иллюстрация «живой» (Олег MSG 10041): сценарии в разметке, анимация — assets/chat.js; без JS и при reduced-motion — статично */
+/* чат-иллюстрация «живой» (Олег MSG 10041; 5 сценариев и «Так / Змінити» — MSG 10047, 10049): сценарии в разметке, анимация — assets/chat.js; без JS и при reduced-motion — статично */
 .chat{margin:0;justify-self:end;width:100%;max-width:470px}
 .chat-ctl[hidden]{display:none!important}
 .chat-bar{display:none;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
 .js .chat-bar{display:flex}
-.chat-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.chat-tabs{display:flex;flex-wrap:wrap;gap:6px;flex:1 1 0;min-width:0}
+.chat-ctls{align-self:flex-start}
 .chat-tabs button,.chat-ctl{font:600 .92rem/1 var(--text);color:var(--sea);background:transparent;border:2px solid var(--sea);border-radius:999px;min-height:44px;padding:0 16px;cursor:pointer;position:relative;overflow:hidden}
 .chat-tabs button:hover,.chat-ctl:hover{background:var(--shell)}
 .chat-tabs button[aria-pressed="true"]{background:var(--sea);color:var(--shell)}
-.chat-tabs .ts{display:none}
 .chat-tabs button i{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--apricot);transform:scaleX(0);transform-origin:left}
 .chat-ctls{display:flex;gap:6px;margin-left:auto}
 .chat-ctl{width:44px;padding:0;display:grid;place-items:center}
@@ -152,7 +152,8 @@ p{margin:0 0 1em}
 .scn{list-style:none;margin:0;padding:12px 0 0}
 .scn[hidden]{display:none}
 .msg{position:relative;max-width:86%;width:fit-content;padding:9px 13px 7px;border-radius:18px;margin:0 0 8px;font-size:.97rem;line-height:1.42}
-.msg p{margin:0}
+.msg p,.msg .t{margin:0}
+.msg ol{margin:4px 0 4px;padding:0 0 0 1.25em}
 .msg.me{margin-left:auto;background:var(--leaf);border-bottom-right-radius:6px}
 .msg.zh{background:#fff;border:1.5px solid #c9d6d2;border-bottom-left-radius:6px}
 .msg .from{display:block;font-size:.78rem;font-weight:700;color:var(--acacia);margin-bottom:1px}
@@ -177,6 +178,22 @@ p{margin:0 0 1em}
 .chips{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
 .chips span{border:1.5px solid var(--sea);border-radius:999px;padding:4px 12px;font-size:.86rem;font-weight:600;transition:transform .15s,box-shadow .15s}
 .chips span:first-child{background:var(--apricot)}
+/* служебная плашка (дата, режим «брейншторм») и плашка режима в шапке */
+.msg.sys{margin:6px auto 12px;max-width:none;background:#ffe6a8;color:#4a3300;font:700 .8rem/1.25 var(--text);letter-spacing:.02em;padding:6px 14px;border-radius:999px;text-align:center}
+.mode{margin-left:auto;align-self:center;white-space:nowrap;font:700 .76rem/1 var(--text);background:var(--sea);color:var(--shell);border-radius:999px;padding:7px 10px}
+.mode[hidden]{display:none}
+.mode:not([hidden])+.ex{margin-left:0}
+/* «задача з підтвердженням»: кнопки «Так / Змінити», дія — лише після «Так» */
+.need{display:block;margin:9px 0 0;font:700 .72rem/1.2 var(--text);letter-spacing:.06em;text-transform:uppercase;color:var(--acacia)}
+.chips.ok{margin-top:6px}
+.chips.ok .tap{background:var(--acacia);color:#fff;border-color:var(--acacia)}
+.chips.ok .tap::before{content:"✓ "}
+.draft.copy{border-left-color:var(--acacia);background:#f4f8f1}
+/* мягкое «солнце» за окном чата (приём из разбора: дышащее свечение; только opacity, без filter) */
+.hero .chat{position:relative}
+.hero .chat::before{content:"";position:absolute;inset:-5% -3% 8%;z-index:-1;pointer-events:none;border-radius:50%;background:radial-gradient(closest-side,rgba(240,162,59,.42),rgba(240,162,59,0));opacity:.7}
+@media (prefers-reduced-motion:no-preference){.hero .chat::before{animation:glow 7s ease-in-out infinite alternate}}
+@keyframes glow{from{opacity:.45}to{opacity:.9}}
 .chips .tap{transform:translateY(2px);box-shadow:inset 0 0 0 2px var(--sea)}
 .typing{display:flex;gap:5px;align-items:center;width:fit-content;padding:13px 15px;margin:0 0 8px;background:#fff;border:1.5px solid #c9d6d2;border-radius:18px;border-bottom-left-radius:6px}
 .typing[hidden]{display:none}
@@ -191,7 +208,7 @@ p{margin:0 0 1em}
 @keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
 @keyframes dot{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
 @media (max-width:900px){.chat{justify-self:stretch;max-width:none}.chat-win{box-shadow:6px 6px 0 var(--sea)}}
-@media (max-width:420px){.chat-tabs .tl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.chat-tabs .ts{display:inline}.chat-bar{gap:6px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
+@media (max-width:420px){.chat-bar{gap:6px}.chat-tabs{gap:5px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
 /*CHAT-END*/
 
 /* волна */
@@ -335,3 +352,87 @@ footer.doc-foot{padding-top:48px}
   .pages a{font-size:.9rem}
   .prose{font-size:1rem}
 }
+
+/*SITE-BEGIN*/
+/* общие фишки всех страниц (Олег MSG 10047, 10049, 10052): подпись Powered by Claude, меню, появление при прокрутке,
+   полоса чтения юр. страниц, схема «Хто що вирішує», страница «Як це працює». Исходник: drafts/site-features-2211/tools/site.css */
+.brandbox{display:flex;align-items:center;gap:10px;min-width:0}
+.pwr{font:500 .8rem/1.2 var(--text);color:var(--sea-2);white-space:nowrap;letter-spacing:.01em}
+.topnav{display:flex;align-items:center;gap:6px 20px;margin-left:auto}
+.topnav a{color:var(--sea);font-size:.95rem;min-height:44px;display:inline-flex;align-items:center;text-decoration:none}
+.topnav a:hover{text-decoration:underline}
+.topnav a[aria-current]{font-weight:700;text-decoration:underline;text-decoration-color:var(--apricot);text-decoration-thickness:3px;text-underline-offset:7px}
+.top .topnav + .lang{margin-left:0}
+footer .sdk{margin-top:6px;font-size:.88rem}
+@media (max-width:560px){
+  .brandbox{flex-direction:column;align-items:flex-start;gap:0}
+  .pwr{margin:-4px 0 0 50px}
+  .pwr .dot{display:none}
+  .top{flex-wrap:wrap;row-gap:0}
+  .top .topnav{order:3;flex-basis:100%;margin-left:0}
+  .top>.lang{margin-left:auto}
+  /* меню юр. страниц — одна строка с прокруткой вбок: высота шапки не зависит от шрифта (иначе CLS до 0,5 на uk) */
+  .top-doc .pages{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:0 16px;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .top-doc .pages::-webkit-scrollbar{display:none}
+  .top-doc > nav{min-width:0;max-width:100%}
+  .top-doc .pages li{flex:none}
+  .top-doc .pages li:last-child{padding-right:28px}
+}
+
+/* появление при прокрутке: класс rv-go ставит assets/site.js; без него (нет JS / reduced-motion) всё видно сразу */
+@media (prefers-reduced-motion:no-preference){
+  .rv-go .rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*90ms)}
+  .rv-go .rv:not(.on){opacity:0;transform:translateY(22px)}
+  .rv-go .rv.from-r:not(.on){transform:translateX(26px)}
+}
+
+/* юр. страницы: полоса прочитанного (только transform) и текущий раздел в оглавлении */
+.readbar{position:fixed;left:0;right:0;top:0;height:3px;z-index:5;pointer-events:none}
+.readbar i{display:block;height:100%;background:var(--apricot);transform:scaleX(0);transform-origin:left}
+.toc a[aria-current]{color:var(--acacia);font-weight:700}
+
+/* схема «Хто що вирішує»: помічник готує → людина натискає «Так» → дія */
+.decide{margin:56px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;counter-reset:dc}
+.decide li{position:relative;background:var(--shell);border:2px solid var(--sea);border-radius:22px;padding:20px 22px 22px}
+.sec.shell .decide li,.how-page .decide li{background:#fff}
+.decide li + li::before{content:"";position:absolute;left:-17px;top:50%;width:14px;height:14px;border-top:3px solid var(--sea);border-right:3px solid var(--sea);transform:translate(-2px,-50%) rotate(45deg)}
+.decide b{display:block;font:400 1.45rem/1.15 var(--display);margin-bottom:6px}
+.decide small{display:block;font:700 .72rem/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--sea-2);margin-bottom:10px}
+.decide p{margin:0;font-size:1rem;color:var(--sea-2)}
+.decide .yes{display:inline-block;border:1.5px solid var(--sea);border-radius:999px;padding:2px 12px;font:600 .9rem/1.5 var(--text);background:var(--apricot);color:var(--sea);margin-right:6px}
+.decide .chg{display:inline-block;border:1.5px solid var(--sea);border-radius:999px;padding:2px 12px;font:600 .9rem/1.5 var(--text)}
+.decide-note{margin:16px 0 0;color:var(--sea-2);font-size:1rem;max-width:70ch}
+.more{margin:28px 0 0;font-weight:600}
+@media (max-width:900px){
+  .decide{grid-template-columns:1fr;gap:22px}
+  .decide li + li::before{left:50%;top:-20px;transform:translateX(-50%) rotate(135deg)}
+}
+
+/* метка над заголовком */
+.eyebrow{display:block;font:700 .78rem/1.2 var(--text);letter-spacing:.1em;text-transform:uppercase;color:var(--acacia);margin-bottom:12px}
+
+/* страница «Як це працює»: день власника — до і після */
+.how-hero{padding:28px 0 40px}
+.how-hero h1{font-size:clamp(2.6rem,6vw,5rem);margin-bottom:18px}
+.how-hero .lead{max-width:34ch;margin-bottom:10px}
+.how-hero .note{font-size:.95rem;color:var(--sea-2);margin:0}
+.day{background:var(--shell);padding:48px 0 72px}
+.slot{display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1.15fr);gap:20px 28px;align-items:start;padding:26px 0;border-top:2px dashed #c9d6d2}
+.slot:last-of-type{border-bottom:2px dashed #c9d6d2}
+.slot>time{font:400 1.9rem/1 var(--display);padding-top:6px}
+.slot>time small{display:block;font:600 .85rem/1.3 var(--text);color:var(--sea-2);margin-top:6px}
+.before{background:var(--sky);border:2px dashed var(--sea-2);border-radius:20px;padding:16px 18px}
+.before h3,.after h3{font:700 .72rem/1.2 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--sea-2);margin:0 0 8px}
+.after h3{color:var(--acacia)}
+.before ul{margin:0;padding:0 0 0 1.1em;font-size:1rem;line-height:1.5}
+.before li{margin:3px 0}
+.before li::marker{color:var(--sea-2)}
+.after{background:#fff;border:2px solid var(--sea);border-radius:20px;padding:14px 14px 8px;box-shadow:6px 6px 0 var(--sea)}
+.after ol{list-style:none;margin:0;padding:0}
+.after .msg{font-size:.95rem}
+.day-cap{margin:18px 0 0;font-size:.88rem;color:var(--sea-2)}
+@media (max-width:900px){
+  .slot{grid-template-columns:minmax(0,1fr);gap:12px;padding:24px 0}
+  .after{box-shadow:4px 4px 0 var(--sea)}
+}
+/*SITE-END*/

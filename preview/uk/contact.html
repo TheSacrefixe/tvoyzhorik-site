@@ -12,9 +12,11 @@
 <link rel="alternate" hreflang="en" href="../en/contact.html">
 <link rel="alternate" hreflang="x-default" href="../en/contact.html">
 <link rel="stylesheet" href="../assets/a.css">
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
+<div class="readbar" aria-hidden="true"><i></i></div>
 <div class="banner" role="note"><b>Передперегляд.</b> Чернетка, не опубліковано, не юридична порада. Виділене — відкриті питання.</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -28,8 +30,9 @@
 
 <div class="wrap">
   <header class="top top-doc">
-    <a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a>
+    <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
     <nav aria-label="Сторінки сайту"><ul class="pages">
+      <li><a href="how-it-works.html">Як це працює</a></li>
       <li><a href="privacy.html">Політика конфіденційності</a></li>
       <li><a href="terms.html">Умови використання</a></li>
       <li><a href="data-deletion.html">Видалити свої дані</a></li>
@@ -60,6 +63,7 @@
   <div class="wrap">
     <nav aria-label="Сторінки сайту">
       <a href="index.html">Головна</a>
+      <a href="how-it-works.html">Як це працює</a>
       <a href="privacy.html">Політика конфіденційності</a>
       <a href="terms.html">Умови використання</a>
       <a href="data-deletion.html">Видалити свої дані</a>
@@ -67,6 +71,7 @@
       <a href="../en/contact.html" hreflang="en" lang="en">English</a>
     </nav>
     <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark> · hello@tvoyzhorik.com</p>
+    <p class="sdk">Працює на Claude Agent SDK через комерційний API Anthropic</p>
   </div>
 </footer>
 </body>

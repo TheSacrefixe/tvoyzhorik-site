@@ -1,4 +1,4 @@
-/* Твой Жорик — «живое» окно чата на главной (Олег MSG 10041).
+/* Твой Жорик — «живое» окно чата на главной (Олег MSG 10041; 5 сценариев, «Так / Змінити», режим — MSG 10047, 10049).
    Сценарная анимация: тексты сценариев — в разметке страницы (uk/en), здесь только показ по одному.
    Без внешних скриптов, без сети, без cookies и сбора данных.
    Без JS — виден первый сценарий целиком; prefers-reduced-motion — все сообщения сразу, вкладки работают без анимации. */
@@ -14,6 +14,7 @@
   var body = fig.querySelector('.chat-body');
   var typing = fig.querySelector('.typing');
   var st = fig.querySelector('.st');
+  var modeEl = fig.querySelector('.mode');
   var bPause = fig.querySelector('[data-act="pause"]');
   var bReplay = fig.querySelector('[data-act="replay"]');
   var stOff = st.textContent, stOn = st.getAttribute('data-on');
@@ -44,6 +45,7 @@
   function down(smooth) {                  /* прокрутка окна к последнему сообщению (скролл не считается сдвигом вёрстки) */
     body.scrollTo({ top: body.scrollHeight, behavior: smooth ? 'smooth' : 'auto' });
   }
+  function setMode(t) { if (!modeEl) return; modeEl.textContent = t || ''; modeEl.hidden = !t; }   /* плашка режима («брейншторм») */
   function status(on) { st.textContent = on ? stOn : stOff; st.classList.toggle('on', on); }
 
   /* ---------- очередь шагов одного сценария ---------- */
@@ -54,10 +56,13 @@
     }
     list.forEach(function (li, i) {
       var prev = list[i - 1], len = li.textContent.replace(/\s+/g, ' ').length;
-      if (li.classList.contains('zh')) {
+      if (li.classList.contains('sys')) {
+        q.push([900, function () { add(ol, li); }]);
+      } else if (li.classList.contains('zh')) {
         q.push([i ? 500 : 700, function () { readMine(); typing.hidden = false; typing.classList.add('in'); status(true); down(true); }]);
         q.push([Math.max(1100, Math.min(2700, 800 + len * 13)), function () {
           typing.hidden = true; typing.classList.remove('in'); status(false); add(ol, li);
+          if (li.hasAttribute('data-mode')) setMode(li.getAttribute('data-mode'));
         }]);
       } else {
         var chip = prev && prev.querySelector('.chips span');
@@ -122,7 +127,7 @@
     stop(); left = 0;
     /* озвучиваем только сценарий, который человек выбрал сам; автопрокрутку по кругу — нет */
     log.setAttribute('aria-live', auto ? 'off' : 'polite');
-    cur = n; setTab(n); show(n); fill(n, false);
+    cur = n; setTab(n); show(n); fill(n, false); setMode('');
     typing.hidden = true; status(false); down(false);
     queue = build(n); qi = 0; done = 0;
     total = queue.reduce(function (a, s) { return a + s[0]; }, 0) - queue[queue.length - 1][0];
@@ -132,6 +137,7 @@
   /* ---------- статичный режим (reduced motion) ---------- */
   function still(n) {
     stop(); left = 0; cur = n; setTab(n); show(n); fill(n, true);
+    var m = lists[n].querySelector('[data-mode]'); setMode(m && m.getAttribute('data-mode'));
     typing.hidden = true; status(false);
   }
 

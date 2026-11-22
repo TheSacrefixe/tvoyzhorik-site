@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../assets/a.css">
 <script>document.documentElement.classList.add("js")</script>
 <script src="../assets/chat.js" defer></script>
+<script src="../assets/site.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -31,7 +32,8 @@
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a>
+    <div class="brandbox"><a class="brand" translate="no" href="index.html" aria-label="Твой Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твой Жорик</a><span class="pwr" lang="en" translate="no"><span class="dot" aria-hidden="true">· </span>Powered by Claude</span></div>
+    <nav class="topnav" aria-label="Меню"><a href="how-it-works.html">Як це працює</a></nav>
     <a class="lang" href="../en/index.html" hreflang="en" lang="en">English</a>
   </header>
 </div>
@@ -53,7 +55,7 @@
       <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
       <figure class="chat" data-live aria-label="Приклад розмови з помічником">
         <div class="chat-bar">
-          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false"><span class="tl">Ранкова зведка</span><span class="ts" aria-hidden="true">Зведка</span><i aria-hidden="true"></i></button></div>
+          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false">Нагадування<i aria-hidden="true"></i></button><button type="button" data-go="3" aria-pressed="false">Звіт<i aria-hidden="true"></i></button><button type="button" data-go="4" aria-pressed="false">Реклама<i aria-hidden="true"></i></button></div>
           <div class="chat-ctls">
             <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
             <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -63,28 +65,53 @@
           <div class="chat-head">
             <svg aria-hidden="true"><use href="#mark"/></svg>
             <div><b>Твой Жорик</b><span class="st" data-on="друкує…" aria-hidden="true">у мережі</span></div>
+            <span class="mode" hidden aria-hidden="true"></span>
             <span class="ex">приклад</span>
           </div>
           <div class="chat-body">
             <div class="chat-log" role="log" aria-live="polite" aria-label="Приклад розмови з помічником">
             <ol class="scn" aria-label="Склад">
               <li class="msg me read"><span class="from">Марина</span><span class="sr">Голосове повідомлення, 0:04:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:19px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:7px;--n:5"></span><span style="height:16px;--n:6"></span><span style="height:20px;--n:7"></span><span style="height:11px;--n:8"></span><span style="height:15px;--n:9"></span><span style="height:9px;--n:10"></span><span style="height:18px;--n:11"></span><span style="height:13px;--n:12"></span><span style="height:6px;--n:13"></span><span style="height:12px;--n:14"></span><span style="height:9px;--n:15"></span></i><small>0:04</small></span><span class="tx">«Скільки лишилось чорних суконь M?»</span><span class="meta" aria-hidden="true"><time>10:14</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Перевірив у вашій CRM: чорна сукня «Бриз», розмір M — <b>3 шт.</b>: 2 на складі в Києві, 1 — у Львові.</p><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>S — 5 шт., L закінчився. Нагадати, коли L з’явиться в CRM?</p><span class="chips" aria-hidden="true"><span>Нагадати</span><span>Не треба</span></span><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Перевірив у вашій CRM: чорна сукня «Бриз», розмір M — <b>3 шт.</b>: 2 на складі в Києві, 1 — у Львові.</p><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">S — 5 шт., L закінчився. Нагадати, коли L з’явиться в CRM?</p><span class="chips" aria-hidden="true"><span>Нагадати</span><span>Не треба</span></span><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
               <li class="msg me read"><span class="from">Марина</span><p>Так, нагадай 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Домовились: щойно L з’явиться в CRM — напишу сюди.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Домовились: щойно L з’явиться в CRM — напишу сюди.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
             </ol>
             <ol class="scn" aria-label="Директ" hidden>
               <li class="msg me read"><span class="from">Оля</span><p>Клієнтка в директі питає: «Є бежевий светр у S? Скільки йде доставка до Дніпра?»</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Підготував чернетку — перевірте й надішліть самі:<span class="draft"><small>Чернетка для клієнтки</small>Добрий день! Бежевий светр «Хвиля» у розмірі S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="chips" aria-hidden="true"><span>Скопіювати</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Підготував чернетку. Відповідь піде від імені магазину — перевірте:<span class="draft"><small>Чернетка для клієнтки</small>Добрий день! Бежевий светр «Хвиля» S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg me read"><span class="from">Оля</span><p>Так</p><span class="meta" aria-hidden="true"><time>13:03</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Чистий текст — наступним повідомленням: скопіюйте й надішліть клієнтці в директ. Сам клієнтці не пишу.</p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t"><span class="draft copy">Добрий день! Бежевий светр «Хвиля» S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="meta" aria-hidden="true"><time>13:03</time></span></li>
               <li class="msg me read"><span class="from">Оля</span><p>Надіслала 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Добре. Якщо клієнтка відповість — киньте сюди, підготую наступну чернетку.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Добре. Якщо клієнтка відповість — киньте сюди, підготую наступну чернетку.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
             </ol>
-            <ol class="scn" aria-label="Ранкова зведка" hidden>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Доброго ранку, Марино! Коротко за вчора:<ul><li>замовлень — <b>7</b>, на 2 більше, ніж минулого вівторка;</li><li>реклама Meta — 640 ₴, у межах затвердженого бюджету;</li><li>закінчується светр «Хвиля» S — 2 шт.</li></ul></p><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Від вас потрібно одне: затвердити сторіс на п’ятницю.</p><span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+            <ol class="scn" aria-label="Нагадування" hidden>
+              <li class="msg me read"><span class="from">Марина</span><p>Нагадай у четвер о 9:00 подзвонити в ательє щодо ґудзиків для «Бриз»</p><span class="meta" aria-hidden="true"><time>18:40</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Поставив: четвер, 09:00. Нагадати ще й у середу ввечері?</p><span class="chips" aria-hidden="true"><span>Так</span><span>Не треба</span></span><span class="meta" aria-hidden="true"><time>18:40</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Так</p><span class="meta" aria-hidden="true"><time>18:41</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Добре: середа, 20:00 і четвер, 09:00.</p><span class="meta" aria-hidden="true"><time>18:41</time></span></li>
+              <li class="msg sys"><p>Четвер</p></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">⏰ Нагадування: подзвонити в ательє щодо ґудзиків для «Бриз».</p><span class="chips" aria-hidden="true"><span>Зроблено</span><span>Через годину</span></span><span class="meta" aria-hidden="true"><time>09:00</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Зроблено ✅</p><span class="meta" aria-hidden="true"><time>09:20</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Відмітив. На сьогодні більше нагадувань немає.</p><span class="meta" aria-hidden="true"><time>09:20</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Звіт" hidden>
+              <li class="msg zh"><span class="sr">Помічник: </span><div class="t">Доброго ранку, Марино! Коротко за вчора:<ul><li>замовлень — <b>7</b>, на 2 більше, ніж минулого вівторка;</li><li>реклама Meta — 640 ₴, у межах затвердженого бюджету;</li><li>закінчується светр «Хвиля» S — 2 шт.</li></ul></div><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Від вас потрібно одне: затвердити сторіс на п’ятницю.</p><span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
               <li class="msg me read"><span class="from">Марина</span><p>Затверджую 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
-              <li class="msg zh"><span class="sr">Помічник: </span><p>Готово: сторіс у контент-плані на п’ятницю, вийде за планом.</p><span class="meta" aria-hidden="true"><time>08:12</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Готово: сторіс у контент-плані на п’ятницю, вийде за планом.</p><span class="meta" aria-hidden="true"><time>08:12</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Реклама" hidden>
+              <li class="msg me read"><span class="from">Марина</span><p>Зроби план реклами в Інстаграм на тиждень, бюджет 200&nbsp;€</p><span class="meta" aria-hidden="true"><time>11:05</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh" data-mode="💡 брейншторм"><span class="sr">Помічник: </span><p class="t">Прийняв: 200&nbsp;€ на 7 днів. Вмикаю режим «брейншторм» 💡</p><span class="meta" aria-hidden="true"><time>11:05</time></span></li>
+              <li class="msg sys"><p>💡 Режим «брейншторм»</p></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><div class="t">Три варіанти:<ol><li>Новинка тижня — Reels з приміркою, 120&nbsp;€, на нову аудиторію</li><li>Догнати тих, хто заходив у профіль, — 50&nbsp;€</li><li>Реклама з переходом у директ — 30&nbsp;€</li></ol>Я за 1 + 2: нові люди + ті, хто вже майже купив.</div><span class="meta" aria-hidden="true"><time>11:06</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">Двісті євро — гроші серйозні. Витрачатиму так, ніби вони мої, а я дуже скупий.</p><span class="meta" aria-hidden="true"><time>11:06</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">План, тексти і 3 ідеї для ролика готові. Запускаємо?</p><span class="need">Потрібне ваше «Так»</span><span class="sr">Кнопки: Так / Змінити.</span><span class="chips ok" aria-hidden="true"><span>Так</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>11:07</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Так</p><span class="meta" aria-hidden="true"><time>11:09</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><div class="t">Готово, пакет у вас:<ul><li>план на 7 днів;</li><li>тексти оголошень;</li><li>налаштування аудиторій і бюджету;</li><li>інструкція на 5 хвилин.</li></ul>Запускаєте ви або ваш таргетолог.</div><span class="meta" aria-hidden="true"><time>11:09</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p class="t">У п’ятницю — звіт: скільки витратили і що це дало.</p><span class="meta" aria-hidden="true"><time>11:09</time></span></li>
             </ol>
             </div>
             <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
@@ -100,38 +127,38 @@
 
   <section class="shell sec" aria-labelledby="what">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head rv">
         <h2 id="what">Що він робить</h2>
         <p>«Твой Жорик» працює в чаті Telegram із власником бізнесу та його командою. Ви пишете або надсилаєте голосове своїми словами — помічник робить завдання або готує його вам на затвердження.</p>
       </div>
       <ul class="jobs">
-        <li class="job">
+        <li class="job rv" style="--d:0">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M16 38V26M24 38V18M32 38V30M40 38V22" stroke="#123c4a" stroke-width="4" stroke-linecap="round"/></svg>
           <div><h3>Звіти простими словами</h3><p>Результати реклами, відвідуваність сайту, позиції в пошуку — з акаунтів, які ви підключите.</p></div>
         </li>
-        <li class="job">
+        <li class="job rv" style="--d:1">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M18 38l3-9 13-13 6 6-13 13-9 3z" fill="#f0a23b" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/></svg>
           <div><h3>Контент</h3><p>Чернетки дописів і сторіс; публікує в Instagram чи на сторінку Facebook лише з контент-плану, який ви затвердили.</p></div>
         </li>
-        <li class="job">
+        <li class="job rv" style="--d:0">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M15 20h26v14H26l-7 6v-6h-4z" fill="#fff" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/><path d="M21 27h14" stroke="#123c4a" stroke-width="2.4" stroke-linecap="round"/></svg>
           <div><h3>Відповіді вашим покупцям</h3><p>В Instagram Direct і Messenger, якщо ви їх підключите. Правила для цих розмов — нижче.</p></div>
         </li>
-        <li class="job">
+        <li class="job rv" style="--d:1">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><rect x="15" y="22" width="26" height="16" rx="3" fill="#fff" stroke="#123c4a" stroke-width="2.4"/><path d="M15 28h26" stroke="#123c4a" stroke-width="2.4"/><path d="M22 17h12" stroke="#36602f" stroke-width="3" stroke-linecap="round"/></svg>
           <div><h3>Реклама під вашим контролем</h3><p>У рекламі Meta бюджети помічник змінює сам лише в межах місячного бюджету, який ви затвердили кнопкою. У Google Ads на час пілоту (див. <a href="terms.html">Умови використання</a>, розділ 4) він лише читає результати. У рекламі TikTok — те саме правило: бюджети помічник змінює сам лише в межах місячного бюджету, який ви затвердили кнопкою.</p></div>
         </li>
-        <li class="job">
+        <li class="job rv" style="--d:0">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><path d="M16 24l12-6 12 6v12l-12 6-12-6z" fill="#fff" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/><path d="M16 24l12 6 12-6M28 30v12" stroke="#123c4a" stroke-width="2.4" stroke-linejoin="round"/></svg>
           <div><h3>CRM і рутина</h3><p>Перевіряє залишки й замовлення у вашій CRM, нагадування, відповіді на питання команди.</p></div>
         </li>
-        <li class="job">
+        <li class="job rv" style="--d:1">
           <svg viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="26" fill="#e3eef0" stroke="#123c4a" stroke-width="2"/><rect x="23" y="14" width="10" height="18" rx="5" fill="#f0a23b" stroke="#123c4a" stroke-width="2.4"/><path d="M18 28a10 10 0 0 0 20 0M28 38v5" fill="none" stroke="#123c4a" stroke-width="2.4" stroke-linecap="round"/></svg>
           <div><h3>Голос</h3><p>Розуміє голосові й може відповідати голосом; голос обробляється на нашому власному сервері.</p></div>
         </li>
       </ul>
 
-      <div class="rules" id="direct">
+      <div class="rules rv" id="direct">
         <div>
           <h3>Розмови з вашими покупцями в Instagram Direct і Messenger</h3>
           <p>Якщо ви їх підключите, помічник відповідає на повідомлення ваших покупців від імені вашого бізнесу.</p>
@@ -149,24 +176,32 @@
 
   <section class="who" aria-labelledby="who">
     <div class="wrap">
-      <small id="who">Для кого</small>
+      <small id="who" class="rv">Для кого</small>
       <p>Для власників малого бізнесу — магазинів, брендів, сервісних компаній — і їхніх команд.</p>
     </div>
   </section>
 
   <section class="sec" id="how" aria-labelledby="how-h">
     <div class="wrap">
-      <div class="sec-head"><h2 id="how-h">Як це працює</h2><p>Три зупинки — і помічник на зв'язку.</p></div>
+      <div class="sec-head rv"><h2 id="how-h">Як це працює</h2><p>Три зупинки — і помічник на зв'язку.</p></div>
       <ol class="line">
-        <li><p>Ви відкриваєте чат із помічником у Telegram і приймаєте <a href="terms.html">Умови використання</a> та <a href="privacy.html">Політику конфіденційності</a>.</p></li>
-        <li><p>Підключаєте потрібні сервіси — Google (Ads, Analytics, Search Console, Merchant Center, Business Profile), Meta (Instagram, сторінки Facebook, повідомлення в Instagram Direct і Messenger, реклама), рекламу TikTok — кожен через його офіційний вхід. Будь-який можна відключити будь-коли.</p></li>
-        <li><p>Ви вирішуєте, що помічник може робити сам; усе, що стосується грошей, — лише з вашим підтвердженням, крім бюджетів реклами Meta і TikTok у межах затвердженого конверта (див. <a href="terms.html">Умови використання</a>, розділ 4).</p></li>
+        <li class="rv" style="--d:0"><p>Ви відкриваєте чат із помічником у Telegram і приймаєте <a href="terms.html">Умови використання</a> та <a href="privacy.html">Політику конфіденційності</a>.</p></li>
+        <li class="rv" style="--d:1"><p>Підключаєте потрібні сервіси — Google (Ads, Analytics, Search Console, Merchant Center, Business Profile), Meta (Instagram, сторінки Facebook, повідомлення в Instagram Direct і Messenger, реклама), рекламу TikTok — кожен через його офіційний вхід. Будь-який можна відключити будь-коли.</p></li>
+        <li class="rv" style="--d:2"><p>Ви вирішуєте, що помічник може робити сам; усе, що стосується грошей, — лише з вашим підтвердженням, крім бюджетів реклами Meta і TikTok у межах затвердженого конверта (див. <a href="terms.html">Умови використання</a>, розділ 4).</p></li>
       </ol>
+      <h3 class="sr">Хто що вирішує</h3>
+      <ol class="decide" aria-label="Хто що вирішує">
+        <li class="rv" style="--d:0"><small>Крок 1</small><b>Помічник готує</b><p>Чернетку, план, звіт чи нагадування.</p></li>
+        <li class="rv" style="--d:1"><small>Крок 2</small><b>Ви натискаєте</b><p><span class="yes">Так</span><span class="chg">Змінити</span></p></li>
+        <li class="rv" style="--d:2"><small>Крок 3</small><b>Дія</b><p>Публікація, витрата чи запуск — лише після вашого «Так».</p></li>
+      </ol>
+      <p class="decide-note rv">Гроші й публікації — тільки після вашого «Так»: окремо або в межах бюджету й контент-плану, які ви вже затвердили.</p>
+      <p class="more rv"><a href="how-it-works.html">День власника — до і після →</a></p>
     </div>
   </section>
 
   <section class="shell sec" aria-labelledby="data-h">
-    <div class="wrap data">
+    <div class="wrap data rv">
       <h2 id="data-h">Ваші дані</h2>
       <div>
         <ul>
@@ -181,7 +216,7 @@
 
   <section class="sec" aria-labelledby="us-h">
     <div class="wrap">
-      <div class="contact">
+      <div class="contact rv">
         <div>
           <h2 id="us-h">Хто ми</h2>
           <p>«Твой Жорик» надає <mark>[ОПЕРАТОР: ФИО ФОП, ІПН, адрес]</mark>.</p>
@@ -197,6 +232,7 @@
   <div class="wrap">
     <nav aria-label="Сторінки сайту">
       <a href="index.html" aria-current="page">Головна</a>
+      <a href="how-it-works.html">Як це працює</a>
       <a href="privacy.html">Політика конфіденційності</a>
       <a href="terms.html">Умови використання</a>
       <a href="data-deletion.html">Видалити свої дані</a>
@@ -204,6 +240,7 @@
       <a href="../en/index.html" hreflang="en" lang="en">English</a>
     </nav>
     <p>© <mark>[ГОД]</mark> <mark>[ОПЕРАТОР: ФИО ФОП]</mark>, hello@tvoyzhorik.com</p>
+    <p class="sdk">Працює на Claude Agent SDK через комерційний API Anthropic</p>
   </div>
 </footer>
 </body>
