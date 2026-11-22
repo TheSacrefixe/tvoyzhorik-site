@@ -84,3 +84,4 @@
     io.observe(c);
   });
 })();
+ (function(){try{var n=navigator;if(n.doNotTrack==='1'||n.globalPrivacyControl)return;var go=function(){try{var p=document.body&&document.body.classList.contains('root404')?'/404':location.pathname;var r='';try{r=document.referrer?new URL(document.referrer).hostname:''}catch(e){}if(r===location.hostname)r='';n.sendBeacon('https://stats.tvoyzhorik.com/hit?p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r))}catch(e){}};if(document.readyState==='complete')go();else addEventListener('load',go)}catch(e){}})();
