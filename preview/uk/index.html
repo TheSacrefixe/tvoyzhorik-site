@@ -13,6 +13,8 @@
 <meta name="color-scheme" content="light">
 <!-- Дизайн А «Одеський двір» (Олег MSG 10024–10025). Тексты — из drafts/site-tvoyzhorik-2111/uk/index.md; правка руками, сверка: md2preview.py --check-index. -->
 <link rel="stylesheet" href="../assets/a.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="../assets/chat.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -48,23 +50,49 @@
         </div>
       </div>
 
-      <figure class="chat" aria-label="Приклад розмови з помічником">
-        <div class="chat-head">
-          <svg aria-hidden="true"><use href="#mark"/></svg>
-          <div><b>Твой Жорик</b><span>чат вашої команди</span></div>
+      <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
+      <figure class="chat" data-live aria-label="Приклад розмови з помічником">
+        <div class="chat-bar">
+          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false"><span class="tl">Ранкова зведка</span><span class="ts" aria-hidden="true">Зведка</span><i aria-hidden="true"></i></button></div>
+          <div class="chat-ctls">
+            <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
+            <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
         </div>
-        <div class="msg me">
-          <span class="voice"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#123c4a"/></svg>
-            <i aria-hidden="true"><span style="height:8px"></span><span style="height:16px"></span><span style="height:11px"></span><span style="height:20px"></span><span style="height:9px"></span><span style="height:17px"></span><span style="height:13px"></span><span style="height:6px"></span><span style="height:15px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:7px"></span></i>
-            <small>голосове</small></span>
-          <span class="tx">«Глянь, скільки там чорних суконь M лишилось»</span>
+        <div class="chat-win">
+          <div class="chat-head">
+            <svg aria-hidden="true"><use href="#mark"/></svg>
+            <div><b>Твой Жорик</b><span class="st" data-on="друкує…" aria-hidden="true">у мережі</span></div>
+            <span class="ex">приклад</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-log" role="log" aria-live="polite" aria-label="Приклад розмови з помічником">
+            <ol class="scn" aria-label="Склад">
+              <li class="msg me read"><span class="from">Марина</span><span class="sr">Голосове повідомлення, 0:04:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:19px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:7px;--n:5"></span><span style="height:16px;--n:6"></span><span style="height:20px;--n:7"></span><span style="height:11px;--n:8"></span><span style="height:15px;--n:9"></span><span style="height:9px;--n:10"></span><span style="height:18px;--n:11"></span><span style="height:13px;--n:12"></span><span style="height:6px;--n:13"></span><span style="height:12px;--n:14"></span><span style="height:9px;--n:15"></span></i><small>0:04</small></span><span class="tx">«Скільки лишилось чорних суконь M?»</span><span class="meta" aria-hidden="true"><time>10:14</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Перевірив у вашій CRM: чорна сукня «Бриз», розмір M — <b>3 шт.</b>: 2 на складі в Києві, 1 — у Львові.</p><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>S — 5 шт., L закінчився. Нагадати, коли L з’явиться в CRM?</p><span class="chips" aria-hidden="true"><span>Нагадати</span><span>Не треба</span></span><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Так, нагадай 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Домовились: щойно L з’явиться в CRM — напишу сюди.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Директ" hidden>
+              <li class="msg me read"><span class="from">Оля</span><p>Клієнтка в директі питає: «Є бежевий светр у S? Скільки йде доставка до Дніпра?»</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Підготував чернетку — перевірте й надішліть самі:<span class="draft"><small>Чернетка для клієнтки</small>Добрий день! Бежевий светр «Хвиля» у розмірі S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="chips" aria-hidden="true"><span>Скопіювати</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg me read"><span class="from">Оля</span><p>Надіслала 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Добре. Якщо клієнтка відповість — киньте сюди, підготую наступну чернетку.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Ранкова зведка" hidden>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Доброго ранку, Марино! Коротко за вчора:<ul><li>замовлень — <b>7</b>, на 2 більше, ніж минулого вівторка;</li><li>реклама Meta — 640 ₴, у межах затвердженого бюджету;</li><li>закінчується светр «Хвиля» S — 2 шт.</li></ul></p><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Від вас потрібно одне: затвердити сторіс на п’ятницю.</p><span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Затверджую 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Готово: сторіс у контент-плані на п’ятницю, вийде за планом.</p><span class="meta" aria-hidden="true"><time>08:12</time></span></li>
+            </ol>
+            </div>
+            <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
         </div>
-        <p class="msg zh">Перевірив у вашій CRM: чорна сукня, розмір M — 3 шт.</p>
-        <p class="msg zh">Чернетка сторіс на п'ятницю готова. Опублікую лише після вашого «так» у контент-плані.
-          <span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span></p>
-        <p class="msg me">Так, давай 👌</p>
-        <figcaption class="caption">Приклад розмови, щоб показати формат. Справжні відповіді — з ваших підключених сервісів.</figcaption>
+        <figcaption class="caption">Приклад: імена, товари й цифри вигадані, щоб показати формат. Справжні відповіді — з ваших підключених сервісів.</figcaption>
       </figure>
+      <!--CHAT-END-->
     </section>
   </div>
 

@@ -130,26 +130,82 @@ p{margin:0 0 1em}
 .btn svg{width:22px;height:22px}
 .quiet{color:var(--sea);font-weight:600;min-height:44px;display:inline-flex;align-items:center}
 
-/* чат-иллюстрация */
-.chat{margin:0;background:var(--shell);border-radius:28px;padding:22px 20px 18px;border:2px solid var(--sea);box-shadow:10px 10px 0 var(--sea);max-width:470px;justify-self:end;width:100%}
-.chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;margin-bottom:16px;border-bottom:2px dashed #c9d6d2}
-.chat-head svg{width:44px;height:44px}
+/*CHAT-BEGIN*/
+/* чат-иллюстрация «живой» (Олег MSG 10041): сценарии в разметке, анимация — assets/chat.js; без JS и при reduced-motion — статично */
+.chat{margin:0;justify-self:end;width:100%;max-width:470px}
+.chat-ctl[hidden]{display:none!important}
+.chat-bar{display:none;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
+.js .chat-bar{display:flex}
+.chat-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.chat-tabs button,.chat-ctl{font:600 .92rem/1 var(--text);color:var(--sea);background:transparent;border:2px solid var(--sea);border-radius:999px;min-height:44px;padding:0 16px;cursor:pointer;position:relative;overflow:hidden}
+.chat-tabs button:hover,.chat-ctl:hover{background:var(--shell)}
+.chat-tabs button[aria-pressed="true"]{background:var(--sea);color:var(--shell)}
+.chat-tabs .ts{display:none}
+.chat-tabs button i{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--apricot);transform:scaleX(0);transform-origin:left}
+.chat-ctls{display:flex;gap:6px;margin-left:auto}
+.chat-ctl{width:44px;padding:0;display:grid;place-items:center}
+.chat-ctl svg{width:18px;height:18px}
+.chat-ctl .i-play,.chat-ctl.paused .i-pause{display:none}
+.chat-ctl.paused .i-play{display:block}
+.chat-win{background:var(--shell);border-radius:28px;padding:18px 18px 16px;border:2px solid var(--sea);box-shadow:10px 10px 0 var(--sea)}
+.chat-head{display:flex;align-items:center;gap:12px;padding:0 2px 14px;margin-bottom:6px;border-bottom:2px dashed #c9d6d2}
+.chat-head svg{width:44px;height:44px;flex:none}
 .chat-head b{display:block;font:400 1.2rem/1.1 var(--display)}
-.chat-head span{font-size:.85rem;color:var(--sea-2)}
-.msg{max-width:84%;padding:11px 15px;border-radius:18px;margin:0 0 10px;font-size:1rem;line-height:1.45;animation:pop .45s cubic-bezier(.2,.8,.3,1.2) both}
+.chat-head .st{font-size:.85rem;color:var(--sea-2)}
+.chat-head .st.on{color:var(--acacia);font-weight:600}
+.ex{margin-left:auto;align-self:flex-start;font:700 .72rem/1 var(--text);letter-spacing:.08em;text-transform:uppercase;background:#ffe6a8;color:#4a3300;border-radius:999px;padding:6px 10px}
+.chat-body{position:relative}
+/* класс .js ставит строка в <head> до отрисовки: место под окно зарезервировано сразу, без сдвига вёрстки (CLS);
+   новые сообщения добавляются снизу, окно прокручивается — старые не сдвигаются вёрсткой */
+@media (prefers-reduced-motion:no-preference){
+  .js .chat-body{--h:400px;height:var(--h);overflow:hidden;overflow-anchor:none;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 28px);mask-image:linear-gradient(to bottom,transparent 0,#000 28px)}
+  .js .chat-log{padding-top:var(--h)}
+}
+@media (prefers-reduced-motion:reduce){.chat-ctls{display:none!important}}
+.scn{list-style:none;margin:0;padding:12px 0 0}
+.scn[hidden]{display:none}
+.msg{position:relative;max-width:86%;width:fit-content;padding:9px 13px 7px;border-radius:18px;margin:0 0 8px;font-size:.97rem;line-height:1.42}
+.msg p{margin:0}
 .msg.me{margin-left:auto;background:var(--leaf);border-bottom-right-radius:6px}
 .msg.zh{background:#fff;border:1.5px solid #c9d6d2;border-bottom-left-radius:6px}
-.msg:nth-child(3){animation-delay:.5s}.msg:nth-child(4){animation-delay:1.1s}.msg:nth-child(5){animation-delay:1.7s}
-.voice{display:flex;align-items:center;gap:10px}
-.voice i{display:flex;gap:3px;align-items:center;height:22px}
+.msg .from{display:block;font-size:.78rem;font-weight:700;color:var(--acacia);margin-bottom:1px}
+.msg ul{margin:4px 0 0;padding:0 0 0 1.05em}
+.msg li{margin:1px 0}
+.meta{display:flex;justify-content:flex-end;align-items:center;gap:3px;margin:3px -3px -1px 14px;font-size:.72rem;line-height:1;color:var(--sea-2);font-variant-numeric:tabular-nums}
+.tick{width:17px;height:11px;fill:none;stroke:var(--sea-2);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tick .t2{opacity:0;transition:opacity .25s}
+.read .tick{stroke:var(--acacia)}
+.read .tick .t2{opacity:1}
+.voice{display:flex;align-items:center;gap:9px;padding-top:2px}
+.voice .pl{width:32px;height:32px;border-radius:50%;background:var(--sea);display:grid;place-items:center;flex:none}
+.voice .pl svg{width:14px;height:14px}
+.voice i{display:flex;gap:2.5px;align-items:center;height:22px}
 .voice i span{display:block;width:3px;border-radius:2px;background:var(--sea)}
-.voice small{font-size:.8rem;color:var(--sea-2)}
-.tx{display:block;font-size:.9rem;color:var(--sea-2);margin-top:4px;font-style:italic}
-.chips{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.chips span{border:1.5px solid var(--sea);border-radius:999px;padding:4px 12px;font-size:.88rem;font-weight:600}
+.js-chat:not(.static) .voice i span{opacity:.35}
+.voice small{font-size:.78rem;color:var(--sea-2);font-variant-numeric:tabular-nums}
+.js-chat:not(.static) .played .voice i span{opacity:1;transition:opacity .15s calc(var(--n)*.1s)}
+.tx{display:block;font-size:.88rem;color:var(--sea-2);margin-top:4px;font-style:italic}
+.draft{display:block;margin:7px 0 2px;padding:8px 11px;border-left:3px solid var(--apricot);background:var(--shell);border-radius:4px 10px 10px 4px;font-size:.93rem}
+.draft small{display:block;font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--sea-2);margin-bottom:2px}
+.chips{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+.chips span{border:1.5px solid var(--sea);border-radius:999px;padding:4px 12px;font-size:.86rem;font-weight:600;transition:transform .15s,box-shadow .15s}
 .chips span:first-child{background:var(--apricot)}
-.caption{font-size:.82rem;color:var(--sea-2);margin:12px 4px 0}
-@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.chips .tap{transform:translateY(2px);box-shadow:inset 0 0 0 2px var(--sea)}
+.typing{display:flex;gap:5px;align-items:center;width:fit-content;padding:13px 15px;margin:0 0 8px;background:#fff;border:1.5px solid #c9d6d2;border-radius:18px;border-bottom-left-radius:6px}
+.typing[hidden]{display:none}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--sea-2);animation:dot 1.1s infinite ease-in-out}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+.msg.in,.typing.in{animation:pop .42s cubic-bezier(.2,.8,.3,1.2) both}
+.msg.me.in{transform-origin:100% 100%}.msg.zh.in,.typing.in{transform-origin:0 100%}
+.scn.out{transition:opacity .35s;opacity:0}
+.js-chat.halt *{animation-play-state:paused!important}
+.caption{font-size:.82rem;color:var(--sea-2);margin:14px 4px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes dot{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+@media (max-width:900px){.chat{justify-self:stretch;max-width:none}.chat-win{box-shadow:6px 6px 0 var(--sea)}}
+@media (max-width:420px){.chat-tabs .tl{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.chat-tabs .ts{display:inline}.chat-bar{gap:6px}.chat-win{padding:14px 12px 12px;border-radius:22px}.js .chat-body{--h:420px}.chat-tabs button{padding:0 12px;font-size:.88rem}.msg{max-width:90%}}
+/*CHAT-END*/
 
 /* волна */
 .wave{display:block;width:100%;height:56px;color:var(--shell)}
@@ -212,7 +268,6 @@ footer p{color:var(--sea-2);margin:0}
 
 @media (max-width:900px){
   .hero{grid-template-columns:1fr;gap:44px;padding:20px 0 64px}
-  .chat{justify-self:stretch;max-width:none;box-shadow:6px 6px 0 var(--sea)}
   .sec-head,.rules,.data,.contact{grid-template-columns:1fr;gap:24px}
   .jobs{grid-template-columns:1fr;gap:36px}
   .rules{padding:28px 22px}
@@ -231,6 +286,8 @@ footer p{color:var(--sea-2);margin:0}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<script>document.documentElement.classList.add("js")</script>
+<script src="../../assets/chat.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -266,23 +323,49 @@ footer p{color:var(--sea-2);margin:0}
         </div>
       </div>
 
-      <figure class="chat" aria-label="Приклад розмови з помічником">
-        <div class="chat-head">
-          <svg aria-hidden="true"><use href="#mark"/></svg>
-          <div><b>Твой Жорик</b><span>чат вашої команди</span></div>
+      <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
+      <figure class="chat" data-live aria-label="Приклад розмови з помічником">
+        <div class="chat-bar">
+          <div class="chat-tabs" role="group" aria-label="Приклади розмов"><button type="button" data-go="0" aria-pressed="true">Склад<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Директ<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false"><span class="tl">Ранкова зведка</span><span class="ts" aria-hidden="true">Зведка</span><i aria-hidden="true"></i></button></div>
+          <div class="chat-ctls">
+            <button type="button" class="chat-ctl" data-act="pause" aria-label="Призупинити анімацію" data-pause="Призупинити анімацію" data-resume="Продовжити анімацію"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
+            <button type="button" class="chat-ctl" data-act="replay" aria-label="Почати приклад спочатку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
         </div>
-        <div class="msg me">
-          <span class="voice"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#123c4a"/></svg>
-            <i aria-hidden="true"><span style="height:8px"></span><span style="height:16px"></span><span style="height:11px"></span><span style="height:20px"></span><span style="height:9px"></span><span style="height:17px"></span><span style="height:13px"></span><span style="height:6px"></span><span style="height:15px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:7px"></span></i>
-            <small>голосове</small></span>
-          <span class="tx">«Глянь, скільки там чорних суконь M лишилось»</span>
+        <div class="chat-win">
+          <div class="chat-head">
+            <svg aria-hidden="true"><use href="#mark"/></svg>
+            <div><b>Твой Жорик</b><span class="st" data-on="друкує…" aria-hidden="true">у мережі</span></div>
+            <span class="ex">приклад</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-log" role="log" aria-live="polite" aria-label="Приклад розмови з помічником">
+            <ol class="scn" aria-label="Склад">
+              <li class="msg me read"><span class="from">Марина</span><span class="sr">Голосове повідомлення, 0:04:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:19px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:7px;--n:5"></span><span style="height:16px;--n:6"></span><span style="height:20px;--n:7"></span><span style="height:11px;--n:8"></span><span style="height:15px;--n:9"></span><span style="height:9px;--n:10"></span><span style="height:18px;--n:11"></span><span style="height:13px;--n:12"></span><span style="height:6px;--n:13"></span><span style="height:12px;--n:14"></span><span style="height:9px;--n:15"></span></i><small>0:04</small></span><span class="tx">«Скільки лишилось чорних суконь M?»</span><span class="meta" aria-hidden="true"><time>10:14</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Перевірив у вашій CRM: чорна сукня «Бриз», розмір M — <b>3 шт.</b>: 2 на складі в Києві, 1 — у Львові.</p><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>S — 5 шт., L закінчився. Нагадати, коли L з’явиться в CRM?</p><span class="chips" aria-hidden="true"><span>Нагадати</span><span>Не треба</span></span><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Так, нагадай 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Домовились: щойно L з’явиться в CRM — напишу сюди.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Директ" hidden>
+              <li class="msg me read"><span class="from">Оля</span><p>Клієнтка в директі питає: «Є бежевий светр у S? Скільки йде доставка до Дніпра?»</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Підготував чернетку — перевірте й надішліть самі:<span class="draft"><small>Чернетка для клієнтки</small>Добрий день! Бежевий светр «Хвиля» у розмірі S є в наявності. До Дніпра доставка зазвичай 1–2 дні. Оформити для вас?</span></p><span class="chips" aria-hidden="true"><span>Скопіювати</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg me read"><span class="from">Оля</span><p>Надіслала 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Добре. Якщо клієнтка відповість — киньте сюди, підготую наступну чернетку.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Ранкова зведка" hidden>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Доброго ранку, Марино! Коротко за вчора:<ul><li>замовлень — <b>7</b>, на 2 більше, ніж минулого вівторка;</li><li>реклама Meta — 640 ₴, у межах затвердженого бюджету;</li><li>закінчується светр «Хвиля» S — 2 шт.</li></ul></p><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Від вас потрібно одне: затвердити сторіс на п’ятницю.</p><span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg me read"><span class="from">Марина</span><p>Затверджую 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Помічник: </span><p>Готово: сторіс у контент-плані на п’ятницю, вийде за планом.</p><span class="meta" aria-hidden="true"><time>08:12</time></span></li>
+            </ol>
+            </div>
+            <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
         </div>
-        <p class="msg zh">Перевірив у вашій CRM: чорна сукня, розмір M — 3 шт.</p>
-        <p class="msg zh">Чернетка сторіс на п'ятницю готова. Опублікую лише після вашого «так» у контент-плані.
-          <span class="chips" aria-hidden="true"><span>Затвердити</span><span>Змінити</span></span></p>
-        <p class="msg me">Так, давай 👌</p>
-        <figcaption class="caption">Приклад розмови, щоб показати формат. Справжні відповіді — з ваших підключених сервісів.</figcaption>
+        <figcaption class="caption">Приклад: імена, товари й цифри вигадані, щоб показати формат. Справжні відповіді — з ваших підключених сервісів.</figcaption>
       </figure>
+      <!--CHAT-END-->
     </section>
   </div>
 

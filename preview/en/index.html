@@ -13,6 +13,8 @@
 <meta name="color-scheme" content="light">
 <!-- Дизайн А «Одеський двір» (Олег MSG 10024–10025). Тексты — из drafts/site-tvoyzhorik-2111/en/index.md; правка руками, сверка: md2preview.py --check-index. -->
 <link rel="stylesheet" href="../assets/a.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="../assets/chat.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -48,23 +50,49 @@
         </div>
       </div>
 
-      <figure class="chat" aria-label="Example conversation with the assistant">
-        <div class="chat-head">
-          <svg aria-hidden="true"><use href="#mark"/></svg>
-          <div><b translate="no">Tvii Zhoryk</b><span>your team’s chat</span></div>
+      <!--CHAT-BEGIN: собирается C:/Zhorik/tools/chat2preview.py, руками не править-->
+      <figure class="chat" data-live aria-label="Example conversation with the assistant">
+        <div class="chat-bar">
+          <div class="chat-tabs" role="group" aria-label="Example conversations"><button type="button" data-go="0" aria-pressed="true">Stock<i aria-hidden="true"></i></button><button type="button" data-go="1" aria-pressed="false">Direct<i aria-hidden="true"></i></button><button type="button" data-go="2" aria-pressed="false"><span class="tl">Morning brief</span><span class="ts" aria-hidden="true">Brief</span><i aria-hidden="true"></i></button></div>
+          <div class="chat-ctls">
+            <button type="button" class="chat-ctl" data-act="pause" aria-label="Pause animation" data-pause="Pause animation" data-resume="Resume animation"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg></button>
+            <button type="button" class="chat-ctl" data-act="replay" aria-label="Restart this example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
         </div>
-        <div class="msg me">
-          <span class="voice"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#123c4a"/></svg>
-            <i aria-hidden="true"><span style="height:8px"></span><span style="height:16px"></span><span style="height:11px"></span><span style="height:20px"></span><span style="height:9px"></span><span style="height:17px"></span><span style="height:13px"></span><span style="height:6px"></span><span style="height:15px"></span><span style="height:10px"></span><span style="height:18px"></span><span style="height:7px"></span></i>
-            <small>voice message</small></span>
-          <span class="tx">“Check how many black dresses in M we have left”</span>
+        <div class="chat-win">
+          <div class="chat-head">
+            <svg aria-hidden="true"><use href="#mark"/></svg>
+            <div><b translate="no">Tvii Zhoryk</b><span class="st" data-on="typing…" aria-hidden="true">online</span></div>
+            <span class="ex">example</span>
+          </div>
+          <div class="chat-body">
+            <div class="chat-log" role="log" aria-live="polite" aria-label="Example conversation with the assistant">
+            <ol class="scn" aria-label="Stock">
+              <li class="msg me read"><span class="from">Marina</span><span class="sr">Voice message, 0:04:</span><span class="voice" aria-hidden="true"><span class="pl"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fbf7ec"/></svg></span><i><span style="height:8px;--n:0"></span><span style="height:14px;--n:1"></span><span style="height:10px;--n:2"></span><span style="height:19px;--n:3"></span><span style="height:12px;--n:4"></span><span style="height:7px;--n:5"></span><span style="height:16px;--n:6"></span><span style="height:20px;--n:7"></span><span style="height:11px;--n:8"></span><span style="height:15px;--n:9"></span><span style="height:9px;--n:10"></span><span style="height:18px;--n:11"></span><span style="height:13px;--n:12"></span><span style="height:6px;--n:13"></span><span style="height:12px;--n:14"></span><span style="height:9px;--n:15"></span></i><small>0:04</small></span><span class="tx">“How many black dresses in M are left?”</span><span class="meta" aria-hidden="true"><time>10:14</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Checked your CRM: black dress “Breeze”, size M — <b>3 left</b>: 2 at the Kyiv warehouse, 1 in Lviv.</p><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>S — 5 left, L is sold out. Shall I remind you when L shows up in the CRM?</p><span class="chips" aria-hidden="true"><span>Remind me</span><span>No need</span></span><span class="meta" aria-hidden="true"><time>10:14</time></span></li>
+              <li class="msg me read"><span class="from">Marina</span><p>Yes, remind me 👌</p><span class="meta" aria-hidden="true"><time>10:15</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Deal: as soon as L appears in the CRM, I’ll post here.</p><span class="meta" aria-hidden="true"><time>10:15</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Direct" hidden>
+              <li class="msg me read"><span class="from">Olya</span><p>A customer asks in Direct: “Do you have the beige sweater in S? How long is delivery to Dnipro?”</p><span class="meta" aria-hidden="true"><time>13:02</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Here’s a draft — check it and send it yourself:<span class="draft"><small>Draft for the customer</small>Hi! The beige “Wave” sweater in S is in stock. Delivery to Dnipro usually takes 1–2 days. Shall we place the order for you?</span></p><span class="chips" aria-hidden="true"><span>Copy</span><span>Change</span></span><span class="meta" aria-hidden="true"><time>13:02</time></span></li>
+              <li class="msg me read"><span class="from">Olya</span><p>Sent 👍</p><span class="meta" aria-hidden="true"><time>13:04</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Good. If she replies, drop it here and I’ll prepare the next draft.</p><span class="meta" aria-hidden="true"><time>13:04</time></span></li>
+            </ol>
+            <ol class="scn" aria-label="Morning brief" hidden>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Good morning, Marina! Yesterday in short:<ul><li>orders — <b>7</b>, 2 more than last Tuesday;</li><li>Meta ads — €58, within the approved budget;</li><li>running low: “Wave” sweater S — 2 left.</li></ul></p><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>One thing needs you: approve the story for Friday.</p><span class="chips" aria-hidden="true"><span>Approve</span><span>Change</span></span><span class="meta" aria-hidden="true"><time>08:00</time></span></li>
+              <li class="msg me read"><span class="from">Marina</span><p>Approved 👌</p><span class="meta" aria-hidden="true"><time>08:12</time><svg class="tick" viewBox="0 0 17 11" aria-hidden="true"><path d="M1.5 6 4.5 9 10.5 2"/><path class="t2" d="M7.6 8.6 8 9 14.5 2"/></svg></span></li>
+              <li class="msg zh"><span class="sr">Assistant: </span><p>Done: the story is in the content plan for Friday and will go out as planned.</p><span class="meta" aria-hidden="true"><time>08:12</time></span></li>
+            </ol>
+            </div>
+            <div class="typing" hidden aria-hidden="true"><span></span><span></span><span></span></div>
+          </div>
         </div>
-        <p class="msg zh">Checked your CRM: black dress, size M — 3 left.</p>
-        <p class="msg zh">The story draft for Friday is ready. I’ll publish it only after your “yes” in the content plan.
-          <span class="chips" aria-hidden="true"><span>Approve</span><span>Change</span></span></p>
-        <p class="msg me">Yes, go ahead 👌</p>
-        <figcaption class="caption">An example conversation to show the format. Real answers come from the services you connect.</figcaption>
+        <figcaption class="caption">Example: names, products and numbers are made up to show the format. Real answers come from the services you connect.</figcaption>
       </figure>
+      <!--CHAT-END-->
     </section>
   </div>
 
