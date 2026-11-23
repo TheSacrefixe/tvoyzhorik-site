@@ -1668,7 +1668,6 @@ body{--b-ink:#0e1113;--b-ring:3px solid #0e1113;--b-spring:transform .34s cubic-
   .ph:not(.open){height:76px;transform:none;overflow:hidden}
 }
 @media (max-width:900px) and (prefers-reduced-motion:reduce){.ph{transition:none}}
-.brand svg{border-radius:9px;box-shadow:0 1px 0 rgba(255,255,255,.5),0 2px 0 #707579,0 5px 9px rgba(0,0,0,.33)}
 .site-foot .ft-h,.caption{color:#0b0d0e!important;text-shadow:0 1px 0 rgba(255,255,255,.45)}
 @media (prefers-reduced-motion:no-preference){@supports ((-webkit-background-clip:text) or (background-clip:text)){
   .st-sub{background:linear-gradient(100deg,#0b0d0e 0%,#0b0d0e 40%,#ffffff 50%,#0b0d0e 60%,#0b0d0e 100%);background-size:250% 100%;background-position:120% 0;
