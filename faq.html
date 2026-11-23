@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Твій Жорик — персональний AI-агент для малого бізнесу">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="/assets/fonts/Kurale-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Commissioner-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -37,8 +39,10 @@
 <script src="/assets/site.js" defer></script>
 <script src="/assets/fx.js" defer></script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
 </head>
 <body>
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <a class="skip" href="#main">Перейти до змісту</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,13 +51,12 @@
   </defs>
 </svg>
 
-<div class="hdr"><div class="wrap">
-  <header class="top">
-    <div class="brandbox"><a class="brand" translate="no" href="/" aria-label="Твій Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твій Жорик</a></div>
-    <nav class="topnav" aria-label="Меню"><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека</a><a href="/website">Сайт</a><a href="/data">Ваші дані</a><a href="/faq" aria-current="page">Питання</a></nav>
-    <a class="lang" href="/en/faq" hreflang="en" lang="en"><span class="lg-f">English</span><span class="lg-s" aria-hidden="true">EN</span></a>
-  </header>
-</div></div>
+<header class="r4top" id="r4top">
+  <div class="brandbox r4brandbox"><a class="brand r4brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a></div>
+  <nav class="r4nav" aria-label="Меню"><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека</a><a href="/website">Сайт</a><a href="/data">Ваші дані</a><a href="/faq" class="metal dark" aria-current="page">Питання</a><a class="r4lang" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a></nav>
+  <span class="r4right"><a class="r4lang r4lang-m" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Меню</button></span>
+</header>
+<nav class="r4menu" id="r4menu" aria-label="Меню" hidden><div class="r4menu-in"><a class="metal" href="/">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal dark" href="/faq" aria-current="page">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="r4lang" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
 
 <main id="main" class="pg-main pg-faq">
 <nav class="wrap crumbs" aria-label="Ви тут"><a href="/"><span aria-hidden="true">←</span> Головна</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Часті питання</span></nav>

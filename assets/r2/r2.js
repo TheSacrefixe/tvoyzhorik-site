@@ -201,7 +201,7 @@
     S.vis = true;
     const p = RM ? .5 : clamp(-r.top / (r.height - innerHeight));
     const veil = RM ? 0 : clamp(clamp(r.top / innerHeight) * 1.1 + smooth(.86, 1, p));   // тёмное проявляется, пока секция въезжает в экран — без пустого экрана
-    S.veil.style.opacity = veil.toFixed(3);
+    S.sec.style.setProperty('--veil', veil.toFixed(3)); S.sec.style.setProperty('--fe', Math.min(50, veil * 60).toFixed(1) + '%');
     if (S.cap) S.cap.style.setProperty('--cap', (RM ? 1 : smooth(.4, .56, clamp((innerHeight - r.top) / r.height)) * (1 - smooth(.8, .9, clamp((innerHeight - r.top) / r.height)))).toFixed(3));
     S.dark = veil < .5 && r.top < 40 && r.bottom > 60;
     const c = S.ctx, d = S.d, W = S.W * d, H = S.H * d;

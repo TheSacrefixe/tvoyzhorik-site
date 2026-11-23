@@ -307,3 +307,15 @@ html:not(.js) .panel{border-top:1px solid var(--line)}
 .foot{flex-wrap:wrap;gap:.6rem 1.4rem}
 .foot-links{display:flex;flex-wrap:wrap;gap:.4rem 1rem;width:100%}
 .foot-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+/* r4 (site-r4-2311): плавные границы фона на телефоне (кадры 2, 4, 6 листа sheet-390-uk-webkit) —
+   ASCII: светлая подложка без краёв (мягкое пятно поверх фона-студии); шар: вместо сплошной вуали цвета фона секция тает целиком и края растушёваны */
+.s-ascii .pin{background:linear-gradient(rgba(223,231,237,0) 0,rgba(223,231,237,.88) 24%,rgba(223,231,237,.88) 76%,rgba(223,231,237,0) 100%)}
+html[data-abg="3"] .s-ascii .pin{background:var(--a-bg)}
+.s-sphere .veil{display:none}
+.s-sphere .pin{opacity:calc(1 - var(--veil,1));
+  -webkit-mask-image:linear-gradient(transparent,#000 var(--fe,0%),#000 calc(100% - var(--fe,0%)),transparent);
+          mask-image:linear-gradient(transparent,#000 var(--fe,0%),#000 calc(100% - var(--fe,0%)),transparent)}
+@media (prefers-reduced-motion:reduce){.s-sphere .pin{opacity:1;-webkit-mask-image:none;mask-image:none}}
+.r4more{margin-top:40px}
+.r4more a{text-decoration:none}

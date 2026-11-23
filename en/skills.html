@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tvii Zhoryk — personal AI agent for small business">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="/assets/fonts/Kurale-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Commissioner-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -37,8 +39,10 @@
 <script src="/assets/site.js" defer></script>
 <script src="/assets/lib.js" defer></script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
 </head>
 <body class="lib-body">
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,13 +51,12 @@
   </defs>
 </svg>
 
-<div class="hdr"><div class="wrap">
-  <header class="top">
-    <div class="brandbox"><a class="brand" translate="no" href="/en/" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a></div>
-    <nav class="topnav" aria-label="Menu"><a href="/en/how-it-works">How it works</a><a href="/en/skills" aria-current="page">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a></nav>
-    <a class="lang" href="/skills" hreflang="uk" lang="uk"><span class="lg-f">Українською</span><span class="lg-s" aria-hidden="true">УКР</span></a>
-  </header>
-</div></div>
+<header class="r4top" id="r4top">
+  <div class="brandbox r4brandbox"><a class="brand r4brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a></div>
+  <nav class="r4nav" aria-label="Menu"><a href="/en/how-it-works">How it works</a><a href="/en/skills" class="metal dark" aria-current="page">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a><a class="r4lang" href="/skills" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></nav>
+  <span class="r4right"><a class="r4lang r4lang-m" href="/skills" hreflang="uk" lang="uk" aria-label="Українською">УКР</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Menu</button></span>
+</header>
+<nav class="r4menu" id="r4menu" aria-label="Menu" hidden><div class="r4menu-in"><a class="metal" href="/en/">Home</a><a class="metal" href="/en/how-it-works">How it works</a><a class="metal dark" href="/en/skills" aria-current="page">Library</a><a class="metal" href="/en/website">Website</a><a class="metal" href="/en/data">Your data</a><a class="metal" href="/en/faq">FAQ</a><a class="metal" href="/en/about">About us</a><a class="metal" href="/en/contact">Contact</a><a class="r4lang" href="/skills" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></div></nav>
 
 <main id="main" class="lib-page">
 <nav class="wrap crumbs" aria-label="You are here"><a href="/en/"><span aria-hidden="true">←</span> Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Zhoryk’s library</span></nav>

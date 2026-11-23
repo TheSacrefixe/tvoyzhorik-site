@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tvii Zhoryk — personal AI agent for small business">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="/assets/fonts/Kurale-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Commissioner-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -37,8 +39,10 @@
 <script src="/assets/site.js" defer></script>
 <script src="/assets/fx.js" defer></script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
 </head>
 <body class="how-page">
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,13 +51,12 @@
   </defs>
 </svg>
 
-<div class="hdr"><div class="wrap">
-  <header class="top">
-    <div class="brandbox"><a class="brand" translate="no" href="/en/" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a></div>
-    <nav class="topnav" aria-label="Menu"><a href="/en/how-it-works" aria-current="page">How it works</a><a href="/en/skills">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a></nav>
-    <a class="lang" href="/how-it-works" hreflang="uk" lang="uk"><span class="lg-f">Українською</span><span class="lg-s" aria-hidden="true">УКР</span></a>
-  </header>
-</div></div>
+<header class="r4top" id="r4top">
+  <div class="brandbox r4brandbox"><a class="brand r4brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a></div>
+  <nav class="r4nav" aria-label="Menu"><a href="/en/how-it-works" class="metal dark" aria-current="page">How it works</a><a href="/en/skills">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a><a class="r4lang" href="/how-it-works" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></nav>
+  <span class="r4right"><a class="r4lang r4lang-m" href="/how-it-works" hreflang="uk" lang="uk" aria-label="Українською">УКР</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Menu</button></span>
+</header>
+<nav class="r4menu" id="r4menu" aria-label="Menu" hidden><div class="r4menu-in"><a class="metal" href="/en/">Home</a><a class="metal dark" href="/en/how-it-works" aria-current="page">How it works</a><a class="metal" href="/en/skills">Library</a><a class="metal" href="/en/website">Website</a><a class="metal" href="/en/data">Your data</a><a class="metal" href="/en/faq">FAQ</a><a class="metal" href="/en/about">About us</a><a class="metal" href="/en/contact">Contact</a><a class="r4lang" href="/how-it-works" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></div></nav>
 
 <main id="main">
 <nav class="wrap crumbs" aria-label="You are here"><a href="/en/"><span aria-hidden="true">←</span> Home</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">How it works</span></nav>
@@ -63,6 +66,27 @@
     <p class="lead">The same day twice: the usual way — and as one chat with the assistant in Telegram.</p>
     <p class="note">Example: a gym. The examples are made up — to show what it looks like. What exactly your assistant does depends on its skills: ready-made ones are in the <a href="/en/skills">Library</a>, and the team will add the one your business needs on request.</p>
   </div>
+  <section class="r4-algo" aria-labelledby="r4algo-h"><div class="wrap">
+    <h2 id="r4algo-h">Brief at 08:00 · One “Yes” from you · Done ✅</h2>
+    <p class="lead">Tvii Zhoryk works in a Telegram chat with the business owner and their team. Tap “Next” — the line walks the whole path.</p>
+    <div class="algo" id="r4algo" tabindex="-1">
+      <svg class="wire"  aria-hidden="true"><path class="base"/><path class="glow"/><path class="live"/><circle class="dot" r="6"/></svg>
+      <ol class="steps" >
+        <li class="step"><button class="node" type="button"><span class="ring">0</span><span class="t">Set-up</span></button>
+          <div class="body">Your assistant is set up personally for your business: it knows your <b>products, prices, team and tone</b>.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">1</span><span class="t">You write</span></button>
+          <div class="body">You write or send a voice message <b>in your own words</b>.<span class="soon">Voice — coming soon in the pilot</span></div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">2</span><span class="t">It prepares</span></button>
+          <div class="body">The assistant does the task or <b>prepares it for your approval</b>: a report, a post draft, a reply to a buyer, stock in your CRM.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">3</span><span class="t">Your “Yes”</span></button>
+          <div class="body">Anything that moves money — <b>only with a button, every time</b>. I prepare — you decide.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">4</span><span class="t">Done ✅</span></button>
+          <div class="body"><b>Brief at 08:00</b> — yesterday in short and what is needed from you. One “Yes” from you — done.</div></li>
+      </ol>
+    </div>
+    <div class="algo-ctl"><button class="metal r4-prev" type="button">← Back</button><button class="metal dark r4-next" type="button">Next →</button><span class="count" aria-live="polite">0 / 4</span></div>
+  </div></section>
+
   <section class="pers-sec" aria-labelledby="pers-h">
     <div class="wrap">
       <span class="eyebrow rv">Step 0</span>

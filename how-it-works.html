@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Твій Жорик — персональний AI-агент для малого бізнесу">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="/assets/fonts/Kurale-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Commissioner-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -37,8 +39,10 @@
 <script src="/assets/site.js" defer></script>
 <script src="/assets/fx.js" defer></script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
 </head>
 <body class="how-page">
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <a class="skip" href="#main">Перейти до змісту</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -47,13 +51,12 @@
   </defs>
 </svg>
 
-<div class="hdr"><div class="wrap">
-  <header class="top">
-    <div class="brandbox"><a class="brand" translate="no" href="/" aria-label="Твій Жорик — головна"><svg aria-hidden="true"><use href="#mark"/></svg>Твій Жорик</a></div>
-    <nav class="topnav" aria-label="Меню"><a href="/how-it-works" aria-current="page">Як це працює</a><a href="/skills">Бібліотека</a><a href="/website">Сайт</a><a href="/data">Ваші дані</a><a href="/faq">Питання</a></nav>
-    <a class="lang" href="/en/how-it-works" hreflang="en" lang="en"><span class="lg-f">English</span><span class="lg-s" aria-hidden="true">EN</span></a>
-  </header>
-</div></div>
+<header class="r4top" id="r4top">
+  <div class="brandbox r4brandbox"><a class="brand r4brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a></div>
+  <nav class="r4nav" aria-label="Меню"><a href="/how-it-works" class="metal dark" aria-current="page">Як це працює</a><a href="/skills">Бібліотека</a><a href="/website">Сайт</a><a href="/data">Ваші дані</a><a href="/faq">Питання</a><a class="r4lang" href="/en/how-it-works" hreflang="en" lang="en" aria-label="English">EN</a></nav>
+  <span class="r4right"><a class="r4lang r4lang-m" href="/en/how-it-works" hreflang="en" lang="en" aria-label="English">EN</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Меню</button></span>
+</header>
+<nav class="r4menu" id="r4menu" aria-label="Меню" hidden><div class="r4menu-in"><a class="metal" href="/">Головна</a><a class="metal dark" href="/how-it-works" aria-current="page">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal" href="/faq">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="r4lang" href="/en/how-it-works" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
 
 <main id="main">
 <nav class="wrap crumbs" aria-label="Ви тут"><a href="/"><span aria-hidden="true">←</span> Головна</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Як це працює</span></nav>
@@ -63,6 +66,27 @@
     <p class="lead">Той самий день двічі: як зазвичай — і однією перепискою з помічником у Telegram.</p>
     <p class="note">Приклад: фітнес-зал. Приклади вигадані — щоб показати, як це виглядає. Що саме робить ваш помічник, залежить від скілів: готові є в <a href="/skills">Бібліотеці</a>, а потрібний під ваш бізнес команда додасть на запит.</p>
   </div>
+  <section class="r4-algo" aria-labelledby="r4algo-h"><div class="wrap">
+    <h2 id="r4algo-h">Від вашого повідомлення до «Готово ✅»</h2>
+    <p class="lead">«Твій Жорик» працює в чаті Telegram із власником бізнесу та його командою. Натисніть «Далі» — лінія проведе весь шлях.</p>
+    <div class="algo" id="r4algo" tabindex="-1">
+      <svg class="wire"  aria-hidden="true"><path class="base"/><path class="glow"/><path class="live"/><circle class="dot" r="6"/></svg>
+      <ol class="steps" >
+        <li class="step"><button class="node" type="button"><span class="ring">0</span><span class="t">Налаштування</span></button>
+          <div class="body">Агент налаштовується персонально під ваш бізнес: знає ваші <b>товари, ціни, команду й тон</b> спілкування.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">1</span><span class="t">Ви пишете</span></button>
+          <div class="body">Пишете або надсилаєте голосове <b>своїми словами</b>.<span class="soon">Голосові — незабаром у пілоті</span></div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">2</span><span class="t">Помічник готує</span></button>
+          <div class="body">Робить завдання або <b>готує його вам на затвердження</b>: звіт, чернетку допису, відповідь покупцю, залишки в CRM.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">3</span><span class="t">Ваше «Так»</span></button>
+          <div class="body">Усе, що стосується грошей, — <b>лише кнопкою, щоразу</b>. Я готую — ви вирішуєте.</div></li>
+        <li class="step"><button class="node" type="button"><span class="ring">4</span><span class="t">Готово ✅</span></button>
+          <div class="body"><b>Зведка о 08:00</b> — коротко за вчора і що потрібно від вас. Одне ваше «Так» — і готово.</div></li>
+      </ol>
+    </div>
+    <div class="algo-ctl"><button class="metal r4-prev" type="button">← Назад</button><button class="metal dark r4-next" type="button">Далі →</button><span class="count" aria-live="polite">0 / 4</span></div>
+  </div></section>
+
   <section class="pers-sec" aria-labelledby="pers-h">
     <div class="wrap">
       <span class="eyebrow rv">Крок 0</span>
