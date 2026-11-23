@@ -1530,3 +1530,74 @@ body{--b-ink:#0e1113;--b-ring:3px solid #0e1113;--b-spring:transform .34s cubic-
     background:linear-gradient(180deg,#d7a46c 0 4px,var(--wood) 4px 14px,var(--wood-d) 14px);box-shadow:0 6px 8px -4px rgba(0,0,0,.4)}
   .js .shelf .board{position:relative;z-index:1}
 }
+.ba{margin:0;position:relative;min-width:0}
+.ba-stage{display:grid;grid-template-columns:minmax(0,1.24fr) minmax(0,1fr);gap:12px;align-items:stretch}
+.ba-win{position:relative;min-width:0;border-radius:14px;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 0 1px rgba(14,17,19,.28),0 2px 3px rgba(0,0,0,.16),0 18px 34px -16px rgba(0,0,0,.55)}
+.ba-bar{display:flex;align-items:center;gap:6px;height:32px;padding:0 12px}
+.ba-bar i{width:9px;height:9px;border-radius:50%;flex:none}
+.ba-ed{background:#1b1f22}
+.ba-ed .ba-bar{background:linear-gradient(180deg,#30363a,#262b2e);box-shadow:inset 0 -1px 0 rgba(0,0,0,.45)}
+.ba-ed .ba-bar i{background:#59626a}
+.ba-tab{margin-left:10px;padding:3px 10px;border-radius:6px 6px 0 0;align-self:flex-end;background:#1b1f22;color:#d9dee2;font:600 11px/1.4 ui-monospace,"SF Mono",Menlo,Consolas,"Cascadia Mono","Roboto Mono","DejaVu Sans Mono",monospace}
+.ba-code{margin:0;padding:10px 10px 12px 0;counter-reset:ln;overflow:hidden;
+  font:400 11.5px/1.62 ui-monospace,"SF Mono",Menlo,Consolas,"Cascadia Mono","Roboto Mono","DejaVu Sans Mono",monospace;color:#e4e7ea;tab-size:2}
+.ba-code code{font:inherit;display:block}
+.ba-ln{display:block;white-space:pre;min-height:1.62em;overflow:hidden;text-overflow:clip}
+.ba-ln::before{counter-increment:ln;content:counter(ln);display:inline-block;width:2.6em;padding-right:.9em;text-align:right;color:#8e979e;box-sizing:border-box}
+.k-p{color:#aab3ba}.k-t{color:#8fc6e6}.k-a{color:#e3c87f}.k-s{color:#b5d98f}.k-x{color:#f3f4f5}.k-c{color:#f0a9c4}
+.ba-car{display:inline-block;width:.55em;height:1.15em;margin-left:1px;vertical-align:-.2em;background:#e4e7ea;animation:ba-blink 1s steps(1) infinite}
+@keyframes ba-blink{50%{opacity:0}}
+.ba-br{background:linear-gradient(180deg,#f4f5f6,#e7eaec)}
+.ba-br .ba-bar{background:linear-gradient(180deg,#d9dde0,#c9cdd0);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -1px 0 rgba(14,17,19,.18)}
+.ba-br .ba-bar i{background:#868d92}
+.ba-url{flex:1;min-width:0;margin-left:8px;padding:2px 10px;border-radius:999px;background:#f6f7f8;box-shadow:inset 0 0 0 1px rgba(14,17,19,.14);
+  color:#3b4246;font:500 11px/1.5 var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ba-page{display:flex;flex-direction:column;gap:9px;padding:10px 10px 52px;font-family:var(--text);color:#0e1113}
+.bp-top{display:flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:8px;background:linear-gradient(180deg,#30363a,#1f2427);color:#f1f3f4}
+.bp-top b{flex:1;font:700 12px/1 var(--text);letter-spacing:.02em}
+.bp-top i{width:18px;height:5px;border-radius:3px;background:#9aa3a9}
+.bp-hero{display:flex;flex-direction:column;gap:5px;padding:12px 11px;border-radius:9px;background:linear-gradient(135deg,#fbfcfc,#dfe3e6);box-shadow:inset 0 0 0 1px rgba(14,17,19,.12)}
+.bp-h1{font:700 clamp(15px,1.45vw,19px)/1.15 var(--display);color:#0e1113}
+.bp-p{font:400 11.5px/1.35 var(--text);color:#2c3236}
+.bp-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-height:58px}
+.bp-card{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-width:0;padding:8px 7px 7px;border-radius:8px;background:#fbfcfc;
+  box-shadow:inset 0 1px 0 #fff,0 0 0 1px rgba(14,17,19,.13),0 6px 12px -8px rgba(0,0,0,.45);font:600 11px/1.2 var(--text);color:#1c2124;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bp-card i{display:block;height:16px;border-radius:5px;background:linear-gradient(135deg,#aeb5ba,#7f878d)}
+.bp-btn{align-self:flex-start;padding:7px 16px;border-radius:2em;background:linear-gradient(180deg,#666d47,#4b512f 52%,#3a3f24);color:#f4f3e8;
+  font:700 11.5px/1.2 var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 6px 12px -6px rgba(22,25,8,.6);transition:border-radius .5s cubic-bezier(.2,.7,.2,1)}
+.ba-done{position:absolute;right:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 9px;border-radius:999px;
+  background:linear-gradient(180deg,#3b4146,#23282b);color:#f1f3f4;font:700 12px/1 var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 6px 14px -6px rgba(0,0,0,.6)}
+.ba-done svg{width:14px;height:14px;color:#b5d98f}
+.ba-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 2px 0}
+.ba-cap{font:600 .95rem/1.35 var(--text);color:#0b0d0e;text-shadow:0 1px 0 rgba(255,255,255,.45)}
+.ba-ctls{display:flex;gap:6px;flex:none}
+.ba-ctls[hidden]{display:none}
+.ba .ba-ctl{display:inline-grid!important;place-items:center;width:44px!important;min-width:44px;height:44px;min-height:44px;padding:0!important}
+.ba .ba-ctl svg{width:17px;height:17px}
+.ba .ba-ctl .i-play,.ba .ba-ctl.paused .i-pause{display:none}
+.ba .ba-ctl.paused .i-play{display:block}
+.ba .ba-ctl:focus-visible{outline:3px solid #0e1113!important;outline-offset:3px!important}
+.ba .ba-ctl[aria-disabled="true"]{opacity:.5;cursor:default}
+.ba-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.ba-run [data-s]{opacity:0;transform:translateY(8px) scale(.97);transition:opacity .35s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.ba-run [data-s].on{opacity:1;transform:none}
+.ba-run .bp-btn{border-radius:3px}
+.ba-run .bp-btn.rnd{border-radius:2em}
+.ba-run .ba-done{opacity:0;transform:scale(.7);transition:opacity .3s ease,transform .45s cubic-bezier(.3,1.5,.5,1)}
+.ba-run.ba-fin .ba-done{opacity:1;transform:none}
+.ba-run .ba-ln.cur{background:rgba(255,255,255,.06)}
+@media (max-width:600px){
+  .ba-stage{grid-template-columns:minmax(0,1fr);gap:10px}
+  .ba-code{font-size:12px}
+  .ba-page{padding-bottom:48px}
+  .bp-h1{font-size:18px}
+  .ba-foot{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .ba-run [data-s],.ba-run .ba-done,.bp-btn{transition:none}
+  .ba-car{animation:none}
+}
+@media (forced-colors:active){
+  .ba-win,.bp-top,.bp-hero,.bp-card,.bp-btn,.ba-done{border:1px solid CanvasText}
+}
