@@ -30,7 +30,7 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <meta name="theme-color" content="#b9cad6">
 <link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="/assets/r2/hand-robot.webp" as="image">
+<link rel="preload" as="image" href="/assets/r2/hand-robot-820.webp" imagesrcset="/assets/r2/hand-robot-820.webp 820w, /assets/r2/hand-robot-1560.webp 1560w" imagesizes="(max-width:820px) 105vw, 56vw">
 <link rel="stylesheet" href="/assets/r2/r2.css">
 <script>document.documentElement.classList.add('js');var q=new URLSearchParams(location.search);if(q.get('abg'))document.documentElement.dataset.abg=q.get('abg');if(q.get('ascii')==='off')document.documentElement.dataset.ascii='off';</script>
 </head>
@@ -40,10 +40,9 @@
 <div class="loader" id="loader" aria-hidden="true"><canvas id="lens" width="600" height="600"></canvas><span class="pct" id="pct">0%</span></div>
 
 <div class="studio" aria-hidden="true"></div>
-<div class="cross" aria-hidden="true"></div>
 <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div><div class="blob b3" aria-hidden="true"></div>
 
-<header class="top" id="top">
+<header class="top at-top" id="top">
   <a class="brand" href="#main"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a>
   <nav aria-label="Sections">
     <button class="metal dark" data-open="p-how">How it works</button>
@@ -62,8 +61,8 @@
 <section class="s-hands" id="hello" aria-labelledby="t1">
   <div class="hands" aria-hidden="true">
     <div class="hbox">
-      <img class="hand robot" id="handRobot" src="/assets/r2/hand-robot.webp" width="640" height="369" alt="">
-      <img class="hand human" id="handHuman" src="/assets/r2/hand-human.webp" width="560" height="255" alt="">
+      <img class="hand robot" id="handRobot" src="/assets/r2/hand-robot-820.webp" srcset="/assets/r2/hand-robot-820.webp 820w, /assets/r2/hand-robot-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="577" alt="" fetchpriority="high" decoding="async">
+      <img class="hand human" id="handHuman" src="/assets/r2/hand-human-820.webp" srcset="/assets/r2/hand-human-820.webp 820w, /assets/r2/hand-human-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="462" alt="" decoding="async">
       <div class="spark" id="spark"></div>
     </div>
   </div>
@@ -91,8 +90,8 @@
 </section>
 
 <!-- СЛАЙД 3 — шар из светящихся частиц (Кэт MSG 11210, 11224) -->
-<section class="s-sphere" id="sphere" aria-label="Transition">
-  <div class="pin"><canvas id="sphereCv" aria-hidden="true"></canvas><div class="veil" id="veil"></div></div>
+<section class="s-sphere" id="sphere" aria-label="Zhoryk's library">
+  <div class="pin"><canvas id="sphereCv" aria-hidden="true"></canvas><p class="s-cap" id="sCap"><span class="eyebrow">A skill is an ability</span><span class="list">Reports · Content · Replies to buyers · Advertising · Stock · Voice</span></p><div class="veil" id="veil"></div></div>
 </section>
 
 <!-- СЛАЙД 4 — по делу: металлические кнопки, переходы по нажатию (Кэт MSG 11207, 11242) -->

@@ -1,4 +1,5 @@
-/* Твій Жорик — круг 2 (r2). Свой JS, без библиотек и CDN.
+/* Твій Жорик — круг 3b (r3, база r2). Свой JS, без библиотек и CDN.
+   r3: загрузка ≤1,8 с, руки — свой 3D-рендер (раскрытие при прокрутке), шапка-стекло, появление блоков, подпись шара.
    Блоки: капля-линза (загрузка), руки (слайд 1), ASCII (слайд 2, выключается), шар частиц (слайд 3),
    панели с переходом-линзой (слайд 4), линия-алгоритм «Як це працює». */
 (() => {
@@ -50,7 +51,7 @@
   /* ---------------- загрузка ---------------- */
   const loader = $('#loader');
   let introStart = null;
-  function startIntro() { introStart = performance.now(); $('.title') && $('.title').classList.add('in'); }
+  function startIntro() { introStart = performance.now(); $('.title') && $('.title').classList.add('in'); $('.hands') && $('.hands').classList.add('lit'); }
   (function boot() {
     // разбить заголовок на буквы (текст по буквам, Atomic Motion)
     let n = 0;
@@ -64,30 +65,48 @@
     $$('img.hand').forEach(im => waits.push(im.complete ? Promise.resolve() : new Promise(r => { im.onload = im.onerror = r; })));
     let done = 0; waits.forEach(p => p.then(() => done++));
     const t0 = performance.now(); let shown = 0, finished = false;
+    const finish = () => { if (finished) return; finished = true; loader.classList.add('done'); startIntro(); setTimeout(() => loader.remove(), 800); };
+    setTimeout(finish, 1800);                       // страница открывается в любом случае
+    Promise.all(waits).then(() => setTimeout(finish, 120));   // не зависим от частоты кадров (в WebKit rAF бывает редким)
     (function tick(now) {
+      if (finished) return;
       const t = (now - t0) / 1000;
-      const target = Math.min(done / waits.length, clamp(t / 1.1)) * 100;
-      shown += (target - shown) * .12;
+      const target = done / waits.length * 100;
+      shown += (target - shown) * .3;
       pct.textContent = Math.round(shown) + '%';
       drawLens(ctx, cv.width, t, 1 + .02 * Math.sin(t * 3));
-      if (!finished && shown > 99.2) { finished = true; loader.classList.add('done'); startIntro(); setTimeout(() => loader.remove(), 1000); return; }
+      if (done >= waits.length && shown > 97) { finish(); return; }
       requestAnimationFrame(tick);
     })(t0);
   })();
 
   /* ---------------- слайд 1: руки ---------------- */
+  if (new URLSearchParams(location.search).get('hands') === 'b') $$('img.hand.human').forEach(im => { im.srcset = im.srcset.replace(/hand-human-/g, 'hand-human-b-'); im.src = im.src.replace('hand-human-', 'hand-human-b-'); });
   const hR = $('#handRobot'), hH = $('#handHuman'), spark = $('#spark'), hello = $('#hello');
+  const hbox = $('.hbox'), hcopy = $('.s-hands .copy'), hlead = $('.s-hands .lead'), hcta = $('.s-hands .cta');
+  let hLast = '';
   function handsFrame(now) {
     const vw = innerWidth;
-    const intro = RM ? 1 : (introStart ? easeIO(clamp((now - introStart) / 1700)) : 0);
+    const intro = RM ? 1 : (introStart ? easeIO(clamp((now - introStart) / 1900)) : 0);
     const r = hello.getBoundingClientRect();
+    if (r.bottom < 0) return;
     const sp = clamp(-r.top / (r.height * .9));
-    const gap = vw < 820 ? .06 : .04;      // пальцы почти касаются
-    hR.style.setProperty('--rx', `${(-(1 - intro) * .42 - sp * .18 + gap * 0) * vw}px`);
-    hH.style.setProperty('--hx', `${((1 - intro) * .42 + sp * .18) * vw}px`);
+    const mob = vw < 820;
+    const away = (1 - intro) * (mob ? .7 : .3);               // при старте руки приходят с краёв
+    const open = sp * (mob ? .1 : .07);                       // при прокрутке — медленно расходятся
+    const key = `${away.toFixed(4)}|${sp.toFixed(4)}|${intro >= 1 ? Math.round(now / 40) : 0}`;
+    if (key === hLast) return; hLast = key;
+    hR.style.setProperty('--rx', `${(-away - open) * vw}px`);
+    hH.style.setProperty('--hx', `${(away + open) * vw}px`);
+    hbox.style.setProperty('--hz', (1 + sp * .12).toFixed(4));
     const pulse = intro >= 1 ? .75 + .25 * Math.sin(now / 520) : 0;
-    spark.style.setProperty('--sp', (pulse * (1 - sp * 2)).toFixed(3));
-    hR.style.opacity = hH.style.opacity = (1 - smooth(.55, 1, sp)).toFixed(3);
+    spark.style.setProperty('--sp', (pulse * (1 - sp * 2.5)).toFixed(3));
+    const fade = (1 - smooth(.5, 1, sp)).toFixed(3);
+    hR.style.opacity = hH.style.opacity = fade;
+    const cf = 1 - smooth(.02, .4, sp);
+    hcopy.style.opacity = cf.toFixed(3); hcopy.style.transform = `translateY(${(-sp * 60).toFixed(1)}px)`;
+    hlead.style.opacity = hcta.style.opacity = (1 - smooth(0, .22, sp)).toFixed(3);
+    hcta.style.visibility = sp > .24 ? 'hidden' : '';
   }
 
   /* ---------------- слайд 2: ASCII ---------------- */
@@ -98,12 +117,15 @@
     const W = A.cv.clientWidth, H = A.cv.clientHeight, d = Math.min(DPR(), 1.5);
     A.W = W; A.H = H; A.cv.width = W * d; A.cv.height = H * d; A.ctx = A.cv.getContext('2d'); A.ctx.setTransform(d, 0, 0, d, 0, 0);
     const mob = W < 820; A.cs = mob ? 7 : 10;
-    const iw = mob ? W * 1.25 : Math.min(W * .5, W - Math.min(620, W * .44) - 90, 900), ih = iw * A.img.naturalHeight / A.img.naturalWidth;
-    const x = mob ? -W * .2 : W * .0, y = mob ? H * .14 : (H - ih) / 2;
+    // кадр рендера: слева предплечье, справа кисть; на телефоне — только кисть (с 44% ширины), на десктопе — с 18%
+    const nw = A.img.naturalWidth, nh = A.img.naturalHeight, sx = nw * (mob ? .44 : .18), sw = nw - sx;
+    A.src = { sx, sw, nh };
+    const iw = mob ? W * .94 : Math.min(W * .46, W - Math.min(620, W * .44) - 120, 900), ih = iw * nh / sw;
+    const x = mob ? W * .03 : W * .02, y = mob ? Math.max(70, H * .1) : (H - ih) / 2;
     A.rect = { x, y, w: iw, h: ih };
     const cols = Math.ceil(iw / A.cs), rows = Math.ceil(ih / (A.cs * 1.25));
     const oc = document.createElement('canvas'); oc.width = cols; oc.height = rows;
-    const o = oc.getContext('2d'); o.drawImage(A.img, 0, 0, cols, rows);
+    const o = oc.getContext('2d'); o.drawImage(A.img, A.src.sx, 0, A.src.sw, A.src.nh, 0, 0, cols, rows);
     const px = o.getImageData(0, 0, cols, rows).data; A.cells = [];
     for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) {
       const k = (j * cols + i) * 4, a = px[k + 3] / 255; if (a < .2) continue;
@@ -129,7 +151,7 @@
     // целая часть картинки
     if (front > R.x) {
       c.save(); c.beginPath(); c.rect(R.x - 2, 0, front - R.x + 2, A.H); c.clip();
-      c.globalAlpha = 1 - smooth(.3, .44, p); c.drawImage(A.img, R.x, R.y, R.w, R.h); c.restore();
+      c.globalAlpha = 1 - smooth(.3, .44, p); c.drawImage(A.img, A.src.sx, 0, A.src.sw, A.src.nh, R.x, R.y, R.w, R.h); c.restore();
     }
     c.font = `${Math.round(cs * 1.22)}px ui-monospace,Consolas,Menlo,monospace`; c.textBaseline = 'top';
     c.fillStyle = `rgb(${A.sym})`;
@@ -149,15 +171,15 @@
       c.globalAlpha = al; c.fillText(ch, e.x, e.y + dy);
     }
     c.globalAlpha = 1;
-    if (p > .2) A.copy.classList.add('in');
+    if (p > .05 || r.top < innerHeight * .35) A.copy.classList.add('in');
   }
   if (ASCII_ON) {
-    A.img = new Image(); A.img.src = '/assets/r2/hand-robot.webp';
+    A.img = new Image(); A.img.src = '/assets/r2/hand-robot-820.webp';
     A.img.onload = () => { asciiSetup(); asciiFrame(true); };
   }
 
   /* ---------------- слайд 3: шар из частиц ---------------- */
-  const S = { cv: $('#sphereCv'), sec: $('#sphere'), veil: $('#veil'), pts: null, vis: false };
+  const S = { cv: $('#sphereCv'), sec: $('#sphere'), veil: $('#veil'), cap: $('#sCap'), pts: null, vis: false };
   function sphereSetup() {
     const W = S.cv.clientWidth, H = S.cv.clientHeight, d = DPR();
     S.W = W; S.H = H; S.d = d; S.cv.width = W * d; S.cv.height = H * d; S.ctx = S.cv.getContext('2d');
@@ -178,13 +200,15 @@
     if (!RM && (r.bottom < 0 || r.top > innerHeight)) { S.vis = false; S.dark = false; return; }
     S.vis = true;
     const p = RM ? .5 : clamp(-r.top / (r.height - innerHeight));
-    const veil = RM ? 0 : clamp(1 - smooth(0, .2, p) + smooth(.84, 1, p));
+    const veil = RM ? 0 : clamp(clamp(r.top / innerHeight) * 1.1 + smooth(.86, 1, p));   // тёмное проявляется, пока секция въезжает в экран — без пустого экрана
     S.veil.style.opacity = veil.toFixed(3);
+    if (S.cap) S.cap.style.setProperty('--cap', (RM ? 1 : smooth(.4, .56, clamp((innerHeight - r.top) / r.height)) * (1 - smooth(.8, .9, clamp((innerHeight - r.top) / r.height)))).toFixed(3));
     S.dark = veil < .5 && r.top < 40 && r.bottom > 60;
     const c = S.ctx, d = S.d, W = S.W * d, H = S.H * d;
     c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H);
-    const R = Math.min(W, H) * (S.W < 820 ? .38 : .34);
-    const asm = RM ? 1 : smooth(0, .3, p), burst = RM ? 0 : smooth(.72, 1, p);
+    const R = Math.min(W, H) * (S.W < 820 ? .36 : .30);
+    const p2 = clamp((innerHeight - r.top) / r.height);   // от въезда секции в экран до конца закрепления
+    const asm = RM ? 1 : smooth(.12, .5, p2), burst = RM ? 0 : smooth(.84, 1, p2);
     const t = RM ? 0 : now / 1000;
     const ay = t * .16 + p * 1.6, ax = .32;
     const cy = Math.cos(ay), sy = Math.sin(ay), cx = Math.cos(ax), sx = Math.sin(ax);
@@ -197,7 +221,7 @@
       x *= k; y *= k; z *= k;
       let X = x * cy + z * sy, Z = -x * sy + z * cy; let Y = y * cx - Z * sx; Z = y * sx + Z * cx;
       const pr = 3.2 / (3.2 + Z);
-      const px = W / 2 + X * R * pr, py = H / 2 + Y * R * pr;
+      const px = W / 2 + X * R * pr, py = H * .44 + Y * R * pr;
       const front = (1 - Z) * .5;   // 0 — сзади, 1 — спереди
       const a = Math.min(1, (.5 + 1.1 * front) * (.7 + .5 * q)) * (1 - burst * .9) * (.25 + .75 * asm);
       c.fillStyle = q > .8 ? `rgba(255,255,255,${a})` : `rgba(214,232,250,${a})`;
@@ -214,7 +238,15 @@
     sphereFrame(now);
     let dark = !!S.dark;
     if (ASCII_ON && root.dataset.abg === '3') { const ar = A.sec.getBoundingClientRect(); if (ar.top < 40 && ar.bottom > 60) dark = true; }
-    $('#top').classList.toggle('on-dark', dark);
+    const top = $('#top'), y = scrollY;
+    top.classList.toggle('on-dark', dark);
+    top.classList.toggle('float', y > 24);
+    if (innerWidth < 820 && !openPanel) {
+      const dy = y - (loop.y || 0);
+      if (y > innerHeight * .9 && dy > 6) top.classList.add('hide');
+      else if (dy < -6 || y < innerHeight * .5) top.classList.remove('hide');
+    } else top.classList.remove('hide');
+    loop.y = y;
     if (!RM) raf = requestAnimationFrame(loop);
   }
   function resize() { asciiSetup(); asciiFrame(true); sphereSetup(); if (RM) loop(performance.now()); if (algo.ready) algoLayout(); }
@@ -310,6 +342,14 @@
   algo.steps.forEach((s, k) => s.querySelector('.node').addEventListener('click', () => algoGo(k)));
   $('#algoNext').addEventListener('click', () => algoGo(algo.cur >= algo.steps.length - 1 ? 0 : algo.cur + 1));
   $('#algoPrev').addEventListener('click', () => algoGo(algo.cur - 1));
+
+  /* ---------------- появление блоков при прокрутке ---------------- */
+  if (!RM && 'IntersectionObserver' in window) {
+    const rv = $$('.s-go .head > :not(.key), .go-list li, .foot');
+    rv.forEach((el, i) => { el.classList.add('rv'); el.style.transitionDelay = (el.matches('.go-list li') ? [...el.parentNode.children].indexOf(el) * .07 : 0) + 's'; });
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(el => io.observe(el));
+  }
 
   /* ---------------- старт ---------------- */
   sphereSetup();
