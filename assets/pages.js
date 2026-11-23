@@ -85,3 +85,12 @@
   });
 })();
  (function(){try{var n=navigator;if(n.doNotTrack==='1'||n.globalPrivacyControl)return;var go=function(){try{var p=document.body&&document.body.classList.contains('root404')?'/404':location.pathname;var r='';try{r=document.referrer?new URL(document.referrer).hostname:''}catch(e){}if(r===location.hostname)r='';n.sendBeacon('https://stats.tvoyzhorik.com/hit?p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r))}catch(e){}};if(document.readyState==='complete')go();else addEventListener('load',go)}catch(e){}})();
+(function(){try{
+var d=document,S='.btn,.hero .actions .quiet,.cmd,.chat-ctl,.chat-tabs button,.topnav a,.door,.dcta,.doc-card,.try-q,.faq-i>summary,.more-a,.quiet,.joke-btn,.find-x',MIN=120;
+function hold(el){var t=Date.now();el.classList.add('prs');return function(){setTimeout(function(){el.classList.remove('prs')},Math.max(0,MIN-(Date.now()-t)))}}
+if(window.PointerEvent)d.addEventListener('pointerdown',function(e){if(e.button>0||!e.target.closest)return;var el=e.target.closest(S);if(!el)return;var off=hold(el);
+ function up(){d.removeEventListener('pointerup',up,true);d.removeEventListener('pointercancel',up,true);off()}
+ d.addEventListener('pointerup',up,true);d.addEventListener('pointercancel',up,true)},{passive:true});
+d.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.closest){var el=e.target.closest(S);if(el&&el===e.target)hold(el)()}});
+d.addEventListener('touchstart',function(){},{passive:true});
+}catch(e){}})();
