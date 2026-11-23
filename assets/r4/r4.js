@@ -127,6 +127,21 @@
       io.observe(box);
     } else start();
     W.addEventListener('load', function () { if (started) layout(); });
+
+    /* прокрутка ведёт линию (Олег MSG 11361–11362: на iPhone «дальше не двигается»): текущий шаг — последний, чей кружок выше 60% экрана; раскладка пересчитывается, если блок поменял размер (адресная строка iOS) */
+    var lastH = 0, sTick = false;
+    var onScroll = function () {
+      if (sTick || !started) return; sTick = true;
+      requestAnimationFrame(function () {
+        sTick = false;
+        var bh = box.getBoundingClientRect().height; if (Math.abs(bh - lastH) > 2) { lastH = bh; layout(); }
+        var lim = W.innerHeight * 0.6, k = 0;
+        steps.forEach(function (s, i) { if ($('.ring', s).getBoundingClientRect().top < lim) k = i; });
+        if (k !== A.cur) goTo(k);
+      });
+    };
+    W.addEventListener('scroll', onScroll, { passive: true });
+    if (W.visualViewport) W.visualViewport.addEventListener('resize', function () { lastH = 0; onScroll(); });
     W.__r4algo = goTo;
   }
 })();
