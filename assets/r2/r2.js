@@ -82,10 +82,11 @@
 
   /* ---------------- слайд 1: руки ---------------- */
   if (new URLSearchParams(location.search).get('hands') === 'b') $$('img.hand.human').forEach(im => { im.srcset = im.srcset.replace(/hand-human-/g, 'hand-human-b-'); im.src = im.src.replace('hand-human-', 'hand-human-b-'); });
-  const hR = $('#handRobot'), hH = $('#handHuman'), spark = $('#spark'), hello = $('#hello');
+  const hR = $('#handRobot'), hH = $('#handHuman'), spark = $('#spark'), hello = $('.s-hands');   // r5: первый экран внутри сцены #hello
   const hbox = $('.hbox'), hcopy = $('.s-hands .copy'), hlead = $('.s-hands .lead'), hcta = $('.s-hands .cta');
   let hLast = '';
   function handsFrame(now) {
+    if (window.R5 && window.R5.on) { window.R5.frame(now, introStart); return; }   // r5: руки → код → кнопки (assets/r5/r5.js)
     const vw = innerWidth;
     const intro = RM ? 1 : (introStart ? easeIO(clamp((now - introStart) / 1900)) : 0);
     const r = hello.getBoundingClientRect();
