@@ -1533,3 +1533,15 @@ body{
   .btn,.hero .actions .quiet,.cmd,.chat-ctl,.try-q,.door,.dcta,.doc-card,.door-go,.dcta-go,.topnav a,.chat-tabs button{transition:none!important}
   .btn:hover,.btn:active,.hero .actions .quiet:active,.cmd:active,.chat-ctl:active,.try-q:hover,.try-q:active,.door:hover,.dcta:hover,.doc-card:hover,.door:active,.dcta:active,.doc-card:active,.topnav a:active{transform:none!important}}
 @media (forced-colors:active){.btn,.hero .actions .quiet,.cmd,.chat-ctl,.try-q,.faq-i>summary,.door,.dcta,.doc-card,.topnav a{border:1px solid ButtonText!important}}
+.hdr::after{content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;background:#cbcdcf;pointer-events:none}
+@supports (-webkit-touch-callout:none){
+  .hdr{background:#cbcdcf!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+}
+@media (max-width:900px){
+  .js .row{flex-wrap:wrap;row-gap:40px;overflow-x:clip;overflow-y:visible;scroll-snap-type:none;min-height:0}
+  .js .row>li{scroll-snap-align:none}
+  .js .row>li.slot{min-width:min-content;margin-right:8px}
+  .js .row>li::after{content:"";position:absolute;left:-100vw;right:-100vw;top:100%;height:20px;pointer-events:none;
+    background:linear-gradient(180deg,#d7a46c 0 4px,var(--wood) 4px 14px,var(--wood-d) 14px);box-shadow:0 6px 8px -4px rgba(0,0,0,.4)}
+  .js .shelf .board{position:relative;z-index:1}
+}
