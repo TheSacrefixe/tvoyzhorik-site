@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1024" height="1024" viewBox="0 0 1024 1024">
+<title>Твій Жорик — TZ</title>
+<defs>
+<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="287.554" y1="-104.661" x2="736.446" y2="1128.661"><stop offset="0" stop-color="#262626"/><stop offset="1" stop-color="#0f0f0f"/></linearGradient>
+<path id="z" d="M550 708V688L151 23H347Q394 23 423.5 33.0Q453 43 470.5 64.5Q488 86 497.0 122.0Q506 158 511 210H534Q531 179 531 128Q531 109 532.5 73.5Q534 38 538 0Q501 2 457.0 2.5Q413 3 369.5 3.0Q326 3 289 3Q230 3 164.5 2.5Q99 2 42 0V20L444 685H249Q202 685 172.5 675.0Q143 665 125.5 643.5Q108 622 99.0 586.0Q90 550 85 498H62Q64 514 64.5 535.0Q65 556 65 580Q65 599 63.5 634.5Q62 670 58 708Q95 707 139.0 706.0Q183 705 227.0 705.0Q271 705 307 705Q364 705 429.5 705.5Q495 706 550 708Z"/>
+<mask id="cut" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024"><rect width="1024" height="1024" fill="#fff"/><use xlink:href="#z" href="#z" transform="matrix(0.461 0 0 -0.461 403.84 784.691)" fill="#000" stroke="#000" stroke-width="52" stroke-linejoin="round"/><rect x="385.408" y="446.464" width="68.198" height="120.73" fill="#fff"/></mask>
+<mask id="cutz" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024"><rect width="1024" height="1024" fill="#fff"/><rect x="385.408" y="446.464" width="68.198" height="120.73" fill="#000"/></mask>
+</defs>
+<rect width="1024" height="1024" rx="236" fill="url(#g)"/>
+<g fill="#efe9df">
+<g mask="url(#cut)"><path d="M592 708Q588 670 586.5 634.5Q585 599 585 580Q585 556 586.0 535.0Q587 514 588 498H565Q558 568 546.0 608.5Q534 649 504.0 667.0Q474 685 411 685H357V116Q357 76 364.5 56.0Q372 36 394.0 29.0Q416 22 458 20V0Q432 2 392.0 2.5Q352 3 311 3Q266 3 226.5 2.5Q187 2 163 0V20Q205 22 227.0 29.0Q249 36 256.5 56.0Q264 76 264 116V685H210Q148 685 117.5 667.0Q87 649 75.0 608.5Q63 568 56 498H33Q35 514 35.5 535.0Q36 556 36 580Q36 599 34.5 634.5Q33 670 29 708Q71 707 120.5 706.0Q170 705 220.0 705.0Q270 705 311 705Q352 705 401.5 705.0Q451 705 501.0 706.0Q551 707 592 708Z" transform="matrix(0.461 0 0 -0.461 263.757 660.275)"/></g>
+<g mask="url(#cutz)"><use xlink:href="#z" href="#z" transform="matrix(0.461 0 0 -0.461 403.84 784.691)"/></g>
+<path d="M20 2 q3 15 18 18 q-15 3 -18 18 q-3 -15 -18 -18 q15 -3 18 -18z" transform="matrix(4.6 0 0 4.6 700 124)"/>
+</g></svg>
