@@ -1,13 +1,14 @@
-/* Твій Жорик — круг 5 (r5, site-r5-2311; Олег MSG 11335–11341): одна сцена на первом экране.
-   Руки сходятся → касаются (свет в точке касания) → обе рассыпаются в символы тем же ASCII-эффектом, что был на слайде 2 (Кэт MSG 11237)
-   → символы летят и собираются в контуры 5 металлических кнопок «Куди далі» → контур застывает в настоящие кнопки.
-   По умолчанию (нет JS, prefers-reduced-motion, ?r5=off) — обычные блоки: руки, «Рутина — йому…», «Куди далі» с кнопками.
-   Анимированный режим — только при html.r5a (ставит строчка в <head>). Без внешних запросов. */
+/* Твій Жорик — круг 5, r5fix4 (site-r5fix4-2411; Олег MSG 11438–11445, «1А 2А 3А»). Сцена: руки сходятся (прокрутка) → касание (свет) →
+   СРАЗУ, по времени, ВЕСЬ первый экран (руки, фон, «Твій Жорик», «Рутина — йому, рішення — вам», абзацы) рассыпается в код →
+   весь код уходит в 5 кнопок «Куди далі» → экран чистый: шапка с меню и 5 кнопок.
+   СТРАХОВКА: по умолчанию всё видно. html.r5a (строчка в <head>) — раскладка сцены; прятать тексты и кнопки может только r5.js,
+   который уже запустил анимацию (html.r5run). Нет JS / ошибка / reduced-motion / ?r5=off — обычные блоки, кнопки и текст видны. */
 
 /* ---------- обычный режим (без анимации): блоки по порядку ---------- */
 .s-r5{position:relative}
 .r5pin{position:relative}
 #r5cv{display:none}
+.r5glow{display:none}
 .r5anchor{display:block;height:0}
 .r5copy{position:relative;padding:clamp(90px,14vh,150px) var(--pad) 0;max-width:980px;color:var(--ink)}
 .r5copy .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
@@ -17,37 +18,43 @@
 .r5copy .key{width:min(260px,50%);margin-top:30px;filter:drop-shadow(0 26px 30px rgba(20,35,50,.25));animation:float 7s ease-in-out infinite}
 @media (max-width:820px){.r5copy{padding:72px 22px 0}.r5copy h2{font-size:34px;margin:12px 0 16px}.r5copy p{font-size:16px}.r5copy .key{display:none}}
 
-/* ---------- анимированная сцена ---------- */
-html.r5a .s-r5{height:440vh}
+/* ---------- раскладка сцены (html.r5a) ---------- */
+html.r5a .s-r5{height:240vh}
 html.r5a .r5pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-html.r5a .r5pin::before{content:"";position:absolute;inset:-12% -12%;z-index:0;pointer-events:none;opacity:var(--lt,0);
+html.r5a .r5glow{display:block;position:absolute;inset:-12%;z-index:0;pointer-events:none;opacity:0;will-change:opacity;
   background:radial-gradient(58% 52% at 50% 50%,rgba(226,234,240,.9) 0,rgba(226,234,240,.55) 45%,rgba(226,234,240,0) 72%)}
 html.r5a .r5pin>.s-hands{position:absolute;inset:0;height:auto;min-height:0;z-index:1}
-html.r5a #r5cv{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
-.r5flash{position:absolute;left:49.95%;top:44.43%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;opacity:0;
-  background:radial-gradient(circle,rgba(255,255,255,.95) 0,rgba(236,244,250,.6) 16%,rgba(214,232,248,.18) 38%,rgba(214,232,248,0) 64%);mix-blend-mode:screen}
+html.r5a .r5pin .hands{will-change:transform}
+/* холст кода: виден только пока идёт рассыпание и сборка (класс on ставит r5.js) — в остальное время не рисуется и не композитится */
+html.r5a #r5cv{display:block;position:absolute;left:0;top:0;width:100%;height:100%;z-index:5;pointer-events:none;visibility:hidden}
+html.r5a #r5cv.on{visibility:visible}
+.r5flash{position:absolute;left:49.95%;top:44.43%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;opacity:0;visibility:hidden;
+  background:radial-gradient(circle,rgba(255,255,255,.95) 0,rgba(236,244,250,.6) 16%,rgba(214,232,248,.18) 38%,rgba(214,232,248,0) 64%)}
 html.r5a .r5anchor{position:absolute;left:0;top:0}
 
-/* «Рутина — йому, рішення — вам»: проявляется из символов (строки из размытия, как на слайде 2) */
-html.r5a .r5copy{position:absolute;z-index:3;left:var(--pad);top:50%;transform:translateY(-50%);width:min(560px,40vw);padding:0;max-width:none}
-html.r5a .r5copy .key.ln{display:none;width:min(200px,40%);margin-top:26px}
-html.r5a .r5copy .ln{display:block;opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity .9s var(--ease),transform .9s var(--ease),filter .9s var(--ease)}
-html.r5a .r5copy.in .ln{opacity:1;transform:none;filter:none}
-html.r5a .r5copy.in .ln:nth-child(2){transition-delay:.12s}html.r5a .r5copy.in .ln:nth-child(3){transition-delay:.24s}html.r5a .r5copy.in .ln:nth-child(4){transition-delay:.36s}html.r5a .r5copy.in .ln:nth-child(5){transition-delay:.48s}
-/* клавиша TZ в сцене не показывается: блок «Рутина» должен целиком помещаться в экран; в обычном режиме она под текстом */
+/* «Рутина — йому, рішення — вам»: на компьютере — сверху слева (руки ниже), на телефоне — внизу (руки выше) */
+html.r5a .r5copy{position:absolute;z-index:3;left:var(--pad);top:calc(64px + 7vh);width:min(620px,46vw);padding:0;max-width:none}
+html.r5a .r5copy .key.ln{display:none!important}
+html.r5a.r5run .r5copy .ln{display:block;opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+html.r5a.r5run .r5copy.in .ln{opacity:1;transform:none}
+html.r5a.r5run .r5copy.in .ln:nth-child(2){transition-delay:.06s}html.r5a.r5run .r5copy.in .ln:nth-child(3){transition-delay:.12s}html.r5a.r5run .r5copy.in .ln:nth-child(4){transition-delay:.18s}
+/* во время рассыпания прозрачность строк ведёт r5.js — без CSS-перехода */
+html.r5a.r5run .r5pin.dz .r5copy .ln{transition:none;transform:none}
+html.r5a.r5run .r5pin.dz .hands .hand{transition:none}
+/* после сборки текст на экран НЕ возвращается (Олег 3А), но остаётся в разметке для поиска и скринридеров */
+html.r5a.r5run .r5copy.r5gone,html.r5a.r5run .r5go .head{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;margin:0!important;padding:0!important;border:0!important}
 
-/* «Куди далі»: заголовок и 5 кнопок; кнопки проявляются, когда контур из символов собран */
-html.r5a .r5go{position:absolute;z-index:4;right:var(--pad);top:calc(50% + 38px);transform:translateY(-50%);width:min(620px,46vw);
-  display:block;min-height:0;padding:0}
-html.r5a .r5go .head{opacity:0;transform:translateY(14px);filter:blur(6px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease)}
-html.r5a .r5go .head.in{opacity:1;transform:none;filter:none}
+/* «Куди далі»: 5 кнопок по центру экрана */
+html.r5a .r5go{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:min(620px,86vw);display:block;min-height:0;padding:0}
 html.r5a .r5go .head .eyebrow{display:none}
 html.r5a .r5go h2{font-size:clamp(36px,min(4.4vw,7vh),64px);margin:0 0 12px}
 html.r5a .r5go .head p{font-size:16px;max-width:520px;margin-bottom:clamp(14px,2.4vh,24px)}
 html.r5a .r5go .rv{opacity:1;transform:none}
 html.r5a .r5go .go-list{gap:clamp(8px,1.3vh,14px)}
-html.r5a .r5go .go-list li{opacity:var(--b,0);filter:blur(calc((1 - var(--b,0)) * 5px));transition:none}
-html.r5a .r5go .go-list:not(.live){pointer-events:none}
+html.r5a .r5go .go-list li{transition:none}
+html.r5a.r5run .r5go .go-list li{opacity:0}
+html.r5a.r5run .r5go .go-list:not(.live){pointer-events:none}
 html.r5a .r5go .go{min-height:clamp(60px,8.6vh,88px);padding-top:clamp(10px,1.7vh,18px);padding-bottom:clamp(10px,1.7vh,18px)}
 html.r5a .r5go .go b{font-size:clamp(20px,min(2.1vw,3.3vh),30px)}
 /* «застыл»: по кнопкам проходит блик металла (тот же, что при наведении) */
@@ -57,15 +64,17 @@ html.r5a .r5go.lit li:nth-child(4) .go::after{animation-delay:.27s}html.r5a .r5g
 @keyframes r5shine{from{transform:translateX(-120%) skewX(-18deg)}to{transform:translateX(480%) skewX(-18deg)}}
 
 @media (max-width:820px){
-  html.r5a .s-r5{height:420vh}
-  html.r5a .r5copy{left:22px;right:22px;width:auto;top:calc(env(safe-area-inset-top,0px) + 86px);transform:none}
-  html.r5a .r5go{left:14px;right:14px;width:auto;top:calc(env(safe-area-inset-top,0px) + 74px);transform:none}
+  html.r5a .s-r5{height:230vh}
+  html.r5a .r5copy{left:22px;right:22px;width:auto;top:auto;bottom:7vh;bottom:7svh}
+  html.r5a .r5go{left:14px;right:14px;width:auto;transform:translateY(-50%)}
   html.r5a .r5go h2{font-size:34px;margin:0 0 8px}
   html.r5a .r5go .head p{font-size:14px;line-height:1.4;margin-bottom:14px}
   html.r5a .r5go .go-list{gap:10px}
   html.r5a .r5go .go{min-height:62px;padding:11px 16px 11px 20px}
   html.r5a .r5go .go b{font-size:21px}
   html.r5a .r5go .go small{font-size:13px;margin-top:4px}
+  /* без JS-анимации на телефоне «Рутина» и «Куди далі» стоят в одном месте — показываем кнопки */
+  html.r5a:not(.r5run) .r5copy{display:none}
 }
 @media (max-width:820px) and (max-height:740px){html.r5a .r5go .head p{display:none}}
 @media (max-width:820px) and (max-height:640px){html.r5a .r5go .go small{display:none}}

@@ -1,0 +1,165 @@
+/* keys.css — кнопки сайта как объёмная металлическая клавиша TZ (Олег MSG 11400–11406, 24.11.2026).
+   Слой ПОВЕРХ r2/r4/r5: подключается последним, включается атрибутом html[data-k]:
+   data-k="css" — K1, всё кодом (шлифовка = SVG-шум + повторяющиеся градиенты);
+   data-k="tex" — K2, то же + плитка настоящего металла из рендера (/assets/keys/brushed-256.webp, 3 КБ).
+   Без атрибута (?k=off) — прежние кнопки. Анатомия: ::before — стенка-«юбка» + падающая тень,
+   ::after — верх клавиши (скос, шлифовка, блик). Нажатие: верх уходит на 3 px, стенка короче, тень меньше. */
+
+html[data-k]{
+  --k-sk:8px;                       /* высота видимой стенки */
+  --k-r:14px;                       /* скругление «квадрата» */
+  --k-ink:#16222d;                  /* текст на светлой стали (контраст ≥ 9:1) */
+  --k-ink-d:#f3f6f8;                /* текст на тёмной стали */
+  --k-ring:var(--navy,#16324a);
+  /* шлифовка кодом: шум с горизонтальной вытяжкой (feTurbulence), бесшовный */
+  --k-brush:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .75' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.4' intercept='-.2'/%3E%3CfeFuncG type='linear' slope='1.4' intercept='-.2'/%3E%3CfeFuncB type='linear' slope='1.4' intercept='-.2'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --k-lines:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 2px,rgba(255,255,255,.12) 2px 3px),
+            repeating-linear-gradient(180deg,rgba(20,34,48,0) 0 4px,rgba(20,34,48,.05) 4px 5px,rgba(20,34,48,0) 5px 7px);
+  --k-tex:var(--k-brush);
+  --k-brush-d:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='160'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .75' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 .4'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.4' intercept='-.2'/%3E%3CfeFuncG type='linear' slope='1.4' intercept='-.2'/%3E%3CfeFuncB type='linear' slope='1.4' intercept='-.2'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");   /* на тёмной стали штрихи слабее — контраст текста */
+}
+html[data-k="tex"]{--k-tex:url(/assets/keys/brushed-256.webp);--k-ts:128px 64px}   /* плитка 256 px = 2x плотность */
+
+/* ---------- кто становится клавишей ---------- */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close){
+  position:relative;isolation:isolate;overflow:visible!important;
+  border:0!important;border-radius:var(--k-r)!important;
+  background:transparent!important;box-shadow:none!important;
+  color:var(--k-ink)!important;-webkit-text-fill-color:currentColor;
+  text-shadow:0 1px 0 rgba(255,255,255,.55)!important;
+  margin-bottom:var(--k-sk);
+  transform:none;
+  transition:transform .09s ease-out!important;
+  -webkit-tap-highlight-color:transparent;
+}
+/* стенка-«юбка»: чуть шире верха книзу (перспектива), темнее, с отражением и падающей тенью */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close)::before{
+  content:""!important;position:absolute!important;z-index:-1!important;
+  inset:2px -1.5px calc(-1 * var(--k-sk)) -1.5px!important;width:auto!important;height:auto!important;
+  border-radius:calc(var(--k-r) + 1px) calc(var(--k-r) + 1px) calc(var(--k-r) + 2px) calc(var(--k-r) + 2px)!important;
+  background:
+    linear-gradient(90deg,rgba(14,24,34,.38) 0,rgba(14,24,34,0) 18px,rgba(14,24,34,0) calc(100% - 18px),rgba(14,24,34,.42) 100%),
+    linear-gradient(180deg,#9aa7b2 0,#7f8d99 calc(100% - var(--k-sk)),#a9b5be calc(100% - var(--k-sk) + 2px),#6b7884 calc(100% - 3px),#4e5a65 100%),
+    var(--k-tex) 0 0/var(--k-ts,256px 128px)!important;
+  background-blend-mode:normal,normal,overlay;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.35),
+    0 calc(var(--k-sk) - 2px) 6px -1px rgba(18,30,42,.38),
+    0 calc(var(--k-sk) + 8px) 22px -6px rgba(18,30,42,.45)!important;
+  opacity:1!important;mix-blend-mode:normal!important;filter:none!important;transform:none!important;
+  transition:bottom .09s ease-out,box-shadow .09s ease-out!important;
+}
+/* верх: мягкий скос по краю, шлифовка, свет сверху, блик (едет при наведении) */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close)::after{
+  content:""!important;position:absolute!important;z-index:-1!important;
+  inset:0!important;left:0!important;top:0!important;width:auto!important;height:auto!important;
+  border-radius:inherit!important;transform:none!important;animation:none;
+  background:
+    linear-gradient(100deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.55) 46%,rgba(255,255,255,0) 54%) 0 0/250% 100% no-repeat,
+    radial-gradient(90% 120% at 50% 15%,rgba(255,255,255,.4),rgba(255,255,255,0) 65%),
+    linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 42%,rgba(30,45,60,0) 70%,rgba(30,45,60,.13) 100%),
+    var(--k-lines),
+    var(--k-tex) 0 0/var(--k-ts,256px 128px),
+    linear-gradient(180deg,#e9eef1 0,#d5dde3 55%,#c0cad2 100%)!important;
+  background-blend-mode:normal,normal,normal,normal,normal,overlay,normal!important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.95),           /* верхняя кромка скоса — свет */
+    inset 0 3px 4px -2px rgba(255,255,255,.7),
+    inset 2px 0 3px -2px rgba(255,255,255,.8),
+    inset -2px 0 3px -2px rgba(40,56,70,.25),
+    inset 14px 0 16px -14px rgba(40,56,70,.18),
+    inset -14px 0 16px -14px rgba(40,56,70,.22),
+    inset 0 -2px 0 rgba(255,255,255,.55),             /* нижняя кромка скоса — блик перед стенкой */
+    inset 0 -5px 6px -3px rgba(40,56,70,.28),         /* скругление верха вниз */
+    0 0 0 .5px rgba(60,76,90,.55)!important;
+  opacity:1!important;mix-blend-mode:normal!important;filter:none!important;
+  transition:background-position .9s cubic-bezier(.2,.7,.2,1),filter .2s!important;
+}
+html[data-k="tex"]{--k-lines:linear-gradient(transparent,transparent),linear-gradient(transparent,transparent)}   /* K2: штрихи — только из плитки */
+
+/* ---------- тёмная сталь (.dark: текущая страница, главная кнопка) ---------- */
+html[data-k="css"] :is(.metal.dark,.btn,.ph-want,.ws-want,.dcta,.plaque a){--k-tex:var(--k-brush-d)}
+html[data-k] :is(.metal.dark,.btn,.ph-want,.ws-want,.dcta,.plaque a){--k-lines:repeating-linear-gradient(180deg,rgba(255,255,255,0) 0 2px,rgba(255,255,255,.05) 2px 3px),linear-gradient(transparent,transparent);color:var(--k-ink-d)!important;text-shadow:0 -1px 0 rgba(0,0,0,.45)!important}
+html[data-k] :is(.metal.dark,.btn,.ph-want,.ws-want,.dcta,.plaque a)::after{
+  background:
+    linear-gradient(100deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.14) 46%,rgba(255,255,255,0) 54%) 0 0/250% 100% no-repeat,
+    linear-gradient(90deg,rgba(0,0,0,.22) 0,rgba(0,0,0,0) 22px,rgba(0,0,0,0) calc(100% - 22px),rgba(0,0,0,.25) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.22) 0,rgba(255,255,255,0) 42%,rgba(0,0,0,0) 70%,rgba(0,0,0,.2) 100%),
+    var(--k-lines),
+    var(--k-tex) 0 0/var(--k-ts,256px 128px),
+    linear-gradient(180deg,#4a5865 0,#38444f 55%,#29333c 100%)!important;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.45),inset 2px 0 3px -2px rgba(255,255,255,.3),inset -2px 0 3px -2px rgba(0,0,0,.35),
+    inset 0 -2px 0 rgba(255,255,255,.22),inset 0 -5px 6px -3px rgba(0,0,0,.35),0 0 0 .5px rgba(10,18,26,.7)!important}
+html[data-k] :is(.metal.dark,.btn,.ph-want,.ws-want,.dcta,.plaque a)::before{
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.4) 0,rgba(0,0,0,0) 18px,rgba(0,0,0,0) calc(100% - 18px),rgba(0,0,0,.45) 100%),
+    linear-gradient(180deg,#34404a 0,#28323b calc(100% - var(--k-sk)),#55626d calc(100% - var(--k-sk) + 2px),#2a343d calc(100% - 3px),#1a222a 100%),
+    var(--k-tex) 0 0/var(--k-ts,256px 128px)!important}
+/* мелкие подписи внутри «Куди далі» — читаемые на стали */
+html[data-k] .go.metal small{color:#33475a!important}html[data-k] .go.metal .n{color:#3f5466!important}
+html[data-k] .go.metal.dark small{color:#dde6ed!important}html[data-k] .go.metal.dark .n{color:#c9d6e0!important}
+html[data-k] .go.metal .arr{background:rgba(255,255,255,.35);box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(40,56,70,.3),0 0 0 1px rgba(60,76,90,.35)}
+html[data-k] .go.metal.dark .arr{background:rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 0 1px rgba(0,0,0,.35)}
+
+/* ---------- размеры ---------- */
+html[data-k] .go.metal{--k-r:20px;--k-sk:11px}
+html[data-k] .metal.sm,html[data-k] .top nav .metal,html[data-k] .r4nav a.metal{--k-r:11px;--k-sk:6px}
+html[data-k] :is(.chat-ctl,.ph-x,.find-x,.drw-close){--k-r:12px;--k-sk:4px}
+html[data-k] .top nav .metal,html[data-k] .r4nav a.metal{margin-bottom:0}   /* в шапке не раздвигаем строку */
+
+/* ---------- состояния ---------- */
+@media (hover:hover){
+  html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):hover::after{background-position:100% 0,0 0,0 0,0 0,0 0,0 0,0 0!important;filter:brightness(1.04)}
+}
+/* клавиша не «взлетает» при наведении (старые правила r2/r4 давали -2px) */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):hover:not(:active):not(.k-down){transform:none!important}
+/* нажатие: верх вниз на 3 px, низ стенки на месте (стенка короче), тень меньше */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):is(:active,.k-down){transform:translateY(3px)!important}
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):is(:active,.k-down)::before{
+  bottom:calc(-1 * var(--k-sk) + 3px)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.3),0 calc(var(--k-sk) - 4px) 4px -1px rgba(18,30,42,.4),0 calc(var(--k-sk) + 1px) 10px -5px rgba(18,30,42,.4)!important}
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):is(:active,.k-down)::after{filter:brightness(.96)}
+/* фокус с клавиатуры: кольцо вокруг всей клавиши вместе со стенкой */
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):focus-visible{outline:none!important}
+html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close):focus-visible::before{
+  box-shadow:0 0 0 2px #fff,0 0 0 4.5px var(--k-ring),0 calc(var(--k-sk) + 8px) 22px -6px rgba(18,30,42,.45)!important}
+
+/* вопросы FAQ (<summary>): их ::after — стрелка/«+», поэтому клавиша без псевдоэлементов:
+   верх — фон самой строки, стенка — стопка теней по 1 px, тень — ниже */
+html[data-k] :is(.faq-sec summary,.faq summary){
+  --k-sk:6px;border:0!important;border-radius:18px!important;color:var(--k-ink)!important;-webkit-text-fill-color:currentColor;
+  text-shadow:0 1px 0 rgba(255,255,255,.55)!important;margin-bottom:6px;
+  background:
+    linear-gradient(90deg,rgba(40,56,70,.12) 0,rgba(40,56,70,0) 22px,rgba(40,56,70,0) calc(100% - 22px),rgba(40,56,70,.14) 100%),
+    linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 42%,rgba(30,45,60,0) 70%,rgba(30,45,60,.12) 100%),
+    var(--k-lines),var(--k-tex) 0 0/var(--k-ts,256px 128px),
+    linear-gradient(180deg,#e9eef1 0,#d5dde3 55%,#c0cad2 100%)!important;
+  background-blend-mode:normal,normal,normal,normal,overlay,normal!important;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.95),inset 0 -2px 0 rgba(255,255,255,.5),inset 0 -5px 6px -3px rgba(40,56,70,.25),0 0 0 .5px rgba(60,76,90,.5),
+    0 1px 0 #9aa7b2,0 2px 0 #8c99a5,0 3px 0 #a7b3bc,0 4px 0 #7c8995,0 5px 0 #6b7884,0 6px 0 #56626d,
+    0 9px 8px -2px rgba(18,30,42,.35),0 18px 24px -10px rgba(18,30,42,.4)!important;
+  transition:transform .09s ease-out,box-shadow .09s ease-out!important}
+html[data-k] .faq-sec details[open] summary,html[data-k] .faq details[open] summary{color:var(--k-ink-d)!important;text-shadow:0 -1px 0 rgba(0,0,0,.45)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.2) 0,rgba(255,255,255,0) 42%,rgba(0,0,0,.18) 100%),var(--k-lines),var(--k-tex) 0 0/var(--k-ts,256px 128px),linear-gradient(180deg,#4a5865 0,#38444f 55%,#29333c 100%)!important;
+  background-blend-mode:normal,normal,normal,overlay,normal!important;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.4),inset 0 -2px 0 rgba(255,255,255,.18),inset 0 -5px 6px -3px rgba(0,0,0,.35),0 0 0 .5px rgba(10,18,26,.7),
+    0 1px 0 #34404a,0 2px 0 #2c3740,0 3px 0 #4a5762,0 4px 0 #2a343d,0 5px 0 #222b33,0 6px 0 #1a222a,
+    0 9px 8px -2px rgba(18,30,42,.4),0 18px 24px -10px rgba(18,30,42,.45)!important}
+html[data-k] :is(.faq-sec summary,.faq summary):active{transform:translateY(3px)!important;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.9),inset 0 -2px 0 rgba(255,255,255,.4),0 0 0 .5px rgba(60,76,90,.5),0 1px 0 #8c99a5,0 2px 0 #7c8995,0 3px 0 #56626d,0 5px 6px -2px rgba(18,30,42,.35)!important}
+html[data-k] :is(.faq-sec summary,.faq summary):focus-visible{outline:2.5px solid var(--k-ring)!important;outline-offset:4px!important}
+html[data-k] .faq details,html[data-k] .faq-sec details{overflow:visible}
+
+/* блик сцены r5 при сборке «Куди далі» — тем же лучом по верху клавиши */
+html[data-k].r5a .r5go.lit .go::after{animation-name:k-shine}
+@keyframes k-shine{from{background-position:100% 0,0 0,0 0,0 0,0 0,0 0,0 0}to{background-position:0 0,0 0,0 0,0 0,0 0,0 0}}
+
+@media (prefers-reduced-motion:reduce){
+  html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close),
+  html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close)::before,
+  html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close)::after,
+  html[data-k] :is(.faq-sec summary,.faq summary){transition:none!important;animation:none!important}
+}
+@media (forced-colors:active){
+  html[data-k] :is(.metal,.btn,.ph-want,.ws-want,.dcta,.plaque a,.chat-ctl,.ph-x,.find-x,.drw-close){border:1px solid ButtonText!important}
+}

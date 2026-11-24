@@ -86,7 +86,7 @@
   const hbox = $('.hbox'), hcopy = $('.s-hands .copy'), hlead = $('.s-hands .lead'), hcta = $('.s-hands .cta');
   let hLast = '';
   function handsFrame(now) {
-    if (window.R5 && window.R5.on) { window.R5.frame(now, introStart); return; }   // r5: руки → код → кнопки (assets/r5/r5.js)
+    if (window.R5 && window.R5.on) return;   // r5fix: сцену «руки → код → кнопки» ведёт свой цикл assets/r5/r5.js
     const vw = innerWidth;
     const intro = RM ? 1 : (introStart ? easeIO(clamp((now - introStart) / 1900)) : 0);
     const r = hello.getBoundingClientRect();
