@@ -44,6 +44,9 @@
 <script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'tex'})()</script>
 <link rel="stylesheet" href="/assets/keys/keys.css">
 <link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
+<link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
+<script src="/assets/nav/nav.js?v=fix7" defer></script>
+<script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
 </head>
 <body>
 <div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
@@ -60,7 +63,7 @@
   <nav class="r4nav" aria-label="Меню"><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека</a><a href="/website">Сайт</a><a href="/data">Ваші дані</a><a href="/faq" class="metal dark" aria-current="page">Питання</a><a class="r4lang" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a></nav>
   <span class="r4right"><a class="r4lang r4lang-m" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Меню</button></span>
 </header>
-<nav class="r4menu" id="r4menu" aria-label="Меню" hidden><div class="r4menu-in"><a class="metal" href="/">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal dark" href="/faq" aria-current="page">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="r4lang" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
+<nav class="r4menu" id="r4menu" aria-label="Меню" hidden><div class="r4menu-in"><a class="metal" href="/">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal dark" href="/faq" aria-current="page">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="metal" href="/waitlist" data-fix7>Записатися в пілот</a><a class="r4lang" href="/en/faq" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
 
 <main id="main" class="pg-main pg-faq">
 <nav class="wrap crumbs" aria-label="Ви тут"><a href="/"><span aria-hidden="true">←</span> Головна</a><span class="sep" aria-hidden="true">/</span><span aria-current="page">Часті питання</span></nav>
@@ -89,7 +92,7 @@
 <footer class="site-foot">
   <div class="wrap">
     <div class="ft-cols">
-      <nav aria-label="Сайт"><h2 class="ft-h">Сайт</h2><a href="/">Головна</a><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека Жорика</a><a href="/website">Сайт для бізнесу</a><a href="/data">Ваші дані</a><a href="/faq" aria-current="page">Часті питання</a><a href="/about">Хто ми</a></nav>
+      <nav aria-label="Сайт"><h2 class="ft-h">Сайт</h2><a href="/">Головна</a><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека Жорика</a><a href="/website">Сайт для бізнесу</a><a href="/data">Ваші дані</a><a href="/faq" aria-current="page">Часті питання</a><a href="/about">Хто ми</a><a href="/waitlist">Записатися в пілот</a></nav>
       <nav aria-label="Документи"><h2 class="ft-h">Документи</h2><a href="/privacy">Політика конфіденційності</a><a href="/terms">Умови використання</a><a href="/data-deletion">Видалити свої дані</a><a href="/contact">Контакти</a></nav>
       <div class="ft-side">
         <p class="odclock" data-odclock="0|Власник спить — Жорик чергує.~6|Кава ще гаряча, а ранкова зведка вже готова.~10|На Привозі торгуються, а Жорик рахує залишки.~14|Обід — святе. Жорик відповідає в директі, поки ви їсте.~18|Вечір на Дерибасівській, а нагадування на завтра вже в списку.~22|Пора спати. Жорик допише нагадування на ранок." data-city="Одеса"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path class="oc-h" d="M12 12V7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="oc-m" d="M12 12h4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="oc-tx">Одеса. Ми звідси — і Жорик теж.</span></p>

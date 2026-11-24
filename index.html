@@ -42,6 +42,9 @@
 <script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'tex'})()</script>
 <link rel="stylesheet" href="/assets/keys/keys.css">
 <link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
+<link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
+<script src="/assets/nav/nav.js?v=fix7" defer></script>
+<script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -52,7 +55,7 @@
 <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div><div class="blob b3" aria-hidden="true"></div>
 
 <header class="top at-top" id="top">
-  <a class="brand" href="#main"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
+  <a class="brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
   <nav aria-label="Розділи">
     <button class="metal dark" data-open="p-how">Як це працює</button>
     <button data-open="p-lib">Бібліотека</button>
@@ -61,8 +64,9 @@
     <button data-open="p-faq">Питання</button>
     <a href="/en/" lang="en" hreflang="en">EN</a>
   </nav>
-  <a class="metal dark sm burger" href="#go">Меню</a>
+  <span class="tzn-right"><a class="tzn-lang" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a><button class="metal dark sm burger tzn-btn" type="button" aria-expanded="false" aria-controls="tzn-menu"><span class="tzn-ic" aria-hidden="true"></span>Меню</button></span>
 </header>
+<div class="tzn-veil" hidden></div><nav class="tzn-menu" id="tzn-menu" aria-label="Сторінки сайту" hidden><div class="tzn-menu-in"><a class="metal dark" href="/" aria-current="page">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal" href="/faq">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="metal" href="/waitlist">Записатися в пілот</a><a class="tzn-mlang" href="/en/" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
 
 <main id="main">
 
@@ -198,7 +202,7 @@
 
 </main>
 
-<footer class="foot"><nav class="foot-links"><a href="/how-it-works">Як це працює</a> · <a href="/skills">Бібліотека Жорика</a> · <a href="/website">Сайт для бізнесу</a> · <a href="/data">Ваші дані</a> · <a href="/faq">Часті питання</a> · <a href="/about">Хто ми</a> · <a href="/privacy">Політика конфіденційності</a> · <a href="/terms">Умови використання</a> · <a href="/data-deletion">Видалити свої дані</a> · <a href="/contact">Контакти</a></nav><span>Твій Жорик · Одеса · Працює на Claude від Anthropic</span></footer>
+<footer class="foot"><nav class="foot-links"><a href="/how-it-works">Як це працює</a> · <a href="/skills">Бібліотека Жорика</a> · <a href="/website">Сайт для бізнесу</a> · <a href="/data">Ваші дані</a> · <a href="/faq">Часті питання</a> · <a href="/about">Хто ми</a> · <a href="/waitlist">Записатися в пілот</a> · <a href="/privacy">Політика конфіденційності</a> · <a href="/terms">Умови використання</a> · <a href="/data-deletion">Видалити свої дані</a> · <a href="/contact">Контакти</a></nav><span>Твій Жорик · Одеса · Працює на Claude від Anthropic</span></footer>
 <div class="ripple" id="ripple" aria-hidden="true"></div>
 <script src="/assets/r5/r5.js?v=fix5h" defer></script>
 <script src="/assets/r2/r2.js?v=fix6" defer></script>

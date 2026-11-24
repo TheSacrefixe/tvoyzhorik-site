@@ -24,13 +24,18 @@
 <script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'tex'})()</script>
 <link rel="stylesheet" href="/assets/keys/keys.css">
 <link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
+<link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
+<script src="/assets/nav/nav.js?v=fix7" defer></script>
+<script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
 </head>
 <body class="root404">
 <div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <header class="r4top r4-404" id="r4top">
   <a class="r4brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
   <nav class="r4nav r4nav-lang" aria-label="Мова · Language"><a href="/" lang="uk" hreflang="uk">Українською</a><a href="/en/" lang="en" hreflang="en">English</a></nav>
+<button class="metal dark sm tzn-btn" type="button" aria-expanded="false" aria-controls="tzn-menu"><span class="tzn-ic" aria-hidden="true"></span>Меню · Menu</button>
 </header>
+<div class="tzn-veil" hidden></div><nav class="tzn-menu" id="tzn-menu" aria-label="Сторінки сайту · Site pages" hidden><div class="tzn-menu-in" data-l="uk"><a class="metal" href="/">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal" href="/faq">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="metal" href="/waitlist">Записатися в пілот</a><a class="tzn-mlang" href="/en/None" hreflang="en" lang="en" aria-label="English">EN</a></div><div class="tzn-menu-in" data-l="en" hidden><a class="metal" href="/en/">Home</a><a class="metal" href="/en/how-it-works">How it works</a><a class="metal" href="/en/skills">Library</a><a class="metal" href="/en/website">Website</a><a class="metal" href="/en/data">Your data</a><a class="metal" href="/en/faq">FAQ</a><a class="metal" href="/en/about">About us</a><a class="metal" href="/en/contact">Contact</a><a class="metal" href="/en/waitlist">Join the pilot</a><a class="tzn-mlang" href="/None" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></div></nav>
 <main id="main" class="pg-main pg-404">
   <section class="e404" data-l="uk" lang="uk">
     <div class="wrap e404-in">

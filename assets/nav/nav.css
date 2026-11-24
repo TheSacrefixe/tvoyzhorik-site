@@ -1,0 +1,50 @@
+/* nav.css — fix7 (site-fix7-nav-2411; Олег MSG 11556–11557): понятная навигация между страницами.
+   Кнопка «Меню» в шапке (главная на телефоне, лист ожидания, 404) раскрывает список всех страниц; текущая отмечена.
+   Внешний вид — как меню внутренних страниц (r4): стекло + стальные клавиши. Свои шрифты сайта, без внешних запросов. */
+.tzn-right{display:none;align-items:center;gap:6px}
+.tzn-lang{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 12px;border-radius:999px;
+  font:500 12px/1 var(--mono4,var(--mono,ui-monospace,monospace));letter-spacing:.14em;color:var(--ink-2,#34495a);text-decoration:none;
+  background:rgba(255,255,255,.3);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+button.tzn-btn{min-height:44px;min-width:64px;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tzn-btn::marker{content:none}
+.tzn-btn .tzn-ic{display:inline-block;width:14px;height:10px;margin-right:2px;position:relative;flex:none;
+  background:linear-gradient(currentColor,currentColor) 0 0/100% 2px no-repeat,linear-gradient(currentColor,currentColor) 0 50%/100% 2px no-repeat,linear-gradient(currentColor,currentColor) 0 100%/100% 2px no-repeat;
+  transition:transform .3s}
+.tzn-btn[aria-expanded="true"] .tzn-ic{background:linear-gradient(45deg,transparent calc(50% - 1px),currentColor calc(50% - 1px),currentColor calc(50% + 1px),transparent calc(50% + 1px)),
+  linear-gradient(-45deg,transparent calc(50% - 1px),currentColor calc(50% - 1px),currentColor calc(50% + 1px),transparent calc(50% + 1px));width:12px;height:12px}
+.tzn-veil{position:fixed;inset:0;z-index:58;background:rgba(14,26,38,.18);-webkit-tap-highlight-color:transparent;opacity:0;transition:opacity .3s}
+.tzn-veil.open{opacity:1}
+.tzn-menu{position:fixed;left:8px;right:8px;top:72px;z-index:62;padding:12px;border-radius:24px;max-height:calc(100vh - 88px);overflow:auto;
+  -webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  background:rgba(210,222,231,.97);-webkit-backdrop-filter:blur(24px) saturate(1.4);backdrop-filter:blur(24px) saturate(1.4);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 30px 60px -30px rgba(20,35,50,.6);
+  opacity:0;transform:translateY(-10px) scale(.98);transform-origin:top right;transition:opacity .3s cubic-bezier(.22,.8,.2,1),transform .4s cubic-bezier(.22,.8,.2,1)}
+.tzn-menu.open{opacity:1;transform:none}
+.tzn-menu-in{display:grid;gap:8px}
+.tzn-menu .metal,html[data-k] .tzn-menu a.metal,html[data-r4] .tzn-menu a.metal{display:flex;justify-content:flex-start;text-align:left;width:100%;min-height:52px;font-size:16px;padding:.8em 1.3em;margin:0;box-sizing:border-box}
+.tzn-menu a[aria-current="page"]::after{content:"•";position:static;margin-left:auto;padding-left:12px;background:none;width:auto;transform:none;opacity:.8}
+html[data-k] .tzn-menu a[aria-current="page"]::after{content:none}
+.tzn-menu .tzn-mlang{justify-self:start;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;
+  font:500 13px/1 var(--mono4,var(--mono,ui-monospace,monospace));letter-spacing:.14em;color:var(--ink-2,#34495a);text-decoration:none}
+.tzn-menu [data-l][hidden]{display:none}
+@media (min-width:821px){.tzn-menu{left:auto;right:16px;width:340px}}
+/* главная: на телефоне — EN + «Меню»; шапка не прячется, пока меню открыто */
+@media (max-width:820px){
+  .top .tzn-right{display:inline-flex}
+  .top .tzn-right .burger{display:inline-flex}
+}
+.top.tzn-on,.r4top.tzn-on{transform:none!important;z-index:63}
+/* лист ожидания: кнопка «Меню» в строке шапки и на компьютере */
+.wl-nav .tzn-btn{margin-left:2px}
+.wl-nav .tzn-btn.metal{min-height:44px;padding:0 16px;font-size:12px;letter-spacing:.06em}
+/* 404: на телефоне вместо двух длинных «Українською / English» — кнопка «Меню · Menu» (языки — внутри списка) */
+.r4-404 .tzn-btn{display:inline-flex}
+@media (max-width:820px){.r4top.r4-404.tzn-has .r4nav-lang{display:none!important}}
+/* зоны касания ≥44×44 на телефоне: кнопки меню и переключатель языка внутри меню (страховка поверх fix6) */
+@media (max-width:820px),(pointer:coarse){
+  html .r4burger,html .tzn-btn,html[data-k] .r4burger.metal,html[data-k] .tzn-btn.metal{min-height:44px!important;min-width:44px}
+  .r4menu .r4lang,.tzn-menu .tzn-mlang{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+  .r4lang-m{min-width:44px;justify-content:center}
+  .site-foot nav a,.foot-links a{min-width:44px}
+}
+@media (prefers-reduced-motion:reduce){.tzn-menu,.tzn-veil,.tzn-btn .tzn-ic{transition:none}}

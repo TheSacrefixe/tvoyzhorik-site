@@ -31,18 +31,22 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <script src="/assets/wl/wl.js" defer></script>
 <link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
+<link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
+<script src="/assets/nav/nav.js?v=fix7" defer></script>
+<script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
 </head>
 <body>
 <!--wl-a-2311-->
 <a class="skip" href="#main">Skip to content</a>
 <div class="studio" aria-hidden="true"></div><div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
 <header class="top">
-  <a class="brand" href="/en/"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a>
-  <nav aria-label="Navigation">
+  <a class="brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a>
+  <nav class="wl-nav" aria-label="Navigation">
     <a class="home" href="/en/">Home</a>
     <a href="/waitlist" lang="uk" hreflang="uk" data-lang-switch>UA</a>
-  </nav>
+  <button class="metal dark sm tzn-btn" type="button" aria-expanded="false" aria-controls="tzn-menu"><span class="tzn-ic" aria-hidden="true"></span>Menu</button></nav>
 </header>
+<div class="tzn-veil" hidden></div><nav class="tzn-menu" id="tzn-menu" aria-label="Site pages" hidden><div class="tzn-menu-in"><a class="metal" href="/en/">Home</a><a class="metal" href="/en/how-it-works">How it works</a><a class="metal" href="/en/skills">Library</a><a class="metal" href="/en/website">Website</a><a class="metal" href="/en/data">Your data</a><a class="metal" href="/en/faq">FAQ</a><a class="metal" href="/en/about">About us</a><a class="metal" href="/en/contact">Contact</a><a class="metal dark" href="/en/waitlist" aria-current="page">Join the pilot</a><a class="tzn-mlang" href="/waitlist" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></div></nav>
 <main id="main">
   <div class="wl">
     <section class="intro" aria-labelledby="wq-h1">
@@ -92,7 +96,7 @@
     </div>
   </div>
 </main>
-<footer class="foot"><nav class="foot-links" aria-label="Site pages"><a href="/en/how-it-works">How it works</a><a href="/en/skills">Zhoryk's library</a><a href="/en/website">A website for your business</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a><a href="/en/about">About us</a><a href="/en/privacy">Privacy policy</a><a href="/en/terms">Terms of use</a><a href="/en/data-deletion">Delete your data</a><a href="/en/contact">Contact</a></nav><span>Tvii Zhoryk · Odesa · Powered by Claude</span></footer>
+<footer class="foot"><nav class="foot-links" aria-label="Site pages"><a href="/en/">Home</a><a href="/en/how-it-works">How it works</a><a href="/en/skills">Zhoryk's library</a><a href="/en/website">A website for your business</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a><a href="/en/about">About us</a><a href="/en/privacy">Privacy policy</a><a href="/en/terms">Terms of use</a><a href="/en/data-deletion">Delete your data</a><a href="/en/contact">Contact</a></nav><span>Tvii Zhoryk · Odesa · Powered by Claude</span></footer>
 <script type="application/json" id="wq-t">{"m": {"telegram": {"lab": "Telegram username", "hint": "For example, @nickname — you'll find it in Telegram settings.", "ph": "@nickname"}, "email": {"lab": "E-mail", "hint": "We'll write from hello@tvoyzhorik.com.", "ph": "name@example.com"}}, "e": {"name": "Please enter your name — up to 60 characters, no links.", "tg": "We need a Telegram username: 5+ characters, Latin letters, digits and “_”, e.g. @nickname.", "tgphone": "We need the username (@nickname), not a phone number.", "email": "Please check the e-mail address, e.g. name@example.com.", "consent": "Please tick the box — we can't store your contact without your consent.", "sum": "Please check the fields marked below.", "rate": "Too many attempts. Please try again in 10 minutes.", "net": "Couldn't send. Check your connection and press “Leave my contact” again — what you typed stays."}, "send": "Leave my contact", "sending": "Sending…", "done": "Thank you, {name}!"}</script>
 </body>
 </html>

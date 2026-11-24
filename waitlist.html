@@ -31,18 +31,22 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <script src="/assets/wl/wl.js" defer></script>
 <link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
+<link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
+<script src="/assets/nav/nav.js?v=fix7" defer></script>
+<script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
 </head>
 <body>
 <!--wl-a-2311-->
 <a class="skip" href="#main">Перейти до змісту</a>
 <div class="studio" aria-hidden="true"></div><div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div>
 <header class="top">
-  <a class="brand" href="/"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
-  <nav aria-label="Навігація">
+  <a class="brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
+  <nav class="wl-nav" aria-label="Навігація">
     <a class="home" href="/">Головна</a>
     <a href="/en/waitlist" lang="en" hreflang="en" data-lang-switch>EN</a>
-  </nav>
+  <button class="metal dark sm tzn-btn" type="button" aria-expanded="false" aria-controls="tzn-menu"><span class="tzn-ic" aria-hidden="true"></span>Меню</button></nav>
 </header>
+<div class="tzn-veil" hidden></div><nav class="tzn-menu" id="tzn-menu" aria-label="Сторінки сайту" hidden><div class="tzn-menu-in"><a class="metal" href="/">Головна</a><a class="metal" href="/how-it-works">Як це працює</a><a class="metal" href="/skills">Бібліотека</a><a class="metal" href="/website">Сайт</a><a class="metal" href="/data">Ваші дані</a><a class="metal" href="/faq">Питання</a><a class="metal" href="/about">Хто ми</a><a class="metal" href="/contact">Контакти</a><a class="metal dark" href="/waitlist" aria-current="page">Записатися в пілот</a><a class="tzn-mlang" href="/en/waitlist" hreflang="en" lang="en" aria-label="English">EN</a></div></nav>
 <main id="main">
   <div class="wl">
     <section class="intro" aria-labelledby="wq-h1">
@@ -92,7 +96,7 @@
     </div>
   </div>
 </main>
-<footer class="foot"><nav class="foot-links" aria-label="Сторінки сайту"><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека Жорика</a><a href="/website">Сайт для бізнесу</a><a href="/data">Ваші дані</a><a href="/faq">Часті питання</a><a href="/about">Хто ми</a><a href="/privacy">Політика конфіденційності</a><a href="/terms">Умови використання</a><a href="/data-deletion">Видалити свої дані</a><a href="/contact">Контакти</a></nav><span>Твій Жорик · Одеса · Працює на Claude від Anthropic</span></footer>
+<footer class="foot"><nav class="foot-links" aria-label="Сторінки сайту"><a href="/">Головна</a><a href="/how-it-works">Як це працює</a><a href="/skills">Бібліотека Жорика</a><a href="/website">Сайт для бізнесу</a><a href="/data">Ваші дані</a><a href="/faq">Часті питання</a><a href="/about">Хто ми</a><a href="/privacy">Політика конфіденційності</a><a href="/terms">Умови використання</a><a href="/data-deletion">Видалити свої дані</a><a href="/contact">Контакти</a></nav><span>Твій Жорик · Одеса · Працює на Claude від Anthropic</span></footer>
 <script type="application/json" id="wq-t">{"m": {"telegram": {"lab": "Нік у Telegram", "hint": "Наприклад, @nickname — його видно в налаштуваннях Telegram.", "ph": "@nickname"}, "email": {"lab": "E-mail", "hint": "Напишемо з hello@tvoyzhorik.com.", "ph": "name@example.com"}}, "e": {"name": "Напишіть ім'я — до 60 знаків, без посилань.", "tg": "Потрібен нік у Telegram: від 5 знаків, латиниця, цифри й «_», наприклад @nickname.", "tgphone": "Потрібен саме нік (@nickname), а не номер телефону.", "email": "Перевірте адресу e-mail, наприклад name@example.com.", "consent": "Поставте галочку — без згоди ми не можемо зберегти контакт.", "sum": "Перевірте поля, позначені нижче.", "rate": "Забагато спроб. Спробуйте ще раз за 10 хвилин.", "net": "Не вдалося надіслати. Перевірте з'єднання і натисніть «Залишити контакт» ще раз — введене не зникне."}, "send": "Залишити контакт", "sending": "Надсилаємо…", "done": "Дякуємо, {name}!"}</script>
 </body>
 </html>
