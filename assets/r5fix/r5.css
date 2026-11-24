@@ -1,6 +1,6 @@
-/* Твій Жорик — круг 5, r5fix2 (site-r5fix2-2311; Олег MSG 11371, 11373). Сцена (Олег MSG 11335–11341):
-   руки → касание (свет) → ВЕСЬ кадр рассыпается в сплошное поле кода, как слайд 2 r3 → «Рутина — йому, рішення — вам» → код собирается в 5 кнопок «Куди далі».
-   Стили — как в r5fix (по раскладке ничего не менялось). СТРАХОВКА: по умолчанию всё видно. html.r5a (строчка в <head>) — раскладка сцены;
+/* Твій Жорик — круг 5, r5fix3 (site-r5fix3-2411; Олег MSG 11395). Сцена: руки → касание (свет) → дальше 1:1 слайд 2 r3 (рука робота
+   рассыпается в код; Кэт MSG 11237) → «Рутина — йому, рішення — вам» (на телефоне внизу, как на слайде 2) → код собирается в 5 кнопок «Куди далі».
+   Против r5fix2: фон слайда 2 (.r5s2bg), на телефоне текст «Рутина…» внизу (как .a-copy слайда 2). СТРАХОВКА: по умолчанию всё видно. html.r5a (строчка в <head>) — раскладка сцены;
    прятать тексты и кнопки может только r5.js, который уже запустил анимацию (html.r5run). Нет JS / ошибка / reduced-motion / ?r5=off — обычные блоки, кнопки видны. */
 
 /* ---------- обычный режим (без анимации): блоки по порядку ---------- */
@@ -8,6 +8,7 @@
 .r5pin{position:relative}
 #r5cv{display:none}
 .r5glow{display:none}
+.r5s2bg{display:none}
 .r5anchor{display:block;height:0}
 .r5copy{position:relative;padding:clamp(90px,14vh,150px) var(--pad) 0;max-width:980px;color:var(--ink)}
 .r5copy .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
@@ -22,6 +23,9 @@ html.r5a .s-r5{height:380vh}
 html.r5a .r5pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 html.r5a .r5glow{display:block;position:absolute;inset:-12%;z-index:0;pointer-events:none;opacity:0;will-change:opacity;
   background:radial-gradient(58% 52% at 50% 50%,rgba(226,234,240,.9) 0,rgba(226,234,240,.55) 45%,rgba(226,234,240,0) 72%)}
+/* фон слайда 2 r3 (.s-ascii .pin): полоса rgba(223,231,237,.88) поверх студии */
+html.r5a .r5s2bg{display:block;position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;will-change:opacity;
+  background:linear-gradient(rgba(223,231,237,0) 0,rgba(223,231,237,.88) 24%,rgba(223,231,237,.88) 76%,rgba(223,231,237,0) 100%)}
 html.r5a .r5pin>.s-hands{position:absolute;inset:0;height:auto;min-height:0;z-index:1}
 html.r5a #r5cv{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .r5flash{position:absolute;left:49.95%;top:44.43%;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;pointer-events:none;opacity:0;visibility:hidden;
@@ -57,7 +61,7 @@ html.r5a .r5go.lit li:nth-child(4) .go::after{animation-delay:.27s}html.r5a .r5g
 
 @media (max-width:820px){
   html.r5a .s-r5{height:360vh}
-  html.r5a .r5copy{left:22px;right:22px;width:auto;top:calc(env(safe-area-inset-top,0px) + 86px);transform:none}
+  html.r5a .r5copy{left:22px;right:22px;width:auto;top:auto;bottom:7vh;bottom:7svh;transform:none}   /* как .a-copy слайда 2 */
   html.r5a .r5go{left:14px;right:14px;width:auto;top:calc(env(safe-area-inset-top,0px) + 74px);transform:none}
   html.r5a .r5go h2{font-size:34px;margin:0 0 8px}
   html.r5a .r5go .head p{font-size:14px;line-height:1.4;margin-bottom:14px}
