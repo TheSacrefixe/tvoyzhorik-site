@@ -1,0 +1,44 @@
+/* kat3.css — круг kat3 по замечаниям Кэт 24.11 (MSG 11698–11706). Подключается после kat2.css, только на главной uk/en.
+   1) рука робота «скелетная» (свой рендер Blender, hands_kat3.py): тот же правый слот #handHuman, точка касания та же;
+   2) экран 5 кнопок: матрица-голова на весь экран, тёмный фон (kat3.js);
+   3) Бібліотека: панель не уезжает вбок; ряд карточек «стопка → ряд» (kat3.js). */
+
+/* ---------- 1. рука робота (кадр 3200×1400, зеркало рендера; кончик 1635,636) ---------- */
+#handHuman{left:50.875%;top:42.2143%;width:49.125%}
+
+/* ---------- 2. матрица ---------- */
+.kmx3{position:absolute;left:0;top:0;width:100%;height:100%;z-index:3;pointer-events:none;opacity:0;
+  background:radial-gradient(70% 60% at 50% 46%,#18222c 0%,#0d1318 55%,#07090c 100%);
+  transition:opacity 1.4s ease;will-change:opacity;transform:translateZ(0);contain:strict}
+.kmx3.on{opacity:1}
+/* кнопки на тёмном: чуть сильнее тень, чтобы край читался */
+.r5pin.k3dark #r5go .go{box-shadow:0 0 0 1px rgba(255,255,255,.10),0 18px 36px -14px rgba(0,0,0,.75)}
+
+/* ---------- 3. Бібліотека ---------- */
+#p-lib{overflow-x:hidden}
+#p-lib .inner{overflow-x:clip}
+.k3wrap{position:relative;margin-top:30px}
+.k3sc{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+  scrollbar-width:none;padding:34px 0 40px;margin:-34px 0 -24px;touch-action:pan-x pan-y}
+.k3sc::-webkit-scrollbar{display:none}
+.k3wrap:not(.k3row) .k3sc{margin-left:calc(-1 * var(--pad,20px));margin-right:calc(-1 * var(--pad,20px))}
+.k3sc.drag{scroll-snap-type:none;cursor:grabbing}
+.cards.kfan3{display:flex!important;gap:var(--k3gap,14px);margin:0;padding:0 var(--k3pad,24px);width:max-content;align-items:stretch;user-select:none;-webkit-user-select:none}
+.k3sc{position:relative}
+.cards.kfan3 .k3slot{flex:0 0 var(--k3w,300px);width:var(--k3w,300px);display:flex;position:relative;scroll-snap-align:center;scroll-snap-stop:always}
+.cards.kfan3 .card{flex:1 1 auto;width:100%;box-sizing:border-box;
+  background:
+    radial-gradient(120% 90% at 30% 0%,rgba(255,255,255,.75),rgba(255,255,255,0) 60%),
+    linear-gradient(180deg,#f3f6f8 0%,#e1e8ed 55%,#cfd8df 100%),
+    url(/assets/keys/brushed-256.webp) 0 0/128px 64px;
+  background-blend-mode:normal,normal,overlay;
+  box-shadow:inset 0 1px 0 #fff,inset 0 -2px 0 rgba(40,56,70,.18),0 0 0 1px rgba(70,88,104,.28),0 26px 40px -22px rgba(18,30,42,.55),0 6px 12px -6px rgba(18,30,42,.3);
+  transform-origin:50% 60%;backface-visibility:hidden;will-change:transform;cursor:grab}
+.cards.kfan3 .card h3{color:#16222d}
+.k3row .k3sc{overflow:visible;padding:20px 0 30px;margin:-20px 0 -10px}
+.k3row .cards.kfan3{width:auto;justify-content:center;padding:0}
+.k3row .cards.kfan3 .card{cursor:default;padding:22px 20px 24px}
+.k3row .cards.kfan3 .card h3{font-size:clamp(19px,1.45vw,22px)}
+.k3row .cards.kfan3 .card p{font-size:14px}
+.k3row .kfan-ctl{display:none}
+@media (prefers-reduced-motion:reduce){.k3sc{scroll-behavior:auto}}
