@@ -48,6 +48,8 @@
 <!-- kat1-2411 -->
 <link rel="stylesheet" href="/assets/kat1/kat1.css?v=kat1">
 <script src="/assets/kat1/kat1.js?v=kat1" defer></script>
+<!-- kat2-2411 -->
+<link rel="stylesheet" href="/assets/kat2/kat2.css?v=kat2">
 <style id="kat1-algo">
 /* kat1: смена круга шагов — линия гаснет и рисуется заново */
 .algo .wire .live,.algo .wire .glow,.algo .wire .dot{transition:opacity .4s ease}
@@ -63,7 +65,7 @@
 <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div><div class="blob b3" aria-hidden="true"></div>
 
 <header class="top at-top" id="top">
-  <a class="brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img class="tzk" src="/assets/kat1/tz-key-128.webp" srcset="/assets/kat1/tz-key-64.webp 64w, /assets/kat1/tz-key-128.webp 128w, /assets/kat1/tz-key-192.webp 192w" sizes="52px" alt="" width="128" height="124" decoding="async">Tvii Zhoryk</a>
+  <a class="brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img class="tzk" src="/assets/kat2/tz-key-128.webp?v=kat2" srcset="/assets/kat2/tz-key-64.webp?v=kat2 64w, /assets/kat2/tz-key-128.webp?v=kat2 128w, /assets/kat2/tz-key-192.webp?v=kat2 192w" sizes="52px" alt="" width="128" height="112" decoding="async">Tvii Zhoryk</a>
   <nav aria-label="Sections">
     <button class="metal dark" data-open="p-how">How it works</button>
     <button data-open="p-lib">Library</button>
@@ -84,8 +86,9 @@
   <div class="s-hands">
   <div class="hands" aria-hidden="true">
     <div class="hbox">
-      <img class="hand robot" id="handRobot" src="/assets/r2/hand-robot-820.webp" srcset="/assets/r2/hand-robot-820.webp 820w, /assets/r2/hand-robot-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="577" alt="" fetchpriority="high" decoding="async">
-      <img class="hand human" id="handHuman" src="/assets/kat1/hand-human-k-820.webp" srcset="/assets/kat1/hand-human-k-820.webp 820w, /assets/kat1/hand-human-k-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="585" alt="" decoding="async">
+      <!-- kat2 (Кэт MSG 11696): слева рука человека, справа робот-графит; id слотов прежние — их ведёт сцена r5 -->
+      <img class="hand robot" id="handRobot" src="/assets/kat2/hand-left-820.webp?v=kat2" srcset="/assets/kat2/hand-left-820.webp?v=kat2 820w, /assets/kat2/hand-left-1560.webp?v=kat2 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="585" alt="" fetchpriority="high" decoding="async">
+      <img class="hand human" id="handHuman" src="/assets/kat2/hand-right-820.webp?v=kat2" srcset="/assets/kat2/hand-right-820.webp?v=kat2 820w, /assets/kat2/hand-right-1560.webp?v=kat2 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="577" alt="" decoding="async">
       <div class="spark" id="spark"></div>
     </div>
   </div>
