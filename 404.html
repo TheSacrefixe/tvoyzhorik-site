@@ -1,14 +1,17 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<script>(function(){var p=location.pathname;var en=/\/en\//.test(p);document.documentElement.lang=en?"en":"uk";document.addEventListener("DOMContentLoaded",function(){[].forEach.call(document.querySelectorAll("[data-l]"),function(x){x.hidden=x.getAttribute("data-l")!==(en?"en":"uk");});document.title=en?"Page not found — Твій Жорик":"Сторінку не знайдено — Твій Жорик";});})();</script>
+<script>(function(){var p=location.pathname;var en=/\/en\//.test(p);document.documentElement.lang=en?"en":"uk";document.addEventListener("DOMContentLoaded",function(){[].forEach.call(document.querySelectorAll("[data-l]"),function(x){x.hidden=x.getAttribute("data-l")!==(en?"en":"uk");});document.title=en?"Page not found — Tvii Zhoryk":"Сторінку не знайдено — Твій Жорик";});})();</script>
 <title>Сторінку не знайдено — Твій Жорик</title>
 <meta name="description" content="Такої сторінки на сайті «Твій Жорик» немає. Ось куди можна піти.">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -16,12 +19,17 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <script>document.documentElement.classList.add("js")</script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
+<!-- keys-2411 -->
+<script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'css'})()</script>
+<link rel="stylesheet" href="/assets/keys/keys.css">
 </head>
 <body class="root404">
-<div class="hdr"><div class="wrap"><header class="top">
-  <div class="brandbox"><a class="brand" translate="no" href="/" aria-label="Твій Жорик — головна"><svg viewBox="0 0 48 48" aria-hidden="true"><image href="/assets/tz.svg" width="48" height="48"/></svg>Твій Жорик</a></div>
-  <nav class="topnav" aria-label="Мова · Language"><a href="/" lang="uk" hreflang="uk">Українською</a><a href="/en/" lang="en" hreflang="en">English</a></nav>
-</header></div></div>
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+<header class="r4top r4-404" id="r4top">
+  <a class="r4brand" href="/" aria-label="Твій Жорик — головна" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Твій Жорик</a>
+  <nav class="r4nav r4nav-lang" aria-label="Мова · Language"><a href="/" lang="uk" hreflang="uk">Українською</a><a href="/en/" lang="en" hreflang="en">English</a></nav>
+</header>
 <main id="main" class="pg-main pg-404">
   <section class="e404" data-l="uk" lang="uk">
     <div class="wrap e404-in">

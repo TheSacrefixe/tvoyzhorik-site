@@ -14,6 +14,8 @@
    Страховки (из r5fix): свой цикл кадров в try/catch (ошибка → обычные блоки, кнопки и текст видны); кнопки прячет только этот скрипт
    (r5run); сторож раз в 0,7 с (уснул rAF / сцена зависла дольше 4,5 с / не готова через 1,5 с после касания → сразу готовые кнопки);
    строчка в <head> снимает сцену, если скрипт не запустился за 4 с; ?r5=off, без JS, reduced-motion — обычные блоки. */
+/* fix5 (Олег MSG 11504–11505, «квадрат» на iPhone): блок кнопок #r5go виден только с классом r5vis — проявление, финал, Tab;
+   строки с нулевой прозрачностью — visibility:hidden; холст после финала освобождается. */
 (() => {
   'use strict';
   const root = document.documentElement;
@@ -348,14 +350,15 @@
     lns.forEach(el => css(el, 'opacity', ''));
     css(hR, 'visibility', on ? 'hidden' : ''); css(hH, 'visibility', on ? 'hidden' : '');
     css(hR, 'opacity', ''); css(hH, 'opacity', '');
-    lis.forEach(li => css(li, 'opacity', on ? '1' : '0'));
-    cls(list, 'live', on); cls(go, 'lit', on);
+    lis.forEach(li => { css(li, 'opacity', on ? '1' : '0'); css(li, 'visibility', on ? '' : 'hidden'); });
+    cls(list, 'live', on); cls(go, 'lit', on); cls(go, 'r5vis', on);   /* fix5 */
     css(glow, 'opacity', '0'); css(fl, 'visibility', 'hidden');
   }
   function finish() {   // сразу готовый финал: кнопки видны, текст спрятан (в разметке остаётся)
     R5.state = 'done'; B = null;
     if (G) { G.ctx.setTransform(1, 0, 0, 1, 0, 0); G.ctx.clearRect(0, 0, cv.width, cv.height); }
-    cls(cv, 'on', false); setDone(true);
+    cls(cv, 'on', false); if (G) { cv.width = cv.height = 0; G = null; }   /* fix5 */
+    setDone(true);
   }
   R5.finish = finish;
   function reset() {   // вернулись к самому верху — первый экран как при загрузке
@@ -428,7 +431,8 @@
     if (t >= TM.D1 + 200) { css(hR, 'visibility', 'hidden'); css(hH, 'visibility', 'hidden'); }
     draw(t);
     // кнопки проявляются под своими контурами
-    lis.forEach((li, i) => css(li, 'opacity', smooth(TM.B0 + i * TM.BS, TM.B0 + i * TM.BS + TM.BR, t).toFixed(2)));
+    cls(go, 'r5vis', t >= TM.B0 - 40);   /* fix5 */
+    lis.forEach((li, i) => { const o = smooth(TM.B0 + i * TM.BS, TM.B0 + i * TM.BS + TM.BR, t); css(li, 'opacity', o.toFixed(2)); css(li, 'visibility', o < .005 ? 'hidden' : ''); });
     cls(list, 'live', t >= TM.B0 + 120);
     cls(go, 'lit', t >= TM.Z0);
     if (t >= TM.END && R5.hold == null) finish();
@@ -470,6 +474,7 @@
     scrollTo(0, Math.round(L.secTop + Math.min(L.secH - L.H, (UT + .2) * L.H)));
     finish();
   }
+  addEventListener('keydown', e => { if (e.key === 'Tab' && R5.state !== 'done') cls(go, 'r5vis', true); }, true);   /* fix5 */
   list.addEventListener('focusin', () => { if (R5.state !== 'done') jumpEnd(); });
   document.addEventListener('click', e => { const l = e.target.closest && e.target.closest('a[href="#go"]'); if (l) { e.preventDefault(); jumpEnd(); } });
   addEventListener('load', () => { if (location.hash === '#go') jumpEnd(); });

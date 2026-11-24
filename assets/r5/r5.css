@@ -79,3 +79,11 @@ html.r5a .r5go.lit li:nth-child(4) .go::after{animation-delay:.27s}html.r5a .r5g
 @media (max-width:820px) and (max-height:740px){html.r5a .r5go .head p{display:none}}
 @media (max-width:820px) and (max-height:640px){html.r5a .r5go .go small{display:none}}
 @media (min-width:821px) and (max-height:760px){html.r5a .r5go .head p{display:none}html.r5a .r5go .go small{display:none}}
+
+/* fix5: «квадрат» на живом iPhone (Олег MSG 11504–11505) — блок 5 кнопок стоял поверх первого экрана, прятался только прозрачностью
+   строк, и Safari iOS рисовал его светлой панелью с тенью. Теперь, пока сцена идёт, блок не рисуется вовсе (visibility), видим —
+   только с классом r5vis (ставит r5.js: проявление кнопок, финал, Tab). Без r5run (нет JS, сбой, reduced-motion) правило не действует. */
+html.r5a.r5run .r5go:not(.r5vis),html.r5a.r5run .r5go:not(.r5vis) .go-list,html.r5a.r5run .r5go:not(.r5vis) li,html.r5a.r5run .r5go:not(.r5vis) .go{visibility:hidden!important}
+html.r5a.r5run .r5go:not(.r5vis) .go::before,html.r5a.r5run .r5go:not(.r5vis) .go::after{visibility:hidden!important;box-shadow:none!important}
+html.r5a .r5glow{will-change:auto}
+html.r5a #r5cv{background:transparent}

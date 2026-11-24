@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-r4="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Tvii Zhoryk — personal AI agent for small business">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#9a9ea1">
+<meta name="theme-color" content="#b9cad6">
 <meta name="color-scheme" content="light">
-<link rel="preload" href="/assets/fonts/Kurale-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/Commissioner-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/a.css">
+<link rel="preload" href="/assets/r2/fonts/Unbounded-300.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="/assets/r4/r4.css">
+<script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
 <link rel="icon" href="/assets/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -36,8 +38,13 @@
 <script src="/assets/motion.js" defer></script>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/pages.js" defer></script>
+<script src="/assets/r4/r4.js" defer></script>
+<!-- keys-2411 -->
+<script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'css'})()</script>
+<link rel="stylesheet" href="/assets/keys/keys.css">
 </head>
 <body>
+<div class="r4bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
 <a class="skip" href="#main">Skip to content</a>
 <div class="readbar" aria-hidden="true"><i></i></div>
 
@@ -47,13 +54,12 @@
   </defs>
 </svg>
 
-<div class="hdr"><div class="wrap">
-  <header class="top">
-    <div class="brandbox"><a class="brand" translate="no" href="/en/" aria-label="Tvii Zhoryk — home"><svg aria-hidden="true"><use href="#mark"/></svg>Tvii Zhoryk</a></div>
-    <nav class="topnav" aria-label="Menu"><a href="/en/how-it-works">How it works</a><a href="/en/skills">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a></nav>
-    <a class="lang" href="/data-deletion" hreflang="uk" lang="uk"><span class="lg-f">Українською</span><span class="lg-s" aria-hidden="true">УКР</span></a>
-  </header>
-</div></div>
+<header class="r4top" id="r4top">
+  <div class="brandbox r4brandbox"><a class="brand r4brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a></div>
+  <nav class="r4nav" aria-label="Menu"><a href="/en/how-it-works">How it works</a><a href="/en/skills">Library</a><a href="/en/website">Website</a><a href="/en/data">Your data</a><a href="/en/faq">FAQ</a><a class="r4lang" href="/data-deletion" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></nav>
+  <span class="r4right"><a class="r4lang r4lang-m" href="/data-deletion" hreflang="uk" lang="uk" aria-label="Українською">УКР</a><button class="metal dark sm r4burger" type="button" aria-expanded="false" aria-controls="r4menu">Menu</button></span>
+</header>
+<nav class="r4menu" id="r4menu" aria-label="Menu" hidden><div class="r4menu-in"><a class="metal" href="/en/">Home</a><a class="metal" href="/en/how-it-works">How it works</a><a class="metal" href="/en/skills">Library</a><a class="metal" href="/en/website">Website</a><a class="metal" href="/en/data">Your data</a><a class="metal" href="/en/faq">FAQ</a><a class="metal" href="/en/about">About us</a><a class="metal" href="/en/contact">Contact</a><a class="r4lang" href="/data-deletion" hreflang="uk" lang="uk" aria-label="Українською">УКР</a></div></nav>
 
 <main id="main">
   <div class="wrap doc-head"><h1>How to delete your data — Tvii Zhoryk</h1></div>
@@ -65,13 +71,14 @@
       <ol>
         <li><a href="#s1">A. You use Tvii Zhoryk (business owner or team member)</a></li>
         <li><a href="#s2">B. You are a buyer or follower of a business that uses Tvii Zhoryk</a></li>
+        <li><a href="#s-wl">C. You left your contact on the waitlist (the “Closed pilot” page)</a></li>
         <li><a href="#s3">What we delete</a></li>
         <li><a href="#s4">How long it takes</a></li>
       </ol>
     </details>
     <script>if(matchMedia('(min-width:901px)').matches)document.querySelector('.toc').open=true</script>
     <article class="prose">
-<p><strong>Last updated: 22 November 2026</strong></p>
+<p><strong>Last updated: 24 November 2026</strong></p>
 <aside class="mini" aria-label="Example conversation: “stop” and “delete my data”"><div class="mini-top"><span class="mini-lab">Example · a business’s Instagram Direct</span><button type="button" class="chat-ctl" data-replay><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4v4.5H9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Show again</button></div><div class="phone" data-play><div class="chat-head"><span class="dm-ava" aria-hidden="true">R</span><div><b>Romashka</b></div><span class="ex">example</span></div><ol><li class="pl me-side" data-s="1" data-w="500"><div class="msg dmb"><p>stop</p><span class="meta" aria-hidden="true"><time>12:10</time></span></div></li><li class="pl" data-s="2" data-w="900"><div class="msg sys"><p>“Stop” is on: the assistant does not reply in this conversation</p></div></li><li class="pl me-side" data-s="3" data-w="1500"><div class="msg dmb"><p>delete my data</p><span class="meta" aria-hidden="true"><time>12:14</time></span></div></li><li class="pl" data-s="4" data-w="400" data-ty="1300"><div class="msg dmr"><p class="t">Your request has been accepted. What we delete and when — tvoyzhorik.com/en/data-deletion. I’ve passed your request to the Tvii Zhoryk team myself.</p><span class="meta" aria-hidden="true"><time>12:14</time></span></div><span class="dots" aria-hidden="true"><span></span><span></span><span></span></span></li><li class="pl" data-s="5" data-w="1200"><div class="msg sys"><p>Deletion — within 30 days. Confirmation — here if the Meta window is still open, otherwise at hello@tvoyzhorik.com</p></div></li></ol></div><p class="mini-cap">Example: the shop and conversation are made up. This is how section B of this page works — even if you wrote “stop” before.</p></aside>
 
 <p>You do not need an account or registration to ask us to delete data. Choose the section that fits you.</p>
@@ -101,6 +108,9 @@
 </ol>
 <p>If you wrote to the business in Instagram Direct or Messenger, you can simply write “delete my data” to the assistant in the same conversation, even if you wrote “stop” before. It will reply right away in the same conversation that your request has been accepted, with a link to this page, and will pass your request to us itself. We delete your data within 30 days (in practice sooner); what exactly we delete is listed below. We confirm that your data has been deleted in the same conversation if it is still open for replies (Meta's standard messaging window — for most user actions it lasts 24 hours). If the window has already closed, the assistant does not write to you in that conversation on its own (outside the window, Meta allows only a reply from a person on the business's team, within 7 days); to get a confirmation, write to hello@tvoyzhorik.com (if you also wrote to us by e-mail, we confirm by e-mail). If you did not write in Direct or Messenger, use the e-mail above. </p>
 <p>We will not ask for passwords, codes or documents. If we cannot find your data with these details, we will tell you what else would help.</p>
+<h2 id="s-wl" class="rv" style="scroll-margin-top:150px">C. You left your contact on the waitlist (the “Closed pilot” page)</h2>
+<p>Write to <strong>hello@tvoyzhorik.com</strong> with the subject <strong>“Delete my entry”</strong> and include the contact you left in the form (Telegram username or e-mail). If we have already written to you, just reply “delete” in the same conversation.</p>
+<p>We delete within 3 business days and confirm. If you joined through the bot @TvoyJorik_bot, send it /delete. Without a request, the entry is deleted automatically 12 months after you joined. What exactly we store — <a href="https://tvoyzhorik.com/en/privacy#s3-6">Privacy Policy, subsection 3.6</a>.</p>
 <h2 id="s3" class="rv">What we delete</h2>
 <p>At your request we delete what we hold about you:</p>
 <ul>
