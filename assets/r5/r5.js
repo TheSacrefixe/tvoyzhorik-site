@@ -481,3 +481,6 @@
 
   try { measure(); frame(performance.now()); raf = requestAnimationFrame(loop); } catch (e) { fail(e); }
 })();
+
+/* hotfix 24.11 (Олег MSG 11601): iPhone включает :active (вдавливание клавиш) только при обработчике touchstart — как в pages.js на остальных страницах */
+document.addEventListener("touchstart",function(){},{passive:true});
