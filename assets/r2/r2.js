@@ -378,7 +378,7 @@
     fRaf = 0;
     if (openPanel !== pHow || !algo.ready || !algo.sc) return;
     const s = pHow.scrollTop;
-    if (s !== fLast) { fLast = s; fIdle = 0; algoDraw(lenAt(s)); }
+    if (s !== fLast) { if (!sAnim && Math.abs(s - progTop) > 2) userPing(); sMoved = performance.now(); fLast = s; fIdle = 0; algoDraw(lenAt(s)); }
     else if (++fIdle > 20) return;
     fRaf = requestAnimationFrame(follow);
   }
@@ -390,13 +390,14 @@
   function scrollAnim(to) {
     cancelAnimationFrame(sAnim); sAnim = 0;
     const from = pHow.scrollTop, d = to - from;
-    if (RM || Math.abs(d) < 2) { pHow.scrollTop = to; algoDraw(lenAt(to)); return; }
+    if (RM || Math.abs(d) < 2) { progTop = to; pHow.scrollTop = to; algoDraw(lenAt(to)); return 0; }
     const t0 = performance.now(), dur = Math.min(900, 380 + Math.abs(d) * .6);
     (function st(now) {
       const k = clamp((now - t0) / dur), v = from + d * easeIO(k);
-      pHow.scrollTop = v; algoDraw(lenAt(v));
+      progTop = v; pHow.scrollTop = v; progTop = pHow.scrollTop; algoDraw(lenAt(v));
       sAnim = k < 1 ? requestAnimationFrame(st) : 0;
     })(t0);
+    return dur;
   }
   const stopAnim = () => { if (sAnim) { cancelAnimationFrame(sAnim); sAnim = 0; } };
   pHow.addEventListener('touchstart', stopAnim, { passive: true });
@@ -414,10 +415,36 @@
     })(t0);
     return dur;
   }
-  function algoAuto(dt) {
-    clearTimeout(algo.auto); if (RM || algo.manual || algo.sc || algo.tgt >= algo.steps.length - 1) return;
-    algo.auto = setTimeout(() => { if (algo.manual || algo.sc || openPanel !== pHow) return; algoAuto(algoGo(algo.tgt + 1)); }, (dt || 0) + (algo.tgt === 0 ? 450 : 520));
+  /* kat1 (Кэт MSG 11563 + Олег MSG 11610; Wizard MSG 764–765): шаги идут сами по кругу 0→4→0, плавно.
+     Человек листает панель или жмёт «Далі/Назад», кружок, стрелку — авто-круг на паузе, линия за пальцем (fix8);
+     ~4 с без касаний и прокрутки — круг продолжается с текущего шага. Телефон: авто-круг сам прокручивает панель к шагу. */
+  const AUTO_IDLE = 4000, AUTO_GAP = 1700, AUTO_END = 2600;
+  let uLast = -1e9, uTouch = false, progTop = -1, sMoved = 0;
+  function autoArm(ms) { clearTimeout(algo.auto); algo.auto = 0; if (RM || openPanel !== pHow) return; algo.auto = setTimeout(autoTick, Math.max(60, ms)); }
+  function userPing() { uLast = performance.now(); if (!algo.auto) autoArm(AUTO_IDLE); }
+  function wrapDesk() {
+    algo.el.classList.add('kat1-fade');
+    setTimeout(() => { if (openPanel !== pHow) return; algoGo(0, true); algo.tgt = 0; algo.el.classList.remove('kat1-fade'); }, 450);
+    return 450;
   }
+  function autoTick() {
+    algo.auto = 0;
+    if (RM || openPanel !== pHow || !algo.ready) return;
+    const now = performance.now(), idle = now - uLast;
+    if (uTouch || idle < AUTO_IDLE) { autoArm(AUTO_IDLE - idle + 80); return; }
+    if (algo.sc && (sAnim || now - sMoved < 500)) { autoArm(300); return; }
+    const last = algo.steps.length - 1, b = algoBase(), nx = b >= last ? 0 : b + 1;
+    let dur;
+    if (algo.sc) dur = scrollAnim(scrollFor(nx));
+    else dur = nx === 0 ? wrapDesk() : algoGo(nx);
+    algo.kat1Steps = (algo.kat1Steps || 0) + 1;
+    autoArm((dur || 0) + (nx === last ? AUTO_END : AUTO_GAP));
+  }
+  pHow.addEventListener('touchstart', () => { uTouch = true; userPing(); }, { passive: true });
+  pHow.addEventListener('touchend', () => { uTouch = false; userPing(); }, { passive: true });
+  pHow.addEventListener('touchcancel', () => { uTouch = false; userPing(); }, { passive: true });
+  pHow.addEventListener('wheel', userPing, { passive: true });
+  window.KAT1ALGO = () => ({ cur: algo.cur, tgt: algo.tgt, sc: algo.sc, steps: algo.kat1Steps || 0, len: algo.len, total: algo.total, idle: performance.now() - uLast });
   function algoSync() {   // после открытия/resize: линия встаёт по текущей прокрутке
     if (!algo.ready) return;
     if (algo.sc) { cancelAnimationFrame(algo.anim); clearTimeout(algo.auto); fLast = -1; algoDraw(lenAt(pHow.scrollTop)); }
@@ -425,11 +452,12 @@
   }
   function algoStart() {
     algoLayout(); algo.manual = false; algo.tgt = 0; algo.cur = -1;
-    if (algo.sc) algoSync(); else { algoGo(0, true); algoAuto(); }
+    if (algo.sc) algoSync(); else algoGo(0, true);
+    uLast = -1e9; autoArm(algo.sc ? 2200 : 900);   /* kat1: авто-круг */
   }
-  function algoStop() { clearTimeout(algo.auto); cancelAnimationFrame(algo.anim); cancelAnimationFrame(fRaf); fRaf = 0; stopAnim(); }
+  function algoStop() { clearTimeout(algo.auto); algo.auto = 0; cancelAnimationFrame(algo.anim); cancelAnimationFrame(fRaf); fRaf = 0; stopAnim(); }
   function algoHand(i) {   // кнопки, кружки, стрелки
-    algo.manual = true; clearTimeout(algo.auto);
+    userPing();   /* kat1: ручной шаг — пауза авто-круга */
     if (!algo.ready) algoLayout();
     const last = algo.steps.length - 1; i = clamp(i, 0, last);
     if (algo.sc) {

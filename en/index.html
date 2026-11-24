@@ -45,6 +45,14 @@
 <link rel="stylesheet" href="/assets/nav/nav.css?v=fix7">
 <script src="/assets/nav/nav.js?v=fix7" defer></script>
 <script>(function(){var g=function(e){var t=e.viewTransition;if(t)["ready","finished","updateCallbackDone"].forEach(function(k){if(t[k]&&t[k].catch)t[k].catch(function(){})})};addEventListener("pagereveal",g);addEventListener("pageswap",g);addEventListener("unhandledrejection",function(e){var r=e.reason;if(r&&r.name==="AbortError"&&/Transition was skipped/.test(r.message||""))e.preventDefault()})})();</script>
+<!-- kat1-2411 -->
+<link rel="stylesheet" href="/assets/kat1/kat1.css?v=kat1">
+<script src="/assets/kat1/kat1.js?v=kat1" defer></script>
+<style id="kat1-algo">
+/* kat1: смена круга шагов — линия гаснет и рисуется заново */
+.algo .wire .live,.algo .wire .glow,.algo .wire .dot{transition:opacity .4s ease}
+.algo.kat1-fade .wire .live,.algo.kat1-fade .wire .glow,.algo.kat1-fade .wire .dot{opacity:0}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -55,7 +63,7 @@
 <div class="blob b1" aria-hidden="true"></div><div class="blob b2" aria-hidden="true"></div><div class="blob b3" aria-hidden="true"></div>
 
 <header class="top at-top" id="top">
-  <a class="brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img src="/assets/r2/tz.svg" alt="" width="28" height="28">Tvii Zhoryk</a>
+  <a class="brand" href="/en/" aria-label="Tvii Zhoryk — home" translate="no"><img class="tzk" src="/assets/kat1/tz-key-128.webp" srcset="/assets/kat1/tz-key-64.webp 64w, /assets/kat1/tz-key-128.webp 128w, /assets/kat1/tz-key-192.webp 192w" sizes="52px" alt="" width="128" height="124" decoding="async">Tvii Zhoryk</a>
   <nav aria-label="Sections">
     <button class="metal dark" data-open="p-how">How it works</button>
     <button data-open="p-lib">Library</button>
@@ -77,7 +85,7 @@
   <div class="hands" aria-hidden="true">
     <div class="hbox">
       <img class="hand robot" id="handRobot" src="/assets/r2/hand-robot-820.webp" srcset="/assets/r2/hand-robot-820.webp 820w, /assets/r2/hand-robot-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="577" alt="" fetchpriority="high" decoding="async">
-      <img class="hand human" id="handHuman" src="/assets/r2/hand-human-820.webp" srcset="/assets/r2/hand-human-820.webp 820w, /assets/r2/hand-human-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="462" alt="" decoding="async">
+      <img class="hand human" id="handHuman" src="/assets/kat1/hand-human-k-820.webp" srcset="/assets/kat1/hand-human-k-820.webp 820w, /assets/kat1/hand-human-k-1560.webp 1560w" sizes="(max-width:820px) 105vw, 56vw" width="1560" height="585" alt="" decoding="async">
       <div class="spark" id="spark"></div>
     </div>
   </div>
@@ -205,7 +213,7 @@
 <footer class="foot"><nav class="foot-links"><a href="/en/how-it-works">How it works</a> · <a href="/en/skills">Zhoryk's library</a> · <a href="/en/website">A website for your business</a> · <a href="/en/data">Your data</a> · <a href="/en/faq">FAQ</a> · <a href="/en/about">About us</a> · <a href="/en/waitlist">Join the pilot</a> · <a href="/en/privacy">Privacy policy</a> · <a href="/en/terms">Terms of use</a> · <a href="/en/data-deletion">Delete your data</a> · <a href="/en/contact">Contact</a></nav><span>Tvii Zhoryk · Odesa · Powered by Claude</span></footer>
 <div class="ripple" id="ripple" aria-hidden="true"></div>
 <script src="/assets/r5/r5.js?v=fix5h" defer></script>
-<script src="/assets/r2/r2.js?v=fix8" defer></script>
+<script src="/assets/r2/r2.js?v=kat1" defer></script>
 <script>/*zstats*/(function(){try{var n=navigator;if(n.doNotTrack==='1'||n.globalPrivacyControl)return;var go=function(){try{var p=document.body&&document.body.classList.contains('root404')?'/404':location.pathname;var r='';try{r=document.referrer?new URL(document.referrer).hostname:''}catch(e){}if(r===location.hostname)r='';n.sendBeacon('https://stats.tvoyzhorik.com/hit?p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r))}catch(e){}};if(document.readyState==='complete')go();else addEventListener('load',go)}catch(e){}})();</script>
 </body>
 </html>
