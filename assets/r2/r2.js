@@ -234,6 +234,7 @@
   /* ---------------- общий цикл ---------------- */
   let raf = 0;
   function loop(now) {
+    if (openPanel && root.classList.contains('pnl-full')) { if (!RM) raf = requestAnimationFrame(loop); return; }   /* fix8 */
     handsFrame(now);
     asciiFrame(false);
     sphereFrame(now);
@@ -250,7 +251,7 @@
     loop.y = y;
     if (!RM) raf = requestAnimationFrame(loop);
   }
-  function resize() { asciiSetup(); asciiFrame(true); sphereSetup(); if (RM) loop(performance.now()); if (algo.ready) algoLayout(); }
+  function resize() { asciiSetup(); asciiFrame(true); sphereSetup(); if (RM) loop(performance.now()); if (algo.ready) { algoLayout(); if (openPanel === pHow) algoSync(); } }   /* fix8 */
   addEventListener('resize', () => { clearTimeout(resize.t); resize.t = setTimeout(resize, 120); });
   if (RM) addEventListener('scroll', () => loop(performance.now()), { passive: true });
 
@@ -274,13 +275,13 @@
     clearTimeout(pnlT); pnlT = setTimeout(() => { if (openPanel === pn) root.classList.add('pnl-full'); }, RM ? 0 : 1150);   /* fix6 */
     if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
     setTimeout(() => { const b = pn.querySelector('[data-close]'); b && b.focus({ preventScroll: true }); }, 50);
-    if (id === 'p-how') setTimeout(() => { algoLayout(); algo.manual = false; algoGo(0, true); algoAuto(); }, RM ? 0 : 450);   /* fix6: шаги идут сами */
+    if (id === 'p-how') setTimeout(() => { if (openPanel === pn) algoStart(); }, RM ? 0 : 450);   /* fix8: линия за прокруткой (телефон) / сама (компьютер) */
   }
   function closePanel(silent) {
     if (!openPanel) return;
     clearTimeout(pnlT); root.classList.remove('pnl-full');   /* fix6 */
     if (opener) { const b = opener.getBoundingClientRect(); openPanel.style.setProperty('--cx', b.left + b.width / 2 + 'px'); openPanel.style.setProperty('--cy', b.top + b.height / 2 + 'px'); }
-    openPanel.classList.remove('open'); openPanel = null; clearTimeout(algo.auto);   /* fix6 */
+    openPanel.classList.remove('open'); openPanel = null; algoStop();   /* fix8 */
     document.body.style.overflow = '';
     if (!silent && location.hash) history.pushState(null, '', location.pathname + location.search);
     opener && opener.focus({ preventScroll: true });
@@ -289,12 +290,17 @@
     const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); open(o.dataset.open, o, e); return; }
     if (e.target.closest('[data-close]')) { e.preventDefault(); closePanel(); }
   });
-  addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); if (openPanel && openPanel.id === 'p-how') { if (e.key === 'ArrowRight') algoHand(algo.cur + 1); if (e.key === 'ArrowLeft') algoHand(algo.cur - 1); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); if (openPanel && openPanel.id === 'p-how') { if (e.key === 'ArrowRight') algoHand(algoBase() + 1); if (e.key === 'ArrowLeft') algoHand(algoBase() - 1); } });
   addEventListener('popstate', () => { const id = location.hash.slice(1); if (id && document.getElementById(id) && document.getElementById(id).classList.contains('panel')) open(id); else closePanel(true); });
 
   /* ---------------- «Як це працює»: линия-алгоритм ---------------- */
-  const algo = { el: $('#algo'), steps: $$('#steps .step'), cur: 0, len: 0, L: [], total: 0, ready: false, anim: 0 };
-  const wire = $('#wire');
+  /* fix8 (Олег MSG 11609–11610): на телефоне линия, точка и подсветка шагов идут ЗА ПРОКРУТКОЙ панели пальцем
+     (вниз — вперёд, вверх — назад, и во время инерции iOS); «Далі/Назад» и кружки прокручивают панель к шагу.
+     Авто-хода по таймеру на телефоне нет. Компьютер (кружки в строку) и панель без прокрутки — как в fix6: шаги идут сами. */
+  const algo = { el: $('#algo'), steps: $$('#steps .step'), cur: -1, tgt: 0, len: 0, L: [], total: 0, ready: false, anim: 0,
+    Y: [], P0: 0, P1: 1, sMax: 0, sc: false, T: null, n: 0, off: '' };
+  const wire = $('#wire'), wLive = wire.querySelector('.live'), wGlow = wire.querySelector('.glow'), wDot = wire.querySelector('.dot');
+  const pHow = $('#p-how'), aCount = $('#algoCount');
   function seg(a, b, horiz) {
     // десктоп: вверх на «полосу» над кружками → вправо → вниз в следующий кружок; мобильная: влево → вниз → вправо
     const r = 14;
@@ -305,53 +311,139 @@
     const lx = Math.min(a.x, b.x) - 40, sy = Math.sign(b.y - a.y) || 1;
     return `L${lx + r},${a.y} Q${lx},${a.y} ${lx},${a.y + sy * r} L${lx},${b.y - sy * r} Q${lx},${b.y} ${lx + r},${b.y} L${b.x},${b.y}`;
   }
+  function offIn(el, anc) {   // смещение el внутри anc по offsetTop — без влияния transform (панель открывается с масштабом)
+    let x = 0, y = 0, e = el;
+    while (e && e !== anc) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+    if (e === anc) return { x, y };
+    const a = anc.getBoundingClientRect(), b = el.getBoundingClientRect();
+    return { x: b.left - a.left + anc.scrollLeft, y: b.top - a.top + anc.scrollTop };
+  }
   function algoLayout() {
-    const box = algo.el.getBoundingClientRect(); if (!box.width) return;
-    const pts = algo.steps.map(s => { const b = s.querySelector('.ring').getBoundingClientRect(); return { x: b.left + b.width / 2 - box.left, y: b.top + b.height / 2 - box.top }; });
+    const W = algo.el.offsetWidth, H = algo.el.offsetHeight; if (!W) return;
+    const pts = algo.steps.map(s => { const r = s.querySelector('.ring'), o = offIn(r, algo.el); return { x: o.x + r.offsetWidth / 2, y: o.y + r.offsetHeight / 2 }; });
     const horiz = innerWidth > 820;
     let d = `M${pts[0].x},${pts[0].y}`; const tmp = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     wire.appendChild(tmp); algo.L = [0];
     for (let i = 1; i < pts.length; i++) { d += ' ' + seg(pts[i - 1], pts[i], horiz); tmp.setAttribute('d', d); algo.L.push(tmp.getTotalLength()); }
     tmp.remove();
-    wire.setAttribute('viewBox', `0 0 ${box.width} ${box.height}`);
+    wire.setAttribute('viewBox', `0 0 ${W} ${H}`);
     $$('#wire path').forEach(p => p.setAttribute('d', d));
-    algo.total = algo.L[algo.L.length - 1];
-    const live = wire.querySelector('.live'), glow = wire.querySelector('.glow');
-    [live, glow].forEach(p => { p.style.strokeDasharray = algo.total + 1; });
-    algo.ready = true; algoDraw(algo.L[algo.cur] || 0);
+    algo.total = algo.L[algo.L.length - 1] || 1;
+    [wLive, wGlow].forEach(p => { p.style.strokeDasharray = algo.total + 1; });
+    const n = Math.max(2, Math.ceil(algo.total / 3)), T = new Float32Array((n + 1) * 2);   // точки линии через ~3 px
+    for (let i = 0; i <= n; i++) { const p = wLive.getPointAtLength(algo.total * i / n); T[2 * i] = p.x; T[2 * i + 1] = p.y; }
+    algo.T = T; algo.n = n; algo.off = '';
+    const ao = offIn(algo.el, pHow);
+    algo.Y = pts.map(p => ao.y + p.y);
+    algo.horiz = horiz;
+    algo.ready = true;
+    algoGeom();
   }
+  function algoGeom() {   // прокрутка панели → линия: верх — шаг 0, низ — последний шаг, между — линейно
+    const H = pHow.clientHeight, Y = algo.Y, a = H * .55;
+    algo.sMax = Math.max(0, pHow.scrollHeight - H);
+    algo.P0 = Math.min(a, Y[0]); algo.P1 = Math.max(algo.sMax + a, Y[Y.length - 1]);
+    algo.sc = !algo.horiz && algo.sMax > 40 && algo.P1 > algo.P0;
+  }
+  function lenAt(s) {
+    const Y = algo.Y, L = algo.L;
+    if (s >= algo.sMax - 2) return algo.total;
+    const pr = algo.P0 + (algo.P1 - algo.P0) * clamp(s / algo.sMax);
+    if (pr <= Y[0]) return 0;
+    for (let k = 0; k < Y.length - 1; k++) if (pr < Y[k + 1]) return L[k] + (L[k + 1] - L[k]) * (pr - Y[k]) / (Y[k + 1] - Y[k]);
+    return algo.total;
+  }
+  function scrollFor(i) { return Math.min(algo.sMax, Math.ceil(clamp((algo.Y[i] - algo.P0) / (algo.P1 - algo.P0)) * algo.sMax) + 1); }
   function algoDraw(len) {
-    algo.len = len;
-    const off = algo.total + 1 - len;
-    wire.querySelector('.live').style.strokeDashoffset = off; wire.querySelector('.glow').style.strokeDashoffset = off;
-    const pt = wire.querySelector('.live').getPointAtLength(Math.max(0, len));
-    const dot = wire.querySelector('.dot'); dot.setAttribute('cx', pt.x); dot.setAttribute('cy', pt.y);
+    len = clamp(len, 0, algo.total); algo.len = len;
+    const off = (algo.total + 1 - len).toFixed(1);
+    if (off !== algo.off) {
+      algo.off = off; wLive.style.strokeDashoffset = off; wGlow.style.strokeDashoffset = off;
+      if (algo.T) {
+        const T = algo.T, f = len / algo.total * algo.n, i = Math.min(algo.n - 1, Math.floor(f)), t = f - i;
+        wDot.setAttribute('cx', (T[2 * i] + (T[2 * i + 2] - T[2 * i]) * t).toFixed(1));
+        wDot.setAttribute('cy', (T[2 * i + 1] + (T[2 * i + 3] - T[2 * i + 1]) * t).toFixed(1));
+      }
+    }
+    let c = 0; for (let k = 0; k < algo.L.length; k++) if (algo.L[k] <= len + 2) c = k;
+    if (c !== algo.cur) {
+      algo.cur = c;
+      algo.steps.forEach((s, k) => { s.classList.toggle('on', k <= c); s.classList.toggle('cur', k === c); });
+      aCount.textContent = `${c} / ${algo.steps.length - 1}`;
+    }
   }
-  function algoGo(i, instant) {
+  /* кадр прокрутки: scrollTop читается один раз за кадр; цикл идёт, пока панель движется (палец, инерция, плавная прокрутка) */
+  let fRaf = 0, fIdle = 0, fLast = -1;
+  function follow() {
+    fRaf = 0;
+    if (openPanel !== pHow || !algo.ready || !algo.sc) return;
+    const s = pHow.scrollTop;
+    if (s !== fLast) { fLast = s; fIdle = 0; algoDraw(lenAt(s)); }
+    else if (++fIdle > 20) return;
+    fRaf = requestAnimationFrame(follow);
+  }
+  function wake() { if (!algo.sc) return; fIdle = 0; if (!fRaf) fRaf = requestAnimationFrame(follow); }
+  pHow.addEventListener('scroll', wake, { passive: true });
+  pHow.addEventListener('touchmove', wake, { passive: true });
+  /* плавная прокрутка панели к шагу — своя (одинаково во всех браузерах); линия рисуется в том же кадре; палец/колесо её прерывают */
+  let sAnim = 0;
+  function scrollAnim(to) {
+    cancelAnimationFrame(sAnim); sAnim = 0;
+    const from = pHow.scrollTop, d = to - from;
+    if (RM || Math.abs(d) < 2) { pHow.scrollTop = to; algoDraw(lenAt(to)); return; }
+    const t0 = performance.now(), dur = Math.min(900, 380 + Math.abs(d) * .6);
+    (function st(now) {
+      const k = clamp((now - t0) / dur), v = from + d * easeIO(k);
+      pHow.scrollTop = v; algoDraw(lenAt(v));
+      sAnim = k < 1 ? requestAnimationFrame(st) : 0;
+    })(t0);
+  }
+  const stopAnim = () => { if (sAnim) { cancelAnimationFrame(sAnim); sAnim = 0; } };
+  pHow.addEventListener('touchstart', stopAnim, { passive: true });
+  pHow.addEventListener('wheel', stopAnim, { passive: true });
+  function algoGo(i, instant) {   // режим без прокрутки (компьютер): линия едет сама к шагу i
     if (!algo.ready) algoLayout();
-    i = clamp(i, 0, algo.steps.length - 1); const from = algo.len, to = algo.L[i];
-    algo.cur = i;
-    algo.steps.forEach((s, k) => { s.classList.toggle('cur', k === i); });
-    $('#algoCount').textContent = `${i} / ${algo.steps.length - 1}`;
+    i = clamp(i, 0, algo.steps.length - 1); algo.tgt = i;
+    const from = algo.len, to = algo.L[i];
     cancelAnimationFrame(algo.anim);
-    const lit = () => algo.steps.forEach((s, k) => s.classList.toggle('on', algo.L[k] <= algo.len + 2));
-    if (instant || RM) { algoDraw(to); lit(); return 0; }
-    const t0 = performance.now(), dur = Math.min(1100, 600 + Math.abs(to - from) * .35);   /* fix6 */
+    if (instant || RM) { algoDraw(to); return 0; }
+    const t0 = performance.now(), dur = Math.min(1100, 600 + Math.abs(to - from) * .35);
     (function step(now) {
-      const k = clamp((now - t0) / dur); algoDraw(from + (to - from) * easeIO(k)); lit();
+      const k = clamp((now - t0) / dur); algoDraw(from + (to - from) * easeIO(k));
       if (k < 1) algo.anim = requestAnimationFrame(step);
     })(t0);
     return dur;
   }
-  /* fix6 (Олег MSG 11536, 11549): после открытия панели шаги идут сами 0→4; нажатие — авто-ход стоп, дальше ведёт человек */
   function algoAuto(dt) {
-    clearTimeout(algo.auto); if (RM || algo.manual || algo.cur >= algo.steps.length - 1) return;
-    algo.auto = setTimeout(() => { if (algo.manual || !openPanel || openPanel.id !== 'p-how') return; algoAuto(algoGo(algo.cur + 1)); }, (dt || 0) + (algo.cur === 0 ? 450 : 520));
+    clearTimeout(algo.auto); if (RM || algo.manual || algo.sc || algo.tgt >= algo.steps.length - 1) return;
+    algo.auto = setTimeout(() => { if (algo.manual || algo.sc || openPanel !== pHow) return; algoAuto(algoGo(algo.tgt + 1)); }, (dt || 0) + (algo.tgt === 0 ? 450 : 520));
   }
-  function algoHand(i) { algo.manual = true; clearTimeout(algo.auto); algoGo(i); }
+  function algoSync() {   // после открытия/resize: линия встаёт по текущей прокрутке
+    if (!algo.ready) return;
+    if (algo.sc) { cancelAnimationFrame(algo.anim); clearTimeout(algo.auto); fLast = -1; algoDraw(lenAt(pHow.scrollTop)); }
+    else algoDraw(algo.L[algo.tgt] || 0);
+  }
+  function algoStart() {
+    algoLayout(); algo.manual = false; algo.tgt = 0; algo.cur = -1;
+    if (algo.sc) algoSync(); else { algoGo(0, true); algoAuto(); }
+  }
+  function algoStop() { clearTimeout(algo.auto); cancelAnimationFrame(algo.anim); cancelAnimationFrame(fRaf); fRaf = 0; stopAnim(); }
+  function algoHand(i) {   // кнопки, кружки, стрелки
+    algo.manual = true; clearTimeout(algo.auto);
+    if (!algo.ready) algoLayout();
+    const last = algo.steps.length - 1; i = clamp(i, 0, last);
+    if (algo.sc) {
+      const top = scrollFor(i);
+      if (Math.abs(top - pHow.scrollTop) < 1) { algoDraw(lenAt(pHow.scrollTop)); return; }
+      scrollAnim(top);
+    } else algoGo(i);
+  }
+  const algoBase = () => algo.sc ? algo.cur : algo.tgt;
   algo.steps.forEach((s, k) => s.querySelector('.node').addEventListener('click', () => algoHand(k)));
-  $('#algoNext').addEventListener('click', () => algoHand(algo.cur >= algo.steps.length - 1 ? 0 : algo.cur + 1));
-  $('#algoPrev').addEventListener('click', () => algoHand(algo.cur - 1));
+  $('#algoNext').addEventListener('click', () => { const b = algoBase(); algoHand(b >= algo.steps.length - 1 ? 0 : b + 1); });
+  $('#algoPrev').addEventListener('click', () => { const b = algoBase(); algoHand(algo.sc && algo.len > algo.L[b] + 10 ? b : b - 1); });
+  addEventListener('load', () => { if (openPanel === pHow) { algoLayout(); algoSync(); } });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (openPanel === pHow) { algoLayout(); algoSync(); } });
 
   /* ---------------- появление блоков при прокрутке ---------------- */
   if (!RM && 'IntersectionObserver' in window) {
@@ -366,5 +458,5 @@
   if (RM) { loop(performance.now()); addEventListener('load', () => { asciiSetup(); loop(performance.now()); }); } else raf = requestAnimationFrame(loop);
   const h0 = location.hash.slice(1);
   if (h0 && document.getElementById(h0) && document.getElementById(h0).classList.contains('panel')) setTimeout(() => open(h0), RM ? 0 : 1300);
-  window.__r2 = { open, closePanel, algoGo };
+  window.__r2 = { open, closePanel, algoGo, algoAt: s => lenAt(s) };   /* fix8: algoAt — для проверок (длина линии при прокрутке s) */
 })();
