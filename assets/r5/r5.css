@@ -87,3 +87,6 @@ html.r5a.r5run .r5go:not(.r5vis),html.r5a.r5run .r5go:not(.r5vis) .go-list,html.
 html.r5a.r5run .r5go:not(.r5vis) .go::before,html.r5a.r5run .r5go:not(.r5vis) .go::after{visibility:hidden!important;box-shadow:none!important}
 html.r5a .r5glow{will-change:auto}
 html.r5a #r5cv{background:transparent}
+
+/* hotfix 24.11 (Олег MSG 11589, 11598–11599): невидимый текст второго экрана не перехватывает касания — кнопка «Як це працює» на первом экране нажимается */
+html.r5a .r5copy{pointer-events:none}html.r5a .r5copy a,html.r5a .r5copy button{pointer-events:auto}
