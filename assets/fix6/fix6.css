@@ -1,0 +1,24 @@
+/* fix6 (site-fix6-2411; Олег MSG 11548–11549): всё нажимается и всё плавно.
+   1) Зоны нажатия на телефоне ≥44×44 (WCAG 2.5.5 / Apple HIG): видимый размер почти тот же, растёт только зона касания.
+   2) Без blur-фильтров в анимациях, которые идут каждый кадр (линия шагов, проявление шагов, открытие панели). */
+@media (max-width:820px),(pointer:coarse){
+  .r4brand,html[data-r4] .r4brandbox .brand,.top .brand{min-height:44px}
+  html[data-r4] .r4top .joke-btn{width:44px;height:44px;border:3px solid transparent;background-clip:padding-box}
+  .r4lang-m{min-height:44px;min-width:44px;justify-content:center}
+  html[data-r4] .metal.sm.r4burger,.top .metal.sm.burger,html .metal.sm.burger{min-height:44px}
+  .r4top.r4-404 .r4nav a{min-height:44px;display:inline-flex;align-items:center}
+  .site-foot nav a{min-height:44px;min-width:44px}
+  .foot-links{gap:0 .7rem;align-items:center}
+  .foot-links a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+  .js .book{min-width:44px}
+  main li>a[href^="http"],main p>a[href^="http"]{padding-block:13px}
+  .crumbs a{min-height:44px;display:inline-flex;align-items:center}
+}
+/* линия шагов: свечение — широкий полупрозрачный штрих вместо blur (blur пересчитывался в каждом кадре движения линии) */
+.r4-algo .wire .glow,.wire .glow{filter:none!important;stroke-width:10px;opacity:.32}
+/* шаг проявляется прозрачностью и сдвигом, без размытия */
+.r4-algo .body,#steps .step .body,.algo .step .body{filter:none!important}
+/* панель на главной: линза (clip-path) остаётся, содержимое без размытия на весь экран */
+.js .panel .inner{filter:none!important}
+/* панель раскрылась целиком — страница под ней не перерисовывается (в WebKit под панелью шли паузы кадров до 1 с) */
+html.pnl-full body>*:not(.panel):not(#ripple){visibility:hidden}

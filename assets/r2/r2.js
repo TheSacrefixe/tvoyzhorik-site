@@ -255,7 +255,7 @@
   if (RM) addEventListener('scroll', () => loop(performance.now()), { passive: true });
 
   /* ---------------- панели: переход по нажатию ---------------- */
-  let openPanel = null, opener = null;
+  let openPanel = null, opener = null, pnlT = 0;   /* fix6: pnlT — страница под раскрытой панелью не рисуется */
   const ripple = $('#ripple');
   function open(id, from, ev) {
     const pn = document.getElementById(id); if (!pn) return;
@@ -271,14 +271,16 @@
     }
     pn.scrollTop = 0; pn.classList.add('open'); openPanel = pn; opener = from;
     document.body.style.overflow = 'hidden';
+    clearTimeout(pnlT); pnlT = setTimeout(() => { if (openPanel === pn) root.classList.add('pnl-full'); }, RM ? 0 : 1150);   /* fix6 */
     if (location.hash !== '#' + id) history.pushState(null, '', '#' + id);
     setTimeout(() => { const b = pn.querySelector('[data-close]'); b && b.focus({ preventScroll: true }); }, 50);
-    if (id === 'p-how') setTimeout(() => { algoLayout(); algoGo(0, true); if (!RM) setTimeout(() => algoGo(1), 700); }, RM ? 0 : 450);
+    if (id === 'p-how') setTimeout(() => { algoLayout(); algo.manual = false; algoGo(0, true); algoAuto(); }, RM ? 0 : 450);   /* fix6: шаги идут сами */
   }
   function closePanel(silent) {
     if (!openPanel) return;
+    clearTimeout(pnlT); root.classList.remove('pnl-full');   /* fix6 */
     if (opener) { const b = opener.getBoundingClientRect(); openPanel.style.setProperty('--cx', b.left + b.width / 2 + 'px'); openPanel.style.setProperty('--cy', b.top + b.height / 2 + 'px'); }
-    openPanel.classList.remove('open'); openPanel = null;
+    openPanel.classList.remove('open'); openPanel = null; clearTimeout(algo.auto);   /* fix6 */
     document.body.style.overflow = '';
     if (!silent && location.hash) history.pushState(null, '', location.pathname + location.search);
     opener && opener.focus({ preventScroll: true });
@@ -287,7 +289,7 @@
     const o = e.target.closest('[data-open]'); if (o) { e.preventDefault(); open(o.dataset.open, o, e); return; }
     if (e.target.closest('[data-close]')) { e.preventDefault(); closePanel(); }
   });
-  addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); if (openPanel && openPanel.id === 'p-how') { if (e.key === 'ArrowRight') algoGo(algo.cur + 1); if (e.key === 'ArrowLeft') algoGo(algo.cur - 1); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); if (openPanel && openPanel.id === 'p-how') { if (e.key === 'ArrowRight') algoHand(algo.cur + 1); if (e.key === 'ArrowLeft') algoHand(algo.cur - 1); } });
   addEventListener('popstate', () => { const id = location.hash.slice(1); if (id && document.getElementById(id) && document.getElementById(id).classList.contains('panel')) open(id); else closePanel(true); });
 
   /* ---------------- «Як це працює»: линия-алгоритм ---------------- */
@@ -333,16 +335,23 @@
     $('#algoCount').textContent = `${i} / ${algo.steps.length - 1}`;
     cancelAnimationFrame(algo.anim);
     const lit = () => algo.steps.forEach((s, k) => s.classList.toggle('on', algo.L[k] <= algo.len + 2));
-    if (instant || RM) { algoDraw(to); lit(); return; }
-    const t0 = performance.now(), dur = 900 + Math.abs(to - from) * .5;
+    if (instant || RM) { algoDraw(to); lit(); return 0; }
+    const t0 = performance.now(), dur = Math.min(1100, 600 + Math.abs(to - from) * .35);   /* fix6 */
     (function step(now) {
       const k = clamp((now - t0) / dur); algoDraw(from + (to - from) * easeIO(k)); lit();
       if (k < 1) algo.anim = requestAnimationFrame(step);
     })(t0);
+    return dur;
   }
-  algo.steps.forEach((s, k) => s.querySelector('.node').addEventListener('click', () => algoGo(k)));
-  $('#algoNext').addEventListener('click', () => algoGo(algo.cur >= algo.steps.length - 1 ? 0 : algo.cur + 1));
-  $('#algoPrev').addEventListener('click', () => algoGo(algo.cur - 1));
+  /* fix6 (Олег MSG 11536, 11549): после открытия панели шаги идут сами 0→4; нажатие — авто-ход стоп, дальше ведёт человек */
+  function algoAuto(dt) {
+    clearTimeout(algo.auto); if (RM || algo.manual || algo.cur >= algo.steps.length - 1) return;
+    algo.auto = setTimeout(() => { if (algo.manual || !openPanel || openPanel.id !== 'p-how') return; algoAuto(algoGo(algo.cur + 1)); }, (dt || 0) + (algo.cur === 0 ? 450 : 520));
+  }
+  function algoHand(i) { algo.manual = true; clearTimeout(algo.auto); algoGo(i); }
+  algo.steps.forEach((s, k) => s.querySelector('.node').addEventListener('click', () => algoHand(k)));
+  $('#algoNext').addEventListener('click', () => algoHand(algo.cur >= algo.steps.length - 1 ? 0 : algo.cur + 1));
+  $('#algoPrev').addEventListener('click', () => algoHand(algo.cur - 1));
 
   /* ---------------- появление блоков при прокрутке ---------------- */
   if (!RM && 'IntersectionObserver' in window) {

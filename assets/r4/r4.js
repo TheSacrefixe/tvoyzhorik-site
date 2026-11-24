@@ -111,33 +111,63 @@
       steps.forEach(function (s, k) { s.classList.toggle('cur', k === i); });
       if (cnt) cnt.textContent = i + ' / ' + (steps.length - 1);
       cancelAnimationFrame(A.anim);
-      if (instant || RM) { draw(to); lit(); return; }
-      var t0 = performance.now(), dur = 900 + Math.abs(to - from) * .5;
+      if (instant || RM) { draw(to); lit(); return 0; }
+      var t0 = performance.now(), dur = Math.min(1100, 600 + Math.abs(to - from) * .35);   /* fix6: короче и ровнее */
       (function st(now) { var k = clamp((now - t0) / dur); draw(from + (to - from) * easeIO(k)); lit(); if (k < 1) A.anim = requestAnimationFrame(st); })(t0);
+      return dur;
     };
-    steps.forEach(function (s, k) { $('.node', s).addEventListener('click', function () { goTo(k); }); });
+    /* fix6: нажатие — человек ведёт сам, авто-ход останавливается */
+    var hand = function (i) { A.manual = true; clearTimeout(A.auto); goTo(i); };
+    steps.forEach(function (s, k) { $('.node', s).addEventListener('click', function () { hand(k); }); });
     var nx = $('.r4-next', box.parentNode), pv = $('.r4-prev', box.parentNode);
-    nx && nx.addEventListener('click', function () { goTo(A.cur >= steps.length - 1 ? 0 : A.cur + 1); });
-    pv && pv.addEventListener('click', function () { goTo(A.cur - 1); });
-    box.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') goTo(A.cur + 1); if (e.key === 'ArrowLeft') goTo(A.cur - 1); });
+    nx && nx.addEventListener('click', function () { hand(A.cur >= steps.length - 1 ? 0 : A.cur + 1); });
+    pv && pv.addEventListener('click', function () { hand(A.cur - 1); });
+    box.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') hand(A.cur + 1); if (e.key === 'ArrowLeft') hand(A.cur - 1); });
     W.addEventListener('resize', function () { clearTimeout(layout.t); layout.t = setTimeout(layout, 120); });
-    var started = false, start = function () { if (started) return; started = true; layout(); goTo(0, true); if (!RM) setTimeout(function () { goTo(1); }, 600); };
+    /* fix6 (Олег MSG 11536, 11549): шаги идут САМИ 0→1→2→3→4, пока блок в экране (ушёл — пауза, вернулся — продолжает).
+       Было: после шага 1 линия ждала «Далі»; на телефоне прокрутка откатывала шаг назад, на компьютере перескакивала 0→4.
+       Прокрутка на телефоне (кружки столбиком) может только подогнать линию ВПЕРЁД; назад — только кнопками. */
+    var started = false, inView = false, lastH = 0, sTick = false;
+    var autoNext = function (dt) {
+      clearTimeout(A.auto);
+      if (A.manual || RM || A.cur >= steps.length - 1) return;
+      A.auto = setTimeout(function () {
+        if (A.manual) return;
+        if (!inView) { A.paused = true; return; }
+        autoNext(goTo(A.cur + 1));
+      }, (dt || 0) + (A.cur === 0 ? 450 : 520));
+    };
+    var scrollK = function () {   /* телефон: последний кружок выше 3/4 экрана; блок целиком в экране — последний шаг */
+      if (W.innerWidth > 820) return -1;
+      var lim = W.innerHeight * 0.75, k = 0, bb = box.getBoundingClientRect();
+      steps.forEach(function (s, i) { if ($('.ring', s).getBoundingClientRect().top < lim) k = i; });
+      if (bb.bottom < W.innerHeight * 0.92 && bb.top > -bb.height) k = steps.length - 1;
+      return k;
+    };
+    var start = function () {
+      if (started) return; started = true; layout(); goTo(0, true);
+      var k = scrollK(); if (k > 0 && !RM) goTo(k, true);
+      autoNext();
+    };
     if ('IntersectionObserver' in W && !RM) {
-      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } }); }, { rootMargin: '0px 0px -25% 0px' });
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          inView = e.isIntersecting;
+          if (inView && !started) start();
+          else if (inView && A.paused) { A.paused = false; autoNext(); }
+        });
+      }, { rootMargin: '0px 0px -15% 0px' });
       io.observe(box);
-    } else start();
+    } else { inView = true; start(); }
     W.addEventListener('load', function () { if (started) layout(); });
-
-    /* прокрутка ведёт линию (Олег MSG 11361–11362: на iPhone «дальше не двигается»): текущий шаг — последний, чей кружок выше 60% экрана; раскладка пересчитывается, если блок поменял размер (адресная строка iOS) */
-    var lastH = 0, sTick = false;
     var onScroll = function () {
       if (sTick || !started) return; sTick = true;
       requestAnimationFrame(function () {
         sTick = false;
         var bh = box.getBoundingClientRect().height; if (Math.abs(bh - lastH) > 2) { lastH = bh; layout(); }
-        var lim = W.innerHeight * 0.6, k = 0;
-        steps.forEach(function (s, i) { if ($('.ring', s).getBoundingClientRect().top < lim) k = i; });
-        if (k !== A.cur) goTo(k);
+        if (A.manual || RM) return;
+        var k = scrollK();
+        if (k > A.cur) { clearTimeout(A.auto); autoNext(goTo(k)); }
       });
     };
     W.addEventListener('scroll', onScroll, { passive: true });

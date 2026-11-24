@@ -36,11 +36,12 @@
 <script>document.documentElement.classList.add('js');var q=new URLSearchParams(location.search);if(q.get('abg'))document.documentElement.dataset.abg=q.get('abg');if(q.get('ascii')==='off')document.documentElement.dataset.ascii='off';</script>
 <script>/* r5fix */(function(){var h=document.documentElement,q=new URLSearchParams(location.search);if(q.get('r5')!=='off'&&h.dataset.ascii!=='off'&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){h.classList.add('r5a');addEventListener('load',function(){setTimeout(function(){if(!(window.R5&&R5.run)){h.classList.remove('r5a');h.classList.remove('r5run')}},4000)})}})()</script>
 <script>try{if(sessionStorage.getItem('r4t')){sessionStorage.removeItem('r4t');document.documentElement.classList.add('r4-from')}}catch(e){}</script>
-<script src="/assets/r4/r4.js" defer></script>
+<script src="/assets/r4/r4.js?v=fix6" defer></script>
 <style id="ball-hold">/* шар дольше на экране (Олег MSG 11375) */.s-sphere{height:260vh}@media (max-width:820px){.s-sphere{height:210vh}}@media (prefers-reduced-motion:reduce){.s-sphere{height:auto}}</style>
 <!-- keys-2411 -->
-<script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'css'})()</script>
+<script>(function(){var k=new URLSearchParams(location.search).get('k');if(k==='off')return;document.documentElement.dataset.k=(k==='css'||k==='tex')?k:'tex'})()</script>
 <link rel="stylesheet" href="/assets/keys/keys.css">
+<link rel="stylesheet" href="/assets/fix6/fix6.css?v=fix6">
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
@@ -200,7 +201,7 @@
 <footer class="foot"><nav class="foot-links"><a href="/how-it-works">Як це працює</a> · <a href="/skills">Бібліотека Жорика</a> · <a href="/website">Сайт для бізнесу</a> · <a href="/data">Ваші дані</a> · <a href="/faq">Часті питання</a> · <a href="/about">Хто ми</a> · <a href="/privacy">Політика конфіденційності</a> · <a href="/terms">Умови використання</a> · <a href="/data-deletion">Видалити свої дані</a> · <a href="/contact">Контакти</a></nav><span>Твій Жорик · Одеса · Працює на Claude від Anthropic</span></footer>
 <div class="ripple" id="ripple" aria-hidden="true"></div>
 <script src="/assets/r5/r5.js?v=fix5h" defer></script>
-<script src="/assets/r2/r2.js" defer></script>
+<script src="/assets/r2/r2.js?v=fix6" defer></script>
 <script>/*zstats*/(function(){try{var n=navigator;if(n.doNotTrack==='1'||n.globalPrivacyControl)return;var go=function(){try{var p=document.body&&document.body.classList.contains('root404')?'/404':location.pathname;var r='';try{r=document.referrer?new URL(document.referrer).hostname:''}catch(e){}if(r===location.hostname)r='';n.sendBeacon('https://stats.tvoyzhorik.com/hit?p='+encodeURIComponent(p)+'&r='+encodeURIComponent(r))}catch(e){}};if(document.readyState==='complete')go();else addEventListener('load',go)}catch(e){}})();</script>
 </body>
 </html>
