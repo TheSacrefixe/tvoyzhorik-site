@@ -4,132 +4,495 @@
     <loc>https://tvoyzhorik.com/</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/how-it-works</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/how-it-works"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/how-it-works"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/how-it-works"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/skills</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/skills"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/skills"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/skills"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/skills"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/skills"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/skills"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/website</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/website"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/website"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/website"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/website"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/website"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/website"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/data</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/data"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/faq</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/faq"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/faq"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/about</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/about"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/contact"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/contact"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/privacy</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/privacy"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/privacy"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/terms</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/terms"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/terms"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/data-deletion</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data-deletion"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data-deletion"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data-deletion"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/how-it-works</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/how-it-works"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/how-it-works"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/how-it-works"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/skills</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/skills"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/skills"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/skills"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/skills"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/skills"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/skills"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/website</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/website"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/website"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/website"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/website"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/website"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/website"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/data</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/data"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/faq</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/faq"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/faq"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/faq"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/about</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/about"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/contact</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/contact"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/contact"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/contact"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/privacy</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/privacy"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/privacy"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/privacy"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/terms</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/terms"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/terms"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/terms"/>
   </url>
   <url>
     <loc>https://tvoyzhorik.com/en/data-deletion</loc>
     <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data-deletion"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data-deletion"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/en/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data-deletion"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/how-it-works"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/skills</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/skills"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/skills"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/skills"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/skills"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/skills"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/website</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/website"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/website"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/website"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/website"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/website"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/data</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/faq</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/faq"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/about</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/about"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/contact</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/contact"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/terms</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/terms"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/de/data-deletion</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data-deletion"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/how-it-works"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/skills</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/skills"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/skills"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/skills"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/skills"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/skills"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/website</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/website"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/website"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/website"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/website"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/website"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/data</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/faq</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/faq"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/about</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/about"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/contact</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/contact"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/terms</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/terms"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/es/data-deletion</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data-deletion"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/how-it-works"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/skills</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/skills"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/skills"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/skills"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/skills"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/skills"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/skills"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/website</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/website"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/website"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/website"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/website"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/website"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/website"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/data</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/faq</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/faq"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/faq"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/faq"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/faq"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/faq"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/about</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/about"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/about"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/contact</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/contact"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/contact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/contact"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/privacy"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/privacy"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/terms</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/terms"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/terms"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/terms"/>
+  </url>
+  <url>
+    <loc>https://tvoyzhorik.com/ru/data-deletion</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://tvoyzhorik.com/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tvoyzhorik.com/en/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tvoyzhorik.com/de/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tvoyzhorik.com/es/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://tvoyzhorik.com/ru/data-deletion"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tvoyzhorik.com/data-deletion"/>
   </url>
 </urlset>

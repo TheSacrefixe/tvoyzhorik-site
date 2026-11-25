@@ -14,8 +14,8 @@
     /* 404 — одна страница на оба языка */
     var ls = menu.querySelectorAll('[data-l]');
     if (ls.length) {
-      var en = /^\/en(\/|$)/.test(location.pathname);
-      [].forEach.call(ls, function (b) { b.hidden = b.getAttribute('data-l') !== (en ? 'en' : 'uk'); });
+      var lm = /^\/(en|de|es|ru)(\/|$)/.exec(location.pathname), en = lm ? lm[1] : 'uk';   /* langs-2511 */
+      [].forEach.call(ls, function (b) { b.hidden = b.getAttribute('data-l') !== en; });
     }
     var place = function () {
       var r = header.getBoundingClientRect(), top = Math.max(8, Math.round(r.bottom + 8));
