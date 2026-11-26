@@ -33,3 +33,5 @@ html:is([lang="de"],[lang="es"]) .drw-card{max-width:none}
 @media (max-width:560px){html[lang="es"] .cab{grid-template-columns:1fr}}
 /* корешки книг — как в украинской версии (снизу вверх, континентальная традиция) */
 html.js:is([lang="de"],[lang="es"],[lang="ru"]) .book .sp{transform:rotate(180deg)}
+/* 404, de: длинное слово заголовка помещается в свою колонку рядом с карточкой */
+@media (min-width:821px){html[data-r4] main .e404[lang="de"] h1{font-size:clamp(28px,min(5.4vw,calc((100vw - 520px) / 10.8)),84px)!important}}
